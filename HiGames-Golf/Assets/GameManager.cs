@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     {
         //this.transform.position = CurrentMap.StartingPosition;
         //this.transform.position = Vector3.zero;
-        CameraOffSet = new Vector3(Ball.transform.position.x, Ball.transform.position.y + 8.0f, Ball.transform.position.z + 7.0f);
+        CameraOffSet = new Vector3(Ball.transform.position.x + CameraOffSet.x, CameraOffSet.y, Ball.transform.position.z + CameraOffSet.z);
 
         BuildStateMachine();
     }
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         State_ThrowBall.ConnectedStates = new List<State>() {State_BallMoving};
         State_BallMoving.ConnectedStates = new List<State>() {State_ThrowBall};
 
-        CurrentState = State_BallMoving;
+        CurrentState = States.GetComponent<State_BallMoving>();
         CurrentState.StartState();
     }
 }

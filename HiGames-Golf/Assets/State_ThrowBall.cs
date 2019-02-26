@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class State_ThrowBall : State
 {
-    private float ballRotationSpeed = 2f;
-    private float throwForce = 100f;
-    private Vector3 throwDirection;
-    private bool ballThrown = false;
+    private readonly float ballRotationSpeed = 2f;
+    private readonly float throwForce = 10f;
+    private bool _launched;
 
     public override void CheckState()
     {
-        if(ballThrown)
+        if (_launched)
         {
             LeaveState(ConnectedStates[0]);
         }
+        else Debug.Log("nao lançou");
     }
 
     public override void LeaveState(State state)
@@ -28,7 +28,6 @@ public class State_ThrowBall : State
     public override void OnState()
     {
         CheckCameraMovement();
-
         CheckBallThrow();
 
         CheckState();
@@ -36,6 +35,7 @@ public class State_ThrowBall : State
 
     public override void StartState()
     {
+        _launched = false;
         GameManager.ActUpdate += OnState;
     }
     
@@ -50,19 +50,19 @@ public class State_ThrowBall : State
             GameManager.CameraOffSet = Quaternion.AngleAxis(-ballRotationSpeed, Vector3.up) * GameManager.CameraOffSet;
         }
     }
-
     private void CheckBallThrow()
     {
         if(Input.GetKey(KeyCode.Space))
         {
-            SetThrowDirection();
-            GameManager.Ball.GetComponent<Rigidbody>().AddForce(throwDirection * throwForce);
-            ballThrown = true;
+            Vector3 direction = GetThrowDirection();
+            GameManager.Ball.GetComponent<Rigidbody>().AddForce(direction * throwForce,ForceMode.Impulse);
+            _launched = true;
         }
     }
-    private void SetThrowDirection()
+    private Vector3 GetThrowDirection()
     {
-        throwDirection = GameManager.Camera.transform.forward;
+        Vector3 throwDirection = GameManager.Camera.transform.forward;
         throwDirection.y = 0;
+        return throwDirection;
     }
 }
