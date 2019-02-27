@@ -34,6 +34,7 @@ public class Ball : MonoBehaviour
             switch (other.GetComponent<TypeOfHole>().typeOfHole)
             {
                 case TypeOfHole.HoleType.Menu_Singleplayer:
+                    GameManager.Instance._GameState = GameManager.GameState.SinglePlayer;
                     GameManager.Instance.BuildSelectedMap();
                     break;
                 case TypeOfHole.HoleType.Menu_Multiplayer:

@@ -8,8 +8,8 @@ public class GameManager : Singleton<GameManager>
 {
     [HideInInspector] public MapManager MapManager;
     [HideInInspector] public PlayerManager PlayerManager;
-    [HideInInspector] public Map CurrentMap;
-    [HideInInspector] public Ball CurrentBall;
+    public Map CurrentMap;
+    public Ball CurrentBall;
 
     public enum GameState { Menu, SinglePlayer };
     public GameState _GameState;
@@ -60,7 +60,6 @@ public class GameManager : Singleton<GameManager>
         CurrentState = States.GetComponent<State_BallMoving>();
         CurrentState.StartState();
     }
-
     private void SetupState(State state, params State[] connState)
     {
         state.GameManager = this;
@@ -76,17 +75,20 @@ public class GameManager : Singleton<GameManager>
     }
     public void BuildSelectedMap()
     {
-        if (CurrentMap != null)
-                Destroy(CurrentMap);
+        if(CurrentMap != null)
+        {
+            Destroy(CurrentMap.MapPrefab);
+        }
         CurrentMap = MapManager.SelectedMap;
         CurrentMap.StartMap(CurrentBall);
     }
-
     private void UpdateBall()
     {
-        Destroy(CurrentBall);
-        CurrentBall = PlayerManager.SelectedBall;
-        Instantiate(CurrentBall);
+        if(CurrentBall != null)
+        {
+            Destroy(CurrentBall);
+        }
+        CurrentBall = Instantiate(PlayerManager.SelectedBall);
     }
 
     private void SetUpCamera()
