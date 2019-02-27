@@ -246,8 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569b082dce905fa41af5d26bede523a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MapPrefab: {fileID: 6897589549046516116}
-  SpawnedPrefab: {fileID: 0}
+  Prefab: {fileID: 6897589549046516116}
   StartingPosition: {fileID: 7033088058555773381}
   Waypoints:
   - {fileID: 7598004113604069347}
