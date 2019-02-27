@@ -77,7 +77,7 @@ public class GameManager : Singleton<GameManager>
     {
         if(CurrentMap != null)
         {
-            Destroy(CurrentMap.Prefab);
+            Destroy(CurrentMap.SpawnedPrefab);
         }
         CurrentMap = MapManager.SelectedMap;
         CurrentMap.StartMap(CurrentBall);

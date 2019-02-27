@@ -5,13 +5,14 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     public GameObject Prefab;
+    public GameObject SpawnedPrefab;
     public GameObject StartingPosition;
     public Waypoint[] Waypoints;
     
     public void StartMap(Ball _ball)
     {
         //Instantiate Map
-        Instantiate(Prefab);
+        SpawnedPrefab = Instantiate(Prefab);
         //Hide StartingPosition
         StartingPosition.GetComponent<MeshRenderer>().enabled = false;
         StartingPosition.transform.Find("Direction").GetComponent<MeshRenderer>().enabled = false;
