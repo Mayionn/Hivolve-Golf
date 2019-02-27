@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class State_ThrowBall : State
+public class State_BallLaunch : State
 {
     private readonly float ballRotationSpeed = 2f;
     private readonly float throwForce = 10f;
@@ -55,7 +55,7 @@ public class State_ThrowBall : State
         if(Input.GetKey(KeyCode.Space))
         {
             Vector3 direction = GetThrowDirection();
-            GameManager.Ball.GetComponent<Rigidbody>().AddForce(direction * throwForce,ForceMode.Impulse);
+            Ball.GetComponent<Rigidbody>().AddForce(direction * throwForce,ForceMode.Impulse);
             _launched = true;
         }
     }
