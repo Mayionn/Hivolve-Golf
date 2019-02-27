@@ -23,6 +23,17 @@ public class State_BallMoving : State
         }
         if(IsGrounded() && Ball.RigBody.IsSleeping())
         {
+            switch (GameManager.Instance._GameState)
+            {
+                case GameManager.GameState.Menu:
+                    break;
+                case GameManager.GameState.SinglePlayer:
+                    Ball.GoLastPosition();
+                    //TODO:UpdateCounter;
+                    break;
+                default:
+                    break;
+            }
             LeaveState(ConnectedStates[0]);
         }
     }

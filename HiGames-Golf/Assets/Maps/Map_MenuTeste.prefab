@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2205969995446378572}
   m_Layer: 0
-  m_Name: Prefab
+  m_Name: Map_MenuTeste
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 324695891073649890}
+  SpawnedPrefab: {fileID: 0}
   StartingPosition: {fileID: 4385611082345561412}
   Waypoints: []
 --- !u!1 &4385611083037755922

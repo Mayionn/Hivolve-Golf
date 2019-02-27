@@ -5,7 +5,7 @@ using UnityEngine;
 public class Map : MonoBehaviour
 {
     public GameObject Prefab;
-    public GameObject SpawnedPrefab;
+    [HideInInspector] public GameObject SpawnedPrefab;
     public GameObject StartingPosition;
     public Waypoint[] Waypoints;
     
@@ -17,7 +17,8 @@ public class Map : MonoBehaviour
         StartingPosition.GetComponent<MeshRenderer>().enabled = false;
         StartingPosition.transform.Find("Direction").GetComponent<MeshRenderer>().enabled = false;
         //SetUp Ball
-        _ball.transform.position = StartingPosition.transform.position;
+        _ball.StopAtPosition(StartingPosition.transform.position);
+        _ball.LastPosition = StartingPosition.transform.position;
         //Prepare Waypoints
         for (int i = 0; i < Waypoints.Length; i++)
         {
