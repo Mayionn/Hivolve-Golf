@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    public Vector3 StartingPosition;
     public Vector3 LastPosition;
     [HideInInspector] public Rigidbody RigBody;
 
@@ -18,6 +19,15 @@ public class Ball : MonoBehaviour
         transform.position = LastPosition;
         RigBody.velocity = Vector3.zero;
     }
+    public void GoStartingPosition()
+    {
+        RigBody.velocity = Vector3.zero;
+        transform.position = StartingPosition;
+    }
+    public void SaveLastPosition()
+    {
+        LastPosition = StartingPosition;
+    }
     public void StopAtPosition(Vector3 position)
     {
         transform.position = position;
@@ -28,38 +38,45 @@ public class Ball : MonoBehaviour
     {
         if (other.tag == "Waypoint" && !other.GetComponent<Waypoint>()._Reached)
         {
-            Waypoint waypoint = other.GetComponent<Waypoint>();
-            waypoint.SetReached();
-            StopAtPosition(waypoint.Position);
-            LastPosition = waypoint.Position;
-            //Leave to State_LaunchBall
-            GameManager.Instance.CurrentState.LeaveState(GameManager.Instance.CurrentState.ConnectedStates[0]);
+            SetupWaypoint(other);
         }
         else if(other.tag == "Hole")
         {
-            switch (other.GetComponent<TypeOfHole>().typeOfHole)
+            switch (GameManager.Instance._GameState)
             {
-                case TypeOfHole.HoleType.Menu_Singleplayer:
-                    GameManager.Instance._GameState = GameManager.GameState.SinglePlayer;
-                    GameManager.Instance.BuildSelectedMap();
-                    break;
-                case TypeOfHole.HoleType.Menu_Multiplayer:
-                    break;
-                case TypeOfHole.HoleType.Menu_Local:
-                    break;
-                case TypeOfHole.HoleType.Game_FinalHole:
-                    switch (GameManager.Instance._GameState)
+                case GameManager.GameState.Menu:
+                    switch (other.name)
                     {
-                        case GameManager.GameState.SinglePlayer:
-                            //TODO: STOP TIME
-                            //TODO: SAVE SCORE
-                            //TODO: TRY AGAIN / NEXT LEVEL?
+                        case "Hole-Singleplayer":
+                            {
+                                SetupSingleplayer();
+                            }
+                            break;
+                        case "Hole-Multiplayer":
+                            {
+
+                            }
+                            break;
+                        case "Hole-Localgame":
+                            {
+
+                            }
                             break;
                         default:
+                            Debug.Log("Hole not defined!");
                             break;
                     }
                     break;
-                case TypeOfHole.HoleType.Game_TrickHole:
+                case GameManager.GameState.Singleplayer:
+                    {
+                        //TODO: STOP TIME
+                        //TODO: SAVE SCORE
+                        //TODO: TRY AGAIN / NEXT LEVEL?
+                    }
+                    break;
+                case GameManager.GameState.Multiplayer:
+                    break;
+                case GameManager.GameState.Localgame:
                     break;
                 default:
                     break;
@@ -67,8 +84,23 @@ public class Ball : MonoBehaviour
         }
         else if(other.tag == "OOB")
         {
-            //TODO: GO LAST POSITION STOP
+            GoLastPosition();
             //UPDATE: SCORE
         }
+    }
+
+    private static void SetupSingleplayer()
+    {
+        GameManager.Instance._GameState = GameManager.GameState.Singleplayer;
+        GameManager.Instance.BuildSelectedMap();
+    }
+    private void SetupWaypoint(Collider other)
+    {
+        Waypoint waypoint = other.GetComponent<Waypoint>();
+        waypoint.SetReached();
+        StopAtPosition(waypoint.Position);
+        LastPosition = waypoint.Position;
+        //Leave to State_LaunchBall
+        GameManager.Instance.CurrentState.LeaveState(GameManager.Instance.CurrentState.ConnectedStates[0]);
     }
 }

@@ -11,7 +11,7 @@ public class GameManager : Singleton<GameManager>
     public Map CurrentMap;
     public Ball CurrentBall;
 
-    public enum GameState { Menu, SinglePlayer };
+    public enum GameState { Menu, Singleplayer, Multiplayer, Localgame };
     public GameState _GameState;
 
     public GameObject Camera;

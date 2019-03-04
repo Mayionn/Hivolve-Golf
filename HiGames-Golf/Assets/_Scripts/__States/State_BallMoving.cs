@@ -6,8 +6,8 @@ public class State_BallMoving : State
 {
     private readonly int arraySize = 2;
     private readonly float stopDistance = 0.0001f;
-    private float distToGround;
     private readonly float distToGroundOffSet = 0.001f;
+    private float distToGround;
     private Vector3[] positionArray;
 
     public override void CheckState()
@@ -23,13 +23,21 @@ public class State_BallMoving : State
         }
         if(IsGrounded() && Ball.RigBody.IsSleeping())
         {
-            switch (GameManager.Instance._GameState)
+            switch (GameManager.Instance.CurrentMap._GameType)
             {
-                case GameManager.GameState.Menu:
+                case Map.GameType.Menu:
+                    //Save this position as last position
                     break;
-                case GameManager.GameState.SinglePlayer:
+                case Map.GameType.OneShot:
                     Ball.GoLastPosition();
-                    //TODO:UpdateCounter;
+                    //UpdateCounter
+                    break;
+                case Map.GameType.Waypoint:
+                    //Go back to last waypoint
+                    break;
+                case Map.GameType.FreeForm:
+                    //save this as last position
+
                     break;
                 default:
                     break;
@@ -59,6 +67,7 @@ public class State_BallMoving : State
         GameManager.ActUpdate += OnState;
     }
 
+    //Aux Methods
     private void UpdateArray() {
         positionArray[0] = positionArray[1];
         positionArray[1] = Ball.transform.position;

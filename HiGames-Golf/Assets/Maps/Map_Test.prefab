@@ -173,6 +173,7 @@ MonoBehaviour:
   StartingPosition: {fileID: 3780208784181558198}
   Waypoints:
   - {fileID: 7598004113604069347}
+  _GameType: 2
 --- !u!1 &7033088058712606558
 GameObject:
   m_ObjectHideFlags: 0

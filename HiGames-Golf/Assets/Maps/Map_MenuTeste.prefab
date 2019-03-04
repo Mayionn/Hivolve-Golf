@@ -297,6 +297,7 @@ MonoBehaviour:
   SpawnedPrefab: {fileID: 0}
   StartingPosition: {fileID: 4385611082345561412}
   Waypoints: []
+  _GameType: 0
 --- !u!1 &4385611083037755922
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,7 +615,7 @@ PrefabInstance:
     - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_Name
-      value: Hole (1)
+      value: Hole-Multiplayer
       objectReference: {fileID: 0}
     - target: {fileID: 470962584330555895, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
@@ -694,7 +695,7 @@ PrefabInstance:
     - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_Name
-      value: Hole (2)
+      value: Hole-LocalGame
       objectReference: {fileID: 0}
     - target: {fileID: 470962584330555895, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
@@ -774,7 +775,7 @@ PrefabInstance:
     - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_Name
-      value: Hole
+      value: Hole-Singleplayer
       objectReference: {fileID: 0}
     - target: {fileID: 470962584330555895, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
