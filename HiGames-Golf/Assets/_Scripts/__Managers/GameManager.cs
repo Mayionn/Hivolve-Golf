@@ -41,7 +41,7 @@ public class GameManager : Singleton<GameManager>
     {
         Physics.autoSimulation = false;
 
-        Physics.Simulate(0.01f);
+        Physics.Simulate(0.02f);
     }
 
     void Update()

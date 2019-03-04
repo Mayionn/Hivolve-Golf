@@ -11,6 +11,10 @@ public class Map : MonoBehaviour
 
     public enum GameType { Menu, OneShot, Waypoint, FreeForm};
     public GameType _GameType;
+    public int Medal_Gold;
+    public int Medal_Silver;
+    public int Medal_Bronze;
+    public string Author;
 
     public void StartMap(Ball _ball)
     {

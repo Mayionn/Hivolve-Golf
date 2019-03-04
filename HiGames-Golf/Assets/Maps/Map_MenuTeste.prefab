@@ -298,6 +298,10 @@ MonoBehaviour:
   StartingPosition: {fileID: 4385611082345561412}
   Waypoints: []
   _GameType: 0
+  Medal_Gold: 0
+  Medal_Silver: 0
+  Medal_Bronze: 0
+  Author: 
 --- !u!1 &4385611083037755922
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,11 +29,11 @@ public class State_BallMoving : State
                     //Save this position as last position
                     break;
                 case Map.GameType.OneShot:
-                    Ball.GoLastPosition();
+                    Ball.GoStartingPosition();
                     //UpdateCounter
                     break;
                 case Map.GameType.Waypoint:
-                    //Go back to last waypoint
+                    Ball.GoLastPosition();
                     break;
                 case Map.GameType.FreeForm:
                     //save this as last position
