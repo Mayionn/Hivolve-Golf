@@ -37,10 +37,17 @@ public class GameManager : Singleton<GameManager>
         SetUpCamera();
     }
 
-    void Update() 
+    void FixedUpdate()
+    {
+        Physics.autoSimulation = false;
+
+        Physics.Simulate(0.01f);
+    }
+
+    void Update()
     {
         ActUpdate?.Invoke();
-	}
+    }
 
     void LateUpdate()
     {
@@ -75,7 +82,7 @@ public class GameManager : Singleton<GameManager>
     }
     public void BuildSelectedMap()
     {
-        if(CurrentMap != null)
+        if (CurrentMap != null)
         {
             Destroy(CurrentMap.SpawnedPrefab);
         }
@@ -84,7 +91,7 @@ public class GameManager : Singleton<GameManager>
     }
     private void UpdateBall()
     {
-        if(CurrentBall != null)
+        if (CurrentBall != null)
         {
             Destroy(CurrentBall);
         }
