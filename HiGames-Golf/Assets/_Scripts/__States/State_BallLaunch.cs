@@ -57,6 +57,10 @@ public class State_BallLaunch : State
             Vector3 direction = GetThrowDirection();
             Ball.GetComponent<Rigidbody>().AddForce(direction * throwForce,ForceMode.Impulse);
             _launched = true;
+
+            //-Update Map and UI
+            GameManager.Instance.CurrentMap.CurrentStrikes++;
+            GameManager.Instance.UiManager.UpdateMapInfoCurrentStrikes();
         }
     }
     private Vector3 GetThrowDirection()

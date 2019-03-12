@@ -12,13 +12,6 @@ public class Waypoint : MonoBehaviour
         Position = this.transform.position;
         _Reached = false;
     }
-    public void UnPrepareWaypoint()
-    {
-        _Reached = false;
-    }
-
-    public void SetReached()
-    {
-        _Reached = true;
-    }
+    public void UnPrepareWaypoint() => _Reached = false;
+    public void SetReached() => _Reached = true;
 }

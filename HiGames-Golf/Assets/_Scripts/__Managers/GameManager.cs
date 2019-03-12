@@ -8,11 +8,14 @@ public class GameManager : Singleton<GameManager>
 {
     [HideInInspector] public MapManager MapManager;
     [HideInInspector] public PlayerManager PlayerManager;
+    [HideInInspector] public UiManager UiManager;
+
     public Map CurrentMap;
     public Ball CurrentBall;
 
     public enum GameState { Menu, Singleplayer, Multiplayer, Localgame };
     public GameState _GameState;
+
 
     public GameObject Camera;
     public Vector3 CameraOffSet;
@@ -28,6 +31,7 @@ public class GameManager : Singleton<GameManager>
 
         MapManager = transform.Find("_MapManager").GetComponent<MapManager>();
         PlayerManager = transform.Find("_PlayerManager").GetComponent<PlayerManager>();
+        UiManager = transform.Find("_UiManager").GetComponent<UiManager>();
 
         UpdateBall();
         BuildMenu();
@@ -89,6 +93,7 @@ public class GameManager : Singleton<GameManager>
         CurrentMap = MapManager.SelectedMap;
         CurrentMap.StartMap(CurrentBall);
     }
+
     private void UpdateBall()
     {
         if (CurrentBall != null)

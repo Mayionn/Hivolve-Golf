@@ -76,6 +76,4 @@ public class State_BallMoving : State
     {
         return Physics.Raycast(Ball.transform.position, -Vector3.up, distToGround + distToGroundOffSet);
     }
-
-   
 }

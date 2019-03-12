@@ -16,12 +16,12 @@ public class Ball : MonoBehaviour
 
     public void GoLastPosition()
     {
+        StopBall();
         transform.position = LastPosition;
-        RigBody.velocity = Vector3.zero;
     }
     public void GoStartingPosition()
     {
-        RigBody.velocity = Vector3.zero;
+        StopBall();
         transform.position = StartingPosition;
     }
     public void SaveLastPosition()
@@ -30,15 +30,16 @@ public class Ball : MonoBehaviour
     }
     public void StopAtPosition(Vector3 position)
     {
+        StopBall();
         transform.position = position;
-        RigBody.velocity = Vector3.zero;
     }
+    private void StopBall() => RigBody.velocity = Vector3.zero;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Waypoint" && !other.GetComponent<Waypoint>()._Reached)
         {
-            SetupWaypoint(other);
+            SetupWaypoint(other.GetComponent<Waypoint>());
         }
         else if(other.tag == "Hole")
         {
@@ -94,13 +95,22 @@ public class Ball : MonoBehaviour
         GameManager.Instance._GameState = GameManager.GameState.Singleplayer;
         GameManager.Instance.BuildSelectedMap();
     }
-    private void SetupWaypoint(Collider other)
+    private void SetupWaypoint(Waypoint wp)
     {
-        Waypoint waypoint = other.GetComponent<Waypoint>();
-        waypoint.SetReached();
-        StopAtPosition(waypoint.Position);
-        LastPosition = waypoint.Position;
+        for (int i = 0; i < GameManager.Instance.CurrentMap.Waypoints.Length; i++)
+        {
+            if (wp.Position == GameManager.Instance.CurrentMap.Waypoints[i].Position)
+            {
+                GameManager.Instance.CurrentMap.Waypoints[i]._Reached = true;
+                wp.SetReached();
+            }
+        }
+        //Move Ball
+        StopAtPosition(wp.Position);
+        LastPosition = wp.Position;
         //Leave to State_LaunchBall
         GameManager.Instance.CurrentState.LeaveState(GameManager.Instance.CurrentState.ConnectedStates[0]);
+        //Update Waypoint - UI
+        GameManager.Instance.UiManager.UpdateMapInfoWaypoints();
     }
 }

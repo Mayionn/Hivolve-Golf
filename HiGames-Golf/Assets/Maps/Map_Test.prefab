@@ -171,12 +171,14 @@ MonoBehaviour:
   Prefab: {fileID: 6897589549046516116}
   SpawnedPrefab: {fileID: 0}
   StartingPosition: {fileID: 3780208784181558198}
+  _GameType: 2
+  MedalGold: 0
+  MedalSilver: 0
+  MedalBronze: 0
+  CurrentStrikes: 4
+  CurrentTime: 47.190628
   Waypoints:
   - {fileID: 7598004113604069347}
-  _GameType: 2
-  Medal_Gold: 0
-  Medal_Silver: 0
-  Medal_Bronze: 0
   Author: 
 --- !u!1 &7033088058712606558
 GameObject:
@@ -625,6 +627,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Waypoint
       objectReference: {fileID: 0}
+    - target: {fileID: 6565412770459422909, guid: 36005c386c8e3b0459685dadb848975b,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4228343483633373864, guid: 36005c386c8e3b0459685dadb848975b,
         type: 3}
       propertyPath: Position.x
@@ -633,12 +640,17 @@ PrefabInstance:
     - target: {fileID: 4228343483633373864, guid: 36005c386c8e3b0459685dadb848975b,
         type: 3}
       propertyPath: Position.y
-      value: 0.31840003
+      value: -0.33159995
       objectReference: {fileID: 0}
     - target: {fileID: 4228343483633373864, guid: 36005c386c8e3b0459685dadb848975b,
         type: 3}
       propertyPath: Position.z
       value: 8.28616
+      objectReference: {fileID: 0}
+    - target: {fileID: 4228343483633373864, guid: 36005c386c8e3b0459685dadb848975b,
+        type: 3}
+      propertyPath: _Reached
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6043914018047695582, guid: 36005c386c8e3b0459685dadb848975b,
         type: 3}
@@ -648,7 +660,7 @@ PrefabInstance:
     - target: {fileID: 6043914018047695582, guid: 36005c386c8e3b0459685dadb848975b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.39
+      value: 0.74
       objectReference: {fileID: 0}
     - target: {fileID: 6043914018047695582, guid: 36005c386c8e3b0459685dadb848975b,
         type: 3}
@@ -698,17 +710,17 @@ PrefabInstance:
     - target: {fileID: 6043914018047695582, guid: 36005c386c8e3b0459685dadb848975b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6043914018047695582, guid: 36005c386c8e3b0459685dadb848975b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.74
       objectReference: {fileID: 0}
     - target: {fileID: 6043914018047695582, guid: 36005c386c8e3b0459685dadb848975b,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8837061280013196643, guid: 36005c386c8e3b0459685dadb848975b,
         type: 3}

@@ -6,7 +6,4 @@ public class PlayerManager : MonoBehaviour
 {
     public Ball SelectedBall;
     //public Hand Hand;
-
-    public int ShotCount;
-    public float Timer;
 }
