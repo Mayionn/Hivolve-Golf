@@ -4,28 +4,18 @@ using UnityEngine;
 
 public class State_BallMoving : State
 {
-    private readonly int arraySize = 2;
-    private readonly float stopDistance = 0.0001f;
     private readonly float distToGroundOffSet = 0.001f;
     private float distToGround;
-    private Vector3[] positionArray;
 
+    //nova maneira de parar a bola - usar o velocity e somar xyz e ver a velocidade a partir.
     public override void CheckState()
     {
-        //Debug.Log(Vector3.Distance(positionArray[0], positionArray[1]));
-        if(positionArray[0] != null)
-        {
-            if(IsGrounded() && Vector3.Distance(positionArray[0], positionArray[1]) < stopDistance)
-            {
-                Debug.Log("Woop");
-                //GameManager.Ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            }
-        }
         if(IsGrounded() && Ball.RigBody.IsSleeping())
         {
             switch (GameManager.Instance.CurrentMap._GameType)
             {
                 case Map.GameType.Menu:
+                    Ball.GoStartingPosition();
                     //Save this position as last position
                     break;
                 case Map.GameType.OneShot:
@@ -36,8 +26,8 @@ public class State_BallMoving : State
                     Ball.GoLastPosition();
                     break;
                 case Map.GameType.FreeForm:
+                    Ball.SaveLastPosition();
                     //save this as last position
-
                     break;
                 default:
                     break;
@@ -55,23 +45,15 @@ public class State_BallMoving : State
 
     public override void OnState()
     {
-        UpdateArray();
-
         CheckState();
     }
 
     public override void StartState()
     {
-        positionArray = new Vector3[arraySize];
         distToGround = Ball.GetComponent<SphereCollider>().radius;
         GameManager.ActUpdate += OnState;
     }
 
-    //Aux Methods
-    private void UpdateArray() {
-        positionArray[0] = positionArray[1];
-        positionArray[1] = Ball.transform.position;
-    }
     private bool IsGrounded()
     {
         return Physics.Raycast(Ball.transform.position, -Vector3.up, distToGround + distToGroundOffSet);

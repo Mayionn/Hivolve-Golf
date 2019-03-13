@@ -15,7 +15,6 @@ public class State_BallLaunch : State
         {
             LeaveState(ConnectedStates[0]);
         }
-        else Debug.Log("nao lançou");
     }
 
     public override void LeaveState(State state)
@@ -35,6 +34,7 @@ public class State_BallLaunch : State
 
     public override void StartState()
     {
+        Debug.Log("On State_BallLaunch");
         _launched = false;
         GameManager.ActUpdate += OnState;
     }

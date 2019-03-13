@@ -5,13 +5,9 @@ using UnityEngine;
 public class Waypoint : MonoBehaviour
 {
     public Vector3 Position;
-    public bool _Reached;
+    public Vector3 Scale;
+    public bool _Reached = false;
 
-    public void PrepareWaypoint()
-    {
-        Position = this.transform.position;
-        _Reached = false;
-    }
     public void UnPrepareWaypoint() => _Reached = false;
     public void SetReached() => _Reached = true;
 }

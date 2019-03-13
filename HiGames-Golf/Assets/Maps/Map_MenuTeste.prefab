@@ -301,7 +301,8 @@ MonoBehaviour:
   MedalSilver: 2
   MedalBronze: 3
   CurrentStrikes: 1
-  CurrentTime: 2.918089
+  CurrentTime: 1.1665741
+  WaypointsPosition: []
   Waypoints: []
   Author: Lucas
 --- !u!1 &4385611083037755922

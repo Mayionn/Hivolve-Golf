@@ -372,6 +372,8 @@ MonoBehaviour:
   Menu: {fileID: 4385611082509397590, guid: 53030832d118fa14cad7a9bbb5237b0b, type: 3}
   SelectedMap: {fileID: 7033088058627979230, guid: 65218c78eafa99141a527dfd03c17a36,
     type: 3}
+  Waypoint: {fileID: 6565412770459422909, guid: 36005c386c8e3b0459685dadb848975b,
+    type: 3}
   MapList:
   - {fileID: 7033088058627979230, guid: 65218c78eafa99141a527dfd03c17a36, type: 3}
 --- !u!4 &123744570
@@ -957,8 +959,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SelectedBall: {fileID: 1268160296630645033, guid: 404ea2391144cd442b2e061e00701ef6,
     type: 3}
-  ShotCount: 0
-  Timer: 0
 --- !u!4 &818976619
 Transform:
   m_ObjectHideFlags: 0
@@ -1240,12 +1240,12 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.263
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1262,7 +1262,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
