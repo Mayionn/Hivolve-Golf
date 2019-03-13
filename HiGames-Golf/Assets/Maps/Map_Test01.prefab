@@ -447,8 +447,8 @@ MonoBehaviour:
   MedalGold: 2
   MedalSilver: 4
   MedalBronze: 6
-  CurrentStrikes: 3
-  CurrentTime: 29.190979
+  CurrentStrikes: 6
+  CurrentTime: 114.870605
   WaypointsPosition:
   - {fileID: 2567190439254583314}
   - {fileID: 5455658602145936633}
