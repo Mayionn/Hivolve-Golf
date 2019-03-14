@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,6 +40,7 @@ public class Ball : MonoBehaviour
         RigBody.velocity = Vector3.zero;
         RigBody.Sleep();
     }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Waypoint" && !other.GetComponent<Waypoint>()._Reached)
@@ -64,7 +66,7 @@ public class Ball : MonoBehaviour
                             break;
                         case "Hole-Localgame":
                             {
-
+                                SetupLocalMultiplayer();
                             }
                             break;
                         default:
@@ -74,6 +76,7 @@ public class Ball : MonoBehaviour
                     break;
                 case GameManager.GameState.Singleplayer:
                     {
+                        Debug.Log("Entrou");
                         //TODO: STOP TIME
                         //TODO: SAVE SCORE
                         //TODO: TRY AGAIN / NEXT LEVEL?
@@ -94,6 +97,11 @@ public class Ball : MonoBehaviour
         }
     }
 
+    private static void SetupLocalMultiplayer()
+    {
+        GameManager.Instance._GameState = GameManager.GameState.Localgame;
+        GameManager.Instance.BuildLocalMap();
+    }
     private static void SetupSingleplayer()
     {
         GameManager.Instance._GameState = GameManager.GameState.Singleplayer;

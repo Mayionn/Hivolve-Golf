@@ -6,6 +6,7 @@ public class MapManager : MonoBehaviour
 {
     public Map Menu;
     public Map SelectedMap;
+    public Map LocalMap;
 
     public GameObject Waypoint;
 

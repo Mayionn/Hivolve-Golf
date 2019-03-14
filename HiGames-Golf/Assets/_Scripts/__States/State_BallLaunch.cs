@@ -43,11 +43,11 @@ public class State_BallLaunch : State
     {
         if(Input.GetKey(KeyCode.A))
         {
-            GameManager.CameraOffSet = Quaternion.AngleAxis(+ballRotationSpeed, Vector3.up) * GameManager.CameraOffSet;
+            GameManager.Instance.CameraManager.CameraOffSet = Quaternion.AngleAxis(+ballRotationSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
         }
         else if(Input.GetKey(KeyCode.D))
         {
-            GameManager.CameraOffSet = Quaternion.AngleAxis(-ballRotationSpeed, Vector3.up) * GameManager.CameraOffSet;
+            GameManager.Instance.CameraManager.CameraOffSet = Quaternion.AngleAxis(-ballRotationSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
         }
     }
     private void CheckBallThrow()
@@ -65,7 +65,7 @@ public class State_BallLaunch : State
     }
     private Vector3 GetThrowDirection()
     {
-        Vector3 throwDirection = GameManager.Camera.transform.forward;
+        Vector3 throwDirection = GameManager.Instance.CameraManager.Camera.transform.forward;
         throwDirection.y = 0;
         return throwDirection;
     }

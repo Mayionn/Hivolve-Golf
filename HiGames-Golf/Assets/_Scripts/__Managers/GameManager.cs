@@ -6,22 +6,23 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    [HideInInspector] public MapManager MapManager;
-    [HideInInspector] public PlayerManager PlayerManager;
-    [HideInInspector] public UiManager UiManager;
-
-    public Map CurrentMap;
-    public Ball CurrentBall;
-
     public enum GameState { Menu, Singleplayer, Multiplayer, Localgame };
     public GameState _GameState;
 
+    [HideInInspector] public MapManager MapManager;
+    [HideInInspector] public Player[] Players;
+    [HideInInspector] public UiManager UiManager;
+    [HideInInspector] public LocalGameManager LocalGameManager;
+    [HideInInspector] public CameraManager CameraManager;
+    [HideInInspector] public GameObject States;
 
-    public GameObject Camera;
-    public Vector3 CameraOffSet;
+    public int maxPlayers = 3;
+
+    public Map CurrentMap;
+    public Ball CurrentBall;
+    public Player CurrentPlayer;
 
     public Action ActUpdate;
-    public GameObject States;
     public State CurrentState;
 
     //Base Methods
@@ -29,16 +30,31 @@ public class GameManager : Singleton<GameManager>
     {
         _GameState = GameState.Menu;
 
-        MapManager = transform.Find("_MapManager").GetComponent<MapManager>();
-        PlayerManager = transform.Find("_PlayerManager").GetComponent<PlayerManager>();
-        UiManager = transform.Find("_UiManager").GetComponent<UiManager>();
+        GetManagers();
+
+        //Create FirstPlayer
+        Players = new Player[maxPlayers];
+        //SetDefaultBall;
+        Players[0].SelectedBall = Instantiate(SkinsManager.Instance.DefaultBall);
+        Players[1].SelectedBall = Instantiate(SkinsManager.Instance.DefaultBall);
+        Players[2].SelectedBall = Instantiate(SkinsManager.Instance.DefaultBall);
+        CurrentBall = Players[0].SelectedBall;
+
+        CameraManager.Init();
 
         UpdateBall();
         BuildMenu();
 
         BuildStateMachine();
+    }
 
-        SetUpCamera();
+    private void GetManagers()
+    {
+        MapManager = transform.Find("_MapManager").GetComponent<MapManager>();
+        UiManager = transform.Find("_UiManager").GetComponent<UiManager>();
+        LocalGameManager = transform.Find("_LocalGameManager").GetComponent<LocalGameManager>();
+        CameraManager = transform.Find("_CameraManager").GetComponent<CameraManager>();
+        States = transform.Find("States").gameObject;
     }
 
     void FixedUpdate()
@@ -51,12 +67,6 @@ public class GameManager : Singleton<GameManager>
     void Update()
     {
         ActUpdate?.Invoke();
-    }
-
-    void LateUpdate()
-    {
-        Camera.transform.position = CurrentBall.transform.position + CameraOffSet;
-        Camera.transform.LookAt(CurrentBall.transform.position);
     }
 
     //Aux Methods
@@ -82,7 +92,16 @@ public class GameManager : Singleton<GameManager>
     {
         //Map 0 equals Menu
         CurrentMap = MapManager.Menu;
-        CurrentMap.StartMap(CurrentBall);
+        CurrentMap.StartMap();
+    }
+    public void BuildLocalMap()
+    {
+        if (CurrentMap != null)
+        {
+            Destroy(CurrentMap.SpawnedPrefab);
+        }
+        CurrentMap = MapManager.LocalMap;
+        CurrentMap.StartMap();
     }
     public void BuildSelectedMap()
     {
@@ -91,7 +110,7 @@ public class GameManager : Singleton<GameManager>
             Destroy(CurrentMap.SpawnedPrefab);
         }
         CurrentMap = MapManager.SelectedMap;
-        CurrentMap.StartMap(CurrentBall);
+        CurrentMap.StartMap();
     }
 
     private void UpdateBall()
@@ -100,13 +119,6 @@ public class GameManager : Singleton<GameManager>
         {
             Destroy(CurrentBall);
         }
-        CurrentBall = Instantiate(PlayerManager.SelectedBall);
-    }
-
-    private void SetUpCamera()
-    {
-        CameraOffSet = new Vector3(PlayerManager.SelectedBall.transform.position.x + CameraOffSet.x,
-                                    CameraOffSet.y,
-                                    PlayerManager.SelectedBall.transform.position.z + CameraOffSet.z);
+        CurrentBall = Instantiate(CurrentPlayer.SelectedBall);
     }
 }

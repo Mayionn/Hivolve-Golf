@@ -22,14 +22,14 @@ public class Map : MonoBehaviour
     [HideInInspector] public GameObject[] Waypoints;
     public string Author;
 
-    public void StartMap(Ball _ball)
+    public void StartMap()
     {
         //Instantiate Map
         SpawnedPrefab = Instantiate(Prefab);
         //Hide StartingPosition
         HideStartingPosition();
         //SetUp Ball
-        SetupBall(_ball);
+        SetupBall();
         //Prepare Waypoints
         SetupWaypoints();
         HideWaypointPositions();
@@ -47,11 +47,14 @@ public class Map : MonoBehaviour
         StartingPosition.transform.Find("Direction").GetComponent<MeshRenderer>().enabled = false;
     }
     //---
-    private void SetupBall(Ball _ball)
+    private void SetupBall()
     {
-        _ball.StopAtPosition(StartingPosition.transform.position);
-        _ball.StartingPosition = StartingPosition.transform.position;
-        _ball.LastPosition = StartingPosition.transform.position;
+        foreach (Player p in GameManager.Instance.Players)
+        {
+            p.SelectedBall.StopAtPosition(StartingPosition.transform.position);
+            p.SelectedBall.StartingPosition = StartingPosition.transform.position;
+            p.SelectedBall.LastPosition = StartingPosition.transform.position;
+        }
     }
     //---
     private void SetupWaypoints()
