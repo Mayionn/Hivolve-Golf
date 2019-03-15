@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LocalGameManager : MonoBehaviour
 {
-    public Ball[] Players;
-    public Ball CurrentPlayer;
+    public Player[] Players;
+    public Player CurrentPlayer;
 
     // Update is called once per frame
     void Update()
@@ -14,6 +14,6 @@ public class LocalGameManager : MonoBehaviour
     }
     public void SetNextPlayer()
     {
-        GameManager.Instance.CurrentBall = CurrentPlayer;
+        GameManager.Instance.CurrentPlayer = CurrentPlayer;
     }
 }

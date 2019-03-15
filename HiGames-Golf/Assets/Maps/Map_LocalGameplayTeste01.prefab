@@ -207,14 +207,14 @@ MonoBehaviour:
   MedalGold: 2
   MedalSilver: 4
   MedalBronze: 6
-  CurrentStrikes: 1
+  CurrentStrikes: 2
   CurrentTime: 12.458101
   WaypointsPosition:
   - {fileID: 0}
   - {fileID: 0}
   Waypoints:
-  - {fileID: 6565412770459422909, guid: 36005c386c8e3b0459685dadb848975b, type: 3}
-  - {fileID: 6565412770459422909, guid: 36005c386c8e3b0459685dadb848975b, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   Author: Lucas
 --- !u!1 &7033088058712606558
 GameObject:

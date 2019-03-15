@@ -9,15 +9,15 @@ public class CameraManager : MonoBehaviour
 
     public void Init()
     {
-        CameraOffSet = new Vector3(GameManager.Instance.CurrentBall.transform.position.x + CameraOffSet.x,
+        CameraOffSet = new Vector3(GameManager.Instance.CurrentPlayer.SelectedBall.transform.position.x + CameraOffSet.x,
                                     CameraOffSet.y,
-                                    GameManager.Instance.CurrentBall.transform.position.z + CameraOffSet.z);
+                                    GameManager.Instance.CurrentPlayer.SelectedBall.transform.position.z + CameraOffSet.z);
     }
 
     void LateUpdate()
     {
-        Camera.transform.position = GameManager.Instance.CurrentBall.transform.position + CameraOffSet;
-        Camera.transform.LookAt(GameManager.Instance.CurrentBall.transform.position);
+        Camera.transform.position = GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraOffSet;
+        Camera.transform.LookAt(GameManager.Instance.CurrentPlayer.SelectedBall.transform.position);
     }
 
 }

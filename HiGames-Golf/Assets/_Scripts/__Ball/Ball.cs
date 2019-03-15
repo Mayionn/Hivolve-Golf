@@ -9,36 +9,9 @@ public class Ball : MonoBehaviour
     public Vector3 LastPosition;
     [HideInInspector] public Rigidbody RigBody;
 
-    // Start is called before the first frame update
-    void Awake()
+    public void Init()
     {
         RigBody = this.GetComponent<Rigidbody>();
-    }
-
-    public void GoLastPosition()
-    {
-        StopBall();
-        transform.position = LastPosition;
-    }
-    public void GoStartingPosition()
-    {
-        StopBall();
-        transform.position = StartingPosition;
-    }
-    public void SaveLastPosition()
-    {
-        LastPosition = StartingPosition;
-    }
-    public void StopAtPosition(Vector3 position)
-    {
-        StopBall();
-        transform.position = position;
-    }
-    private void StopBall()
-    {
-        RigBody.Sleep();
-        RigBody.velocity = Vector3.zero;
-        RigBody.Sleep();
     }
 
     void OnTriggerEnter(Collider other)
@@ -64,7 +37,7 @@ public class Ball : MonoBehaviour
 
                             }
                             break;
-                        case "Hole-Localgame":
+                        case "Hole-LocalGame":
                             {
                                 SetupLocalMultiplayer();
                             }
@@ -97,6 +70,32 @@ public class Ball : MonoBehaviour
         }
     }
 
+    public void GoLastPosition()
+    {
+        StopBall();
+        transform.position = LastPosition;
+    }
+    public void GoStartingPosition()
+    {
+        StopBall();
+        transform.position = StartingPosition;
+    }
+    public void SaveLastPosition()
+    {
+        LastPosition = StartingPosition;
+    }
+    public void StopAtPosition(Vector3 position)
+    {
+        StopBall();
+        transform.position = position;
+    }
+
+    private void StopBall()
+    {
+        RigBody.Sleep();
+        RigBody.velocity = Vector3.zero;
+        RigBody.Sleep();
+    }
     private static void SetupLocalMultiplayer()
     {
         GameManager.Instance._GameState = GameManager.GameState.Localgame;

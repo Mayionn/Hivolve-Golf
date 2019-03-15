@@ -29,6 +29,7 @@ public class Map : MonoBehaviour
         //Hide StartingPosition
         HideStartingPosition();
         //SetUp Ball
+        DestroyBalls();
         SetupBall();
         //Prepare Waypoints
         SetupWaypoints();
@@ -47,10 +48,18 @@ public class Map : MonoBehaviour
         StartingPosition.transform.Find("Direction").GetComponent<MeshRenderer>().enabled = false;
     }
     //---
+    private void DestroyBalls()
+    {
+        foreach (Player p in GameManager.Instance.Players)
+        {
+            GameManager.Instance.PlayerBall_Destroy(p);
+        }
+    }
     private void SetupBall()
     {
         foreach (Player p in GameManager.Instance.Players)
         {
+            GameManager.Instance.PlayerBall_Instantiate(p);
             p.SelectedBall.StopAtPosition(StartingPosition.transform.position);
             p.SelectedBall.StartingPosition = StartingPosition.transform.position;
             p.SelectedBall.LastPosition = StartingPosition.transform.position;
@@ -73,7 +82,6 @@ public class Map : MonoBehaviour
                 Waypoints[i].transform.position = WaypointsPosition[i].position;
                 Waypoints[i].transform.localScale = Waypoints[i].GetComponent<Waypoint>().Scale;
             }
-
         }
     }
     private void HideWaypointPositions()

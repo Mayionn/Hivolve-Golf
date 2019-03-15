@@ -14,12 +14,13 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public UiManager UiManager;
     [HideInInspector] public LocalGameManager LocalGameManager;
     [HideInInspector] public CameraManager CameraManager;
+    [HideInInspector] public SkinsManager SkinsManager;
     [HideInInspector] public GameObject States;
 
-    public int maxPlayers = 3;
+    private State State_BallLaunch;
+    private State State_BallMoving;
 
     public Map CurrentMap;
-    public Ball CurrentBall;
     public Player CurrentPlayer;
 
     public Action ActUpdate;
@@ -33,30 +34,21 @@ public class GameManager : Singleton<GameManager>
         GetManagers();
 
         //Create FirstPlayer
-        Players = new Player[maxPlayers];
-        //SetDefaultBall;
-        Players[0].SelectedBall = Instantiate(SkinsManager.Instance.DefaultBall);
-        Players[1].SelectedBall = Instantiate(SkinsManager.Instance.DefaultBall);
-        Players[2].SelectedBall = Instantiate(SkinsManager.Instance.DefaultBall);
-        CurrentBall = Players[0].SelectedBall;
+        CreateFakePlayers(3);
+        CurrentPlayer = Players[0];
+
+        BuildMenu();
+        BuildStateMachine();
 
         CameraManager.Init();
-
-        UpdateBall();
-        BuildMenu();
-
-        BuildStateMachine();
     }
 
-    private void GetManagers()
+    //---Action Update
+    void Update()
     {
-        MapManager = transform.Find("_MapManager").GetComponent<MapManager>();
-        UiManager = transform.Find("_UiManager").GetComponent<UiManager>();
-        LocalGameManager = transform.Find("_LocalGameManager").GetComponent<LocalGameManager>();
-        CameraManager = transform.Find("_CameraManager").GetComponent<CameraManager>();
-        States = transform.Find("States").gameObject;
+        ActUpdate?.Invoke();
     }
-
+    //---Deterministic Physics
     void FixedUpdate()
     {
         Physics.autoSimulation = false;
@@ -64,16 +56,40 @@ public class GameManager : Singleton<GameManager>
         Physics.Simulate(0.02f);
     }
 
-    void Update()
+    //------Aux Methods
+    private void GetManagers()
     {
-        ActUpdate?.Invoke();
+        MapManager = transform.Find("_MapManager").GetComponent<MapManager>();
+        UiManager = transform.Find("_UiManager").GetComponent<UiManager>();
+        LocalGameManager = transform.Find("_LocalGameManager").GetComponent<LocalGameManager>();
+        CameraManager = transform.Find("_CameraManager").GetComponent<CameraManager>();
+        SkinsManager = transform.Find("_SkinsManager").GetComponent<SkinsManager>();
+        States = transform.Find("States").gameObject;
     }
-
-    //Aux Methods
+    private void CreateFakePlayers(int num)
+    {
+        Players = new Player[num];
+        for (int i = 0; i < num; i++)
+        {
+            Players[i] = new Player();
+        }
+    }
+    public void ChooseCurrentPlayer(int index)
+    {
+        CurrentPlayer = Players[index];
+        State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
+        State_BallMoving.Ball = CurrentPlayer.SelectedBall;
+    }
+    public void ChooseCurrentPlayerRandom()
+    {
+        int num = UnityEngine.Random.Range(0, Players.Length);
+        CurrentPlayer = Players[num];
+    }
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
     private void BuildStateMachine()
     {
-        State State_BallLaunch = States.GetComponent<State_BallLaunch>();
-        State State_BallMoving = States.GetComponent<State_BallMoving>();
+        State_BallLaunch = States.GetComponent<State_BallLaunch>();
+        State_BallMoving = States.GetComponent<State_BallMoving>();
 
         SetupState(State_BallLaunch, State_BallMoving);
         SetupState(State_BallMoving, State_BallLaunch);
@@ -84,10 +100,10 @@ public class GameManager : Singleton<GameManager>
     private void SetupState(State state, params State[] connState)
     {
         state.GameManager = this;
-        state.Ball = CurrentBall;
+        state.Ball = CurrentPlayer.SelectedBall;
         state.ConnectedStates = connState;
     }
-
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
     public void BuildMenu()
     {
         //Map 0 equals Menu
@@ -112,13 +128,22 @@ public class GameManager : Singleton<GameManager>
         CurrentMap = MapManager.SelectedMap;
         CurrentMap.StartMap();
     }
-
-    private void UpdateBall()
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+    public void PlayerBall_Instantiate(Player player)
     {
-        if (CurrentBall != null)
+        player.SelectedBall = Instantiate(player.SelectedBall);
+    }
+    public void PlayerBall_Update(Player player)
+    {
+        Ball example = player.SelectedBall;
+        if (player.SelectedBall != null)
         {
-            Destroy(CurrentBall);
+            Destroy(player.SelectedBall);
         }
-        CurrentBall = Instantiate(CurrentPlayer.SelectedBall);
+        player.SelectedBall = Instantiate(example);
+    }
+    public void PlayerBall_Destroy(Player player)
+    {
+        Destroy(player.SelectedBall);
     }
 }

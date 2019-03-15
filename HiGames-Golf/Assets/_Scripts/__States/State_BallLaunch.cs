@@ -54,6 +54,11 @@ public class State_BallLaunch : State
     {
         if(Input.GetKey(KeyCode.Space))
         {
+            if (Ball.RigBody.isKinematic)
+            {
+                Ball.RigBody.isKinematic = false;
+            }
+
             Vector3 direction = GetThrowDirection();
             Ball.GetComponent<Rigidbody>().AddForce(direction * throwForce,ForceMode.Impulse);
             _launched = true;

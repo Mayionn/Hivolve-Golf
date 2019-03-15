@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Players:
-  - {fileID: 1268160296630645033, guid: 404ea2391144cd442b2e061e00701ef6, type: 3}
+  - {fileID: 0}
   CurrentPlayer: {fileID: 0}
 --- !u!1 &123744568
 GameObject:
@@ -418,7 +418,8 @@ MonoBehaviour:
   Menu: {fileID: 4385611082509397590, guid: 53030832d118fa14cad7a9bbb5237b0b, type: 3}
   SelectedMap: {fileID: 7033088058627979230, guid: 65218c78eafa99141a527dfd03c17a36,
     type: 3}
-  LocalMap: {fileID: 0}
+  LocalMap: {fileID: 7033088058627979230, guid: b3d31de766f901c4eb39338bf819f1be,
+    type: 3}
   Waypoint: {fileID: 6565412770459422909, guid: 36005c386c8e3b0459685dadb848975b,
     type: 3}
   MapList:
@@ -732,10 +733,9 @@ MonoBehaviour:
   UiManager: {fileID: 0}
   LocalGameManager: {fileID: 0}
   CameraManager: {fileID: 0}
+  SkinsManager: {fileID: 0}
   States: {fileID: 1174354380}
-  maxPlayers: 3
   CurrentMap: {fileID: 0}
-  CurrentBall: {fileID: 0}
   CurrentPlayer: {fileID: 0}
   CurrentState: {fileID: 0}
 --- !u!4 &421251216
