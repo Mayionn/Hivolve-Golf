@@ -65,38 +65,39 @@ public class UiManager : MonoBehaviour
 
     public void UpdateMapInfoWaypoints()
     {
-        int count = 0;
-        for (int i = 0; i < map.Waypoints.Length; i++)
+        Player p = GameManager.Instance.CurrentPlayer;
+        for (int i = 0; i < p.Waypoints.Length; i++)
         {
-            if(map.Waypoints[i].GetComponent<Waypoint>()._Reached)
+            if(p.Waypoints[i].GetComponent<Waypoint>()._Reached)
             {
-                count++;
+                p.WaypointCounter++;
             }
         }
-        UI_InGame.Waypoint.text = map.Waypoints.Length + " \\ " + count;
+        UI_InGame.Waypoint.text = map.Waypoints.Length + " \\ " + p.WaypointCounter;
     }
     public void UpdateMapInfoCurrentStrikes()
     {
-        UI_InGame.CurrentStrikes.text = "Strikes: " + map.CurrentStrikes;
+        UI_InGame.CurrentStrikes.text = "Strikes: " + GameManager.Instance.CurrentPlayer.Strikes;
     }
 
     public void TimerStart()
     {
-        map.CurrentTime = 0;
+        GameManager.Instance.CurrentPlayer.Timer = 0;
         GameManager.Instance.ActUpdate += TimerCount;
     }
     public void TimerCount()
     {
-        map.CurrentTime += Time.deltaTime;
+        GameManager.Instance.CurrentPlayer.Timer += Time.deltaTime;
+        float t = GameManager.Instance.CurrentPlayer.Timer;
         //UI_InGame.Time.text = timer.ToString();
         UI_InGame.CurrentTime.text = string.Format("{0:#0} : {1:00} : {2:00}", 
-                                Mathf.Floor(map.CurrentTime / 60),
-                                Mathf.Floor(map.CurrentTime) % 60,
-                                Mathf.Floor((map.CurrentTime * 100) % 100));
+                                Mathf.Floor(t / 60),
+                                Mathf.Floor(t) % 60,
+                                Mathf.Floor((t * 100) % 100));
     }
     public void TimerReset()
     {
-        map.CurrentTime = 0;
+        GameManager.Instance.CurrentPlayer.Timer = 0;
     }
     public void TimerStop()
     {

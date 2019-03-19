@@ -729,14 +729,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _GameState: 0
   MapManager: {fileID: 123744569}
-  Players: []
   UiManager: {fileID: 0}
   LocalGameManager: {fileID: 0}
   CameraManager: {fileID: 0}
   SkinsManager: {fileID: 0}
   States: {fileID: 1174354380}
+  playernum: 3
   CurrentMap: {fileID: 0}
   CurrentPlayer: {fileID: 0}
+  Players: []
   CurrentState: {fileID: 0}
 --- !u!4 &421251216
 Transform:

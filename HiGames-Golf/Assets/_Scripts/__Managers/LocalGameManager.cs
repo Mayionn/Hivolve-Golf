@@ -14,6 +14,5 @@ public class LocalGameManager : MonoBehaviour
     }
     public void SetNextPlayer()
     {
-        GameManager.Instance.CurrentPlayer = CurrentPlayer;
     }
 }

@@ -16,8 +16,6 @@ public class Map : MonoBehaviour
     public int MedalGold;
     public int MedalSilver;
     public int MedalBronze;
-    [HideInInspector] public int CurrentStrikes;
-    [HideInInspector] public float CurrentTime;
     public Transform[] WaypointsPosition;
     [HideInInspector] public GameObject[] Waypoints;
     public string Author;
@@ -29,8 +27,9 @@ public class Map : MonoBehaviour
         //Hide StartingPosition
         HideStartingPosition();
         //SetUp Ball
-        DestroyBalls();
-        SetupBall();
+        //DestroyBalls();
+        SetupBalls();
+        GameManager.Instance.ChooseCurrentPlayer(0);
         //Prepare Waypoints
         SetupWaypoints();
         HideWaypointPositions();
@@ -55,11 +54,14 @@ public class Map : MonoBehaviour
             GameManager.Instance.PlayerBall_Destroy(p);
         }
     }
-    private void SetupBall()
+    private void SetupBalls()
     {
+        //GameManager.Instance.PlayerBall_Update();
         foreach (Player p in GameManager.Instance.Players)
         {
+            GameManager.Instance.PlayerBall_Destroy(p);
             GameManager.Instance.PlayerBall_Instantiate(p);
+            p.SelectedBall.Player = p;
             p.SelectedBall.StopAtPosition(StartingPosition.transform.position);
             p.SelectedBall.StartingPosition = StartingPosition.transform.position;
             p.SelectedBall.LastPosition = StartingPosition.transform.position;
@@ -70,17 +72,20 @@ public class Map : MonoBehaviour
     {
         if (WaypointsPosition.Length != 0)
         {
-            Waypoints = new GameObject[WaypointsPosition.Length];
-            GameObject wp = GameManager.Instance.MapManager.Waypoint;
             for (int i = 0; i < WaypointsPosition.Length; i++)
             {
-                Waypoints[i] = Instantiate(wp);
+                foreach (Player p in GameManager.Instance.Players)
+                {
+                    p.Waypoints = new GameObject[WaypointsPosition.Length];
+                    GameObject wp = GameManager.Instance.MapManager.Waypoint;
+                    p.Waypoints[i] = Instantiate(wp);
 
-                Waypoints[i].GetComponent<Waypoint>().Position = WaypointsPosition[i].position;
-                Waypoints[i].GetComponent<Waypoint>().Scale = WaypointsPosition[i].localScale;
+                    p.Waypoints[i].GetComponent<Waypoint>().Position = WaypointsPosition[i].position;
+                    p.Waypoints[i].GetComponent<Waypoint>().Scale = WaypointsPosition[i].localScale;
 
-                Waypoints[i].transform.position = WaypointsPosition[i].position;
-                Waypoints[i].transform.localScale = Waypoints[i].GetComponent<Waypoint>().Scale;
+                    p.Waypoints[i].transform.position = WaypointsPosition[i].position;
+                    p.Waypoints[i].transform.localScale = p.Waypoints[i].GetComponent<Waypoint>().Scale;
+                }
             }
         }
     }
@@ -91,11 +96,10 @@ public class Map : MonoBehaviour
             WaypointsPosition[i].GetComponent<MeshRenderer>().enabled = false;
         }
     }
-    //---
+    //----
     private void ResetScore()
     {
-        CurrentStrikes = 0;
-        CurrentTime = 0;
+        GameManager.Instance.CurrentPlayer.Strikes = 0;
+        GameManager.Instance.CurrentPlayer.Timer = 0;
     }
-
 }

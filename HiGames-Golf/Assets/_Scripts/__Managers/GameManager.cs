@@ -10,7 +10,6 @@ public class GameManager : Singleton<GameManager>
     public GameState _GameState;
 
     [HideInInspector] public MapManager MapManager;
-    [HideInInspector] public Player[] Players;
     [HideInInspector] public UiManager UiManager;
     [HideInInspector] public LocalGameManager LocalGameManager;
     [HideInInspector] public CameraManager CameraManager;
@@ -20,8 +19,10 @@ public class GameManager : Singleton<GameManager>
     private State State_BallLaunch;
     private State State_BallMoving;
 
+    public int playernum = 3;
     public Map CurrentMap;
     public Player CurrentPlayer;
+    [HideInInspector] public Player[] Players;
 
     public Action ActUpdate;
     public State CurrentState;
@@ -34,11 +35,11 @@ public class GameManager : Singleton<GameManager>
         GetManagers();
 
         //Create FirstPlayer
-        CreateFakePlayers(3);
+        CreateFakePlayers(playernum);
         CurrentPlayer = Players[0];
 
-        BuildMenu();
         BuildStateMachine();
+        BuildMenu();
 
         CameraManager.Init();
     }
@@ -72,6 +73,7 @@ public class GameManager : Singleton<GameManager>
         for (int i = 0; i < num; i++)
         {
             Players[i] = new Player();
+            Players[i].SelectedBall.Player = Players[i];
         }
     }
     public void ChooseCurrentPlayer(int index)
@@ -84,6 +86,8 @@ public class GameManager : Singleton<GameManager>
     {
         int num = UnityEngine.Random.Range(0, Players.Length);
         CurrentPlayer = Players[num];
+        State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
+        State_BallMoving.Ball = CurrentPlayer.SelectedBall;
     }
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
     private void BuildStateMachine()
@@ -131,19 +135,21 @@ public class GameManager : Singleton<GameManager>
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
     public void PlayerBall_Instantiate(Player player)
     {
-        player.SelectedBall = Instantiate(player.SelectedBall);
+        player.SelectedBall = Instantiate(player.Example);
     }
-    public void PlayerBall_Update(Player player)
+    public void PlayerBall_Update()
     {
-        Ball example = player.SelectedBall;
-        if (player.SelectedBall != null)
+        for (int i = 0; i < Players.Length; i++)
         {
-            Destroy(player.SelectedBall);
+            if (Players[i].SelectedBall != null)
+            {
+                Destroy(Players[i].SelectedBall);
+            }
+            Players[i].SelectedBall = Instantiate(Players[i].Example);
         }
-        player.SelectedBall = Instantiate(example);
     }
     public void PlayerBall_Destroy(Player player)
     {
-        Destroy(player.SelectedBall);
+        Destroy(player.SelectedBall.gameObject);
     }
 }

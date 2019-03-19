@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    public Player Player;
     public Vector3 StartingPosition;
     public Vector3 LastPosition;
     [HideInInspector] public Rigidbody RigBody;
@@ -108,13 +109,13 @@ public class Ball : MonoBehaviour
     }
     private void SetupWaypoint(Waypoint wp)
     {
-        wp.SetReached();
-        //Move Ball
-        StopAtPosition(wp.Position);
-        LastPosition = wp.Position;
-        //Leave to State_LaunchBall
-        GameManager.Instance.CurrentState.LeaveState(GameManager.Instance.CurrentState.ConnectedStates[0]);
-        //Update Waypoint - UI
-        GameManager.Instance.UiManager.UpdateMapInfoWaypoints();
+         wp.SetReached();
+         //Move Ball
+         StopAtPosition(wp.Position);
+         LastPosition = wp.Position;
+         //Leave to State_LaunchBall
+         GameManager.Instance.CurrentState.LeaveState(GameManager.Instance.CurrentState.ConnectedStates[0]);
+         //Update Waypoint - UI
+         GameManager.Instance.UiManager.UpdateMapInfoWaypoints();
     }
 }

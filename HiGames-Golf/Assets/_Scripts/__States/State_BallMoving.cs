@@ -38,6 +38,7 @@ public class State_BallMoving : State
 
     public override void LeaveState(State state)
     {
+        GameManager.ChooseCurrentPlayerRandom();
         GameManager.ActUpdate -= OnState;
         GameManager.CurrentState = state;
         GameManager.CurrentState.StartState();

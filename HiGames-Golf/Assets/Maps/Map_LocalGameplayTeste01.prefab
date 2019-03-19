@@ -203,15 +203,11 @@ MonoBehaviour:
   Prefab: {fileID: 6897589549046516116}
   SpawnedPrefab: {fileID: 0}
   StartingPosition: {fileID: 3780208784181558198}
-  _GameType: 2
+  _GameType: 1
   MedalGold: 2
   MedalSilver: 4
   MedalBronze: 6
-  CurrentStrikes: 2
-  CurrentTime: 12.458101
-  WaypointsPosition:
-  - {fileID: 0}
-  - {fileID: 0}
+  WaypointsPosition: []
   Waypoints:
   - {fileID: 0}
   - {fileID: 0}

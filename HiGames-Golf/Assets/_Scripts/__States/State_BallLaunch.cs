@@ -64,7 +64,7 @@ public class State_BallLaunch : State
             _launched = true;
 
             //-Update Map and UI
-            GameManager.Instance.CurrentMap.CurrentStrikes++;
+            GameManager.Instance.CurrentPlayer.Strikes++;
             GameManager.Instance.UiManager.UpdateMapInfoCurrentStrikes();
         }
     }
