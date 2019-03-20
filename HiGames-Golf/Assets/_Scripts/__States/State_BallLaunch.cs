@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Managers;
 
 public class State_BallLaunch : State
 {
@@ -34,11 +35,11 @@ public class State_BallLaunch : State
 
     public override void StartState()
     {
-        Debug.Log("On State_BallLaunch");
         _launched = false;
         GameManager.ActUpdate += OnState;
     }
     
+    //--- Methods
     private void CheckCameraMovement()
     {
         if(Input.GetKey(KeyCode.A))
@@ -65,7 +66,7 @@ public class State_BallLaunch : State
 
             //-Update Map and UI
             GameManager.Instance.CurrentPlayer.Strikes++;
-            GameManager.Instance.UiManager.UpdateMapInfoCurrentStrikes();
+            UiManager.Instance.UpdateMapInfoCurrentStrikes();
         }
     }
     private Vector3 GetThrowDirection()

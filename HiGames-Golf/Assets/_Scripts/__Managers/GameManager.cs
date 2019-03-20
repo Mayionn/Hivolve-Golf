@@ -4,152 +4,159 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : Singleton<GameManager>
+namespace Assets.Managers
 {
-    public enum GameState { Menu, Singleplayer, Multiplayer, Localgame };
-    public GameState _GameState;
-
-    [HideInInspector] public MapManager MapManager;
-    [HideInInspector] public UiManager UiManager;
-    [HideInInspector] public LocalGameManager LocalGameManager;
-    [HideInInspector] public CameraManager CameraManager;
-    [HideInInspector] public SkinsManager SkinsManager;
-    [HideInInspector] public GameObject States;
-
-    private State State_BallLaunch;
-    private State State_BallMoving;
-
-    public int playernum = 3;
-    public Map CurrentMap;
-    public Player CurrentPlayer;
-    [HideInInspector] public Player[] Players;
-
-    public Action ActUpdate;
-    public State CurrentState;
-
-    //Base Methods
-    void Start()
+    public class GameManager : Singleton<GameManager>
     {
-        _GameState = GameState.Menu;
+        public enum GameState { Menu, Singleplayer, Multiplayer, Localgame };
+        public GameState _GameState;
 
-        GetManagers();
+        [HideInInspector] public MapManager MapManager;
+        [HideInInspector] public LocalGameManager LocalGameManager;
+        [HideInInspector] public CameraManager CameraManager;
+        [HideInInspector] public SkinsManager SkinsManager;
+        [HideInInspector] public GameObject States;
 
-        //Create FirstPlayer
-        CreateFakePlayers(playernum);
-        CurrentPlayer = Players[0];
+        private State State_BallLaunch;
+        private State State_BallMoving;
 
-        BuildStateMachine();
-        BuildMenu();
+        public int playernum;
+        public Map CurrentMap;
+        public Player CurrentPlayer;
+        [HideInInspector] public Player[] Players;
 
-        CameraManager.Init();
-    }
+        public Action ActUpdate;
+        public State CurrentState;
 
-    //---Action Update
-    void Update()
-    {
-        ActUpdate?.Invoke();
-    }
-    //---Deterministic Physics
-    void FixedUpdate()
-    {
-        Physics.autoSimulation = false;
-
-        Physics.Simulate(0.02f);
-    }
-
-    //------Aux Methods
-    private void GetManagers()
-    {
-        MapManager = transform.Find("_MapManager").GetComponent<MapManager>();
-        UiManager = transform.Find("_UiManager").GetComponent<UiManager>();
-        LocalGameManager = transform.Find("_LocalGameManager").GetComponent<LocalGameManager>();
-        CameraManager = transform.Find("_CameraManager").GetComponent<CameraManager>();
-        SkinsManager = transform.Find("_SkinsManager").GetComponent<SkinsManager>();
-        States = transform.Find("States").gameObject;
-    }
-    private void CreateFakePlayers(int num)
-    {
-        Players = new Player[num];
-        for (int i = 0; i < num; i++)
+        //Base Methods
+        void Start()
         {
-            Players[i] = new Player();
-            Players[i].SelectedBall.Player = Players[i];
+            _GameState = GameState.Menu;
+
+            GetManagers();
+
+            //Create FirstPlayer
+            CreateFakePlayers(playernum);
+            CurrentPlayer = Players[0];
+
+            UiManager.Instance.Init();
+
+            BuildStateMachine();
+            BuildMenu();
+
+            CameraManager.Init();
         }
-    }
-    public void ChooseCurrentPlayer(int index)
-    {
-        CurrentPlayer = Players[index];
-        State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
-        State_BallMoving.Ball = CurrentPlayer.SelectedBall;
-    }
-    public void ChooseCurrentPlayerRandom()
-    {
-        int num = UnityEngine.Random.Range(0, Players.Length);
-        CurrentPlayer = Players[num];
-        State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
-        State_BallMoving.Ball = CurrentPlayer.SelectedBall;
-    }
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-    private void BuildStateMachine()
-    {
-        State_BallLaunch = States.GetComponent<State_BallLaunch>();
-        State_BallMoving = States.GetComponent<State_BallMoving>();
 
-        SetupState(State_BallLaunch, State_BallMoving);
-        SetupState(State_BallMoving, State_BallLaunch);
+        //---Action Update
+        void Update()
+        {
+            ActUpdate?.Invoke();
+        }
+        //---Deterministic Physics
+        void FixedUpdate()
+        {
+            Physics.autoSimulation = false;
 
-        CurrentState = States.GetComponent<State_BallMoving>();
-        CurrentState.StartState();
-    }
-    private void SetupState(State state, params State[] connState)
-    {
-        state.GameManager = this;
-        state.Ball = CurrentPlayer.SelectedBall;
-        state.ConnectedStates = connState;
-    }
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-    public void BuildMenu()
-    {
-        //Map 0 equals Menu
-        CurrentMap = MapManager.Menu;
-        CurrentMap.StartMap();
-    }
-    public void BuildLocalMap()
-    {
-        if (CurrentMap != null)
-        {
-            Destroy(CurrentMap.SpawnedPrefab);
+            Physics.Simulate(0.02f);
         }
-        CurrentMap = MapManager.LocalMap;
-        CurrentMap.StartMap();
-    }
-    public void BuildSelectedMap()
-    {
-        if (CurrentMap != null)
+
+        //------Aux Methods
+        private void GetManagers()
         {
-            Destroy(CurrentMap.SpawnedPrefab);
+            MapManager = transform.Find("_MapManager").GetComponent<MapManager>();
+            LocalGameManager = transform.Find("_LocalGameManager").GetComponent<LocalGameManager>();
+            CameraManager = transform.Find("_CameraManager").GetComponent<CameraManager>();
+            SkinsManager = transform.Find("_SkinsManager").GetComponent<SkinsManager>();
+            States = transform.Find("States").gameObject;
         }
-        CurrentMap = MapManager.SelectedMap;
-        CurrentMap.StartMap();
-    }
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-    public void PlayerBall_Instantiate(Player player)
-    {
-        player.SelectedBall = Instantiate(player.Example);
-    }
-    public void PlayerBall_Update()
-    {
-        for (int i = 0; i < Players.Length; i++)
+        private void CreateFakePlayers(int num)
         {
-            if (Players[i].SelectedBall != null)
+            Players = new Player[num];
+            for (int i = 0; i < num; i++)
             {
-                Destroy(Players[i].SelectedBall);
+                Players[i] = new Player(i);
+                Players[i].SelectedBall.Player = Players[i];
             }
-            Players[i].SelectedBall = Instantiate(Players[i].Example);
         }
-    }
-    public void PlayerBall_Destroy(Player player)
-    {
-        Destroy(player.SelectedBall.gameObject);
+        public void ChooseCurrentPlayer(int index)
+        {
+            CurrentPlayer = Players[index];
+            State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
+            State_BallMoving.Ball = CurrentPlayer.SelectedBall;
+        }
+        public void ChooseCurrentPlayerRandom()
+        {
+            int num = UnityEngine.Random.Range(0, Players.Length);
+            CurrentPlayer = Players[num];
+            State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
+            State_BallMoving.Ball = CurrentPlayer.SelectedBall;
+            //UI
+            UiManager.Instance.UpdateCurrentPlayerName();
+        }
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+        private void BuildStateMachine()
+        {
+            State_BallLaunch = States.GetComponent<State_BallLaunch>();
+            State_BallMoving = States.GetComponent<State_BallMoving>();
+
+            SetupState(State_BallLaunch, State_BallMoving);
+            SetupState(State_BallMoving, State_BallLaunch);
+
+            CurrentState = States.GetComponent<State_BallMoving>();
+            CurrentState.StartState();
+        }
+        private void SetupState(State state, params State[] connState)
+        {
+            state.GameManager = this;
+            state.Ball = CurrentPlayer.SelectedBall;
+            state.ConnectedStates = connState;
+        }
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+        public void BuildMenu()
+        {
+            //Map 0 equals Menu
+            CurrentMap = MapManager.Menu;
+            CurrentMap.StartMap();
+        }
+        public void BuildLocalMap()
+        {
+            if (CurrentMap != null)
+            {
+                Destroy(CurrentMap.SpawnedPrefab);
+            }
+            CurrentMap = MapManager.LocalMap;
+            CurrentMap.StartMap();
+        }
+        public void BuildSelectedMap()
+        {
+            if (CurrentMap != null)
+            {
+                Destroy(CurrentMap.SpawnedPrefab);
+            }
+            CurrentMap = MapManager.SelectedMap;
+            CurrentMap.StartMap();
+        }
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+        public void PlayerBall_Instantiate(Player player)
+        {
+            player.SelectedBall = Instantiate(player.Example);
+            player.SelectedBall.Init();
+        }
+        public void PlayerBall_Update()
+        {
+            for (int i = 0; i < Players.Length; i++)
+            {
+                if (Players[i].SelectedBall != null)
+                {
+                    Destroy(Players[i].SelectedBall);
+                }
+                Players[i].SelectedBall = Instantiate(Players[i].Example);
+            }
+        }
+        public void PlayerBall_Destroy(Player player)
+        {
+            if(player.SelectedBall.gameObject != null)
+            Destroy(player.SelectedBall.gameObject);
+        }
     }
 }

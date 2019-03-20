@@ -1,27 +1,37 @@
-﻿using System;
+﻿using Assets.Generics;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Managers;
 using UnityEngine;
 
-public class UiManager : MonoBehaviour
+public class UiManager : Singleton<UiManager>
 {
     public UI_InGame UI_InGame;
+    public UI_LocalMultiplayer UI_LocalMultiplayer;
     private Map map;
 
-    public void SetupInGameUI(Map map)
+    public void Init()
     {
-        this.map = map;
+        UI_LocalMultiplayer.Init();
+    }
+
+    public void SetupInGameUI()
+    {
+        map = GameManager.Instance.CurrentMap;
         switch (GameManager.Instance._GameState)
         {
             case GameManager.GameState.Menu:
-                TimerStart();
+                    TimerStart();
+                    SetCurrentPlayerInfo();
                     SetMapInfo();
                     SetMapInfoMedals();
                     SetMapInfoWaypoints();
                     SetMapInfoCurrentStrikes();
                 break;
             case GameManager.GameState.Singleplayer:
-                TimerStart();
+                    TimerStart();
+                    SetCurrentPlayerInfo();
                     SetMapInfo();
                     SetMapInfoMedals();
                     SetMapInfoWaypoints();
@@ -30,15 +40,27 @@ public class UiManager : MonoBehaviour
             case GameManager.GameState.Multiplayer:
                 break;
             case GameManager.GameState.Localgame:
+                    TimerStart();
+                    SetCurrentPlayerInfo();
+                    SetMapInfo();
+                    SetMapInfoMedals();
+                    SetMapInfoWaypoints();
+                    SetMapInfoCurrentStrikes();
                 break;
             default:
                 break;
         }
     }
 
+    private void SetCurrentPlayerInfo()
+    {
+        Player p = GameManager.Instance.CurrentPlayer;
+        UI_InGame.CurrentPlayerInfo.text = "Current Player: " + p.Name
+                                                + "\nPlayer Number: " + p.PlayerNum;
+    }
     private void SetMapInfo()
     {
-        UI_InGame.MapInfo.text = map.Prefab.name + "\n" + map.Author;
+        UI_InGame.MapInfo.text = map.gameObject.name + "\n" + map.Author;
     }
     private void SetMapInfoMedals()
     {
@@ -63,14 +85,29 @@ public class UiManager : MonoBehaviour
         UI_InGame.CurrentStrikes.text = "Strikes: 0";
     }
 
+    public void UpdateCurrentPlayerName()
+    {
+        SetCurrentPlayerInfo();
+    }
     public void UpdateMapInfoWaypoints()
     {
         Player p = GameManager.Instance.CurrentPlayer;
-        for (int i = 0; i < p.Waypoints.Length; i++)
+        Map m = GameManager.Instance.CurrentMap;
+        p.WaypointCounter = 0;
+        //Percorrer Waypoints!
+        for (int i = 0; i < m.Waypoints.Length; i++)
         {
-            if(p.Waypoints[i].GetComponent<Waypoint>()._Reached)
+            List<int> rp = m.Waypoints[i].GetComponent<Waypoint>().ReachedPlayers;
+            //Percorrer ReachedPlayers em cada Waypoint!
+            for (int o = 0; o < rp.Count; o++)
             {
-                p.WaypointCounter++;
+                //Se o Player num estiver na lista,
+                //é porque o player já chegou ao determinado waypoint
+                if(rp[o] == p.PlayerNum)
+                {
+                    //Incrementar o contador de strikes, no jogado atual
+                    p.WaypointCounter++;
+                }
             }
         }
         UI_InGame.Waypoint.text = map.Waypoints.Length + " \\ " + p.WaypointCounter;
@@ -82,7 +119,6 @@ public class UiManager : MonoBehaviour
 
     public void TimerStart()
     {
-        GameManager.Instance.CurrentPlayer.Timer = 0;
         GameManager.Instance.ActUpdate += TimerCount;
     }
     public void TimerCount()

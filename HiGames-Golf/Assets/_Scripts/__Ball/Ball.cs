@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Managers;
 
 public class Ball : MonoBehaviour
 {
@@ -17,9 +18,14 @@ public class Ball : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Waypoint" && !other.GetComponent<Waypoint>()._Reached)
+        if (other.tag == "Waypoint")
         {
-            SetupWaypoint(other.GetComponent<Waypoint>());
+            List<int> rp = other.GetComponent<Waypoint>().ReachedPlayers;
+            if(!rp.Contains(Player.PlayerNum))
+            {
+                rp.Add(Player.PlayerNum);
+                SetupWaypoint(other.GetComponent<Waypoint>());
+            }
         }
         else if(other.tag == "Hole")
         {
@@ -59,6 +65,9 @@ public class Ball : MonoBehaviour
                 case GameManager.GameState.Multiplayer:
                     break;
                 case GameManager.GameState.Localgame:
+                    {
+                        Debug.Log("entrou em local");
+                    }
                     break;
                 default:
                     break;
@@ -67,7 +76,6 @@ public class Ball : MonoBehaviour
         else if(other.tag == "OOB")
         {
             GoLastPosition();
-            //UPDATE: SCORE
         }
     }
 
@@ -109,13 +117,12 @@ public class Ball : MonoBehaviour
     }
     private void SetupWaypoint(Waypoint wp)
     {
-         wp.SetReached();
          //Move Ball
          StopAtPosition(wp.Position);
          LastPosition = wp.Position;
          //Leave to State_LaunchBall
          GameManager.Instance.CurrentState.LeaveState(GameManager.Instance.CurrentState.ConnectedStates[0]);
          //Update Waypoint - UI
-         GameManager.Instance.UiManager.UpdateMapInfoWaypoints();
+         UiManager.Instance.UpdateMapInfoWaypoints();
     }
 }

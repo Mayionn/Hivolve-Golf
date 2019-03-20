@@ -15,4 +15,5 @@ public class UI_InGame : MonoBehaviour
     public Text BestStrikes;
     public Button ResetGame;
     public Text MapInfo;
+    public Text CurrentPlayerInfo;
 }

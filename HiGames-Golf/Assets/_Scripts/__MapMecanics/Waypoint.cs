@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
+    public List<int> ReachedPlayers;
     public Vector3 Position;
     public Vector3 Scale;
-    public bool _Reached = false;
-
-    public void UnPrepareWaypoint() => _Reached = false;
-    public void SetReached() => _Reached = true;
 }

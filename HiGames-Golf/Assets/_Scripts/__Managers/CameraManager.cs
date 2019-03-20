@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Managers;
 
 public class CameraManager : MonoBehaviour
 {
     public GameObject Camera;
     public Vector3 CameraOffSet;
+    public Vector3 CameraHeightOffSet;
 
     public void Init()
     {
@@ -17,7 +19,7 @@ public class CameraManager : MonoBehaviour
     void LateUpdate()
     {
         Camera.transform.position = GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraOffSet;
-        Camera.transform.LookAt(GameManager.Instance.CurrentPlayer.SelectedBall.transform.position);
+        Camera.transform.LookAt(GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraHeightOffSet);
     }
 
 }
