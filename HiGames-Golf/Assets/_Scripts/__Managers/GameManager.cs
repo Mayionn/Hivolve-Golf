@@ -23,7 +23,7 @@ namespace Assets.Managers
         public int playernum;
         public Map CurrentMap;
         public Player CurrentPlayer;
-        [HideInInspector] public Player[] Players;
+        [HideInInspector] public List<Player> Players;
 
         public Action ActUpdate;
         public State CurrentState;
@@ -36,10 +36,10 @@ namespace Assets.Managers
             GetManagers();
 
             //Create FirstPlayer
+            Players = new List<Player>();
             CreateFakePlayers(playernum);
+            PlayerBall_Instantiate(Players[0]);
             CurrentPlayer = Players[0];
-
-            UiManager.Instance.Init();
 
             BuildStateMachine();
             BuildMenu();
@@ -69,13 +69,12 @@ namespace Assets.Managers
             SkinsManager = transform.Find("_SkinsManager").GetComponent<SkinsManager>();
             States = transform.Find("States").gameObject;
         }
-        private void CreateFakePlayers(int num)
+        public void CreateFakePlayers(int num)
         {
-            Players = new Player[num];
             for (int i = 0; i < num; i++)
             {
-                Players[i] = new Player(i);
-                Players[i].SelectedBall.Player = Players[i];
+                Player p = new Player();
+                Players.Add(p);
             }
         }
         public void ChooseCurrentPlayer(int index)
@@ -86,7 +85,7 @@ namespace Assets.Managers
         }
         public void ChooseCurrentPlayerRandom()
         {
-            int num = UnityEngine.Random.Range(0, Players.Length);
+            int num = UnityEngine.Random.Range(0, Players.Count);
             CurrentPlayer = Players[num];
             State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
             State_BallMoving.Ball = CurrentPlayer.SelectedBall;
@@ -136,15 +135,27 @@ namespace Assets.Managers
             CurrentMap = MapManager.SelectedMap;
             CurrentMap.StartMap();
         }
+        public void SetupLocalMultiplayer()
+        {
+            _GameState = GameState.Localgame;
+            BuildLocalMap();
+        }
+        public void SetupSingleplayer()
+        {
+            _GameState = GameState.Singleplayer;
+            BuildSelectedMap();
+        }
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
         public void PlayerBall_Instantiate(Player player)
         {
             player.SelectedBall = Instantiate(player.Example);
             player.SelectedBall.Init();
+            player.SelectedBall.Player = player;
+
         }
         public void PlayerBall_Update()
         {
-            for (int i = 0; i < Players.Length; i++)
+            for (int i = 0; i < Players.Count; i++)
             {
                 if (Players[i].SelectedBall != null)
                 {
@@ -157,6 +168,15 @@ namespace Assets.Managers
         {
             if(player.SelectedBall.gameObject != null)
             Destroy(player.SelectedBall.gameObject);
+        }
+
+        public void TimeScaleStop()
+        {
+            Time.timeScale = 0;
+        }
+        public void TimeScaleResume()
+        {
+            Time.timeScale = 1;
         }
     }
 }

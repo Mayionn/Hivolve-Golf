@@ -36,7 +36,7 @@ public class Ball : MonoBehaviour
                     {
                         case "Hole-Singleplayer":
                             {
-                                SetupSingleplayer();
+                                GameManager.Instance.SetupSingleplayer();
                             }
                             break;
                         case "Hole-Multiplayer":
@@ -46,7 +46,8 @@ public class Ball : MonoBehaviour
                             break;
                         case "Hole-LocalGame":
                             {
-                                SetupLocalMultiplayer();
+                                //Open LocalMultiplayer Interface
+                                UiManager.Instance.OpenInterfaceLocalMultiplayer();
                             }
                             break;
                         default:
@@ -105,16 +106,7 @@ public class Ball : MonoBehaviour
         RigBody.velocity = Vector3.zero;
         RigBody.Sleep();
     }
-    private static void SetupLocalMultiplayer()
-    {
-        GameManager.Instance._GameState = GameManager.GameState.Localgame;
-        GameManager.Instance.BuildLocalMap();
-    }
-    private static void SetupSingleplayer()
-    {
-        GameManager.Instance._GameState = GameManager.GameState.Singleplayer;
-        GameManager.Instance.BuildSelectedMap();
-    }
+  
     private void SetupWaypoint(Waypoint wp)
     {
          //Move Ball

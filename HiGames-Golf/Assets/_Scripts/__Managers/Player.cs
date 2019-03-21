@@ -4,7 +4,7 @@ using UnityEngine;
 using Assets.Managers;
 using System;
 
-public class Player : MonoBehaviour
+public class Player
 {
     public string Name;
     public int PlayerNum;
@@ -16,17 +16,17 @@ public class Player : MonoBehaviour
     public Ball Example;
     //public Hand Hand;
 
-    public Player(int num)
+    public Player()
     {
-        SetPlayerNumber(num);
+        SetPlayerNumber();
         SetRandomGeneratedName();
         SetScore();
         SetChoosenBall();
     }
 
-    private void SetPlayerNumber(int num)
+    private void SetPlayerNumber()
     {
-        PlayerNum = num;
+        PlayerNum = GameManager.Instance.Players.Count;
     }
     private void SetRandomGeneratedName()
     {
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     private void SetChoosenBall()
     {
         Example = GameManager.Instance.SkinsManager.DefaultBall;
-        SelectedBall = Instantiate(Example);
-        SelectedBall.Init();
+        //SelectedBall = Instantiate(Example);
+        //SelectedBall.Init();
     }
 }

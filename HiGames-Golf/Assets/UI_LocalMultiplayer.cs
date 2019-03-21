@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Managers;
+using System;
 
 public class UI_LocalMultiplayer : MonoBehaviour
 {
@@ -14,17 +15,34 @@ public class UI_LocalMultiplayer : MonoBehaviour
 
     public void Init()
     {
-
+        currentNumber = 2;
+        CreatePlayers();
+        SetPlayerInfo();
     }
 
-
-    private void SetMainPlayer()
+    private void SetPlayerInfo()
     {
-        Player stPlayer = GameManager.Instance.Players[0];
-        PlayerOnGrid[0].PlayerName = stPlayer.name;
-        PlayerOnGrid[0].PlayerNum = stPlayer.PlayerNum;
-        PlayerOnGrid[0].Txt_PlayerName.text = PlayerOnGrid[0].PlayerName;
-        PlayerOnGrid[0].Txt_PlayerNum.text = PlayerOnGrid[0].PlayerNum.ToString();
+        for (int i = 0; i < currentNumber; i++)
+        {
+            Player mainPlayer = GameManager.Instance.Players[i];
+            PlayerOnGrid[i].PlayerName = mainPlayer.Name;
+            PlayerOnGrid[i].PlayerNum = mainPlayer.PlayerNum;
+            PlayerOnGrid[i].Txt_PlayerName.text = "Name: " + PlayerOnGrid[i].PlayerName;
+            PlayerOnGrid[i].Txt_PlayerNum.text = "Jogador: " + (PlayerOnGrid[i].PlayerNum + 1).ToString();
+        }
+        //Turn not used players blank
+        for (int i = currentNumber; i < PlayerOnGrid.Length; i++)
+        {
+            PlayerOnGrid[i].gameObject.SetActive(false);
+        }
+    }
+
+    private void CreatePlayers()
+    {
+        if(GameManager.Instance.Players.Count < currentNumber)
+        {
+            GameManager.Instance.CreateFakePlayers(1);
+        }
     }
 
     public void CurrentNumber(int num)
@@ -32,6 +50,7 @@ public class UI_LocalMultiplayer : MonoBehaviour
         if(currentNumber + num > minPlayers && currentNumber + num < maxPlayers)
         {
             currentNumber += num;
+            CreatePlayers();
         }
     }
 }

@@ -76,7 +76,7 @@ public class Map : MonoBehaviour
             {
                 Waypoints[i] = Instantiate(wp);
 
-                Waypoints[i].GetComponent<Waypoint>().ReachedPlayers = new List<int>(GameManager.Instance.Players.Length);
+                Waypoints[i].GetComponent<Waypoint>().ReachedPlayers = new List<int>(GameManager.Instance.Players.Count);
 
                 Waypoints[i].GetComponent<Waypoint>().Position = WaypointsPosition[i].position;
                 Waypoints[i].GetComponent<Waypoint>().Scale = WaypointsPosition[i].localScale;

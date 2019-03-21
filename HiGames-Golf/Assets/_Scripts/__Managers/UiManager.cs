@@ -11,9 +11,17 @@ public class UiManager : Singleton<UiManager>
     public UI_LocalMultiplayer UI_LocalMultiplayer;
     private Map map;
 
-    public void Init()
+
+    public void OpenInterfaceLocalMultiplayer()
     {
+        GameManager.Instance.TimeScaleStop();
+        UI_LocalMultiplayer.gameObject.SetActive(true);
         UI_LocalMultiplayer.Init();
+    }
+    public void CloseInterfaceLocalMultiplayer()
+    {
+        GameManager.Instance.TimeScaleResume();
+        UI_LocalMultiplayer.gameObject.SetActive(false);
     }
 
     public void SetupInGameUI()
