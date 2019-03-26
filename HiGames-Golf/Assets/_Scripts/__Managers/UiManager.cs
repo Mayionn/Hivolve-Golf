@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Managers;
 using UnityEngine;
+using Assets.UI;
 
 public class UiManager : Singleton<UiManager>
 {

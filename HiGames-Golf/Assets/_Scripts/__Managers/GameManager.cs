@@ -12,7 +12,6 @@ namespace Assets.Managers
         public GameState _GameState;
 
         [HideInInspector] public MapManager MapManager;
-        [HideInInspector] public LocalGameManager LocalGameManager;
         [HideInInspector] public CameraManager CameraManager;
         [HideInInspector] public SkinsManager SkinsManager;
         [HideInInspector] public GameObject States;
@@ -64,7 +63,6 @@ namespace Assets.Managers
         private void GetManagers()
         {
             MapManager = transform.Find("_MapManager").GetComponent<MapManager>();
-            LocalGameManager = transform.Find("_LocalGameManager").GetComponent<LocalGameManager>();
             CameraManager = transform.Find("_CameraManager").GetComponent<CameraManager>();
             SkinsManager = transform.Find("_SkinsManager").GetComponent<SkinsManager>();
             States = transform.Find("States").gameObject;
@@ -75,6 +73,26 @@ namespace Assets.Managers
             {
                 Player p = new Player();
                 Players.Add(p);
+            }
+        }
+        public void RemovePlayer()
+        {
+            //PlayerBall_Destroy(Players[Players.Count - 1]);
+            Players.RemoveAt(Players.Count - 1);
+        }
+        public void RemovePlayers(int count)
+        {
+            if(count < Players.Count)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    PlayerBall_Destroy(Players[(Players.Count - 1) - i]);
+                }
+                Players.RemoveRange(Players.Count - count, count);
+            }
+            else
+            {
+                Debug.Log("Cant remove that many players");
             }
         }
         public void ChooseCurrentPlayer(int index)
@@ -153,23 +171,24 @@ namespace Assets.Managers
             player.SelectedBall.Player = player;
 
         }
-        public void PlayerBall_Update()
-        {
-            for (int i = 0; i < Players.Count; i++)
-            {
-                if (Players[i].SelectedBall != null)
-                {
-                    Destroy(Players[i].SelectedBall);
-                }
-                Players[i].SelectedBall = Instantiate(Players[i].Example);
-            }
-        }
+        //public void PlayerBall_Update()
+        //{
+        //    for (int i = 0; i < Players.Count; i++)
+        //    {
+        //        if (Players[i].SelectedBall != null)
+        //        {
+        //            Destroy(Players[i].SelectedBall);
+        //        }
+        //        Players[i].SelectedBall = Instantiate(Players[i].Example);
+        //    }
+        //}
         public void PlayerBall_Destroy(Player player)
         {
-            if(player.SelectedBall.gameObject != null)
-            Destroy(player.SelectedBall.gameObject);
+            if (player.SelectedBall != null)
+            {
+                Destroy(player.SelectedBall.gameObject);
+            }
         }
-
         public void TimeScaleStop()
         {
             Time.timeScale = 0;
