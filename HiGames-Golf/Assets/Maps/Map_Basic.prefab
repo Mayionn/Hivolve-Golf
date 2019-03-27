@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2139160505380969758}
   m_Layer: 0
-  m_Name: Map
+  m_Name: Map_Basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,8 +206,6 @@ MonoBehaviour:
   MedalGold: 2
   MedalSilver: 4
   MedalBronze: 6
-  CurrentStrikes: 1
-  CurrentTime: 12.458101
   WaypointsPosition:
   - {fileID: 0}
   - {fileID: 0}

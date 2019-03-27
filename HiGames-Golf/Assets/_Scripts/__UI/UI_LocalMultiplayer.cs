@@ -9,17 +9,7 @@ namespace Assets.UI
 {
     public class UI_LocalMultiplayer : MonoBehaviour
     {
-        [Serializable]
-        public struct GridInfo
-        {
-            public int PlayerNum;
-            public string PlayerName;
-            public Image Image;
-            public Ball SelectedBall;
-            public Text Txt_PlayerNum;
-            public Text Txt_PlayerName;
-        }
-        public GridInfo[] GridInfos;
+        public UiManager.InfoLocalGrid[] GridInfos;
 
         public readonly int minPlayers = 2;
         public readonly int maxPlayers = 4;
@@ -36,7 +26,7 @@ namespace Assets.UI
         public void ButtonStart()
         {
             UiManager.Instance.CloseInterfaceLocalMultiplayer();
-            GameManager.Instance.BuildLocalMap();
+            GameManager.Instance.SetupLocalMultiplayer();
         }
         public void ButtonBack()
         {
@@ -98,7 +88,7 @@ namespace Assets.UI
                 SetInfoHidden(GridInfos[i]);
             }
         }
-        private void SetInfoHidden(GridInfo g)
+        private void SetInfoHidden(UiManager.InfoLocalGrid g)
         {
             g.PlayerName = "";
             g.Txt_PlayerName.text = "";

@@ -5,10 +5,36 @@ using System.Collections.Generic;
 using Assets.Managers;
 using UnityEngine;
 using Assets.UI;
+using UnityEngine.UI;
 
 public class UiManager : Singleton<UiManager>
 {
+    [Serializable] public struct InfoLocalGrid
+    {
+        public int PlayerNum;
+        public string PlayerName;
+        public Image Image;
+        public Ball SelectedBall;
+        public Text Txt_PlayerNum;
+        public Text Txt_PlayerName;
+    }
+    [Serializable] public struct InfoInGame
+    {
+        public Text MedalGold;
+        public Text MedalSilver;
+        public Text MedalBronze;
+        public Text CurrentTime;
+        public Text CurrentStrikes;
+        public Text Waypoint;
+        public Text BestTime;
+        public Text BestStrikes;
+        public Button ResetGame;
+        public Text MapInfo;
+        public Text CurrentPlayerInfo;
+    }
+
     public UI_InGame UI_InGame;
+    public GameObject UI_InGame_GO;
     public UI_LocalMultiplayer UI_LocalMultiplayer;
     private Map map;
 
@@ -25,7 +51,7 @@ public class UiManager : Singleton<UiManager>
         UI_LocalMultiplayer.gameObject.SetActive(false);
     }
 
-    public void SetupInGameUI()
+    public void InGameUIOpen()
     {
         map = GameManager.Instance.CurrentMap;
         switch (GameManager.Instance._GameState)
@@ -39,6 +65,7 @@ public class UiManager : Singleton<UiManager>
                     SetMapInfoCurrentStrikes();
                 break;
             case GameManager.GameState.Singleplayer:
+                UI_InGame_GO.SetActive(true);
                     TimerStart();
                     SetCurrentPlayerInfo();
                     SetMapInfo();
@@ -60,6 +87,7 @@ public class UiManager : Singleton<UiManager>
                 break;
         }
     }
+    public void InGameUIClose() { }
 
     private void SetCurrentPlayerInfo()
     {
@@ -126,11 +154,11 @@ public class UiManager : Singleton<UiManager>
         UI_InGame.CurrentStrikes.text = "Strikes: " + GameManager.Instance.CurrentPlayer.Strikes;
     }
 
-    public void TimerStart()
+    private void TimerStart()
     {
         GameManager.Instance.ActUpdate += TimerCount;
     }
-    public void TimerCount()
+    private void TimerCount()
     {
         GameManager.Instance.CurrentPlayer.Timer += Time.deltaTime;
         float t = GameManager.Instance.CurrentPlayer.Timer;
@@ -140,11 +168,11 @@ public class UiManager : Singleton<UiManager>
                                 Mathf.Floor(t) % 60,
                                 Mathf.Floor((t * 100) % 100));
     }
-    public void TimerReset()
+    private void TimerReset()
     {
         GameManager.Instance.CurrentPlayer.Timer = 0;
     }
-    public void TimerStop()
+    private void TimerStop()
     {
         GameManager.Instance.ActUpdate -= TimerCount;
     }

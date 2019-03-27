@@ -128,14 +128,15 @@ namespace Assets.Managers
             state.Ball = CurrentPlayer.SelectedBall;
             state.ConnectedStates = connState;
         }
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-        public void BuildMenu()
+       
+        //--
+        private void BuildMenu()
         {
             //Map 0 equals Menu
             CurrentMap = MapManager.Menu;
             CurrentMap.StartMap();
         }
-        public void BuildLocalMap()
+        private void BuildLocalMap()
         {
             if (CurrentMap != null)
             {
@@ -144,7 +145,7 @@ namespace Assets.Managers
             CurrentMap = MapManager.LocalMap;
             CurrentMap.StartMap();
         }
-        public void BuildSelectedMap()
+        private void BuildSelectedMap()
         {
             if (CurrentMap != null)
             {
@@ -153,22 +154,27 @@ namespace Assets.Managers
             CurrentMap = MapManager.SelectedMap;
             CurrentMap.StartMap();
         }
+
         public void SetupLocalMultiplayer()
         {
             _GameState = GameState.Localgame;
+            //TODO: SELECT RANDOM MAP;
+            //TODO: BUILD SELECTED MAP;
             BuildLocalMap();
         }
         public void SetupSingleplayer()
         {
             _GameState = GameState.Singleplayer;
+            //TODO: ON UI CHANGE SELECTED MAP;
             BuildSelectedMap();
         }
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-        public void PlayerBall_Instantiate(Player player)
+        public void PlayerBall_Instantiate(Player p)
         {
-            player.SelectedBall = Instantiate(player.Example);
-            player.SelectedBall.Init();
-            player.SelectedBall.Player = player;
+            p.SelectedBall = Instantiate(p.Example);
+            p.SelectedBall.transform.name = "Player: " + (p.PlayerNum + 1);
+            p.SelectedBall.Init();
+            p.SelectedBall.Player = p;
 
         }
         //public void PlayerBall_Update()

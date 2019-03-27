@@ -33,9 +33,9 @@ public class Map : MonoBehaviour
         SetupWaypoints();
         HideWaypointPositions();
         //Prepare Strikes and Time
-        ResetScore();
+        ResetPlayerScore();
         //Prepare UI
-        UiManager.Instance.SetupInGameUI();
+        UiManager.Instance.InGameUIOpen();
     }
 
     //-----
@@ -94,7 +94,7 @@ public class Map : MonoBehaviour
         }
     }
     //--
-    private void ResetScore()
+    private void ResetPlayerScore()
     {
         foreach (Player p in GameManager.Instance.Players)
         {
