@@ -9,13 +9,24 @@ namespace Assets.UI
 {
     public class UI_LocalMultiplayer : MonoBehaviour
     {
+        [Serializable]
+        public struct GridInfo
+        {
+            public int PlayerNum;
+            public string PlayerName;
+            public Image Image;
+            public Ball SelectedBall;
+            public Text Txt_PlayerNum;
+            public Text Txt_PlayerName;
+        }
+        public GridInfo[] GridInfos;
+
         public readonly int minPlayers = 2;
         public readonly int maxPlayers = 4;
 
         public Text CurrentNumberText;
         private int currentNumber = 1;
 
-        public UI_PlayerInfo[] PlayerOnGrid;
 
         public void Init()
         {
@@ -30,8 +41,8 @@ namespace Assets.UI
         public void ButtonBack()
         {
             UiManager.Instance.CloseInterfaceLocalMultiplayer();
-            //GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition();
-            GameManager.Instance.ChooseCurrentPlayer(0);
+            RemovePlayersAll();
+            GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition();
         }
 
         public void CreatePlayers(int num)
@@ -60,23 +71,38 @@ namespace Assets.UI
                 UpdatePlayerInfo();
             }
         }
+        public void RemovePlayersAll()
+        {
+            while(currentNumber != 1)
+            {
+                currentNumber -= 1;
+                UpdateCurrentNumberText();
+                GameManager.Instance.RemovePlayer();
+                UpdatePlayerInfo();
+            }
+        }
 
         private void UpdatePlayerInfo()
         {
             for (int i = 0; i < currentNumber; i++)
             {
-                Player mainPlayer = GameManager.Instance.Players[i];
-                PlayerOnGrid[i].gameObject.SetActive(true);
-                PlayerOnGrid[i].PlayerName = mainPlayer.Name;
-                PlayerOnGrid[i].PlayerNum = mainPlayer.PlayerNum;
-                PlayerOnGrid[i].Txt_PlayerName.text = "Name: " + PlayerOnGrid[i].PlayerName;
-                PlayerOnGrid[i].Txt_PlayerNum.text = "Jogador: " + (PlayerOnGrid[i].PlayerNum + 1).ToString();
+                Player p = GameManager.Instance.Players[i];
+                GridInfos[i].PlayerName = p.Name;
+                GridInfos[i].PlayerNum = p.PlayerNum;
+                GridInfos[i].Txt_PlayerName.text = "Name: " + GridInfos[i].PlayerName;
+                GridInfos[i].Txt_PlayerNum.text = "Jogador: " + (GridInfos[i].PlayerNum + 1).ToString();
             }
             //Turn not used players blank
-            for (int i = currentNumber; i < PlayerOnGrid.Length; i++)
+            for (int i = currentNumber; i < GridInfos.Length; i++)
             {
-                PlayerOnGrid[i].gameObject.SetActive(false);
+                SetInfoHidden(GridInfos[i]);
             }
+        }
+        private void SetInfoHidden(GridInfo g)
+        {
+            g.PlayerName = "";
+            g.Txt_PlayerName.text = "";
+            g.Txt_PlayerNum.text = "";
         }
         private void UpdateCurrentNumberText()
         {
