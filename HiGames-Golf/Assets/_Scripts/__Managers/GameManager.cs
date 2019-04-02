@@ -132,33 +132,31 @@ namespace Assets.Managers
         //--
         private void BuildMenu()
         {
-            //Map 0 equals Menu
+            DestroyCurrentMap();
             CurrentMap = MapManager.Menu;
             CurrentMap.StartMap();
         }
         private void BuildLocalMap()
         {
-            if (CurrentMap != null)
-            {
-                Destroy(CurrentMap.SpawnedPrefab);
-            }
+            DestroyCurrentMap();
             CurrentMap = MapManager.LocalMap;
             CurrentMap.StartMap();
         }
         private void BuildSelectedMap()
         {
-            if (CurrentMap != null)
-            {
-                Destroy(CurrentMap.SpawnedPrefab);
-            }
+            DestroyCurrentMap();
             CurrentMap = MapManager.SelectedMap;
             CurrentMap.StartMap();
         }
-
+        public void SetupMenuMap()
+        {
+            _GameState = GameState.Menu;
+            BuildMenu();
+        }
         public void SetupLocalMultiplayer()
         {
             _GameState = GameState.Localgame;
-            //TODO: SELECT RANDOM MAP;
+            //TODO: SELECT RANDOM MAP;1
             //TODO: BUILD SELECTED MAP;
             BuildLocalMap();
         }
@@ -167,6 +165,17 @@ namespace Assets.Managers
             _GameState = GameState.Singleplayer;
             //TODO: ON UI CHANGE SELECTED MAP;
             BuildSelectedMap();
+        }
+        private void DestroyCurrentMap()
+        {
+            if (CurrentMap != null)
+            {
+                if (CurrentMap.Waypoints.Length > 0)
+                {
+                    CurrentMap.WaypointsDestroy();
+                }
+                Destroy(CurrentMap.SpawnedPrefab);
+            }
         }
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
         public void PlayerBall_Instantiate(Player p)
@@ -195,6 +204,19 @@ namespace Assets.Managers
                 Destroy(player.SelectedBall.gameObject);
             }
         }
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+        public void ResetGame()
+        {
+            CurrentPlayer.SelectedBall.Phasing = true;
+            CurrentPlayer.SelectedBall.LastPosition = CurrentPlayer.SelectedBall.StartingPosition;
+            CurrentPlayer.SelectedBall.GoStartingPosition();
+            CurrentState.LeaveState(CurrentState.ConnectedStates[0]); // talvez não ncessario???
+            CurrentPlayer.ResetScore();
+            CurrentMap.WaypointsReset();
+            UiManager.Instance.UpdateMapInfoCurrentStrikes();
+            UiManager.Instance.UpdateMapInfoWaypoints();
+        }
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
         public void TimeScaleStop()
         {
             Time.timeScale = 0;

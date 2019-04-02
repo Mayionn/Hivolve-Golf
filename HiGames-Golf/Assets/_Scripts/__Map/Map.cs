@@ -13,9 +13,16 @@ public class Map : MonoBehaviour
     public enum GameType { Menu, OneShot, Waypoint, FreeForm};
     public GameType _GameType;
 
+    public struct PersonalBest
+    {
+        public int Medal;
+        public float Time;
+    }
+
     public int MedalGold;
     public int MedalSilver;
     public int MedalBronze;
+    public PersonalBest PB;
     public Transform[] WaypointsPosition;
     [HideInInspector] public GameObject[] Waypoints;
     public string Author;
@@ -43,6 +50,13 @@ public class Map : MonoBehaviour
     {
         StartingPosition.GetComponent<MeshRenderer>().enabled = false;
         StartingPosition.transform.Find("Direction").GetComponent<MeshRenderer>().enabled = false;
+    }
+    private void HideWaypointPositions()
+    {
+        for (int i = 0; i < WaypointsPosition.Length; i++)
+        {
+            WaypointsPosition[i].GetComponent<MeshRenderer>().enabled = false;
+        }
     }
     //---
     private void DestroyBalls()
@@ -81,25 +95,56 @@ public class Map : MonoBehaviour
                 Waypoints[i].GetComponent<Waypoint>().Position = WaypointsPosition[i].position;
                 Waypoints[i].GetComponent<Waypoint>().Scale = WaypointsPosition[i].localScale;
 
-                Waypoints[i].transform.position = WaypointsPosition[i].position;
+                Waypoints[i].transform.position = Waypoints[i].GetComponent<Waypoint>().Position;
                 Waypoints[i].transform.localScale = Waypoints[i].GetComponent<Waypoint>().Scale;
             }
         }
     }
-    private void HideWaypointPositions()
+    public void WaypointsReset()
     {
-        for (int i = 0; i < WaypointsPosition.Length; i++)
+        if (WaypointsPosition.Length != 0)
         {
-            WaypointsPosition[i].GetComponent<MeshRenderer>().enabled = false;
+            for (int i = 0; i < WaypointsPosition.Length; i++)
+            {
+                Waypoints[i].GetComponent<Waypoint>().ReachedPlayers.Clear();
+            }
+        }
+    }
+    public void WaypointsDestroy()
+    {
+        foreach (GameObject g in Waypoints)
+        {
+            Destroy(g);
         }
     }
     //--
+    public void CheckPersonalBest()
+    {
+        Player p = GameManager.Instance.CurrentPlayer;
+
+        if (PB.Medal == 0)
+        {
+            PB.Medal = p.Strikes;
+            PB.Time = p.Timer;
+        }
+        else if(p.Strikes == PB.Medal)
+        {
+            if(p.Timer < PB.Time)
+            {
+                PB.Time = p.Timer;
+            }
+        }
+        else if(p.Strikes < PB.Medal)
+        {
+            PB.Medal = p.Strikes;
+            PB.Time = p.Timer;
+        }
+    }
     private void ResetPlayerScore()
     {
         foreach (Player p in GameManager.Instance.Players)
         {
-            p.Strikes = 0;
-            p.Timer = 0;
+            p.ResetScore();
         }
     }
 }

@@ -1,23 +1,13 @@
 ﻿using Assets.Generics;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Assets.Managers;
-using UnityEngine;
 using Assets.UI;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UiManager : Singleton<UiManager>
 {
-    [Serializable] public struct InfoLocalGrid
-    {
-        public int PlayerNum;
-        public string PlayerName;
-        public Image Image;
-        public Ball SelectedBall;
-        public Text Txt_PlayerNum;
-        public Text Txt_PlayerName;
-    }
     [Serializable] public struct InfoInGame
     {
         public Text MedalGold;
@@ -32,23 +22,64 @@ public class UiManager : Singleton<UiManager>
         public Text MapInfo;
         public Text CurrentPlayerInfo;
     }
+    [Serializable] public struct InfoLocalGrid
+    {
+        public int PlayerNum;
+        public string PlayerName;
+        public Image Image;
+        public Ball SelectedBall;
+        public Text Txt_PlayerNum;
+        public Text Txt_PlayerName;
+    }
+    [Serializable] public struct InfoCompletedMap
+    {
+        public GameObject Go;
+        public Text Txt_Medal01;
+        public Text Txt_Medal02;
+        public Text Txt_Medal03;
+        public Text Txt_PBMedal;
+        public Text Txt_PBTimer;
+        public Text Txt_CurrMedal;
+        public Text Txt_CurrTimer;
+        public Image Img_Medal01;
+        public Image Img_Medal02;
+        public Image Img_Medal03;
+        public Image Img_PBMedal;
+        public Image Img_PBTimer;
+        public Image Img_CurrMedal;
+        public Image Img_CurrTimer;
+    }
 
     public UI_InGame UI_InGame;
     public GameObject UI_InGame_GO;
+    public InfoCompletedMap UI_CompletedMap;
+
     public UI_LocalMultiplayer UI_LocalMultiplayer;
     private Map map;
 
 
-    public void OpenInterfaceLocalMultiplayer()
+    public void OpenInterface_LocalMultiplayer()
     {
         GameManager.Instance.TimeScaleStop();
         UI_LocalMultiplayer.gameObject.SetActive(true);
         UI_LocalMultiplayer.Init();
     }
-    public void CloseInterfaceLocalMultiplayer()
+    public void OpenInterface_CompletedMap()
+    {
+        GameManager.Instance.TimeScaleStop();
+        InGameUIClose();
+        UI_CompletedMap.Go.SetActive(true);
+        CM_Init();
+    }
+    public void CloseInterface_LocalMultiplayer()
     {
         GameManager.Instance.TimeScaleResume();
         UI_LocalMultiplayer.gameObject.SetActive(false);
+    }
+    public void CloseInterface_CompletedMap()
+    {
+        GameManager.Instance.TimeScaleResume();
+        UI_CompletedMap.Go.SetActive(false);
     }
 
     public void InGameUIOpen()
@@ -56,38 +87,34 @@ public class UiManager : Singleton<UiManager>
         map = GameManager.Instance.CurrentMap;
         switch (GameManager.Instance._GameState)
         {
-            case GameManager.GameState.Menu:
-                    TimerStart();
-                    SetCurrentPlayerInfo();
-                    SetMapInfo();
-                    SetMapInfoMedals();
-                    SetMapInfoWaypoints();
-                    SetMapInfoCurrentStrikes();
-                break;
             case GameManager.GameState.Singleplayer:
                 UI_InGame_GO.SetActive(true);
-                    TimerStart();
-                    SetCurrentPlayerInfo();
-                    SetMapInfo();
-                    SetMapInfoMedals();
-                    SetMapInfoWaypoints();
-                    SetMapInfoCurrentStrikes();
+                TimerStart();
+                SetCurrentPlayerInfo();
+                SetMapInfo();
+                SetMapInfoMedals();
+                SetMapInfoWaypoints();
+                SetMapInfoCurrentStrikes();
                 break;
             case GameManager.GameState.Multiplayer:
                 break;
             case GameManager.GameState.Localgame:
-                    TimerStart();
-                    SetCurrentPlayerInfo();
-                    SetMapInfo();
-                    SetMapInfoMedals();
-                    SetMapInfoWaypoints();
-                    SetMapInfoCurrentStrikes();
+                TimerStart();
+                SetCurrentPlayerInfo();
+                SetMapInfo();
+                SetMapInfoMedals();
+                SetMapInfoWaypoints();
+                SetMapInfoCurrentStrikes();
                 break;
             default:
                 break;
         }
     }
-    public void InGameUIClose() { }
+    public void InGameUIClose()
+    {
+        UI_InGame_GO.SetActive(false);
+        TimerStop();
+    }
 
     private void SetCurrentPlayerInfo()
     {
@@ -107,7 +134,7 @@ public class UiManager : Singleton<UiManager>
     }
     private void SetMapInfoWaypoints()
     {
-        if(map.Waypoints.Length > 0)
+        if (map.Waypoints.Length > 0)
         {
             UI_InGame.Waypoint.gameObject.SetActive(true);
             UI_InGame.Waypoint.text = map.Waypoints.Length + " \\ " + 0;
@@ -140,7 +167,7 @@ public class UiManager : Singleton<UiManager>
             {
                 //Se o Player num estiver na lista,
                 //é porque o player já chegou ao determinado waypoint
-                if(rp[o] == p.PlayerNum)
+                if (rp[o] == p.PlayerNum)
                 {
                     //Incrementar o contador de strikes, no jogado atual
                     p.WaypointCounter++;
@@ -154,6 +181,34 @@ public class UiManager : Singleton<UiManager>
         UI_InGame.CurrentStrikes.text = "Strikes: " + GameManager.Instance.CurrentPlayer.Strikes;
     }
 
+    //CM --- CompletedMap
+    private void CM_Init()
+    {
+        Map m = GameManager.Instance.CurrentMap;
+        Player p = GameManager.Instance.CurrentPlayer;
+        m.CheckPersonalBest();
+        //TODO: UPDATE PB and CURRENT SCORE IMAGES - CREATE STRUCT
+        UI_CompletedMap.Txt_Medal01.text = m.MedalGold.ToString();
+        UI_CompletedMap.Txt_Medal02.text = m.MedalSilver.ToString();
+        UI_CompletedMap.Txt_Medal03.text = m.MedalBronze.ToString();
+        UI_CompletedMap.Txt_PBMedal.text = m.PB.Medal.ToString();
+        UI_CompletedMap.Txt_PBTimer.text = m.PB.Time.ToString();
+        UI_CompletedMap.Txt_CurrMedal.text = p.Strikes.ToString();
+        UI_CompletedMap.Txt_CurrTimer.text = p.Timer.ToString();
+    }
+    public void CM_ButtonReset()
+    {
+        CloseInterface_CompletedMap();
+        InGameUIOpen();
+        GameManager.Instance.ResetGame();
+    }
+    public void CM_ButtonMenu()
+    {
+        CloseInterface_CompletedMap();
+        GameManager.Instance.SetupMenuMap();
+    }
+
+    //Timer Functions
     private void TimerStart()
     {
         GameManager.Instance.ActUpdate += TimerCount;

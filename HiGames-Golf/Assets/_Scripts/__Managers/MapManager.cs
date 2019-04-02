@@ -8,6 +8,7 @@ public class MapManager : MonoBehaviour
     public Map SelectedMap;
     public Map LocalMap;
 
+    //TriggerObjects
     public GameObject Waypoint;
 
     public Map[] MapList;

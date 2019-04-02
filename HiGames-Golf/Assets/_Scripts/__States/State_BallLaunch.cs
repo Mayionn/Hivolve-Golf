@@ -36,6 +36,7 @@ public class State_BallLaunch : State
     public override void StartState()
     {
         _launched = false;
+        Ball.Phasing = false;
         GameManager.ActUpdate += OnState;
     }
     

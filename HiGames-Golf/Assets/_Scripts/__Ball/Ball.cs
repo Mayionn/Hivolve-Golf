@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
     public Player Player;
     public Vector3 StartingPosition;
     public Vector3 LastPosition;
+    public bool Phasing = false; //Used to prevent resetButton Bug;
     [HideInInspector] public Rigidbody RigBody;
 
     public void Init()
@@ -18,7 +19,7 @@ public class Ball : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Waypoint")
+        if (other.tag == "Waypoint" && !Phasing)
         {
             List<int> rp = other.GetComponent<Waypoint>().ReachedPlayers;
             if(!rp.Contains(Player.PlayerNum))
@@ -47,7 +48,7 @@ public class Ball : MonoBehaviour
                         case "Hole-LocalGame":
                             {
                                 //Open LocalMultiplayer Interface
-                                UiManager.Instance.OpenInterfaceLocalMultiplayer();
+                                UiManager.Instance.OpenInterface_LocalMultiplayer();
                             }
                             break;
                         default:
@@ -57,10 +58,7 @@ public class Ball : MonoBehaviour
                     break;
                 case GameManager.GameState.Singleplayer:
                     {
-                        Debug.Log("Entrou");
-                        //TODO: STOP TIME
-                        //TODO: SAVE SCORE
-                        //TODO: TRY AGAIN / NEXT LEVEL?
+                        UiManager.Instance.OpenInterface_CompletedMap();
                     }
                     break;
                 case GameManager.GameState.Multiplayer:

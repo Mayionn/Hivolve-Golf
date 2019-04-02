@@ -25,12 +25,12 @@ namespace Assets.UI
 
         public void ButtonStart()
         {
-            UiManager.Instance.CloseInterfaceLocalMultiplayer();
+            UiManager.Instance.CloseInterface_LocalMultiplayer();
             GameManager.Instance.SetupLocalMultiplayer();
         }
         public void ButtonBack()
         {
-            UiManager.Instance.CloseInterfaceLocalMultiplayer();
+            UiManager.Instance.CloseInterface_LocalMultiplayer();
             RemovePlayersAll();
             GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition();
         }
