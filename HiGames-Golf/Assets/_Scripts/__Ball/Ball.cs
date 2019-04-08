@@ -9,7 +9,7 @@ public class Ball : MonoBehaviour
     public Player Player;
     public Vector3 StartingPosition;
     public Vector3 LastPosition;
-    public bool Phasing = false; //Used to prevent resetButton Bug;
+    public bool Phasing;
     [HideInInspector] public Rigidbody RigBody;
 
     public void Init()
@@ -19,7 +19,7 @@ public class Ball : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Waypoint" && !Phasing)
+        if (other.tag == "Waypoint")
         {
             List<int> rp = other.GetComponent<Waypoint>().ReachedPlayers;
             if(!rp.Contains(Player.PlayerNum))
@@ -77,6 +77,13 @@ public class Ball : MonoBehaviour
             GoLastPosition();
         }
     }
+    void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            Phasing = false;
+        }
+    }
 
     public void GoLastPosition()
     {
@@ -97,14 +104,14 @@ public class Ball : MonoBehaviour
         StopBall();
         transform.position = position;
     }
-
+    
     private void StopBall()
     {
         RigBody.Sleep();
         RigBody.velocity = Vector3.zero;
         RigBody.Sleep();
     }
-  
+    
     private void SetupWaypoint(Waypoint wp)
     {
          //Move Ball

@@ -26,6 +26,7 @@ namespace Assets.UI
         public void ButtonStart()
         {
             UiManager.Instance.CloseInterface_LocalMultiplayer();
+            UiManager.Instance.OpenInterface_InGameHud();
             GameManager.Instance.SetupLocalMultiplayer();
         }
         public void ButtonBack()

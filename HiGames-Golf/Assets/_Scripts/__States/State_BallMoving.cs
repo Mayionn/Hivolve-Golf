@@ -39,19 +39,9 @@ public class State_BallMoving : State
 
     public override void LeaveState(State state)
     {
-        switch (GameManager.Instance._GameState)
+        if(GameManager.Instance._GameState == GameManager.GameState.Localgame)
         {
-            case GameManager.GameState.Menu:
-                break;
-            case GameManager.GameState.Singleplayer:
-                break;
-            case GameManager.GameState.Multiplayer:
-                break;
-            case GameManager.GameState.Localgame:
-                GameManager.ChooseCurrentPlayerRandom();
-                break;
-            default:
-                break;
+            GameManager.Instance.NextPlayer();
         }
         GameManager.ActUpdate -= OnState;
         GameManager.CurrentState = state;

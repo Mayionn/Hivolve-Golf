@@ -15,7 +15,7 @@ public class Map : MonoBehaviour
 
     public struct PersonalBest
     {
-        public int Medal;
+        public int Strikes;
         public float Time;
     }
 
@@ -42,7 +42,7 @@ public class Map : MonoBehaviour
         //Prepare Strikes and Time
         ResetPlayerScore();
         //Prepare UI
-        UiManager.Instance.InGameUIOpen();
+        UiManager.Instance.OpenInterface_InGameHud();
     }
 
     //-----
@@ -122,21 +122,21 @@ public class Map : MonoBehaviour
     {
         Player p = GameManager.Instance.CurrentPlayer;
 
-        if (PB.Medal == 0)
+        if (PB.Strikes == 0)
         {
-            PB.Medal = p.Strikes;
+            PB.Strikes = p.Strikes;
             PB.Time = p.Timer;
         }
-        else if(p.Strikes == PB.Medal)
+        else if(p.Strikes == PB.Strikes)
         {
             if(p.Timer < PB.Time)
             {
                 PB.Time = p.Timer;
             }
         }
-        else if(p.Strikes < PB.Medal)
+        else if(p.Strikes < PB.Strikes)
         {
-            PB.Medal = p.Strikes;
+            PB.Strikes = p.Strikes;
             PB.Time = p.Timer;
         }
     }

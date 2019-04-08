@@ -23,6 +23,7 @@ namespace Assets.Managers
         public Map CurrentMap;
         public Player CurrentPlayer;
         [HideInInspector] public List<Player> Players;
+        private List<Player> LocalGamePlayerOrder;
 
         public Action ActUpdate;
         public State CurrentState;
@@ -110,6 +111,39 @@ namespace Assets.Managers
             //UI
             UiManager.Instance.UpdateCurrentPlayerName();
         }
+        public void NextPlayer()
+        {
+            int currentIndex = LocalGamePlayerOrder.IndexOf(CurrentPlayer);
+            if(currentIndex == LocalGamePlayerOrder.Count-1) 
+            {
+                currentIndex = 0; 
+            }
+            else currentIndex++;
+
+            CurrentPlayer = LocalGamePlayerOrder[currentIndex];
+            State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
+            State_BallMoving.Ball = CurrentPlayer.SelectedBall;
+            //UI
+            UiManager.Instance.UpdateCurrentPlayerName(); 
+        }
+        private void CreateLocalGamePlayerOrder()
+        {
+            LocalGamePlayerOrder = Players;
+            // Loops through array
+            for (int i = Players.Count-1; i > 0; i--)
+            {
+                // Randomize a number between 0 and i (so that the range decreases each time)
+                int rnd = UnityEngine.Random.Range(0,i);
+                
+                // Save the value of the current i, otherwise it'll overright when we swap the values
+                Player temp = LocalGamePlayerOrder[i];
+                
+                // Swap the new and old values
+                LocalGamePlayerOrder[i] = LocalGamePlayerOrder[rnd];
+                LocalGamePlayerOrder[rnd] = temp;
+            }
+            CurrentPlayer = LocalGamePlayerOrder[0];
+        }
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
         private void BuildStateMachine()
         {
@@ -128,7 +162,6 @@ namespace Assets.Managers
             state.Ball = CurrentPlayer.SelectedBall;
             state.ConnectedStates = connState;
         }
-       
         //--
         private void BuildMenu()
         {
@@ -156,6 +189,8 @@ namespace Assets.Managers
         public void SetupLocalMultiplayer()
         {
             _GameState = GameState.Localgame;
+            //TODO: Create player order;
+            CreateLocalGamePlayerOrder();
             //TODO: SELECT RANDOM MAP;1
             //TODO: BUILD SELECTED MAP;
             BuildLocalMap();
@@ -184,19 +219,7 @@ namespace Assets.Managers
             p.SelectedBall.transform.name = "Player: " + (p.PlayerNum + 1);
             p.SelectedBall.Init();
             p.SelectedBall.Player = p;
-
         }
-        //public void PlayerBall_Update()
-        //{
-        //    for (int i = 0; i < Players.Count; i++)
-        //    {
-        //        if (Players[i].SelectedBall != null)
-        //        {
-        //            Destroy(Players[i].SelectedBall);
-        //        }
-        //        Players[i].SelectedBall = Instantiate(Players[i].Example);
-        //    }
-        //}
         public void PlayerBall_Destroy(Player player)
         {
             if (player.SelectedBall != null)
@@ -207,10 +230,8 @@ namespace Assets.Managers
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
         public void ResetGame()
         {
-            CurrentPlayer.SelectedBall.Phasing = true;
             CurrentPlayer.SelectedBall.LastPosition = CurrentPlayer.SelectedBall.StartingPosition;
             CurrentPlayer.SelectedBall.GoStartingPosition();
-            CurrentState.LeaveState(CurrentState.ConnectedStates[0]); // talvez não ncessario???
             CurrentPlayer.ResetScore();
             CurrentMap.WaypointsReset();
             UiManager.Instance.UpdateMapInfoCurrentStrikes();
