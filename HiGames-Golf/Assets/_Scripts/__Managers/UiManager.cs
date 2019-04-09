@@ -17,6 +17,7 @@ public class UiManager : Singleton<UiManager>
         public Sprite StopWatch;
         public Sprite Waypoint;
         public Sprite Strikes;
+        public Sprite Hidden;
         public Sprite Reset;
     }
     [Serializable] public struct InfoInGame
@@ -60,13 +61,26 @@ public class UiManager : Singleton<UiManager>
         public Image Img_PBStrikes;
         public Image Img_CurrStrikes;
     }
+    [Serializable] public struct InfoLocalScoreboard
+    {
+        public Text PlayerName;
+        public Text PlayerNumber;
+        public Text PlayerTimer;
+        public Image ImgTimer;
+        public Text PlayerStrikes;
+        public Image ImgStrikes;
+        public Text TotalPoints;
+        public Image Medal;
+    }
 
     //Struct Variables
     public UIImages UI_Images;
     public InfoInGame UI_InGame;
     public InfoCompletedMap UI_CompletedMap;
-    
+    public List<InfoLocalScoreboard> UI_LocalScoreboard;
+
     public GameObject UI_InGame_GO;
+    public GameObject UI_LocalScoreboard_GO;
     public UI_LocalMultiplayer UI_LocalMultiplayer;
     //CurrentMap and Player
     private Map m;
@@ -115,6 +129,12 @@ public class UiManager : Singleton<UiManager>
         UI_CompletedMap.Go.SetActive(true);
         CM_Init();
     }
+    public void OpenInterface_LocalScoreboard()
+    {
+        GameManager.Instance.TimeScaleStop();
+        CloseInterface_InGameHud();
+        UI_LocalScoreboard_GO.SetActive(true);
+    }
     public void CloseInterface_InGameHud()
     {
         UI_InGame_GO.SetActive(false);
@@ -129,6 +149,11 @@ public class UiManager : Singleton<UiManager>
     {
         GameManager.Instance.TimeScaleResume();
         UI_CompletedMap.Go.SetActive(false);
+    }
+    public void CloseInterface_LocalScoreboard()
+    {
+        GameManager.Instance.TimeScaleResume();
+        UI_LocalScoreboard_GO.SetActive(true);
     }
 
     //IGH --- In Game Hud
@@ -177,16 +202,15 @@ public class UiManager : Singleton<UiManager>
         p = GameManager.Instance.CurrentPlayer;
 
         m.CheckPersonalBest();
-        //TODO: UPDATE PB and CURRENT SCORE IMAGES - CREATE STRUCT
         //UPDATE TEXT
-            //Map Medals
+        //Map Medals
         UI_CompletedMap.Txt_Medal01.text = m.MedalGold.ToString();
         UI_CompletedMap.Txt_Medal02.text = m.MedalSilver.ToString();
         UI_CompletedMap.Txt_Medal03.text = m.MedalBronze.ToString();
-            //PB
+        //PB
         UI_CompletedMap.Txt_PBStrikes.text = m.PB.Strikes.ToString();
         UI_CompletedMap.Txt_PBTimer.text = m.PB.Time.ToString();
-            //Current Score
+        //Current Score
         UI_CompletedMap.Txt_CurrStrikes.text = p.Strikes.ToString();
         UI_CompletedMap.Txt_CurrTimer.text = p.Timer.ToString();
         //UPDATE IMAGES
@@ -206,38 +230,99 @@ public class UiManager : Singleton<UiManager>
     public void CM_UpdateScoreImages()
     {
         //UPDATE PERSONAL BEST - PB
-        if(m.PB.Strikes <= m.MedalGold)
+        if (m.PB.Strikes <= m.MedalGold)
         {
             UI_CompletedMap.Img_PBStrikes.sprite = UI_Images.GoldMedal;
         }
-        else if(m.PB.Strikes <= m.MedalSilver)
+        else if (m.PB.Strikes <= m.MedalSilver)
         {
             UI_CompletedMap.Img_PBStrikes.sprite = UI_Images.SilverMedal;
         }
-        else if(m.PB.Strikes <= m.MedalBronze)
+        else if (m.PB.Strikes <= m.MedalBronze)
         {
             UI_CompletedMap.Img_PBStrikes.sprite = UI_Images.BronzeMedal;
         }
 
         //UPDATE CURRENT SCORE
-        if(p.Strikes <= m.MedalGold)
+        if (p.Strikes <= m.MedalGold)
         {
             UI_CompletedMap.Img_CurrStrikes.sprite = UI_Images.GoldMedal;
         }
-        else if(p.Strikes <= m.MedalSilver)
+        else if (p.Strikes <= m.MedalSilver)
         {
             UI_CompletedMap.Img_CurrStrikes.sprite = UI_Images.SilverMedal;
         }
-        else if(p.Strikes <= m.MedalBronze)
+        else if (p.Strikes <= m.MedalBronze)
         {
             UI_CompletedMap.Img_CurrStrikes.sprite = UI_Images.BronzeMedal;
         }
-        else 
+        else
         {
             UI_CompletedMap.Img_CurrStrikes.sprite = null;
         }
     }
-    
+
+    //LGS --- Local Game Scoreboard
+    public void LGS_Init()
+    {
+        LGS_SetImages();
+        LGS_HideRows();
+    }
+    public void LGS_SaveScore(Player p)
+    {
+        InfoLocalScoreboard i = UI_LocalScoreboard[p.PlayerNum];
+        i.PlayerName.text = p.Name;
+        i.PlayerNumber.text = "Player: " + p.PlayerNum.ToString();
+        i.PlayerStrikes.text = p.Strikes.ToString();
+        i.PlayerTimer.text = p.Timer.ToString();
+        i.TotalPoints.text = p.LocalgamePoints.ToString();
+    }
+    public void LGS_SetImages()
+    {
+        for (int i = 0; i < UI_LocalScoreboard.Count; i++)
+        {
+            LGS_ChangeImages(UI_LocalScoreboard[i]);
+        }
+    }
+    private void LGS_ChangeImages(InfoLocalScoreboard i)
+    {
+        i.ImgTimer.sprite = UI_Images.StopWatch;
+        i.ImgStrikes.sprite = UI_Images.Strikes;
+    }
+    private void LGS_HideRows()
+    {
+        for (int i = 0; i < UI_LocalScoreboard.Count; i++)
+        {
+            if (i >= GameManager.Instance.Players.Count)
+            {
+                LGS_Hide(UI_LocalScoreboard[i]);
+            }
+        }
+    }
+    private void LGS_Hide(InfoLocalScoreboard i)
+    {
+        i.PlayerName.text = "";
+        i.PlayerNumber.text = "";
+        i.PlayerTimer.text = "";
+        i.ImgTimer.sprite = UI_Images.Hidden;
+        i.PlayerStrikes.text = "";
+        i.ImgStrikes.sprite = UI_Images.Hidden;
+        i.TotalPoints.text = "";
+        i.Medal.sprite = UI_Images.Hidden;
+    }
+    private void LGS_CheckBestPlayerOnMap()
+    {
+        foreach (Player p in GameManager.Instance.LocalGamePlayerOrder)
+        {
+            UI_LocalScoreboard.Sort(SortByScore(p.Strikes))
+        }
+    }
+
+    private static int SortByScore(int p1, int p2)
+    {
+        return p1.CompareTo(p2);
+    }
+
     //Update Info Methods
     public void UpdateCurrentPlayerName()
     {

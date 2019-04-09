@@ -48,6 +48,7 @@ public class Ball : MonoBehaviour
                         case "Hole-LocalGame":
                             {
                                 //Open LocalMultiplayer Interface
+                                Player.EndedMap = false;
                                 UiManager.Instance.OpenInterface_LocalMultiplayer();
                             }
                             break;
@@ -58,6 +59,7 @@ public class Ball : MonoBehaviour
                     break;
                 case GameManager.GameState.Singleplayer:
                     {
+                        Player.TruncateTimer();
                         UiManager.Instance.OpenInterface_CompletedMap();
                     }
                     break;
@@ -65,7 +67,14 @@ public class Ball : MonoBehaviour
                     break;
                 case GameManager.GameState.Localgame:
                     {
-                        Debug.Log("entrou em local");
+                        Player.EndedMap = true;
+                        //this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                        UiManager.Instance.LGS_SaveScore(Player);
+                        GameManager.Instance.NextPlayer();
+
+                        //TODO: DONT FORGET TO TURN GAMEOBJECT TO ON 
+                        //      AND DELETE OTHER PLAYERS AT THE END
+
                     }
                     break;
                 default:

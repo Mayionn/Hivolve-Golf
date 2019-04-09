@@ -103,6 +103,7 @@ MonoBehaviour:
     StopWatch: {fileID: 21300000, guid: 1b122c7c75771ee4f81629a948b4fc63, type: 3}
     Waypoint: {fileID: 21300000, guid: 6863859248a4b6543b8ae116ba78a9a6, type: 3}
     Strikes: {fileID: 21300000, guid: 7344b991d05d3da4c94ab673db3cfc18, type: 3}
+    Hidden: {fileID: 21300000, guid: f21996470903ed84798d3b888c35f211, type: 3}
     Reset: {fileID: 21300000, guid: 2be9f85ce3649bb40af00bd7b6a71e3a, type: 3}
   UI_InGame:
     MedalGold: {fileID: 0}
@@ -132,7 +133,9 @@ MonoBehaviour:
     Txt_CurrTimer: {fileID: 0}
     Img_PBStrikes: {fileID: 0}
     Img_CurrStrikes: {fileID: 0}
+  UI_LocalScoreboard: []
   UI_InGame_GO: {fileID: 0}
+  UI_LocalScoreboard_GO: {fileID: 0}
   UI_LocalMultiplayer: {fileID: 0}
 --- !u!1 &1042123729047603269
 GameObject:

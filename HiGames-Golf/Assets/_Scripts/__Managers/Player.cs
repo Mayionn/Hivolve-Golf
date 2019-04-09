@@ -11,8 +11,10 @@ public class Player
     public int Strikes;
     public float Timer;
     public int WaypointCounter;
+    public int LocalgamePoints;
+    public bool EndedMap = false;
     public Ball SelectedBall;
-    public Ball Example;
+    public Ball Example; //Used to prevent deleting the original gameobject
     //public Hand Hand;
 
     public Player()
@@ -37,6 +39,7 @@ public class Player
         Strikes = 0;
         Timer = 0;
         WaypointCounter = 0;
+        LocalgamePoints = 0;
     }
     private void SetChoosenBall()
     {
@@ -45,6 +48,12 @@ public class Player
         //SelectedBall.Init();
     }
 
+    public void TruncateTimer()
+    {
+        float truncated = (float)(Math.Truncate((double)Timer * 100.0) / 100.0);
+
+        Timer = (float)(Math.Round((double)Timer, 2));
+    }
     public void ResetScore()
     {
         Strikes = 0;

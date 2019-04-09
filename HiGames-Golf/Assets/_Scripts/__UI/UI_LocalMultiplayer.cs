@@ -27,6 +27,7 @@ namespace Assets.UI
         {
             UiManager.Instance.CloseInterface_LocalMultiplayer();
             UiManager.Instance.OpenInterface_InGameHud();
+            UiManager.Instance.LGS_Init();
             GameManager.Instance.SetupLocalMultiplayer();
         }
         public void ButtonBack()

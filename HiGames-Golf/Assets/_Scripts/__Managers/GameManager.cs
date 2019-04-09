@@ -23,7 +23,7 @@ namespace Assets.Managers
         public Map CurrentMap;
         public Player CurrentPlayer;
         [HideInInspector] public List<Player> Players;
-        private List<Player> LocalGamePlayerOrder;
+        public List<Player> LocalGamePlayerOrder;
 
         public Action ActUpdate;
         public State CurrentState;
@@ -113,18 +113,40 @@ namespace Assets.Managers
         }
         public void NextPlayer()
         {
-            int currentIndex = LocalGamePlayerOrder.IndexOf(CurrentPlayer);
-            if(currentIndex == LocalGamePlayerOrder.Count-1) 
+            if(!IsAllPlayersOver())
             {
-                currentIndex = 0; 
-            }
-            else currentIndex++;
+                int currentIndex = LocalGamePlayerOrder.IndexOf(CurrentPlayer);
+                do
+                {
+                    if (currentIndex == LocalGamePlayerOrder.Count - 1)
+                    {
+                        currentIndex = 0;
+                    }
+                    else currentIndex++;
+                }
+                while (LocalGamePlayerOrder[currentIndex].EndedMap == true);
 
-            CurrentPlayer = LocalGamePlayerOrder[currentIndex];
-            State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
-            State_BallMoving.Ball = CurrentPlayer.SelectedBall;
-            //UI
-            UiManager.Instance.UpdateCurrentPlayerName(); 
+                CurrentPlayer = LocalGamePlayerOrder[currentIndex];
+                State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
+                State_BallMoving.Ball = CurrentPlayer.SelectedBall;
+                //UI
+                UiManager.Instance.UpdateCurrentPlayerName(); 
+            }
+            else
+            {
+                UiManager.Instance.OpenInterface_LocalScoreboard();
+            }
+        }
+        private bool IsAllPlayersOver()
+        {
+            foreach (Player p in LocalGamePlayerOrder)
+            {
+                if(p.EndedMap == false)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         private void CreateLocalGamePlayerOrder()
         {
@@ -163,24 +185,6 @@ namespace Assets.Managers
             state.ConnectedStates = connState;
         }
         //--
-        private void BuildMenu()
-        {
-            DestroyCurrentMap();
-            CurrentMap = MapManager.Menu;
-            CurrentMap.StartMap();
-        }
-        private void BuildLocalMap()
-        {
-            DestroyCurrentMap();
-            CurrentMap = MapManager.LocalMap;
-            CurrentMap.StartMap();
-        }
-        private void BuildSelectedMap()
-        {
-            DestroyCurrentMap();
-            CurrentMap = MapManager.SelectedMap;
-            CurrentMap.StartMap();
-        }
         public void SetupMenuMap()
         {
             _GameState = GameState.Menu;
@@ -200,6 +204,24 @@ namespace Assets.Managers
             _GameState = GameState.Singleplayer;
             //TODO: ON UI CHANGE SELECTED MAP;
             BuildSelectedMap();
+        }
+        private void BuildMenu()
+        {
+            DestroyCurrentMap();
+            CurrentMap = MapManager.Menu;
+            CurrentMap.StartMap();
+        }
+        private void BuildLocalMap()
+        {
+            DestroyCurrentMap();
+            CurrentMap = MapManager.LocalMap;
+            CurrentMap.StartMap();
+        }
+        private void BuildSelectedMap()
+        {
+            DestroyCurrentMap();
+            CurrentMap = MapManager.SelectedMap;
+            CurrentMap.StartMap();
         }
         private void DestroyCurrentMap()
         {
