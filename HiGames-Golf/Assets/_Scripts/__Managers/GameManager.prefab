@@ -147,6 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1042123729047603291}
   - component: {fileID: 1042123729047603268}
+  - component: {fileID: 5362016092707791814}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -190,9 +191,21 @@ MonoBehaviour:
   CameraManager: {fileID: 0}
   SkinsManager: {fileID: 0}
   States: {fileID: 7999750624282387988}
-  playernum: 1
   CurrentMap: {fileID: 0}
   CurrentState: {fileID: 0}
+--- !u!114 &5362016092707791814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042123729047603269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9378d0f9a927af043aa0d8ca34d5d786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  step: 0
 --- !u!1 &1042123730034235358
 GameObject:
   m_ObjectHideFlags: 0

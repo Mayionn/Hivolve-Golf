@@ -20,6 +20,7 @@ namespace Assets.UI
 
         public void Init()
         {
+            currentNumber = 1;
             CreatePlayers(1);
         }
 
@@ -46,7 +47,7 @@ namespace Assets.UI
             }
             if(GameManager.Instance.Players.Count < currentNumber)
             {
-                GameManager.Instance.CreateFakePlayers(num);
+                GameManager.Instance.CreatePlayer();
                 UpdatePlayerInfo();
             }
         }

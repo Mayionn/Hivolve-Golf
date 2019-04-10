@@ -35,7 +35,7 @@ public class Map : MonoBehaviour
         HideStartingPosition();
         //SetUp Ball
         SetupBalls();
-        GameManager.Instance.ChooseCurrentPlayer(0);
+        GameManager.Instance.ChoosePlayer(0);
         //Prepare Waypoints
         SetupWaypoints();
         HideWaypointPositions();

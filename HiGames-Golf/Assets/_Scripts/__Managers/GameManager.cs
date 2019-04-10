@@ -19,11 +19,9 @@ namespace Assets.Managers
         private State State_BallLaunch;
         private State State_BallMoving;
 
-        public int playernum;
         public Map CurrentMap;
         public Player CurrentPlayer;
         [HideInInspector] public List<Player> Players;
-        public List<Player> LocalGamePlayerOrder;
 
         public Action ActUpdate;
         public State CurrentState;
@@ -37,7 +35,7 @@ namespace Assets.Managers
 
             //Create FirstPlayer
             Players = new List<Player>();
-            CreateFakePlayers(playernum);
+            CreatePlayer();
             PlayerBall_Instantiate(Players[0]);
             CurrentPlayer = Players[0];
 
@@ -52,13 +50,6 @@ namespace Assets.Managers
         {
             ActUpdate?.Invoke();
         }
-        //---Deterministic Physics
-        void FixedUpdate()
-        {
-            Physics.autoSimulation = false;
-
-            Physics.Simulate(0.02f);
-        }
 
         //------Aux Methods
         private void GetManagers()
@@ -68,65 +59,58 @@ namespace Assets.Managers
             SkinsManager = transform.Find("_SkinsManager").GetComponent<SkinsManager>();
             States = transform.Find("States").gameObject;
         }
-        public void CreateFakePlayers(int num)
+        public void CreatePlayer() => Players.Add(new Player());
+        public void RemovePlayer() => Players.RemoveAt(Players.Count - 1);
+        public void RemoveAllPlayers()
         {
-            for (int i = 0; i < num; i++)
+            //Removes everyplayer except the main one
+            //The main one is always the one on index 0
+            Players[0] = CurrentPlayer;
+            while (Players.Count != 1)
             {
-                Player p = new Player();
-                Players.Add(p);
+                RemovePlayer();
             }
         }
-        public void RemovePlayer()
+        public void RemoveLocalgamePlayers()
         {
-            //PlayerBall_Destroy(Players[Players.Count - 1]);
-            Players.RemoveAt(Players.Count - 1);
+            ChooseMainPlayer();
+
+            PlayerBall_DestroyAllExtraBalls();
+            RemoveAllPlayers();
+
+            CurrentPlayer.ResetScore();
         }
-        public void RemovePlayers(int count)
+        public void ChooseMainPlayer()
         {
-            if(count < Players.Count)
+            foreach (Player player in Players)
             {
-                for (int i = 0; i < count; i++)
-                {
-                    PlayerBall_Destroy(Players[(Players.Count - 1) - i]);
-                }
-                Players.RemoveRange(Players.Count - count, count);
+                if (player.PlayerNum == 0) CurrentPlayer = player; 
             }
-            else
-            {
-                Debug.Log("Cant remove that many players");
-            }
+            State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
+            State_BallMoving.Ball = CurrentPlayer.SelectedBall;
         }
-        public void ChooseCurrentPlayer(int index)
+        public void ChoosePlayer(int index)
         {
             CurrentPlayer = Players[index];
             State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
             State_BallMoving.Ball = CurrentPlayer.SelectedBall;
         }
-        public void ChooseCurrentPlayerRandom()
-        {
-            int num = UnityEngine.Random.Range(0, Players.Count);
-            CurrentPlayer = Players[num];
-            State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
-            State_BallMoving.Ball = CurrentPlayer.SelectedBall;
-            //UI
-            UiManager.Instance.UpdateCurrentPlayerName();
-        }
         public void NextPlayer()
         {
             if(!IsAllPlayersOver())
             {
-                int currentIndex = LocalGamePlayerOrder.IndexOf(CurrentPlayer);
+                int currentIndex = Players.IndexOf(CurrentPlayer);
                 do
                 {
-                    if (currentIndex == LocalGamePlayerOrder.Count - 1)
+                    if (currentIndex == Players.Count - 1)
                     {
                         currentIndex = 0;
                     }
                     else currentIndex++;
                 }
-                while (LocalGamePlayerOrder[currentIndex].EndedMap == true);
+                while (Players[currentIndex].EndedMap == true);
 
-                CurrentPlayer = LocalGamePlayerOrder[currentIndex];
+                CurrentPlayer = Players[currentIndex];
                 State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
                 State_BallMoving.Ball = CurrentPlayer.SelectedBall;
                 //UI
@@ -139,7 +123,7 @@ namespace Assets.Managers
         }
         private bool IsAllPlayersOver()
         {
-            foreach (Player p in LocalGamePlayerOrder)
+            foreach (Player p in Players)
             {
                 if(p.EndedMap == false)
                 {
@@ -150,7 +134,6 @@ namespace Assets.Managers
         }
         private void CreateLocalGamePlayerOrder()
         {
-            LocalGamePlayerOrder = Players;
             // Loops through array
             for (int i = Players.Count-1; i > 0; i--)
             {
@@ -158,15 +141,16 @@ namespace Assets.Managers
                 int rnd = UnityEngine.Random.Range(0,i);
                 
                 // Save the value of the current i, otherwise it'll overright when we swap the values
-                Player temp = LocalGamePlayerOrder[i];
+                Player temp = Players[i];
                 
                 // Swap the new and old values
-                LocalGamePlayerOrder[i] = LocalGamePlayerOrder[rnd];
-                LocalGamePlayerOrder[rnd] = temp;
+                Players[i] = Players[rnd];
+                Players[rnd] = temp;
             }
-            CurrentPlayer = LocalGamePlayerOrder[0];
+            CurrentPlayer = Players[0];
         }
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+        
+        //State Machine Methods
         private void BuildStateMachine()
         {
             State_BallLaunch = States.GetComponent<State_BallLaunch>();
@@ -184,26 +168,26 @@ namespace Assets.Managers
             state.Ball = CurrentPlayer.SelectedBall;
             state.ConnectedStates = connState;
         }
-        //--
+        
+        //Map Methods
         public void SetupMenuMap()
         {
             _GameState = GameState.Menu;
             BuildMenu();
-        }
-        public void SetupLocalMultiplayer()
-        {
-            _GameState = GameState.Localgame;
-            //TODO: Create player order;
-            CreateLocalGamePlayerOrder();
-            //TODO: SELECT RANDOM MAP;1
-            //TODO: BUILD SELECTED MAP;
-            BuildLocalMap();
         }
         public void SetupSingleplayer()
         {
             _GameState = GameState.Singleplayer;
             //TODO: ON UI CHANGE SELECTED MAP;
             BuildSelectedMap();
+        }
+        public void SetupLocalMultiplayer()
+        {
+            _GameState = GameState.Localgame;
+            CreateLocalGamePlayerOrder();
+            //TODO: SELECT RANDOM MAP;1
+            //TODO: BUILD SELECTED MAP;
+            BuildLocalMap();
         }
         private void BuildMenu()
         {
@@ -234,7 +218,8 @@ namespace Assets.Managers
                 Destroy(CurrentMap.SpawnedPrefab);
             }
         }
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+        
+        //Player Ball Methods
         public void PlayerBall_Instantiate(Player p)
         {
             p.SelectedBall = Instantiate(p.Example);
@@ -249,6 +234,16 @@ namespace Assets.Managers
                 Destroy(player.SelectedBall.gameObject);
             }
         }
+        public void PlayerBall_DestroyAllExtraBalls()
+        {
+            foreach (Player p in Players)
+            {
+                if (p.PlayerNum != 0)
+                {
+                    PlayerBall_Destroy(p);
+                }
+            }
+        }
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
         public void ResetGame()
         {
@@ -259,7 +254,7 @@ namespace Assets.Managers
             UiManager.Instance.UpdateMapInfoCurrentStrikes();
             UiManager.Instance.UpdateMapInfoWaypoints();
         }
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+        //Timescale Methods
         public void TimeScaleStop()
         {
             Time.timeScale = 0;
