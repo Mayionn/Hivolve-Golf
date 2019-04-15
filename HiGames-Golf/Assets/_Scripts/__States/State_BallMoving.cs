@@ -61,6 +61,6 @@ public class State_BallMoving : State
 
     private bool IsGrounded()
     {
-        return Physics.Raycast(Ball.transform.position, -Vector3.up, distToGround + distToGroundOffSet);
+        return Physics.Raycast(Ball.transform.position, -Vector3.up, (distToGround + distToGroundOffSet) * Ball.transform.localScale.x);
     }
 }

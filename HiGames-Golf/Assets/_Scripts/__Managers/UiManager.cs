@@ -48,6 +48,23 @@ public class UiManager : Singleton<UiManager>
         public Text Txt_PlayerNum;
         public Text Txt_PlayerName;
     }
+    [Serializable] public struct InfoChapter
+    {
+        public Text Chapter;
+        public Map[] Maps;
+        public InfoMap[] MapDisplays;
+    }
+    public struct InfoMap
+    {
+        public GameObject Display;
+        public Image Image;
+        public Image Img_GoldMedal;
+        public Image Img_SilverMedal;
+        public Image Img_BronzeMedal;
+        public Text Txt_GoldMedal;
+        public Text Txt_SilverMedal;
+        public Text Txt_BronzeMedal;
+    }   
     [Serializable] public struct InfoCompletedMap
     {
         public GameObject Go;
@@ -78,11 +95,13 @@ public class UiManager : Singleton<UiManager>
     public UIImages UI_Images;
     public InfoInGame UI_InGame;
     public InfoCompletedMap UI_CompletedMap;
+    public List<InfoChapter> UI_ChaptersList;
     public List<InfoLocalScoreboard> UI_LocalScoreboard;
-    //private List<InfoLocalScoreboard> localScoreboard; //THis one will have a flexible size. since the compare methods dont work with half players
-    public GameObject UI_InGame_GO;
-    public GameObject UI_LocalScoreboard_GO;
+    public GameObject GO_InGame;
+    public GameObject GO_MapSelector;
+    public GameObject GO_LocalScoreboard;
     public UI_LocalMultiplayer UI_LocalMultiplayer;
+    
     //CurrentMap and Player
     private Map m;
     private Player p;
@@ -94,7 +113,7 @@ public class UiManager : Singleton<UiManager>
         switch (GameManager.Instance._GameState)
         {
             case GameManager.GameState.Singleplayer:
-                UI_InGame_GO.SetActive(true);
+                GO_InGame.SetActive(true);
                 TimerStart();
                 IGH_SetCurrentPlayerInfo();
                 IGH_SetMapInfo();
@@ -105,7 +124,7 @@ public class UiManager : Singleton<UiManager>
             case GameManager.GameState.Multiplayer:
                 break;
             case GameManager.GameState.Localgame:
-                UI_InGame_GO.SetActive(true);
+                GO_InGame.SetActive(true);
                 TimerStart();
                 IGH_SetCurrentPlayerInfo();
                 IGH_SetMapInfo();
@@ -116,6 +135,11 @@ public class UiManager : Singleton<UiManager>
             default:
                 break;
         }
+    }
+    public void OpenInterface_MapSelector()
+    {
+        GameManager.Instance.TimeScaleStop();
+        GO_MapSelector.SetActive(true);
     }
     public void OpenInterface_LocalMultiplayer()
     {
@@ -136,11 +160,11 @@ public class UiManager : Singleton<UiManager>
         CloseInterface_InGameHud();
         LGS_CheckBestPlayerOnMap();
         LGS_GivePlayersScores();
-        UI_LocalScoreboard_GO.SetActive(true);
+        GO_LocalScoreboard.SetActive(true);
     }
     public void CloseInterface_InGameHud()
     {
-        UI_InGame_GO.SetActive(false);
+        GO_InGame.SetActive(false);
         TimerStop();
     }
     public void CloseInterface_LocalMultiplayer()
@@ -156,8 +180,22 @@ public class UiManager : Singleton<UiManager>
     public void CloseInterface_LocalScoreboard()
     {
         GameManager.Instance.TimeScaleResume();
-        UI_LocalScoreboard_GO.SetActive(false);
+        GO_LocalScoreboard.SetActive(false);
     }
+
+    //MS --- Map Selector
+    public void MS_Init()
+    {
+
+
+    }
+    private void MS_ChangeChapter(int num)
+    {
+
+    }
+
+
+
 
     //IGH --- In Game Hud
     private void IGH_SetCurrentPlayerInfo()
@@ -289,6 +327,8 @@ public class UiManager : Singleton<UiManager>
     {
         LGS_SetImages();
         LGS_HideRows();
+
+
     }
     private void LGS_SetImages()
     {
@@ -335,7 +375,7 @@ public class UiManager : Singleton<UiManager>
         UI_LocalScoreboard.Sort(
             delegate (InfoLocalScoreboard p1, InfoLocalScoreboard p2)
             {
-                if (p2.PlayerStrikes.text != "" && p2.PlayerTimer.text != "")
+                if (p1.PlayerTimer.text != "" && p2.PlayerTimer.text != "")
                 {
                     int compareStrikes = p1.PlayerStrikes.text.CompareTo(p2.PlayerStrikes.text);
                     if (compareStrikes == 0)
@@ -344,7 +384,7 @@ public class UiManager : Singleton<UiManager>
                     }
                     return compareStrikes;
                 }
-                else return -1;
+                else return 1;
             }
         );
     }
@@ -360,20 +400,23 @@ public class UiManager : Singleton<UiManager>
             int ndPlace = 3;
             int rdPlace = 2;
             int thPlace = 1;
-            switch (i)
+            if (UI_LocalScoreboard[i].PlayerTimer.text != "")
             {
-                case 0:
-                    LGS_SetScore(UI_LocalScoreboard[i], UI_Images.GoldMedal, stPlace);
-                    break;
-                case 1:
-                    LGS_SetScore(UI_LocalScoreboard[i], UI_Images.SilverMedal, ndPlace);
-                    break;
-                case 2:
-                    LGS_SetScore(UI_LocalScoreboard[i], UI_Images.BronzeMedal, rdPlace);
-                    break;
-                default:
-                    LGS_SetScore(UI_LocalScoreboard[i], UI_Images.Hidden, thPlace);
-                    break;
+                switch (i)
+                {
+                    case 0:
+                        LGS_SetScore(UI_LocalScoreboard[i], UI_Images.GoldMedal, stPlace);
+                        break;
+                    case 1:
+                        LGS_SetScore(UI_LocalScoreboard[i], UI_Images.SilverMedal, ndPlace);
+                        break;
+                    case 2:
+                        LGS_SetScore(UI_LocalScoreboard[i], UI_Images.BronzeMedal, rdPlace);
+                        break;
+                    default:
+                        LGS_SetScore(UI_LocalScoreboard[i], UI_Images.Hidden, thPlace);
+                        break;
+                }
             }
         }
     }

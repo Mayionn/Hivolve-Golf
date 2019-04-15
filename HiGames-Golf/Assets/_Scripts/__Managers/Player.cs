@@ -59,5 +59,6 @@ public class Player
         Strikes = 0;
         Timer = 0;
         WaypointCounter = 0;
+        LocalgamePoints = 0;
     }
 }
