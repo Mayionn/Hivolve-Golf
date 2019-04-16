@@ -37,7 +37,7 @@ public class Ball : MonoBehaviour
                     {
                         case "Hole-Singleplayer":
                             {
-                                GameManager.Instance.SetupSingleplayer();
+                                UiManager.Instance.OpenInterface_MapSelector();
                             }
                             break;
                         case "Hole-Multiplayer":

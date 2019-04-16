@@ -48,23 +48,6 @@ public class UiManager : Singleton<UiManager>
         public Text Txt_PlayerNum;
         public Text Txt_PlayerName;
     }
-    [Serializable] public struct InfoChapter
-    {
-        public Text Chapter;
-        public Map[] Maps;
-        public InfoMap[] MapDisplays;
-    }
-    public struct InfoMap
-    {
-        public GameObject Display;
-        public Image Image;
-        public Image Img_GoldMedal;
-        public Image Img_SilverMedal;
-        public Image Img_BronzeMedal;
-        public Text Txt_GoldMedal;
-        public Text Txt_SilverMedal;
-        public Text Txt_BronzeMedal;
-    }   
     [Serializable] public struct InfoCompletedMap
     {
         public GameObject Go;
@@ -95,10 +78,11 @@ public class UiManager : Singleton<UiManager>
     public UIImages UI_Images;
     public InfoInGame UI_InGame;
     public InfoCompletedMap UI_CompletedMap;
-    public List<InfoChapter> UI_ChaptersList;
     public List<InfoLocalScoreboard> UI_LocalScoreboard;
+
     public GameObject GO_InGame;
     public GameObject GO_MapSelector;
+    public GameObject Go_MapDisplay;
     public GameObject GO_LocalScoreboard;
     public UI_LocalMultiplayer UI_LocalMultiplayer;
     
@@ -140,6 +124,7 @@ public class UiManager : Singleton<UiManager>
     {
         GameManager.Instance.TimeScaleStop();
         GO_MapSelector.SetActive(true);
+        MS_Init();
     }
     public void OpenInterface_LocalMultiplayer()
     {
@@ -167,6 +152,13 @@ public class UiManager : Singleton<UiManager>
         GO_InGame.SetActive(false);
         TimerStop();
     }
+    public void CloseInterface_MapSelector()
+    {
+        GameManager.Instance.TimeScaleResume();
+        MapManager.Instance.Destroy_Chapter(1);
+        GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition();
+        GO_MapSelector.SetActive(false);
+    }
     public void CloseInterface_LocalMultiplayer()
     {
         GameManager.Instance.TimeScaleResume();
@@ -186,16 +178,8 @@ public class UiManager : Singleton<UiManager>
     //MS --- Map Selector
     public void MS_Init()
     {
-
-
+        MapManager.Instance.Display_Chapter(1);
     }
-    private void MS_ChangeChapter(int num)
-    {
-
-    }
-
-
-
 
     //IGH --- In Game Hud
     private void IGH_SetCurrentPlayerInfo()

@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 7033088058627979225}
   - component: {fileID: 7033088058627979230}
   m_Layer: 0
-  m_Name: Map_Test01
+  m_Name: Map_Test02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -341,12 +341,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569b082dce905fa41af5d26bede523a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 1 - 1
+  Name: 
   Author: Lucas
   Chapter: 0
-  MedalGold: 2
-  MedalSilver: 4
-  MedalBronze: 6
+  MedalGold: 4
+  MedalSilver: 6
+  MedalBronze: 8
   _GameType: 2
   Prefab: {fileID: 6897589549046516116}
   SpawnedPrefab: {fileID: 0}

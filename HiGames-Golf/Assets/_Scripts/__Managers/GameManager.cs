@@ -11,7 +11,6 @@ namespace Assets.Managers
         public enum GameState { Menu, Singleplayer, Multiplayer, Localgame };
         public GameState _GameState;
 
-        [HideInInspector] public MapManager MapManager;
         [HideInInspector] public CameraManager CameraManager;
         [HideInInspector] public SkinsManager SkinsManager;
         [HideInInspector] public GameObject States;
@@ -43,6 +42,8 @@ namespace Assets.Managers
             BuildMenu();
 
             CameraManager.Init();
+
+            UiManager.Instance.OpenInterface_MapSelector();
         }
 
         //---Action Update
@@ -54,7 +55,6 @@ namespace Assets.Managers
         //------Aux Methods
         private void GetManagers()
         {
-            MapManager = transform.Find("_MapManager").GetComponent<MapManager>();
             CameraManager = transform.Find("_CameraManager").GetComponent<CameraManager>();
             SkinsManager = transform.Find("_SkinsManager").GetComponent<SkinsManager>();
             States = transform.Find("States").gameObject;
@@ -178,7 +178,6 @@ namespace Assets.Managers
         public void SetupSingleplayer()
         {
             _GameState = GameState.Singleplayer;
-            //TODO: ON UI CHANGE SELECTED MAP;
             BuildSelectedMap();
         }
         public void SetupLocalMultiplayer()
@@ -192,19 +191,19 @@ namespace Assets.Managers
         private void BuildMenu()
         {
             DestroyCurrentMap();
-            CurrentMap = MapManager.Menu;
+            CurrentMap = MapManager.Instance.Menu;
             CurrentMap.StartMap();
         }
         private void BuildLocalMap()
         {
             DestroyCurrentMap();
-            CurrentMap = MapManager.LocalMap;
+            CurrentMap = MapManager.Instance.LocalMap;
             CurrentMap.StartMap();
         }
         private void BuildSelectedMap()
         {
             DestroyCurrentMap();
-            CurrentMap = MapManager.SelectedMap;
+            CurrentMap = MapManager.Instance.SelectedMap;
             CurrentMap.StartMap();
         }
         private void DestroyCurrentMap()

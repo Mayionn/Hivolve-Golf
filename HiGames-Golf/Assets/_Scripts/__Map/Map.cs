@@ -6,26 +6,28 @@ using Assets.Managers;
 
 public class Map : MonoBehaviour
 {
-    public GameObject Prefab;
-    [HideInInspector] public GameObject SpawnedPrefab;
-    public GameObject StartingPosition;
-
     public enum GameType { Menu, OneShot, Waypoint, FreeForm};
-    public GameType _GameType;
-
     public struct PersonalBest
     {
         public int Strikes;
         public float Time;
     }
 
+    public string Name;
+    public string Author;
+    public int Chapter;
     public int MedalGold;
     public int MedalSilver;
     public int MedalBronze;
+    public GameType _GameType;
     public PersonalBest PB;
+
+    public GameObject Prefab;
+    [HideInInspector] public GameObject SpawnedPrefab;
+
+    public GameObject StartingPosition;
     public Transform[] WaypointsPosition;
     [HideInInspector] public GameObject[] Waypoints;
-    public string Author;
 
     public void StartMap()
     {
@@ -82,7 +84,7 @@ public class Map : MonoBehaviour
     private void SetupWaypoints()
     {
         Waypoints = new GameObject[WaypointsPosition.Length];
-        GameObject wp = GameManager.Instance.MapManager.Waypoint;
+        GameObject wp = MapManager.Instance.Waypoint;
 
         if (WaypointsPosition.Length != 0)
         {
