@@ -85,6 +85,7 @@ public class UiManager : Singleton<UiManager>
     public InfoCompletedMap UI_CompletedMap;
     public List<InfoLocalScoreboard> UI_LocalScoreboard;
 
+    public GameObject UI;
     public GameObject GO_InGame;
     public GameObject GO_MapSelector;
     public GameObject Go_MapDisplay;
@@ -191,12 +192,14 @@ public class UiManager : Singleton<UiManager>
     public void CloseInterface_MapSelector()
     {
         GameManager.Instance.TimeScaleResume();
+        //TODO: DDESTROY ALL REMAINING CHAPTERS
         MS_Destroy_Chapter(1);
         if (GameManager.Instance.CurrentMap != MapManager.Instance.Menu)
         {
             GameManager.Instance.SetupMenuMap();
         }
         else GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition();
+        GO_MapSelector = UiManager.Instance.GO_MapSelector; //Necessario caso contrario dá um erro que me fez questionar a minha religião
         GO_MapSelector.SetActive(false);
         ActUpdate -= MS_DetectSwipe;
     }
@@ -241,8 +244,7 @@ public class UiManager : Singleton<UiManager>
             c.BackGround.GetComponent<RectTransform>().offsetMin = Vector2.zero;
             c.BackGround.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
             c.BackGround.GetComponent<RectTransform>().position += new Vector3(posVec.x, posVec.y, 0); 
-
-            c.BackGround.transform.SetParent(GO_MapSelector.transform.Find("Chapter"), false);
+            c.BackGround.transform.SetParent(GO_MapSelector.transform.Find("Displays"), false);
             c.BackGround.SetActive(true);
 
             //Instantiate Displays
@@ -254,7 +256,7 @@ public class UiManager : Singleton<UiManager>
                 d.POS = c.DisplayInfos[i].pos;
                 d.GO = Instantiate(d.GO_Copy, d.POS.anchoredPosition + posVec, Quaternion.identity);
                 d.GO.transform.name = "Level: " + level;
-                d.GO.transform.SetParent(GO_MapSelector.transform.Find("Chapter"), false);
+                d.GO.transform.SetParent(GO_MapSelector.transform.Find("Displays"), false);
                 d.GO.SetActive(true);
             }
             c.SetDisplays(c.DisplayInfos);
@@ -472,6 +474,10 @@ public class UiManager : Singleton<UiManager>
     private float horizontalValMove()
     {
         return Mathf.Abs(DownPos.x - UpPos.x);
+    }
+    private void FindMapSelector()
+    {
+        GO_MapSelector = UiManager.Instance.GO_MapSelector;
     }
 
     //IGH --- In Game Hud
