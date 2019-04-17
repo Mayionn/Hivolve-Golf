@@ -33,6 +33,7 @@ public class Display
     public void Init(Map map, int level, MapManager.DisplayInfo di)
     {
         Map = map;
+        GO.GetComponent<GetMap>().map = Map;
 
         //Set Image Variables
         Image = GO.GetComponent<Image>();
@@ -104,19 +105,27 @@ public class Display
         Txt_BestScore_Time.text = map.PB.Time.ToString();
     }
 }
-
 public class Chapter
 {
     public int Number;
-    public Image BackGround;
+    public GameObject BackGround;
     public Map[] Maps;
     public Display[] Displays;
     public MapManager.DisplayInfo[] DisplayInfos; 
 
-    public Chapter(Map[] mArray, Image bg, int n, MapManager.DisplayInfo[] di)
+    public Chapter(Map[] mArray, Sprite bg, int n, MapManager.DisplayInfo[] di)
     {
         Number = n;
-        BackGround = bg;
+        //Set BackGround
+        BackGround = new GameObject("",typeof(RectTransform));
+        BackGround.AddComponent<Image>();
+        BackGround.GetComponent<Image>().sprite = bg;
+        BackGround.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+        BackGround.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
+        BackGround.GetComponent<RectTransform>().offsetMax = Vector2.zero;
+        BackGround.GetComponent<RectTransform>().offsetMin = Vector2.zero;
+        BackGround.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+
         Maps = mArray;
         Displays = new Display[Maps.Length];
         DisplayInfos = di;
@@ -147,9 +156,10 @@ public class MapManager : Singleton<MapManager>
         public Sprite UnlockedImage;
     }
 
-    public Map[] Chapter1;
-    public DisplayInfo[] Chapter1Displays;
+    public Map[] Chapter1, Chapter2;
+    public DisplayInfo[] Chapter1Displays, Chapter2Displays;
     public List<Chapter> Chapters;
+    public int CurrentChapterNumber;
 
     public Map Menu;
     public Map SelectedMap;
@@ -160,39 +170,10 @@ public class MapManager : Singleton<MapManager>
 
     private void Start()
     {
-        Chapter c = new Chapter(Chapter1, null, 1, Chapter1Displays); 
+        Chapters = new List<Chapter>();
+        Chapter c = new Chapter(Chapter1, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 1, Chapter1Displays); 
         Chapters.Add(c);
-    }
-
-    public void BUTTON_StartMap(Map m)
-    {
-        SelectedMap = m;
-        GameManager.Instance.SetupSingleplayer();
-    }
-
-    public void Display_Chapter(int num)
-    {
-        Chapter c = Chapters[num - 1];
-        for (int i = 0; i < c.Displays.Length; i++)
-        {
-            int level = i + 1;
-            Display d = c.Displays[i];
-            d.GO_Copy = UiManager.Instance.Go_MapDisplay;
-            d.POS = c.DisplayInfos[i].pos;
-            d.GO = Instantiate(d.GO_Copy, d.POS.anchoredPosition, Quaternion.identity);
-            d.GO.transform.name = "Level: " + level;
-            d.GO.transform.SetParent(UiManager.Instance.GO_MapSelector.transform, false);
-            d.GO.SetActive(true);
-        }
-        c.SetDisplays(c.DisplayInfos);
-    }
-    public void Destroy_Chapter(int num)
-    {
-        Chapter c = Chapters[num - 1];
-        for (int i = 0; i < c.Displays.Length; i++)
-        {
-            Display d = c.Displays[i];
-            Destroy(d.GO);
-        }
+        c = new Chapter(Chapter2, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 2, Chapter2Displays);
+        Chapters.Add(c);
     }
 }

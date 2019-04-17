@@ -1,91 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1042123728898490211
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1042123728898490210}
-  - component: {fileID: 1042123728898490209}
-  m_Layer: 0
-  m_Name: _UiManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1042123728898490210
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042123728898490211}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1042123729047603291}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1042123728898490209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042123728898490211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ef207f065e76624dafaf01d2bf85308, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UI_Images:
-    GoldMedal: {fileID: 21300000, guid: 90d58869ce1514d42bd004a4cd9a570e, type: 3}
-    SilverMedal: {fileID: 21300000, guid: 91c0567e138f4ab45b70d04b074ead83, type: 3}
-    BronzeMedal: {fileID: 21300000, guid: 1e1088c5b3561004b980e60eb1c80935, type: 3}
-    StopWatch: {fileID: 21300000, guid: 1b122c7c75771ee4f81629a948b4fc63, type: 3}
-    Waypoint: {fileID: 21300000, guid: 6863859248a4b6543b8ae116ba78a9a6, type: 3}
-    Strikes: {fileID: 21300000, guid: 7344b991d05d3da4c94ab673db3cfc18, type: 3}
-    Hidden: {fileID: 21300000, guid: f21996470903ed84798d3b888c35f211, type: 3}
-    Reset: {fileID: 21300000, guid: 2be9f85ce3649bb40af00bd7b6a71e3a, type: 3}
-  UI_InGame:
-    MedalGold: {fileID: 0}
-    MedalSilver: {fileID: 0}
-    MedalBronze: {fileID: 0}
-    ImgMedalGold: {fileID: 0}
-    ImgMedalSilver: {fileID: 0}
-    ImgMedalBronze: {fileID: 0}
-    CurrentTime: {fileID: 0}
-    CurrentStrikes: {fileID: 0}
-    ImgCurrentStrikes: {fileID: 0}
-    Waypoint: {fileID: 0}
-    ImgWaypoint: {fileID: 0}
-    BestTime: {fileID: 0}
-    BestStrikes: {fileID: 0}
-    ResetGame: {fileID: 0}
-    MapInfo: {fileID: 0}
-    CurrentPlayerInfo: {fileID: 0}
-  UI_CompletedMap:
-    Go: {fileID: 0}
-    Txt_Medal01: {fileID: 0}
-    Txt_Medal02: {fileID: 0}
-    Txt_Medal03: {fileID: 0}
-    Txt_PBStrikes: {fileID: 0}
-    Txt_PBTimer: {fileID: 0}
-    Txt_CurrStrikes: {fileID: 0}
-    Txt_CurrTimer: {fileID: 0}
-    Img_PBStrikes: {fileID: 0}
-    Img_CurrStrikes: {fileID: 0}
-  UI_LocalScoreboard: []
-  GO_InGame: {fileID: 0}
-  GO_MapSelector: {fileID: 0}
-  Go_MapDisplay: {fileID: 0}
-  GO_LocalScoreboard: {fileID: 0}
-  UI_LocalMultiplayer: {fileID: 0}
 --- !u!1 &1042123729047603269
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +244,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7674928442257038644, guid: 8037d1e4e364fa34aa93c200a189b194,
     type: 3}
   m_PrefabInstance: {fileID: 1042123729203108163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2972850881252671635
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1042123729047603291}
+    m_Modifications:
+    - target: {fileID: 2825989124144119792, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
+        type: 3}
+      propertyPath: m_Name
+      value: _UiManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825989124144119793, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825989124144119793, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825989124144119793, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825989124144119793, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825989124144119793, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825989124144119793, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825989124144119793, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825989124144119793, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825989124144119793, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825989124144119793, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825989124144119793, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a5f13c6fc04dedf46bbcbff8364c37aa, type: 3}
+--- !u!4 &1042123728898490210 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2825989124144119793, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 2972850881252671635}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8095653472241804651
 PrefabInstance:

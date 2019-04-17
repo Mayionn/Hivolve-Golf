@@ -20,6 +20,10 @@ public class UiManager : Singleton<UiManager>
         public Sprite Hidden;
         public Sprite Reset;
     }
+    [Serializable] public struct UIBackgroundImages
+    {
+        public Sprite DefaultBackground;
+    }
     [Serializable] public struct InfoInGame
     {
         public Text MedalGold;
@@ -73,9 +77,10 @@ public class UiManager : Singleton<UiManager>
         public Text TotalPoints;
         public Image Medal;
     }
-
+    
     //Struct Variables
     public UIImages UI_Images;
+    public UIBackgroundImages UI_BackgroundImages;
     public InfoInGame UI_InGame;
     public InfoCompletedMap UI_CompletedMap;
     public List<InfoLocalScoreboard> UI_LocalScoreboard;
@@ -89,6 +94,100 @@ public class UiManager : Singleton<UiManager>
     //CurrentMap and Player
     private Map m;
     private Player p;
+
+    public Canvas canvas;
+    private float TOP_POSITION;
+    private float MIDDLE_POSITION;
+    private float DOWN_POSITION;
+
+    Vector3 UpPos, DownPos;
+    bool down = false;
+    bool activate = false;
+    readonly float SWIPE_DISTANCE = 50f;
+    public bool detectSwipeOnlyAfterRelease = true;
+
+    private void Start()
+    {
+        float height = canvas.GetComponent<RectTransform>().sizeDelta.y;
+        TOP_POSITION = +height;
+        MIDDLE_POSITION = 0;
+        DOWN_POSITION = -height;
+    }
+
+    //Swipe Methods
+    private void Update()
+    {
+        if (GO_MapSelector.activeSelf)
+        {
+            if (Input.GetMouseButtonDown(0) && !down)
+            {
+                UpPos = Input.mousePosition;
+                DownPos = Input.mousePosition;
+                down = true;
+                Debug.Log("Mouse - Down");
+            }
+            if (down)
+            {
+                DownPos = Input.mousePosition;
+                activate = true;
+                Debug.Log("Mouse - Holding");
+            }
+            if (Input.GetMouseButtonUp(0) && activate)
+            {
+                down = false;
+                activate = false;
+                Debug.Log("Mouse - Release");
+                CheckSwipe();
+            }
+        }
+    }
+    private void CheckSwipe()
+    {
+        if (verticalMove() > SWIPE_DISTANCE && verticalMove() > horizontalValMove())
+        {
+            Debug.Log("Vertical");
+            if (DownPos.y - UpPos.y > 0)
+            {
+                //Swipe Up
+                //TODO: SWIPE METHOD
+                Debug.Log("Swipe Up");
+            }
+            else if (DownPos.y - UpPos.y < 0)
+            {
+                //Swipe Down
+                Debug.Log("Swipe Down");
+            }
+            UpPos = DownPos;
+        }
+        //Check if Horizontal swipe
+        else if (horizontalValMove() > SWIPE_DISTANCE && horizontalValMove() > verticalMove())
+        {
+            //Debug.Log("Horizontal");
+            if (DownPos.x - UpPos.x > 0)//Right swipe
+            {
+                //Swipe Right
+                Debug.Log("Swipe Right");
+            }
+            else if (DownPos.x - UpPos.x < 0)//Left swipe
+            {
+                //Swipe Left
+                Debug.Log("SwipeLeft");
+            }
+            UpPos = DownPos;
+        }
+        else
+        {
+            Debug.Log("No Swipe at All");
+        }
+    }
+    private float verticalMove()
+    {
+        return Mathf.Abs(DownPos.y - UpPos.y);
+    }
+    private float horizontalValMove()
+    {
+        return Mathf.Abs(DownPos.x - UpPos.x);
+    }
 
     //Open / Close --- Interface
     public void OpenInterface_InGameHud()
@@ -155,8 +254,13 @@ public class UiManager : Singleton<UiManager>
     public void CloseInterface_MapSelector()
     {
         GameManager.Instance.TimeScaleResume();
-        MapManager.Instance.Destroy_Chapter(1);
-        GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition();
+        MS_Destroy_Chapter(1);
+        if (GameManager.Instance.CurrentMap != MapManager.Instance.Menu)
+        {
+            GameManager.Instance.SetupMenuMap();
+        }
+        else GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition();
+
         GO_MapSelector.SetActive(false);
     }
     public void CloseInterface_LocalMultiplayer()
@@ -178,7 +282,68 @@ public class UiManager : Singleton<UiManager>
     //MS --- Map Selector
     public void MS_Init()
     {
-        MapManager.Instance.Display_Chapter(1);
+        MS_Display_Chapter(1, MIDDLE_POSITION);
+        MS_Display_Chapter(2, TOP_POSITION);
+        MapManager.Instance.CurrentChapterNumber = 1;
+    }
+    public void MS_Display_Chapter(int num, float pos)
+    {
+        if (MapManager.Instance.Chapters.Count <= num)
+        {
+            Chapter c = MapManager.Instance.Chapters[num - 1];
+            GameObject b = c.BackGround;
+            Vector2 posVec = new Vector3(0, pos);
+
+            //Instantiate Background
+            b = Instantiate(c.BackGround, posVec, Quaternion.identity);
+            b.transform.name = "Chapter " + num + " Background";
+            b.transform.SetParent(GO_MapSelector.transform.Find("Chapter"), false);
+            b.SetActive(true);
+
+            //Instantiate Displays
+            for (int i = 0; i < c.Displays.Length; i++)
+            {
+                int level = i + 1;
+                Display d = c.Displays[i];
+                d.GO_Copy = Go_MapDisplay;
+                d.POS = c.DisplayInfos[i].pos;
+                d.GO = Instantiate(d.GO_Copy, d.POS.anchoredPosition + posVec, Quaternion.identity);
+                d.GO.transform.name = "Level: " + level;
+                d.GO.transform.SetParent(GO_MapSelector.transform.Find("Chapter"), false);
+                d.GO.SetActive(true);
+            }
+            c.SetDisplays(c.DisplayInfos);
+        }
+        else Debug.Log("Chapter number not available!");
+    }
+    public void MS_Destroy_Chapter(int num)
+    {
+        Chapter c = MapManager.Instance.Chapters[num - 1];
+        for (int i = 0; i < c.Displays.Length; i++)
+        {
+            Display d = c.Displays[i];
+            Destroy(d.GO);
+        }
+    }
+    public void MS_BUTTON_StartMap(GetMap gm)
+    {
+        MapManager.Instance.SelectedMap = gm.map;
+        UiManager.Instance.CloseInterface_MapSelector();
+        GameManager.Instance.SetupSingleplayer();
+    }
+    public void MS_MoveDown()
+    {
+        float distance = TOP_POSITION;
+        int numberOfChapters = MapManager.Instance.Chapters.Count;
+        int chapterNum = MapManager.Instance.CurrentChapterNumber;
+
+        //TODO: VERIFY IF POSSIBLE
+        MS_Display_Chapter(chapterNum + 2, TOP_POSITION);
+
+        //TODO: ANIMATE MENU MOVING!
+
+        //TODO: DESTROY LOWER CHAPTERS!
+
     }
 
     //IGH --- In Game Hud
@@ -250,7 +415,8 @@ public class UiManager : Singleton<UiManager>
     public void CM_ButtonMenu()
     {
         CloseInterface_CompletedMap();
-        GameManager.Instance.SetupMenuMap();
+        OpenInterface_MapSelector();
+        //GameManager.Instance.SetupMenuMap();
     }
     public void CM_UpdateScoreImages()
     {
