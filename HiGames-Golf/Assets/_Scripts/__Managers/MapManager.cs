@@ -11,6 +11,7 @@ public class Display
     public GameObject GO;
     public GameObject GO_Copy;
     public RectTransform POS;
+    public RectTransform LAST_POS;
     public Map Map;
 
     public Sprite LockedImage;
@@ -87,28 +88,12 @@ public class Display
         Txt_BestScore_Strikes.text = "";
         Txt_BestScore_Time.text = "";
     }
-    public void SetUnlocked(Map map, MapManager.DisplayInfo di)
-    {
-        Image.sprite = UnlockedImage;
-        MapImage.sprite = di.MapImage;
-        Img_MedalGold.sprite = UiManager.Instance.UI_Images.GoldMedal;
-        Img_MedalSilver.sprite = UiManager.Instance.UI_Images.SilverMedal;
-        Img_MedalBronze.sprite = UiManager.Instance.UI_Images.BronzeMedal;
-        Img_BestScore_Strikes.sprite = UiManager.Instance.UI_Images.Strikes;
-        Img_BestScore_Time.sprite = UiManager.Instance.UI_Images.StopWatch;
-
-        //Set Text
-        Txt_MedalGold.text = map.MedalGold.ToString();
-        Txt_MedalSilver.text = map.MedalSilver.ToString();
-        Txt_MedalBronze.text = map.MedalBronze.ToString();
-        Txt_BestScore_Strikes.text = map.PB.Strikes.ToString();
-        Txt_BestScore_Time.text = map.PB.Time.ToString();
-    }
 }
 public class Chapter
 {
     public int Number;
     public GameObject BackGround;
+    public Sprite Sprite;
     public Map[] Maps;
     public Display[] Displays;
     public MapManager.DisplayInfo[] DisplayInfos; 
@@ -117,15 +102,7 @@ public class Chapter
     {
         Number = n;
         //Set BackGround
-        BackGround = new GameObject("",typeof(RectTransform));
-        BackGround.AddComponent<Image>();
-        BackGround.GetComponent<Image>().sprite = bg;
-        BackGround.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
-        BackGround.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
-        BackGround.GetComponent<RectTransform>().offsetMax = Vector2.zero;
-        BackGround.GetComponent<RectTransform>().offsetMin = Vector2.zero;
-        BackGround.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
-
+        Sprite = bg;
         Maps = mArray;
         Displays = new Display[Maps.Length];
         DisplayInfos = di;
@@ -156,8 +133,8 @@ public class MapManager : Singleton<MapManager>
         public Sprite UnlockedImage;
     }
 
-    public Map[] Chapter1, Chapter2;
-    public DisplayInfo[] Chapter1Displays, Chapter2Displays;
+    public Map[] Chapter1, Chapter2, Chapter3, Chapter4;
+    public DisplayInfo[] Chapter1Displays, Chapter2Displays, Chapter3Displays, Chapter4Displays;
     public List<Chapter> Chapters;
     public int CurrentChapterNumber;
 
@@ -174,6 +151,10 @@ public class MapManager : Singleton<MapManager>
         Chapter c = new Chapter(Chapter1, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 1, Chapter1Displays); 
         Chapters.Add(c);
         c = new Chapter(Chapter2, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 2, Chapter2Displays);
+        Chapters.Add(c);
+        c = new Chapter(Chapter3, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 3, Chapter3Displays);
+        Chapters.Add(c);
+        c = new Chapter(Chapter4, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 4, Chapter4Displays);
         Chapters.Add(c);
     }
 }

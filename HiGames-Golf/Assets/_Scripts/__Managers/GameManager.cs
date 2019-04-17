@@ -42,8 +42,6 @@ namespace Assets.Managers
             BuildMenu();
 
             CameraManager.Init();
-
-            UiManager.Instance.OpenInterface_MapSelector();
         }
 
         //---Action Update

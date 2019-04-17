@@ -101,10 +101,17 @@ public class UiManager : Singleton<UiManager>
     private float DOWN_POSITION;
 
     Vector3 UpPos, DownPos;
+    Chapter[] chaptersToMove = new Chapter[2];
+    private readonly float maxSpeed = 40;
+    private float speed;
+    private float distanceSoFar = 0;
+    private float chapterMoveDistance;
     bool down = false;
     bool activate = false;
+    bool isMoving = false;
     readonly float SWIPE_DISTANCE = 50f;
     public bool detectSwipeOnlyAfterRelease = true;
+    private Action ActUpdate;
 
     private void Start()
     {
@@ -114,79 +121,9 @@ public class UiManager : Singleton<UiManager>
         DOWN_POSITION = -height;
     }
 
-    //Swipe Methods
     private void Update()
     {
-        if (GO_MapSelector.activeSelf)
-        {
-            if (Input.GetMouseButtonDown(0) && !down)
-            {
-                UpPos = Input.mousePosition;
-                DownPos = Input.mousePosition;
-                down = true;
-                Debug.Log("Mouse - Down");
-            }
-            if (down)
-            {
-                DownPos = Input.mousePosition;
-                activate = true;
-                Debug.Log("Mouse - Holding");
-            }
-            if (Input.GetMouseButtonUp(0) && activate)
-            {
-                down = false;
-                activate = false;
-                Debug.Log("Mouse - Release");
-                CheckSwipe();
-            }
-        }
-    }
-    private void CheckSwipe()
-    {
-        if (verticalMove() > SWIPE_DISTANCE && verticalMove() > horizontalValMove())
-        {
-            Debug.Log("Vertical");
-            if (DownPos.y - UpPos.y > 0)
-            {
-                //Swipe Up
-                //TODO: SWIPE METHOD
-                Debug.Log("Swipe Up");
-            }
-            else if (DownPos.y - UpPos.y < 0)
-            {
-                //Swipe Down
-                Debug.Log("Swipe Down");
-            }
-            UpPos = DownPos;
-        }
-        //Check if Horizontal swipe
-        else if (horizontalValMove() > SWIPE_DISTANCE && horizontalValMove() > verticalMove())
-        {
-            //Debug.Log("Horizontal");
-            if (DownPos.x - UpPos.x > 0)//Right swipe
-            {
-                //Swipe Right
-                Debug.Log("Swipe Right");
-            }
-            else if (DownPos.x - UpPos.x < 0)//Left swipe
-            {
-                //Swipe Left
-                Debug.Log("SwipeLeft");
-            }
-            UpPos = DownPos;
-        }
-        else
-        {
-            Debug.Log("No Swipe at All");
-        }
-    }
-    private float verticalMove()
-    {
-        return Mathf.Abs(DownPos.y - UpPos.y);
-    }
-    private float horizontalValMove()
-    {
-        return Mathf.Abs(DownPos.x - UpPos.x);
+        ActUpdate?.Invoke();
     }
 
     //Open / Close --- Interface
@@ -260,8 +197,8 @@ public class UiManager : Singleton<UiManager>
             GameManager.Instance.SetupMenuMap();
         }
         else GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition();
-
         GO_MapSelector.SetActive(false);
+        ActUpdate -= MS_DetectSwipe;
     }
     public void CloseInterface_LocalMultiplayer()
     {
@@ -285,20 +222,28 @@ public class UiManager : Singleton<UiManager>
         MS_Display_Chapter(1, MIDDLE_POSITION);
         MS_Display_Chapter(2, TOP_POSITION);
         MapManager.Instance.CurrentChapterNumber = 1;
+        ActUpdate += MS_DetectSwipe;
     }
     public void MS_Display_Chapter(int num, float pos)
     {
-        if (MapManager.Instance.Chapters.Count <= num)
+        if (num <= MapManager.Instance.Chapters.Count)
         {
             Chapter c = MapManager.Instance.Chapters[num - 1];
-            GameObject b = c.BackGround;
             Vector2 posVec = new Vector3(0, pos);
 
             //Instantiate Background
-            b = Instantiate(c.BackGround, posVec, Quaternion.identity);
-            b.transform.name = "Chapter " + num + " Background";
-            b.transform.SetParent(GO_MapSelector.transform.Find("Chapter"), false);
-            b.SetActive(true);
+            c.BackGround = new GameObject("Chapter" + num + "BackGround", typeof(RectTransform));
+            c.BackGround.AddComponent<Image>();
+            c.BackGround.GetComponent<Image>().sprite = c.Sprite;
+            c.BackGround.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+            c.BackGround.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
+            c.BackGround.GetComponent<RectTransform>().offsetMax = Vector2.zero;
+            c.BackGround.GetComponent<RectTransform>().offsetMin = Vector2.zero;
+            c.BackGround.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+            c.BackGround.GetComponent<RectTransform>().position += new Vector3(posVec.x, posVec.y, 0); 
+
+            c.BackGround.transform.SetParent(GO_MapSelector.transform.Find("Chapter"), false);
+            c.BackGround.SetActive(true);
 
             //Instantiate Displays
             for (int i = 0; i < c.Displays.Length; i++)
@@ -315,35 +260,218 @@ public class UiManager : Singleton<UiManager>
             c.SetDisplays(c.DisplayInfos);
         }
         else Debug.Log("Chapter number not available!");
+
+        //217900790 - numero reaver codigo aixa direta
     }
-    public void MS_Destroy_Chapter(int num)
+    public bool MS_Destroy_Chapter(int num)
     {
-        Chapter c = MapManager.Instance.Chapters[num - 1];
-        for (int i = 0; i < c.Displays.Length; i++)
+        if (num > 0 && num <= MapManager.Instance.Chapters.Count)
         {
-            Display d = c.Displays[i];
-            Destroy(d.GO);
+            Chapter c = MapManager.Instance.Chapters[num - 1];
+            GameObject b = c.BackGround;
+
+            Destroy(b);
+            for (int i = 0; i < c.Displays.Length; i++)
+            {
+                Display d = c.Displays[i];
+                Destroy(d.GO);
+            }
+            return true;
         }
+        else return false;
     }
     public void MS_BUTTON_StartMap(GetMap gm)
     {
-        MapManager.Instance.SelectedMap = gm.map;
-        UiManager.Instance.CloseInterface_MapSelector();
-        GameManager.Instance.SetupSingleplayer();
+        if (!isMoving)
+        {
+            MapManager.Instance.SelectedMap = gm.map;
+            CloseInterface_MapSelector();
+            GameManager.Instance.SetupSingleplayer();
+        }
     }
-    public void MS_MoveDown()
+    private void MS_MoveDown()
     {
-        float distance = TOP_POSITION;
         int numberOfChapters = MapManager.Instance.Chapters.Count;
         int chapterNum = MapManager.Instance.CurrentChapterNumber;
 
-        //TODO: VERIFY IF POSSIBLE
-        MS_Display_Chapter(chapterNum + 2, TOP_POSITION);
+        if (chapterNum == numberOfChapters) Debug.Log("Cant go down, no chapters up");
+        else if (chapterNum < numberOfChapters)
+        {
+            MS_Display_Chapter(chapterNum + 2, TOP_POSITION);
 
-        //TODO: ANIMATE MENU MOVING!
+            if(chapterNum != 1)
+                MS_Destroy_Chapter(chapterNum - 1);
+            MS_SetupDownAnimation();
+            MapManager.Instance.CurrentChapterNumber++;
 
-        //TODO: DESTROY LOWER CHAPTERS!
+            ActUpdate += MS_Animate;
+        }
+        else if (chapterNum > numberOfChapters) Debug.Log("Something went wrong, current chapter above number of chapters");
+    }
+    private void MS_MoveUp()
+    {
+        int numberOfChapters = MapManager.Instance.Chapters.Count;
+        int chapterNum = MapManager.Instance.CurrentChapterNumber;
 
+        if (chapterNum == 1) Debug.Log("Cant go up, no chapters up");
+        else if (chapterNum > 1)
+        {
+            if(chapterNum != 2)
+            {
+                MS_Display_Chapter(chapterNum - 2, DOWN_POSITION);
+            }
+            MS_Destroy_Chapter(chapterNum + 1);
+
+            MS_SetupUpAnimation();
+            MapManager.Instance.CurrentChapterNumber--;
+
+            ActUpdate += MS_Animate;
+        }
+    }
+    private void MS_SetupDownAnimation()
+    {
+        //Number active Chapters
+        int curr = MapManager.Instance.CurrentChapterNumber;
+
+        for (int i = 0; i < 2; i++)
+        {
+            Chapter c = MapManager.Instance.Chapters[(curr + i) - 1];
+            chaptersToMove[i] = c;
+            foreach (Display display in chaptersToMove[i].Displays)
+            {
+                display.LAST_POS = display.POS;
+            }
+        }
+        chapterMoveDistance = -TOP_POSITION;
+        distanceSoFar = 0;
+        speed = -maxSpeed;
+    }
+    private void MS_SetupUpAnimation()
+    {
+        //Number active Chapters
+        int curr = MapManager.Instance.CurrentChapterNumber;
+
+        for (int i = 0; i < 2; i++)
+        {
+            Chapter c = MapManager.Instance.Chapters[(curr - i) -1];
+            chaptersToMove[i] = c;
+            foreach (Display display in chaptersToMove[i].Displays)
+            {
+                display.LAST_POS = display.POS;
+            }
+        }
+        chapterMoveDistance = TOP_POSITION;
+        distanceSoFar = 0;
+        speed = maxSpeed;
+    }
+    private void MS_Animate()
+    {
+        distanceSoFar += maxSpeed;
+        //Running Down
+        if(distanceSoFar <= Math.Abs(chapterMoveDistance))
+        {
+            foreach (Chapter c in chaptersToMove)
+            {
+                c.BackGround.GetComponent<RectTransform>().localPosition += new Vector3(0, speed);
+
+                foreach (Display d in c.Displays)
+                {
+                    d.GO.GetComponent<RectTransform>().offsetMax += new Vector2(0, speed);
+                    d.GO.GetComponent<RectTransform>().offsetMin += new Vector2(0, speed);
+                }
+            }
+        }
+        //Sthap
+        else
+        {
+            int t = 1;
+            for (int i = 0; i < 2; i++)
+            {
+                chaptersToMove[i].BackGround.GetComponent<RectTransform>().localPosition = new Vector3(0, chapterMoveDistance * t, 0);
+
+                foreach (Display d in chaptersToMove[i].Displays)
+                {
+                    d.GO.GetComponent<RectTransform>().localPosition = new Vector2(d.LAST_POS.localPosition.x, d.LAST_POS.localPosition.y + chapterMoveDistance * t);
+                }
+
+                t--;
+            }
+            StopAnimation();
+        }
+    }
+    private void StopAnimation()
+    {
+        ActUpdate -= MS_Animate;
+        isMoving = false;
+    }
+    private void MS_DetectSwipe()
+    {
+        if (Input.GetMouseButtonDown(0) && !down)
+        {
+            UpPos = Input.mousePosition;
+            DownPos = Input.mousePosition;
+            down = true;
+        }
+        if (down)
+        {
+            DownPos = Input.mousePosition;
+            activate = true;
+        }
+        if (Input.GetMouseButtonUp(0) && activate)
+        {
+            down = false;
+            activate = false;
+            MS_CheckSwipe();
+        }
+    }
+    private void MS_CheckSwipe()
+    {
+        if (verticalMove() > SWIPE_DISTANCE && verticalMove() > horizontalValMove())
+        {
+            Debug.Log("Vertical");
+            if (DownPos.y - UpPos.y > 0)
+            {
+                //Swipe Up
+                MS_MoveUp();
+                Debug.Log("Swipe Up");
+            }
+            else if (DownPos.y - UpPos.y < 0)
+            {
+                //Swipe Down
+                MS_MoveDown();
+                Debug.Log("Swipe Down");
+            }
+            UpPos = DownPos;
+        }
+        //SIDE SWIPING - NOT USED
+        ////Check if Horizontal swipe
+        //else if (horizontalValMove() > SWIPE_DISTANCE && horizontalValMove() > verticalMove())
+        //{
+        //    //Debug.Log("Horizontal");
+        //    if (DownPos.x - UpPos.x > 0)//Right swipe
+        //    {
+        //        //Swipe Right
+        //        Debug.Log("Swipe Right");
+        //    }
+        //    else if (DownPos.x - UpPos.x < 0)//Left swipe
+        //    {
+        //        //Swipe Left
+        //        Debug.Log("SwipeLeft");
+        //    }
+        //    UpPos = DownPos;
+        //}
+        else
+        {
+            Debug.Log("No Swipe at All");
+        }
+    }
+    private float verticalMove()
+    {
+        return Mathf.Abs(DownPos.y - UpPos.y);
+    }
+    private float horizontalValMove()
+    {
+        return Mathf.Abs(DownPos.x - UpPos.x);
     }
 
     //IGH --- In Game Hud
