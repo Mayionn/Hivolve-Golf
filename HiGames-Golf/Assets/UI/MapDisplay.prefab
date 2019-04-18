@@ -510,9 +510,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2825989124144119794, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
+      - m_Target: {fileID: 3925893565709228640, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
           type: 3}
-        m_MethodName: MS_BUTTON_StartMap
+        m_MethodName: BUTTON_StartMap
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 2303446153455465334}

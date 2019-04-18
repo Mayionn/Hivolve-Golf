@@ -123,5 +123,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartingPosition: {x: 0, y: 0, z: 0}
   LastPosition: {x: 0, y: 0, z: 0}
-  Phasing: 0
   RigBody: {fileID: 0}
+  SphereCollider: {fileID: 0}

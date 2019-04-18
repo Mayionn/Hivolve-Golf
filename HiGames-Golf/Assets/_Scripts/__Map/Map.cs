@@ -73,10 +73,11 @@ public class Map : MonoBehaviour
     {
         foreach (Player p in GameManager.Instance.Players)
         {
+            //TODO: PROBABLY REVIEW THIS
             GameManager.Instance.PlayerBall_Destroy(p);
             GameManager.Instance.PlayerBall_Instantiate(p);
             p.SelectedBall.Player = p;
-            p.SelectedBall.StopAtPosition(StartingPosition.transform.position);
+            p.SelectedBall.StopAtPosition(true, StartingPosition.transform.position);
             p.SelectedBall.StartingPosition = StartingPosition.transform.position;
             p.SelectedBall.LastPosition = StartingPosition.transform.position;
         }

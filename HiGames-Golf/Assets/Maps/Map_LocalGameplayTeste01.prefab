@@ -358,20 +358,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569b082dce905fa41af5d26bede523a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 6897589549046516116}
-  SpawnedPrefab: {fileID: 0}
-  StartingPosition: {fileID: 3780208784181558198}
-  _GameType: 2
+  Name: 
+  Author: Lucas
+  Chapter: 0
   MedalGold: 2
   MedalSilver: 4
   MedalBronze: 6
+  _GameType: 2
+  Prefab: {fileID: 6897589549046516116}
+  SpawnedPrefab: {fileID: 0}
+  StartingPosition: {fileID: 3780208784181558198}
   WaypointsPosition:
   - {fileID: 5115685746375244473}
   - {fileID: 318587428546676189}
   Waypoints:
   - {fileID: 0}
   - {fileID: 0}
-  Author: Lucas
 --- !u!1 &7033088058712606558
 GameObject:
   m_ObjectHideFlags: 0

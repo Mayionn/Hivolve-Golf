@@ -9,12 +9,13 @@ public class Ball : MonoBehaviour
     public Player Player;
     public Vector3 StartingPosition;
     public Vector3 LastPosition;
-    public bool Phasing;
     [HideInInspector] public Rigidbody RigBody;
+    [HideInInspector] public SphereCollider SphereCollider;
 
     public void Init()
     {
         RigBody = this.GetComponent<Rigidbody>();
+        SphereCollider = this.GetComponent<SphereCollider>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -83,35 +84,31 @@ public class Ball : MonoBehaviour
         }
         else if(other.tag == "OOB")
         {
-            GoLastPosition();
-        }
-    }
-    void OnTriggerExit(Collider other)
-    {
-        if(other.tag == "Player")
-        {
-            Phasing = false;
+            GoLastPosition(true);
         }
     }
 
-    public void GoLastPosition()
+    public void GoLastPosition(bool grounded)
     {
         StopBall();
-        transform.position = LastPosition;
+        if (grounded) SetBallGrounded(LastPosition);
+        else transform.position = LastPosition;
     }
-    public void GoStartingPosition()
+    public void GoStartingPosition(bool grounded)
     {
         StopBall();
-        transform.position = StartingPosition;
+        if (grounded) SetBallGrounded(StartingPosition);
+        else transform.position = StartingPosition;
     }
     public void SaveLastPosition()
     {
         LastPosition = StartingPosition;
     }
-    public void StopAtPosition(Vector3 position)
+    public void StopAtPosition(bool grounded, Vector3 position)
     {
         StopBall();
-        transform.position = position;
+        if (grounded) SetBallGrounded(position);
+        else transform.position = position;
     }
     
     private void StopBall()
@@ -120,11 +117,25 @@ public class Ball : MonoBehaviour
         RigBody.velocity = Vector3.zero;
         RigBody.Sleep();
     }
+    private void SetBallGrounded(Vector3 pos)
+    {
+        Ray r = new Ray(pos, -Vector3.up * 10);
+        RaycastHit[] hits = Physics.RaycastAll(r, 10);
+
+        foreach (RaycastHit hit in hits)
+        {
+            if(hit.collider.tag == "Untagged")
+            {
+                transform.position = hit.point + (Vector3.up * SphereCollider.radius * transform.localScale.x);
+                break;
+            }
+        }
+    }
     
     private void SetupWaypoint(Waypoint wp)
     {
          //Move Ball
-         StopAtPosition(wp.Position);
+         StopAtPosition(true, wp.Position);
          LastPosition = wp.Position;
          //Leave to State_LaunchBall
          GameManager.Instance.CurrentState.LeaveState(GameManager.Instance.CurrentState.ConnectedStates[0]);

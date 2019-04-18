@@ -248,7 +248,7 @@ namespace Assets.Managers
         public void ResetGame()
         {
             CurrentPlayer.SelectedBall.LastPosition = CurrentPlayer.SelectedBall.StartingPosition;
-            CurrentPlayer.SelectedBall.GoStartingPosition();
+            CurrentPlayer.SelectedBall.GoStartingPosition(true);
             CurrentPlayer.ResetScore();
             CurrentMap.WaypointsReset();
             UiManager.Instance.UpdateMapInfoCurrentStrikes();

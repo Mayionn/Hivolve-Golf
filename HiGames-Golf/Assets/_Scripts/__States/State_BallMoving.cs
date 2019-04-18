@@ -16,15 +16,15 @@ public class State_BallMoving : State
             switch (GameManager.Instance.CurrentMap._GameType)
             {
                 case Map.GameType.Menu:
-                    Ball.GoStartingPosition();
+                    Ball.GoStartingPosition(true);
                     //Save this position as last position
                     break;
                 case Map.GameType.OneShot:
-                    Ball.GoStartingPosition();
+                    Ball.GoStartingPosition(true);
                     //UpdateCounter
                     break;
                 case Map.GameType.Waypoint:
-                    Ball.GoLastPosition();
+                    Ball.GoLastPosition(true);
                     break;
                 case Map.GameType.FreeForm:
                     Ball.SaveLastPosition();

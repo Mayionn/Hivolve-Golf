@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2825989124144119793}
   - component: {fileID: 2825989124144119794}
+  - component: {fileID: 6818436173594457390}
+  - component: {fileID: 3925893565709228640}
+  - component: {fileID: 4027844135146354228}
   m_Layer: 0
   m_Name: _UiManager
   m_TagString: Untagged
@@ -52,6 +55,126 @@ MonoBehaviour:
     Strikes: {fileID: 21300000, guid: 7344b991d05d3da4c94ab673db3cfc18, type: 3}
     Hidden: {fileID: 21300000, guid: f21996470903ed84798d3b888c35f211, type: 3}
     Reset: {fileID: 21300000, guid: 2be9f85ce3649bb40af00bd7b6a71e3a, type: 3}
+  UI_BackgroundImages:
+    DefaultBackground: {fileID: 21300000, guid: 43832e73e1465da43a1b83601aa86e58,
+      type: 3}
+  UI_CompletedMap:
+    Go: {fileID: 0}
+    Txt_Medal01: {fileID: 0}
+    Txt_Medal02: {fileID: 0}
+    Txt_Medal03: {fileID: 0}
+    Txt_PBStrikes: {fileID: 0}
+    Txt_PBTimer: {fileID: 0}
+    Txt_CurrStrikes: {fileID: 0}
+    Txt_CurrTimer: {fileID: 0}
+    Img_PBStrikes: {fileID: 0}
+    Img_CurrStrikes: {fileID: 0}
+  UI_LocalScoreboard:
+  - PlayerName: {fileID: 0}
+    PlayerNumber: {fileID: 0}
+    PlayerIndexNumber: {fileID: 0}
+    PlayerTimer: {fileID: 0}
+    ImgTimer: {fileID: 0}
+    PlayerStrikes: {fileID: 0}
+    ImgStrikes: {fileID: 0}
+    TotalPoints: {fileID: 0}
+    Medal: {fileID: 0}
+  - PlayerName: {fileID: 0}
+    PlayerNumber: {fileID: 0}
+    PlayerIndexNumber: {fileID: 0}
+    PlayerTimer: {fileID: 0}
+    ImgTimer: {fileID: 0}
+    PlayerStrikes: {fileID: 0}
+    ImgStrikes: {fileID: 0}
+    TotalPoints: {fileID: 0}
+    Medal: {fileID: 0}
+  - PlayerName: {fileID: 0}
+    PlayerNumber: {fileID: 0}
+    PlayerIndexNumber: {fileID: 0}
+    PlayerTimer: {fileID: 0}
+    ImgTimer: {fileID: 0}
+    PlayerStrikes: {fileID: 0}
+    ImgStrikes: {fileID: 0}
+    TotalPoints: {fileID: 0}
+    Medal: {fileID: 0}
+  - PlayerName: {fileID: 0}
+    PlayerNumber: {fileID: 0}
+    PlayerIndexNumber: {fileID: 0}
+    PlayerTimer: {fileID: 0}
+    ImgTimer: {fileID: 0}
+    PlayerStrikes: {fileID: 0}
+    ImgStrikes: {fileID: 0}
+    TotalPoints: {fileID: 0}
+    Medal: {fileID: 0}
+  GO_LocalScoreboard: {fileID: 0}
+--- !u!114 &6818436173594457390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2825989124144119792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5647e0f17c513e4eba60b9ffd99930c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 0}
+  GridInfos:
+  - PlayerNum: 0
+    PlayerName: 
+    Image: {fileID: 0}
+    SelectedBall: {fileID: 0}
+    Txt_PlayerNum: {fileID: 0}
+    Txt_PlayerName: {fileID: 0}
+  - PlayerNum: 0
+    PlayerName: 
+    Image: {fileID: 0}
+    SelectedBall: {fileID: 0}
+    Txt_PlayerNum: {fileID: 0}
+    Txt_PlayerName: {fileID: 0}
+  - PlayerNum: 0
+    PlayerName: 
+    Image: {fileID: 0}
+    SelectedBall: {fileID: 0}
+    Txt_PlayerNum: {fileID: 0}
+    Txt_PlayerName: {fileID: 0}
+  - PlayerNum: 0
+    PlayerName: 
+    Image: {fileID: 0}
+    SelectedBall: {fileID: 0}
+    Txt_PlayerNum: {fileID: 0}
+    Txt_PlayerName: {fileID: 0}
+  CurrentNumberText: {fileID: 0}
+--- !u!114 &3925893565709228640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2825989124144119792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fdf914de81d7a144b1bc7af6ed9256b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 0}
+  DisplayPrefab: {fileID: 2628743406792792322, guid: 21d97cf802f34e044a99311691d79fd3,
+    type: 3}
+  canvas: {fileID: 0}
+  detectSwipeOnlyAfterRelease: 1
+--- !u!114 &4027844135146354228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2825989124144119792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a6240daeb432e0419be03450462ed13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   UI_InGame:
     MedalGold: {fileID: 0}
     MedalSilver: {fileID: 0}
@@ -69,20 +192,4 @@ MonoBehaviour:
     ResetGame: {fileID: 0}
     MapInfo: {fileID: 0}
     CurrentPlayerInfo: {fileID: 0}
-  UI_CompletedMap:
-    Go: {fileID: 0}
-    Txt_Medal01: {fileID: 0}
-    Txt_Medal02: {fileID: 0}
-    Txt_Medal03: {fileID: 0}
-    Txt_PBStrikes: {fileID: 0}
-    Txt_PBTimer: {fileID: 0}
-    Txt_CurrStrikes: {fileID: 0}
-    Txt_CurrTimer: {fileID: 0}
-    Img_PBStrikes: {fileID: 0}
-    Img_CurrStrikes: {fileID: 0}
-  UI_LocalScoreboard: []
-  GO_InGame: {fileID: 0}
-  GO_MapSelector: {fileID: 0}
-  Go_MapDisplay: {fileID: 0}
-  GO_LocalScoreboard: {fileID: 0}
-  UI_LocalMultiplayer: {fileID: 0}
+  UI: {fileID: 0}

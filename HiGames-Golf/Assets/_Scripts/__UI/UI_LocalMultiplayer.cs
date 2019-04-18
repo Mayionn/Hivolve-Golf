@@ -9,14 +9,23 @@ namespace Assets.UI
 {
     public class UI_LocalMultiplayer : MonoBehaviour
     {
-        public UiManager.InfoLocalGrid[] GridInfos;
+        public GameObject UI;
+
+        [Serializable] public struct InfoLocalGrid
+        {
+            public int PlayerNum;
+            public string PlayerName;
+            public Image Image;
+            public Ball SelectedBall;
+            public Text Txt_PlayerNum;
+            public Text Txt_PlayerName;
+        }
+        public InfoLocalGrid[] GridInfos;
 
         public readonly int minPlayers = 2;
         public readonly int maxPlayers = 4;
-
         public Text CurrentNumberText;
         private int currentNumber = 1;
-
 
         public void Init()
         {
@@ -35,7 +44,7 @@ namespace Assets.UI
         {
             UiManager.Instance.CloseInterface_LocalMultiplayer();
             RemovePlayersAll();
-            GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition();
+            GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition(true);
         }
 
         public void CreatePlayers(int num)
@@ -83,7 +92,7 @@ namespace Assets.UI
                 GridInfos[i].PlayerName = p.Name;
                 GridInfos[i].PlayerNum = p.PlayerNum;
                 GridInfos[i].Txt_PlayerName.text = "Name: " + GridInfos[i].PlayerName;
-                GridInfos[i].Txt_PlayerNum.text = "Jogador: " + (GridInfos[i].PlayerNum + 1).ToString();
+                GridInfos[i].Txt_PlayerNum.text = "Player: " + (GridInfos[i].PlayerNum + 1).ToString();
             }
             //Turn not used players blank
             for (int i = currentNumber; i < GridInfos.Length; i++)
@@ -91,7 +100,7 @@ namespace Assets.UI
                 SetInfoHidden(GridInfos[i]);
             }
         }
-        private void SetInfoHidden(UiManager.InfoLocalGrid g)
+        private void SetInfoHidden(InfoLocalGrid g)
         {
             g.PlayerName = "";
             g.Txt_PlayerName.text = "";
