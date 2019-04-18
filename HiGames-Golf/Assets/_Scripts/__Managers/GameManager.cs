@@ -32,6 +32,9 @@ namespace Assets.Managers
 
             GetManagers();
 
+            MapManager.Instance.Init();
+            UiManager.Instance.Init();
+
             //Create FirstPlayer
             Players = new List<Player>();
             CreatePlayer();

@@ -21,6 +21,7 @@ public class Map : MonoBehaviour
     public int MedalBronze;
     public GameType _GameType;
     public PersonalBest PB;
+    [HideInInspector] public Display Display;
 
     public GameObject Prefab;
     [HideInInspector] public GameObject SpawnedPrefab;

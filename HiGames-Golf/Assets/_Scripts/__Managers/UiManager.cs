@@ -85,7 +85,6 @@ public class UiManager : Singleton<UiManager>
     public InfoCompletedMap UI_CompletedMap;
     public List<InfoLocalScoreboard> UI_LocalScoreboard;
 
-    public GameObject UI;
     public GameObject GO_InGame;
     public GameObject GO_MapSelector;
     public GameObject Go_MapDisplay;
@@ -114,7 +113,7 @@ public class UiManager : Singleton<UiManager>
     public bool detectSwipeOnlyAfterRelease = true;
     private Action ActUpdate;
 
-    private void Start()
+    public void Init()
     {
         float height = canvas.GetComponent<RectTransform>().sizeDelta.y;
         TOP_POSITION = +height;
@@ -192,15 +191,22 @@ public class UiManager : Singleton<UiManager>
     public void CloseInterface_MapSelector()
     {
         GameManager.Instance.TimeScaleResume();
-        //TODO: DDESTROY ALL REMAINING CHAPTERS
-        MS_Destroy_Chapter(1);
+        //TODO: DESTROY ALL REMAINING CHAPTERS
+        int curr = MapManager.Instance.CurrentChapterNumber;
+
+        MS_Destroy_Chapter(curr - 1);
+        MS_Destroy_Chapter(curr + 0);
+        MS_Destroy_Chapter(curr + 1);
+
         if (GameManager.Instance.CurrentMap != MapManager.Instance.Menu)
         {
             GameManager.Instance.SetupMenuMap();
         }
         else GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition();
+
         GO_MapSelector = UiManager.Instance.GO_MapSelector; //Necessario caso contrario dá um erro que me fez questionar a minha religião
         GO_MapSelector.SetActive(false);
+
         ActUpdate -= MS_DetectSwipe;
     }
     public void CloseInterface_LocalMultiplayer()
@@ -222,14 +228,22 @@ public class UiManager : Singleton<UiManager>
     //MS --- Map Selector
     public void MS_Init()
     {
-        MS_Display_Chapter(1, MIDDLE_POSITION);
-        MS_Display_Chapter(2, TOP_POSITION);
-        MapManager.Instance.CurrentChapterNumber = 1;
+        //Unlocks first level if necessary;
+        if (MapManager.Instance.Chapters[0].Displays[0].Locked)
+        {
+            MapManager.Instance.Chapters[0].Displays[0].Locked = false;
+        }
+        //Display Map Based on Old Location!
+        int curr = MapManager.Instance.CurrentChapterNumber;
+        MS_Display_Chapter(curr + 1, TOP_POSITION);
+        MS_Display_Chapter(curr + 0, MIDDLE_POSITION);
+        MS_Display_Chapter(curr - 1, DOWN_POSITION);
+
         ActUpdate += MS_DetectSwipe;
     }
     public void MS_Display_Chapter(int num, float pos)
     {
-        if (num <= MapManager.Instance.Chapters.Count)
+        if (num <= MapManager.Instance.Chapters.Count && num > 0)
         {
             Chapter c = MapManager.Instance.Chapters[num - 1];
             Vector2 posVec = new Vector3(0, pos);
@@ -284,7 +298,7 @@ public class UiManager : Singleton<UiManager>
     }
     public void MS_BUTTON_StartMap(GetMap gm)
     {
-        if (!isMoving)
+        if (!isMoving && !gm.map.Display.Locked)
         {
             MapManager.Instance.SelectedMap = gm.map;
             CloseInterface_MapSelector();
@@ -398,10 +412,10 @@ public class UiManager : Singleton<UiManager>
 
                 t--;
             }
-            StopAnimation();
+            MS_StopAnimation();
         }
     }
-    private void StopAnimation()
+    private void MS_StopAnimation()
     {
         ActUpdate -= MS_Animate;
         isMoving = false;
@@ -430,20 +444,20 @@ public class UiManager : Singleton<UiManager>
     {
         if (verticalMove() > SWIPE_DISTANCE && verticalMove() > horizontalValMove())
         {
-            Debug.Log("Vertical");
-            if (DownPos.y - UpPos.y > 0)
+            if (!isMoving)
             {
-                //Swipe Up
-                MS_MoveUp();
-                Debug.Log("Swipe Up");
+                if (DownPos.y - UpPos.y > 0)
+                {
+                    //Swipe Up
+                    MS_MoveUp();
+                }
+                else if (DownPos.y - UpPos.y < 0)
+                {
+                    //Swipe Down
+                    MS_MoveDown();
+                }
+                UpPos = DownPos;
             }
-            else if (DownPos.y - UpPos.y < 0)
-            {
-                //Swipe Down
-                MS_MoveDown();
-                Debug.Log("Swipe Down");
-            }
-            UpPos = DownPos;
         }
         //SIDE SWIPING - NOT USED
         ////Check if Horizontal swipe
@@ -475,9 +489,29 @@ public class UiManager : Singleton<UiManager>
     {
         return Mathf.Abs(DownPos.x - UpPos.x);
     }
-    private void FindMapSelector()
+    private void MS_UnlockNextLevel(int level)
     {
-        GO_MapSelector = UiManager.Instance.GO_MapSelector;
+        /* Ter em conta, que o curr é relativo a um index a frente do array
+         * Logo para se saber o lugar atual no array é necessario subtrair 1
+         * O mesmo se aplica ao level */
+
+        int curr = MapManager.Instance.CurrentChapterNumber;
+        Chapter c = MapManager.Instance.Chapters[curr - 1];
+
+        //If last level -> Unlock First level of next chapter
+        if(level == c.Maps.Length)
+        {
+            //Verify if next chapters is available
+            if (MapManager.Instance.Chapters[curr] != null)
+            {
+                MapManager.Instance.Chapters[curr].Displays[0].Locked = false;
+            }
+            else Debug.Log("No More Chapters");
+        }
+        else
+        {
+            c.Displays[level].Locked = false;
+        }
     }
 
     //IGH --- In Game Hud
@@ -526,6 +560,11 @@ public class UiManager : Singleton<UiManager>
         p = GameManager.Instance.CurrentPlayer;
 
         m.CheckPersonalBest();
+        if(m.PB.Strikes < m.MedalBronze)
+        {
+            MS_UnlockNextLevel(m.Display.levelNumber);
+        }
+
         //UPDATE TEXT
         //Map Medals
         UI_CompletedMap.Txt_Medal01.text = m.MedalGold.ToString();
