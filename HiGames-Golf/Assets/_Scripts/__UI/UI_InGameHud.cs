@@ -36,9 +36,9 @@ public class UI_InGameHud : MonoBehaviour
     public void Init()
     {
         m = GameManager.Instance.CurrentMap;
-        switch (GameManager.Instance._GameState)
+        switch (GameManager.Instance._GameMode)
         {
-            case GameManager.GameState.Singleplayer:
+            case GameManager.GameMode.Singleplayer:
                 UI.SetActive(true);
                 TimerStart();
                 SetCurrentPlayerInfo();
@@ -48,9 +48,9 @@ public class UI_InGameHud : MonoBehaviour
                 SetMapInfo_CurrentStrikes();
                 SetButtonRestart();
                 break;
-            case GameManager.GameState.Multiplayer:
+            case GameManager.GameMode.Multiplayer:
                 break;
-            case GameManager.GameState.Localgame:
+            case GameManager.GameMode.Localgame:
                 UI.SetActive(true);
                 TimerStart();
                 SetCurrentPlayerInfo();
@@ -116,7 +116,6 @@ public class UI_InGameHud : MonoBehaviour
     {
         UI_InGame.ResetGame.gameObject.SetActive(true);
     }
-
     private void HideMapInfo()
     {
         UI_InGame.MapInfo.text = "";

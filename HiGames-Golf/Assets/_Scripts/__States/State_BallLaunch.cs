@@ -53,7 +53,7 @@ public class State_BallLaunch : State
     }
     private void CheckBallThrow()
     {
-        if(Input.GetKey(KeyCode.Space))
+        if(Input.GetKey(KeyCode.Space) && GameManager._GameState == GameManager.GameState.Resumed)
         {
             if (Ball.RigBody.isKinematic)
             {

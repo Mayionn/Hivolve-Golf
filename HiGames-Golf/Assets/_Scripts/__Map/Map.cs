@@ -62,13 +62,6 @@ public class Map : MonoBehaviour
         }
     }
     //---
-    private void DestroyBalls()
-    {
-        foreach (Player p in GameManager.Instance.Players)
-        {
-            GameManager.Instance.PlayerBall_Destroy(p);
-        }
-    }
     private void SetupBalls()
     {
         foreach (Player p in GameManager.Instance.Players)
@@ -76,6 +69,7 @@ public class Map : MonoBehaviour
             //TODO: PROBABLY REVIEW THIS
             GameManager.Instance.PlayerBall_Destroy(p);
             GameManager.Instance.PlayerBall_Instantiate(p);
+            p.EndedMap = false;
             p.SelectedBall.Player = p;
             p.SelectedBall.StopAtPosition(true, StartingPosition.transform.position);
             p.SelectedBall.StartingPosition = StartingPosition.transform.position;

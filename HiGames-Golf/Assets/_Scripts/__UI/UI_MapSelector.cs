@@ -66,7 +66,7 @@ public class UI_MapSelector : MonoBehaviour
 
         if (GameManager.Instance.CurrentMap != MapManager.Instance.Menu)
         {
-            GameManager.Instance.SetupMenuMap();
+            GameManager.Instance.Setup_MenuMap();
         }
         else GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition(true);
 
@@ -101,7 +101,7 @@ public class UI_MapSelector : MonoBehaviour
         {
             MapManager.Instance.SelectedMap = gm.map;
             UiManager.Instance.CloseInterface_MapSelector();
-            GameManager.Instance.SetupSingleplayer();
+            GameManager.Instance.Setup_Singleplayer();
         }
     }
 

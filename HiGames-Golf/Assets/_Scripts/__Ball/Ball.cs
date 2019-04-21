@@ -31,9 +31,9 @@ public class Ball : MonoBehaviour
         }
         else if(other.tag == "Hole")
         {
-            switch (GameManager.Instance._GameState)
+            switch (GameManager.Instance._GameMode)
             {
-                case GameManager.GameState.Menu:
+                case GameManager.GameMode.Menu:
                     switch (other.name)
                     {
                         case "Hole-Singleplayer":
@@ -46,7 +46,7 @@ public class Ball : MonoBehaviour
 
                             }
                             break;
-                        case "Hole-LocalGame":
+                        case "Hole-LocalGame" :
                             {
                                 //Open LocalMultiplayer Interface
                                 Player.EndedMap = false;
@@ -58,24 +58,24 @@ public class Ball : MonoBehaviour
                             break;
                     }
                     break;
-                case GameManager.GameState.Singleplayer:
+                case GameManager.GameMode.Singleplayer:
                     {
+                        //TODO: Test remove truancteTimer();
                         Player.TruncateTimer();
                         UiManager.Instance.OpenInterface_CompletedMap();
                     }
                     break;
-                case GameManager.GameState.Multiplayer:
+                case GameManager.GameMode.Multiplayer:
                     break;
-                case GameManager.GameState.Localgame:
+                case GameManager.GameMode.Localgame:
                     {
-                        Player.EndedMap = true;
-                        //this.gameObject.GetComponent<MeshRenderer>().enabled = false;
-                        UiManager.Instance.LGS_SaveScore(Player);
-                        GameManager.Instance.NextPlayer();
-
-                        //TODO: DONT FORGET TO TURN GAMEOBJECT TO ON 
-                        //      AND DELETE OTHER PLAYERS AT THE END
-
+                        if (!Player.EndedMap) //Prevent double in hole
+                        {
+                            Player.EndedMap = true;
+                            //this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                            UiManager.Instance.Update_ScoreBoard_SaveScore(Player);
+                            GameManager.Instance.NextPlayer();
+                        }
                     }
                     break;
                 default:

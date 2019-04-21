@@ -171,7 +171,6 @@ public class MapManager : Singleton<MapManager>
 
     public Map Menu;
     public Map SelectedMap;
-    public Map LocalMap;
 
     //TriggerObjects
     public GameObject Waypoint;
@@ -188,7 +187,22 @@ public class MapManager : Singleton<MapManager>
         Chapters.Add(c);
         c = new Chapter(Chapter4, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 4, Chapter4Displays);
         Chapters.Add(c);
+    }
 
-   
+    /// <summary>
+    /// Returns a defined amount of maps;
+    /// </summary>
+    /// <param name="ammount"></param>
+    /// <returns></returns>
+    public List<Map> GetRandomMaps(int amount)
+    {
+        List<Map> lm = new List<Map>();
+        for (int i = 0; i < amount; i++)
+        {
+            int c = UnityEngine.Random.Range(0, Chapters.Count);
+            int n = UnityEngine.Random.Range(0, Chapters[c].Maps.Length);
+            lm.Add(Chapters[c].Maps[n]);
+        }
+        return lm;
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6818436173594457390}
   - component: {fileID: 3925893565709228640}
   - component: {fileID: 4027844135146354228}
+  - component: {fileID: 6582980376503463012}
   m_Layer: 0
   m_Name: _UiManager
   m_TagString: Untagged
@@ -175,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6240daeb432e0419be03450462ed13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UI: {fileID: 0}
   UI_InGame:
     MedalGold: {fileID: 0}
     MedalSilver: {fileID: 0}
@@ -192,4 +194,20 @@ MonoBehaviour:
     ResetGame: {fileID: 0}
     MapInfo: {fileID: 0}
     CurrentPlayerInfo: {fileID: 0}
+--- !u!114 &6582980376503463012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2825989124144119792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ecfdf3d7e8d0454bb1e1bd9d63e4c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   UI: {fileID: 0}
+  ReadyCheckInfo:
+    Background: {fileID: 0}
+    Image_Button: {fileID: 0}
+    Text_CurrentPlayer: {fileID: 0}

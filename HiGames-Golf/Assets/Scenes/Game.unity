@@ -1253,12 +1253,81 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1042123728629563595}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 287390453}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ef207f065e76624dafaf01d2bf85308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &287390453 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1042123728898490211, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+    type: 3}
+  m_PrefabInstance: {fileID: 1042123728629563595}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &287390454 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8222097263634083063, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+    type: 3}
+  m_PrefabInstance: {fileID: 1042123728629563595}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287390453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ecfdf3d7e8d0454bb1e1bd9d63e4c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &287390458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287390453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb4fd09bbc309b499d93ae16e9f1bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 9152770746508948713}
+  MapCounter: {fileID: 8740646501798496365}
+  UI_Scoreboard:
+  - PlayerName: {fileID: 9056356665131406667}
+    PlayerNumber: {fileID: 262606282939028683}
+    PlayerIndexNumber: {fileID: 4030140545265058639}
+    PlayerTimer: {fileID: 6071861731770785116}
+    ImgTimer: {fileID: 670945058704624350}
+    PlayerStrikes: {fileID: 8266857870696948516}
+    ImgStrikes: {fileID: 5592355490423823498}
+    TotalPoints: {fileID: 3178897830440357612}
+    Medal: {fileID: 5653508479667350621}
+  - PlayerName: {fileID: 4876055495371673396}
+    PlayerNumber: {fileID: 1300382550007115799}
+    PlayerIndexNumber: {fileID: 8249195352048393447}
+    PlayerTimer: {fileID: 4805738874309309554}
+    ImgTimer: {fileID: 8302882533073732605}
+    PlayerStrikes: {fileID: 6422247475731919160}
+    ImgStrikes: {fileID: 6781128940102905786}
+    TotalPoints: {fileID: 2240268021832410428}
+    Medal: {fileID: 5602050826267637403}
+  - PlayerName: {fileID: 8420940775890259793}
+    PlayerNumber: {fileID: 8187586233879849303}
+    PlayerIndexNumber: {fileID: 5729917224718256423}
+    PlayerTimer: {fileID: 5548192813658956046}
+    ImgTimer: {fileID: 6907219095698444878}
+    PlayerStrikes: {fileID: 2358232979406635881}
+    ImgStrikes: {fileID: 8638981017492873454}
+    TotalPoints: {fileID: 782279793329151834}
+    Medal: {fileID: 1432544599725908163}
+  - PlayerName: {fileID: 7679995939353444060}
+    PlayerNumber: {fileID: 1909946761444819340}
+    PlayerIndexNumber: {fileID: 5972766836983286635}
+    PlayerTimer: {fileID: 898646942402246353}
+    ImgTimer: {fileID: 8158108602706149798}
+    PlayerStrikes: {fileID: 6764837371465741992}
+    ImgStrikes: {fileID: 8141546866237480668}
+    TotalPoints: {fileID: 4243993504024954315}
+    Medal: {fileID: 2235309314944396976}
 --- !u!1 &315808158
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,7 +2515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 63.30005}
+  m_AnchoredPosition: {x: 0, y: 63}
   m_SizeDelta: {x: 800, y: 276.7}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &797996363
@@ -2576,7 +2645,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1042123728629563595}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 287390453}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5647e0f17c513e4eba60b9ffd99930c, type: 3}
@@ -3058,7 +3127,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -146.6}
+  m_AnchoredPosition: {x: 0, y: -147}
   m_SizeDelta: {x: 0, y: -1028.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1143545228
@@ -5447,7 +5516,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1943802097}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 287390454}
+        m_MethodName: Button_Ready
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1943802097
@@ -6580,161 +6660,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_InGame.MedalGold
-      value: 
-      objectReference: {fileID: 1439346690}
-    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_InGame.MedalSilver
-      value: 
-      objectReference: {fileID: 103115601}
-    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_InGame.MedalBronze
-      value: 
-      objectReference: {fileID: 1711930584}
-    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_InGame.ImgMedalGold
-      value: 
-      objectReference: {fileID: 1227085257}
-    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_InGame.ImgMedalSilver
-      value: 
-      objectReference: {fileID: 36184962}
-    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_InGame.ImgMedalBronze
-      value: 
-      objectReference: {fileID: 1723812667}
-    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_InGame.CurrentTime
-      value: 
-      objectReference: {fileID: 876534430}
-    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_InGame.CurrentStrikes
-      value: 
-      objectReference: {fileID: 1747691388}
-    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_InGame.ImgCurrentStrikes
-      value: 
-      objectReference: {fileID: 80337471}
-    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_InGame.Waypoint
-      value: 
-      objectReference: {fileID: 130775983}
-    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_InGame.ImgWaypoint
-      value: 
-      objectReference: {fileID: 1703572364}
-    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_InGame.ResetGame
-      value: 
-      objectReference: {fileID: 1078973259}
-    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_InGame.MapInfo
-      value: 
-      objectReference: {fileID: 1417000557}
-    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_InGame.CurrentPlayerInfo
-      value: 
-      objectReference: {fileID: 1326118098}
-    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+    - target: {fileID: 8222097263634083063, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
       propertyPath: UI
       value: 
-      objectReference: {fileID: 779205435}
-    - target: {fileID: 2250149747267656435, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+      objectReference: {fileID: 166553804}
+    - target: {fileID: 8222097263634083063, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
-      propertyPath: UI
+      propertyPath: ReadyCheckInfo.Background
       value: 
-      objectReference: {fileID: 4713082690800105988}
-    - target: {fileID: 2250149747267656435, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+      objectReference: {fileID: 1143545228}
+    - target: {fileID: 8222097263634083063, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
-      propertyPath: canvas
+      propertyPath: ReadyCheckInfo.Image_Button
       value: 
-      objectReference: {fileID: 1218133066}
-    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+      objectReference: {fileID: 1943802097}
+    - target: {fileID: 8222097263634083063, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
-      propertyPath: UI
+      propertyPath: ReadyCheckInfo.Text_CurrentPlayer
       value: 
-      objectReference: {fileID: 2079387302}
-    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: GridInfos.Array.data[0].Image
-      value: 
-      objectReference: {fileID: 787218882}
-    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: GridInfos.Array.data[0].Txt_PlayerNum
-      value: 
-      objectReference: {fileID: 1658780195}
-    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: GridInfos.Array.data[0].Txt_PlayerName
-      value: 
-      objectReference: {fileID: 2114403344}
-    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: GridInfos.Array.data[1].Image
-      value: 
-      objectReference: {fileID: 1523258954}
-    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: GridInfos.Array.data[1].Txt_PlayerNum
-      value: 
-      objectReference: {fileID: 1706826059}
-    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: GridInfos.Array.data[1].Txt_PlayerName
-      value: 
-      objectReference: {fileID: 411720449}
-    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: GridInfos.Array.data[2].Image
-      value: 
-      objectReference: {fileID: 1902815678}
-    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: GridInfos.Array.data[2].Txt_PlayerNum
-      value: 
-      objectReference: {fileID: 414009289}
-    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: GridInfos.Array.data[2].Txt_PlayerName
-      value: 
-      objectReference: {fileID: 770717098}
-    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: GridInfos.Array.data[3].Image
-      value: 
-      objectReference: {fileID: 512000654}
-    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: GridInfos.Array.data[3].Txt_PlayerNum
-      value: 
-      objectReference: {fileID: 130121550}
-    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: GridInfos.Array.data[3].Txt_PlayerName
-      value: 
-      objectReference: {fileID: 1823904199}
-    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: CurrentNumberText
-      value: 
-      objectReference: {fileID: 1393855035}
+      objectReference: {fileID: 797996363}
     - target: {fileID: 1042123729047603269, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
       propertyPath: m_Name
@@ -7090,6 +7035,161 @@ PrefabInstance:
       propertyPath: UI
       value: 
       objectReference: {fileID: 1218133063}
+    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 2079387302}
+    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: GridInfos.Array.data[0].Image
+      value: 
+      objectReference: {fileID: 787218882}
+    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: GridInfos.Array.data[0].Txt_PlayerNum
+      value: 
+      objectReference: {fileID: 1658780195}
+    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: GridInfos.Array.data[0].Txt_PlayerName
+      value: 
+      objectReference: {fileID: 2114403344}
+    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: GridInfos.Array.data[1].Image
+      value: 
+      objectReference: {fileID: 1523258954}
+    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: GridInfos.Array.data[1].Txt_PlayerNum
+      value: 
+      objectReference: {fileID: 1706826059}
+    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: GridInfos.Array.data[1].Txt_PlayerName
+      value: 
+      objectReference: {fileID: 411720449}
+    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: GridInfos.Array.data[2].Image
+      value: 
+      objectReference: {fileID: 1902815678}
+    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: GridInfos.Array.data[2].Txt_PlayerNum
+      value: 
+      objectReference: {fileID: 414009289}
+    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: GridInfos.Array.data[2].Txt_PlayerName
+      value: 
+      objectReference: {fileID: 770717098}
+    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: GridInfos.Array.data[3].Image
+      value: 
+      objectReference: {fileID: 512000654}
+    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: GridInfos.Array.data[3].Txt_PlayerNum
+      value: 
+      objectReference: {fileID: 130121550}
+    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: GridInfos.Array.data[3].Txt_PlayerName
+      value: 
+      objectReference: {fileID: 1823904199}
+    - target: {fileID: 8637415572117697981, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: CurrentNumberText
+      value: 
+      objectReference: {fileID: 1393855035}
+    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_InGame.MedalGold
+      value: 
+      objectReference: {fileID: 1439346690}
+    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_InGame.MedalSilver
+      value: 
+      objectReference: {fileID: 103115601}
+    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_InGame.MedalBronze
+      value: 
+      objectReference: {fileID: 1711930584}
+    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_InGame.ImgMedalGold
+      value: 
+      objectReference: {fileID: 1227085257}
+    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_InGame.ImgMedalSilver
+      value: 
+      objectReference: {fileID: 36184962}
+    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_InGame.ImgMedalBronze
+      value: 
+      objectReference: {fileID: 1723812667}
+    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_InGame.CurrentTime
+      value: 
+      objectReference: {fileID: 876534430}
+    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_InGame.CurrentStrikes
+      value: 
+      objectReference: {fileID: 1747691388}
+    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_InGame.ImgCurrentStrikes
+      value: 
+      objectReference: {fileID: 80337471}
+    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_InGame.Waypoint
+      value: 
+      objectReference: {fileID: 130775983}
+    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_InGame.ImgWaypoint
+      value: 
+      objectReference: {fileID: 1703572364}
+    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_InGame.ResetGame
+      value: 
+      objectReference: {fileID: 1078973259}
+    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_InGame.MapInfo
+      value: 
+      objectReference: {fileID: 1417000557}
+    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_InGame.CurrentPlayerInfo
+      value: 
+      objectReference: {fileID: 1326118098}
+    - target: {fileID: 2208020313001440935, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 779205435}
+    - target: {fileID: 2250149747267656435, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 4713082690800105988}
+    - target: {fileID: 2250149747267656435, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1218133066}
     - target: {fileID: 5362016092707791814, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
       propertyPath: step
@@ -9198,8 +9298,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ButtonStart
+      - m_Target: {fileID: 421251215}
+        m_MethodName: Button_LocalGame_NextMap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

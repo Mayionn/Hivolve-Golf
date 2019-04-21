@@ -59,6 +59,9 @@ public class Player
         Strikes = 0;
         Timer = 0;
         WaypointCounter = 0;
+    }
+    public void ResetLocalMultiplayerScore()
+    {
         LocalgamePoints = 0;
     }
 }

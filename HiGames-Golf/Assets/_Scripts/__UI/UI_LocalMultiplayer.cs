@@ -29,6 +29,7 @@ namespace Assets.UI
 
         public void Init()
         {
+            UI.SetActive(true);
             currentNumber = 1;
             CreatePlayers(1);
         }
@@ -37,8 +38,8 @@ namespace Assets.UI
         {
             UiManager.Instance.CloseInterface_LocalMultiplayer();
             UiManager.Instance.OpenInterface_InGameHud();
-            UiManager.Instance.LGS_Init();
-            GameManager.Instance.SetupLocalMultiplayer();
+            UiManager.Instance.Update_ScoreBoard_Rows();
+            GameManager.Instance.Setup_LocalMultiplayer();
         }
         public void ButtonBack()
         {

@@ -17,18 +17,15 @@ public class State_BallMoving : State
             {
                 case Map.GameType.Menu:
                     Ball.GoStartingPosition(true);
-                    //Save this position as last position
                     break;
                 case Map.GameType.OneShot:
                     Ball.GoStartingPosition(true);
-                    //UpdateCounter
                     break;
                 case Map.GameType.Waypoint:
                     Ball.GoLastPosition(true);
                     break;
                 case Map.GameType.FreeForm:
                     Ball.SaveLastPosition();
-                    //save this as last position
                     break;
                 default:
                     break;
@@ -39,7 +36,7 @@ public class State_BallMoving : State
 
     public override void LeaveState(State state)
     {
-        if(GameManager.Instance._GameState == GameManager.GameState.Localgame)
+        if(GameManager.Instance._GameMode == GameManager.GameMode.Localgame)
         {
             GameManager.Instance.NextPlayer();
         }

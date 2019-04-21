@@ -24,11 +24,7 @@ public class UiManager : Singleton<UiManager>
     {
         public Sprite DefaultBackground;
     }
-    [Serializable] public struct UILocalReadyCheck
-    {
-        public Sprite Background;
-        public Sprite Sprite_Button;
-    }
+   
     [Serializable] public struct InfoCompletedMap
     {
         public GameObject Go;
@@ -59,13 +55,12 @@ public class UiManager : Singleton<UiManager>
     public UIImages UI_Images;
     public UIBackgroundImages UI_BackgroundImages;
     public InfoCompletedMap UI_CompletedMap;
-    public List<InfoLocalScoreboard> UI_LocalScoreboard;
-
-    public GameObject GO_LocalScoreboard;
 
     private UI_LocalMultiplayer UI_LocalMultiplayer;
     private UI_MapSelector UI_MapSelector;
     private UI_InGameHud UI_InGameHud;
+    private UI_ReadyCheck UI_ReadyCheck;
+    private UI_LocalScoreboard UI_LocalScoreboard;
     
     //CurrentMap and Player
     private Map m;
@@ -76,6 +71,8 @@ public class UiManager : Singleton<UiManager>
         UI_LocalMultiplayer = GetComponent<UI_LocalMultiplayer>();
         UI_MapSelector = GetComponent<UI_MapSelector>();
         UI_InGameHud = GetComponent<UI_InGameHud>();
+        UI_ReadyCheck = GetComponent<UI_ReadyCheck>();
+        UI_LocalScoreboard = GetComponent<UI_LocalScoreboard>();
     }
 
     //Open / Close --- Interface
@@ -83,9 +80,10 @@ public class UiManager : Singleton<UiManager>
     {
         UI_InGameHud.Init();
     }
-    public void OpenIngerface_InGameReadyCheck()
+    public void OpenInterface_InGameReadyCheck()
     {
-
+        GameManager.Instance.TimeScaleStop();
+        UI_ReadyCheck.Init();
     }
     public void OpenInterface_MapSelector()
     {
@@ -93,31 +91,32 @@ public class UiManager : Singleton<UiManager>
         UI_MapSelector.UI.SetActive(true);
         UI_MapSelector.Init();
     }
-    public void OpenInterface_LocalMultiplayer()
-    {
-        GameManager.Instance.TimeScaleStop();
-        UI_LocalMultiplayer.UI.SetActive(true);
-        UI_LocalMultiplayer.Init();
-    }
     public void OpenInterface_CompletedMap()
     {
         GameManager.Instance.TimeScaleStop();
         CloseInterface_InGameHud();
-        UI_CompletedMap.Go.SetActive(true);
         CM_Init();
+    }
+    public void OpenInterface_LocalMultiplayer()
+    {
+        GameManager.Instance.TimeScaleStop();
+        UI_LocalMultiplayer.Init();
     }
     public void OpenInterface_LocalScoreboard()
     {
         GameManager.Instance.TimeScaleStop();
         CloseInterface_InGameHud();
-        LGS_CheckBestPlayerOnMap();
-        LGS_GivePlayersScores();
-        GO_LocalScoreboard.SetActive(true);
+        UI_LocalScoreboard.Init();
     }
 
     public void CloseInterface_InGameHud()
     {
         UI_InGameHud.CloseInterface();
+    }
+    public void CloseInterface_InGameReadyCheck()
+    {
+        GameManager.Instance.TimeScaleResume();
+        UI_ReadyCheck.Terminate();
     }
     public void CloseInterface_MapSelector()
     {
@@ -126,25 +125,27 @@ public class UiManager : Singleton<UiManager>
         //UI_MapSelector.UI = UiManager.Instance.GO_MapSelector; //Necessario caso contrario dá um erro que me fez questionar a minha religião
         UI_MapSelector.UI.SetActive(false);
     }
-    public void CloseInterface_LocalMultiplayer()
-    {
-        GameManager.Instance.TimeScaleResume();
-        UI_LocalMultiplayer.UI.SetActive(false);
-    }
     public void CloseInterface_CompletedMap()
     {
         GameManager.Instance.TimeScaleResume();
         UI_CompletedMap.Go.SetActive(false);
     }
+    public void CloseInterface_LocalMultiplayer()
+    {
+        GameManager.Instance.TimeScaleResume();
+        UI_LocalMultiplayer.UI.SetActive(false);
+    }
     public void CloseInterface_LocalScoreboard()
     {
         GameManager.Instance.TimeScaleResume();
-        GO_LocalScoreboard.SetActive(false);
+        UI_LocalScoreboard.Terminate();
     }
 
     //CM --- Completed Map
     private void CM_Init()
     {
+        UI_CompletedMap.Go.SetActive(true);
+
         m = GameManager.Instance.CurrentMap;
         p = GameManager.Instance.CurrentPlayer;
 
@@ -214,132 +215,15 @@ public class UiManager : Singleton<UiManager>
         }
     }
 
-    //LGS --- Local Game Scoreboard
-    public void LGS_Init()
-    {
-        LGS_SetImages();
-        LGS_HideRows();
-
-
-    }
-    public void LGS_BUTTON_Menu()
-    {
-        CloseInterface_LocalScoreboard();
-
-        GameManager.Instance.RemoveLocalgamePlayers();
-
-        GameManager.Instance.SetupMenuMap();
-    }
-    public void LGS_SaveScore(Player p)
-    {
-        InfoLocalScoreboard i = UI_LocalScoreboard[p.PlayerNum];
-        i.PlayerName.text = p.Name;
-        i.PlayerNumber.text = "Player: " + p.PlayerNum.ToString();
-        i.PlayerIndexNumber.text = p.PlayerNum.ToString();
-        i.PlayerStrikes.text = p.Strikes.ToString();
-        p.TruncateTimer();
-        i.PlayerTimer.text = p.Timer.ToString();
-        i.TotalPoints.text = p.LocalgamePoints.ToString();
-    }
-    private void LGS_SetImages()
-    {
-        for (int i = 0; i < UI_LocalScoreboard.Count; i++)
-        {
-            LGS_ChangeImages(UI_LocalScoreboard[i]);
-        }
-    }
-    private void LGS_HideRows()
-    {
-        for (int i = 0; i < UI_LocalScoreboard.Count; i++)
-        {
-            if (i >= GameManager.Instance.Players.Count)
-            {
-                LGS_Hide(UI_LocalScoreboard[i]);
-            }
-        }
-    }
-    private void LGS_ChangeImages(InfoLocalScoreboard i)
-    {
-        i.ImgTimer.sprite = UI_Images.StopWatch;
-        i.ImgStrikes.sprite = UI_Images.Strikes;
-    }
-    private void LGS_Hide(InfoLocalScoreboard i)
-    {
-        i.PlayerName.text = "";
-        i.PlayerNumber.text = "";
-        i.PlayerTimer.text = "";
-        i.ImgTimer.sprite = UI_Images.Hidden;
-        i.PlayerStrikes.text = "";
-        i.ImgStrikes.sprite = UI_Images.Hidden;
-        i.TotalPoints.text = "";
-        i.Medal.sprite = UI_Images.Hidden;
-    }
-    private void LGS_CheckBestPlayerOnMap()
-    {
-        //int count = GameManager.Instance.Players.Count;
-        //List<InfoLocalScoreboard> li = new List<InfoLocalScoreboard>(count);
-        //for (int i = 0; i < count; i++)
-        //{
-        //    li[i] = UI_LocalScoreboard[i];
-        //}
-
-        UI_LocalScoreboard.Sort(
-            delegate (InfoLocalScoreboard p1, InfoLocalScoreboard p2)
-            {
-                if (p1.PlayerTimer.text != "" && p2.PlayerTimer.text != "")
-                {
-                    int compareStrikes = p1.PlayerStrikes.text.CompareTo(p2.PlayerStrikes.text);
-                    if (compareStrikes == 0)
-                    {
-                        return p1.PlayerTimer.text.CompareTo(p2.PlayerTimer.text);
-                    }
-                    return compareStrikes;
-                }
-                else return 1;
-            }
-        );
-    }
-    private void LGS_GivePlayersScores()
-    {
-        /* Changes the medal icon on the scoreboard depending on the performance of the player on the current map;
-         * Also adds points to the players depending on their position;
-         * Follows the order of the players --- this happens after ordering the list by numberOfStrikes; */
-
-        for (int i = 0; i < GameManager.Instance.Players.Count; i++)
-        {
-            int stPlace = 4;
-            int ndPlace = 3;
-            int rdPlace = 2;
-            int thPlace = 1;
-            if (UI_LocalScoreboard[i].PlayerTimer.text != "")
-            {
-                switch (i)
-                {
-                    case 0:
-                        LGS_SetScore(UI_LocalScoreboard[i], UI_Images.GoldMedal, stPlace);
-                        break;
-                    case 1:
-                        LGS_SetScore(UI_LocalScoreboard[i], UI_Images.SilverMedal, ndPlace);
-                        break;
-                    case 2:
-                        LGS_SetScore(UI_LocalScoreboard[i], UI_Images.BronzeMedal, rdPlace);
-                        break;
-                    default:
-                        LGS_SetScore(UI_LocalScoreboard[i], UI_Images.Hidden, thPlace);
-                        break;
-                }
-            }
-        }
-    }
-    private void LGS_SetScore(InfoLocalScoreboard i, Sprite s, int p)
-    {
-        Player lp = GameManager.Instance.Players[int.Parse(i.PlayerIndexNumber.text)];
-        i.TotalPoints.text = lp.LocalgamePoints.ToString() + " + " + p;
-        lp.LocalgamePoints += p;
-        i.Medal.sprite = s;
-    }
-
     //Update Info Methods
+    public void Update_ScoreBoard_Rows()
+    {
+        UI_LocalScoreboard.SetupRows();
+    }
+    public void Update_ScoreBoard_SaveScore(Player player)
+    {
+        UI_LocalScoreboard.SaveScore(player);
+    }
     public void UpdateCurrentPlayerName()
     {
         UI_InGameHud.SetCurrentPlayerInfo();
