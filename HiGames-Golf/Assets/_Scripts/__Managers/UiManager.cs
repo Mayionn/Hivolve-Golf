@@ -24,7 +24,6 @@ public class UiManager : Singleton<UiManager>
     {
         public Sprite DefaultBackground;
     }
-   
     [Serializable] public struct InfoCompletedMap
     {
         public GameObject Go;
@@ -108,6 +107,11 @@ public class UiManager : Singleton<UiManager>
         CloseInterface_InGameHud();
         UI_LocalScoreboard.Init();
     }
+    public void OpenInterface_LocalResults()
+    {
+        GameManager.Instance.TimeScaleStop();
+        UI_LocalScoreboard.Init_Results();
+    }
 
     public void CloseInterface_InGameHud()
     {
@@ -139,6 +143,11 @@ public class UiManager : Singleton<UiManager>
     {
         GameManager.Instance.TimeScaleResume();
         UI_LocalScoreboard.Terminate();
+    }
+    public void CloseInterface_LocalResults()
+    {
+        GameManager.Instance.TimeScaleResume();
+        UI_LocalScoreboard.Terminate_Results();
     }
 
     //CM --- Completed Map
@@ -222,7 +231,7 @@ public class UiManager : Singleton<UiManager>
     }
     public void Update_ScoreBoard_SaveScore(Player player)
     {
-        UI_LocalScoreboard.SaveScore(player);
+        UI_LocalScoreboard.Setup_Score(player);
     }
     public void UpdateCurrentPlayerName()
     {

@@ -115,13 +115,7 @@ namespace Assets.Managers
         }
         private void RemoveAllPlayers()
         {
-            foreach (Player player in Players)
-            {
-                if (player.PlayerNum == 0) CurrentPlayer = player;
-            }
-            State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
-            State_BallMoving.Ball = CurrentPlayer.SelectedBall;
-
+            Players[0] = CurrentPlayer;
             while (Players.Count != 1)
             {
                 RemovePlayer();
@@ -142,28 +136,36 @@ namespace Assets.Managers
         //Local MultiPlayer Game
         public void Destroy_LocalGame_Players()
         {
+            foreach (Player player in Players)
+            {
+                if (player.PlayerNum == 0) CurrentPlayer = player;
+            }
+            State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
+            State_BallMoving.Ball = CurrentPlayer.SelectedBall;
+
             PlayerBall_DestroyAllExtraBalls();
             RemoveAllPlayers();
 
+            MapIndex = 0;
             CurrentPlayer.ResetScore();
         }
         public void Button_LocalGame_NextMap()
         {
             MapIndex++;
-            if(MapIndex < LocalMultiplayerMaps.Count)
+            UiManager.Instance.CloseInterface_LocalScoreboard();
+            if (MapIndex < LocalMultiplayerMaps.Count)
             {
                 MapManager.Instance.SelectedMap = LocalMultiplayerMaps[MapIndex];
-                UiManager.Instance.CloseInterface_LocalScoreboard();
                 Create_SelectedMap();
             }
             else
             {
-                Debug.Log("Rip - No more maps");
+                UiManager.Instance.OpenInterface_LocalResults();
             }
         }
         private void Setup_LocalGame_Maps()
         {
-            LocalMultiplayerMaps = MapManager.Instance.GetRandomMaps(5);
+            LocalMultiplayerMaps = MapManager.Instance.GetRandomMaps(2);
         }
         private void Create_LocalGame_PlayerOrder()
         {
