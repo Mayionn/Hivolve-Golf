@@ -10,7 +10,6 @@ public class UI_MapSelector : MonoBehaviour
     //---Variable
     public GameObject UI;
     public GameObject DisplayPrefab;
-    private Action ActUpdate;
 
     public Canvas canvas;
     private float TOP_POSITION;
@@ -34,11 +33,6 @@ public class UI_MapSelector : MonoBehaviour
         DOWN_POSITION = -height;
     }
 
-    private void Update()
-    {
-        ActUpdate?.Invoke();
-    }
-
     //MS --- Map Selector
     public void Init()
     {
@@ -53,11 +47,11 @@ public class UI_MapSelector : MonoBehaviour
         Chapter_Display(curr + 0, MIDDLE_POSITION);
         Chapter_Display(curr - 1, DOWN_POSITION);
 
-        ActUpdate += DetectSwipe;
+        GameManager.Instance.ActUpdate += DetectSwipe;
     }
-    public void CloseInterface()
+    public void Terminate()
     {
-        //TODO: DESTROY ALL REMAINING CHAPTERS
+        UI.SetActive(false);
         int curr = MapManager.Instance.CurrentChapterNumber;
 
         Chapter_Destroy(curr - 1);
@@ -70,8 +64,9 @@ public class UI_MapSelector : MonoBehaviour
         }
         else GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition(true);
 
-        ActUpdate -= DetectSwipe;
+        GameManager.Instance.ActUpdate -= DetectSwipe;
     }
+
     public void UnlockNextLevel(int level)
     {
         /* Ter em conta, que o curr é relativo a um index a frente do array
@@ -177,7 +172,7 @@ public class UI_MapSelector : MonoBehaviour
             SetupUpAnimation();
             MapManager.Instance.CurrentChapterNumber--;
 
-            ActUpdate += Animate;
+            GameManager.Instance.ActUpdate += Animate;
         }
     }
     private void MoveDown()
@@ -198,7 +193,7 @@ public class UI_MapSelector : MonoBehaviour
             SetupDownAnimation();
             MapManager.Instance.CurrentChapterNumber++;
 
-            ActUpdate += Animate;
+            GameManager.Instance.ActUpdate += Animate;
         }
         else if (chapterNum > numberOfChapters) Debug.Log("Something went wrong, current chapter above number of chapters");
     }
@@ -270,7 +265,7 @@ public class UI_MapSelector : MonoBehaviour
 
                 t--;
             }
-            ActUpdate -= Animate;
+            GameManager.Instance.ActUpdate -= Animate;
             isMoving = false;
         }
     }

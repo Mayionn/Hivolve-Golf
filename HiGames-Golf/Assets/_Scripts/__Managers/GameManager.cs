@@ -36,6 +36,7 @@ namespace Assets.Managers
         public Action ActUpdate;
         public State CurrentState;
 
+
         //Base Methods
         void Start()
         {
@@ -57,6 +58,8 @@ namespace Assets.Managers
 
             Create_StateMachine();
             Create_Menu();
+
+            UiManager.Instance.OpenInterface_MapSelector();
 
             CameraManager.Init();
         }
@@ -163,9 +166,9 @@ namespace Assets.Managers
                 UiManager.Instance.OpenInterface_LocalResults();
             }
         }
-        private void Setup_LocalGame_Maps()
+        private void Setup_LocalGame_Maps(int mapCount)
         {
-            LocalMultiplayerMaps = MapManager.Instance.GetRandomMaps(2);
+            LocalMultiplayerMaps = MapManager.Instance.GetRandomMaps(mapCount);
         }
         private void Create_LocalGame_PlayerOrder()
         {
@@ -213,7 +216,7 @@ namespace Assets.Managers
             _GameMode = GameMode.Singleplayer;
             Create_SelectedMap();
         }
-        public void Setup_LocalMultiplayer()
+        public void Setup_LocalMultiplayer(int mapCount)
         {
             _GameMode = GameMode.Localgame;
 
@@ -223,11 +226,10 @@ namespace Assets.Managers
             }
 
             Create_LocalGame_PlayerOrder();
-            Setup_LocalGame_Maps();
+            Setup_LocalGame_Maps(mapCount);
 
             Create_LocalMultiplayer();
         }
-
         private void Create_Menu()
         {
             Destroy_CurrentMap();
@@ -283,7 +285,8 @@ namespace Assets.Managers
                 }
             }
         }
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+        //ResetGame
         public void ResetGame()
         {
             CurrentPlayer.SelectedBall.LastPosition = CurrentPlayer.SelectedBall.StartingPosition;
@@ -293,6 +296,7 @@ namespace Assets.Managers
             UiManager.Instance.UpdateMapInfoCurrentStrikes();
             UiManager.Instance.UpdateMapInfoWaypoints();
         }
+
         //Timescale Methods
         public void TimeScaleStop()
         {

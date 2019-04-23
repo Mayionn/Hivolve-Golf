@@ -30,6 +30,7 @@ public class Map : MonoBehaviour
     public Transform[] WaypointsPosition;
     [HideInInspector] public GameObject[] Waypoints;
 
+
     public void StartMap()
     {
         //Instantiate Map
@@ -39,6 +40,7 @@ public class Map : MonoBehaviour
         //SetUp Ball
         SetupBalls();
         GameManager.Instance.ChoosePlayer(0);
+        Setup_MapMechanics_Pushers();
         //Prepare Waypoints
         SetupWaypoints();
         HideWaypointPositions();
@@ -74,6 +76,21 @@ public class Map : MonoBehaviour
             p.SelectedBall.StopAtPosition(true, StartingPosition.transform.position);
             p.SelectedBall.StartingPosition = StartingPosition.transform.position;
             p.SelectedBall.LastPosition = StartingPosition.transform.position;
+        }
+    }
+    private void Setup_MapMechanics_Pushers()
+    {
+        if(transform.Find("Pushers") != null)
+        {
+            MapMechanic_Pusher[] pushers = transform.Find("Pushers").GetComponentsInChildren<MapMechanic_Pusher>();
+
+            for (int i = 0; i < pushers.Length; i++)
+            {
+                MapMechanic_Pusher mm;
+                mm = Instantiate(pushers[i]);
+                mm.transform.name = "Pusher " + (i + 1); 
+                mm.Init();
+            }
         }
     }
     //---

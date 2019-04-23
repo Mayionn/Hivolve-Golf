@@ -37,34 +37,18 @@ public class UiManager : Singleton<UiManager>
         public Image Img_PBStrikes;
         public Image Img_CurrStrikes;
     }
-    [Serializable] public struct InfoLocalScoreboard
-    {
-        public Text PlayerName;
-        public Text PlayerNumber;
-        public Text PlayerIndexNumber;
-        public Text PlayerTimer;
-        public Image ImgTimer;
-        public Text PlayerStrikes;
-        public Image ImgStrikes;
-        public Text TotalPoints;
-        public Image Medal;
-    }
     
     //Struct Variables
     public UIImages UI_Images;
     public UIBackgroundImages UI_BackgroundImages;
-    public InfoCompletedMap UI_CompletedMap;
 
     private UI_LocalMultiplayer UI_LocalMultiplayer;
     private UI_MapSelector UI_MapSelector;
     private UI_InGameHud UI_InGameHud;
     private UI_ReadyCheck UI_ReadyCheck;
     private UI_LocalScoreboard UI_LocalScoreboard;
+    private UI_CompletedMap UI_CompletedMap;
     
-    //CurrentMap and Player
-    private Map m;
-    private Player p;
-
     public void Init()
     {
         UI_LocalMultiplayer = GetComponent<UI_LocalMultiplayer>();
@@ -72,6 +56,7 @@ public class UiManager : Singleton<UiManager>
         UI_InGameHud = GetComponent<UI_InGameHud>();
         UI_ReadyCheck = GetComponent<UI_ReadyCheck>();
         UI_LocalScoreboard = GetComponent<UI_LocalScoreboard>();
+        UI_CompletedMap = GetComponent<UI_CompletedMap>();
     }
 
     //Open / Close --- Interface
@@ -94,7 +79,7 @@ public class UiManager : Singleton<UiManager>
     {
         GameManager.Instance.TimeScaleStop();
         CloseInterface_InGameHud();
-        CM_Init();
+        UI_CompletedMap.Init();
     }
     public void OpenInterface_LocalMultiplayer()
     {
@@ -125,14 +110,12 @@ public class UiManager : Singleton<UiManager>
     public void CloseInterface_MapSelector()
     {
         GameManager.Instance.TimeScaleResume();
-        UI_MapSelector.CloseInterface();
-        //UI_MapSelector.UI = UiManager.Instance.GO_MapSelector; //Necessario caso contrario dá um erro que me fez questionar a minha religião
-        UI_MapSelector.UI.SetActive(false);
+        UI_MapSelector.Terminate();
     }
     public void CloseInterface_CompletedMap()
     {
         GameManager.Instance.TimeScaleResume();
-        UI_CompletedMap.Go.SetActive(false);
+        UI_CompletedMap.Terminate();
     }
     public void CloseInterface_LocalMultiplayer()
     {
@@ -150,80 +133,6 @@ public class UiManager : Singleton<UiManager>
         UI_LocalScoreboard.Terminate_Results();
     }
 
-    //CM --- Completed Map
-    private void CM_Init()
-    {
-        UI_CompletedMap.Go.SetActive(true);
-
-        m = GameManager.Instance.CurrentMap;
-        p = GameManager.Instance.CurrentPlayer;
-
-        m.CheckPersonalBest();
-        if(m.PB.Strikes < m.MedalBronze)
-        {
-           UI_MapSelector.UnlockNextLevel(m.Display.levelNumber);
-        }
-        //UPDATE TEXT
-        //Map Medals
-        UI_CompletedMap.Txt_Medal01.text = m.MedalGold.ToString();
-        UI_CompletedMap.Txt_Medal02.text = m.MedalSilver.ToString();
-        UI_CompletedMap.Txt_Medal03.text = m.MedalBronze.ToString();
-        //PB
-        UI_CompletedMap.Txt_PBStrikes.text = m.PB.Strikes.ToString();
-        UI_CompletedMap.Txt_PBTimer.text = m.PB.Time.ToString();
-        //Current Score
-        UI_CompletedMap.Txt_CurrStrikes.text = p.Strikes.ToString();
-        UI_CompletedMap.Txt_CurrTimer.text = p.Timer.ToString();
-        //UPDATE IMAGES
-        CM_UpdateScoreImages();
-    }
-    public void CM_ButtonReset()
-    {
-        CloseInterface_CompletedMap();
-        OpenInterface_InGameHud();
-        GameManager.Instance.ResetGame();
-    }
-    public void CM_ButtonMenu()
-    {
-        CloseInterface_CompletedMap();
-        OpenInterface_MapSelector();
-        //GameManager.Instance.SetupMenuMap();
-    }
-    public void CM_UpdateScoreImages()
-    {
-        //UPDATE PERSONAL BEST - PB
-        if (m.PB.Strikes <= m.MedalGold)
-        {
-            UI_CompletedMap.Img_PBStrikes.sprite = UI_Images.GoldMedal;
-        }
-        else if (m.PB.Strikes <= m.MedalSilver)
-        {
-            UI_CompletedMap.Img_PBStrikes.sprite = UI_Images.SilverMedal;
-        }
-        else if (m.PB.Strikes <= m.MedalBronze)
-        {
-            UI_CompletedMap.Img_PBStrikes.sprite = UI_Images.BronzeMedal;
-        }
-
-        //UPDATE CURRENT SCORE
-        if (p.Strikes <= m.MedalGold)
-        {
-            UI_CompletedMap.Img_CurrStrikes.sprite = UI_Images.GoldMedal;
-        }
-        else if (p.Strikes <= m.MedalSilver)
-        {
-            UI_CompletedMap.Img_CurrStrikes.sprite = UI_Images.SilverMedal;
-        }
-        else if (p.Strikes <= m.MedalBronze)
-        {
-            UI_CompletedMap.Img_CurrStrikes.sprite = UI_Images.BronzeMedal;
-        }
-        else
-        {
-            UI_CompletedMap.Img_CurrStrikes.sprite = null;
-        }
-    }
-
     //Update Info Methods
     public void Update_ScoreBoard_Rows()
     {
@@ -233,14 +142,18 @@ public class UiManager : Singleton<UiManager>
     {
         UI_LocalScoreboard.Setup_Score(player);
     }
+    public void Update_MapSelector_UnlockNextLevel(int level)
+    {
+        UI_MapSelector.UnlockNextLevel(level);
+    }
     public void UpdateCurrentPlayerName()
     {
         UI_InGameHud.SetCurrentPlayerInfo();
     }
     public void UpdateMapInfoWaypoints()
     {
-        p = GameManager.Instance.CurrentPlayer;
-        m = GameManager.Instance.CurrentMap;
+        Player p = GameManager.Instance.CurrentPlayer;
+        Map m = GameManager.Instance.CurrentMap;
         p.WaypointCounter = 0;
         //Percorrer Waypoints!
         for (int i = 0; i < m.Waypoints.Length; i++)

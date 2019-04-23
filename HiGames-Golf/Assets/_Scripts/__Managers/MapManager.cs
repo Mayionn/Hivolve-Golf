@@ -190,7 +190,7 @@ public class MapManager : Singleton<MapManager>
     }
 
     /// <summary>
-    /// Returns a defined amount of maps;
+    /// Returns a defined amount of maps
     /// </summary>
     /// <param name="ammount"></param>
     /// <returns></returns>

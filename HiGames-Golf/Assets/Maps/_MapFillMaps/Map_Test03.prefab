@@ -357,6 +357,7 @@ MonoBehaviour:
   Waypoints:
   - {fileID: 0}
   - {fileID: 0}
+  Pushers: []
 --- !u!1 &7033088058712606558
 GameObject:
   m_ObjectHideFlags: 0

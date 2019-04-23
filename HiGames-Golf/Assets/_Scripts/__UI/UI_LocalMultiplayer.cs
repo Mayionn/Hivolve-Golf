@@ -22,16 +22,40 @@ namespace Assets.UI
         }
         public InfoLocalGrid[] GridInfos;
 
-        public readonly int minPlayers = 2;
-        public readonly int maxPlayers = 4;
         public Text CurrentNumberText;
+        private readonly int minPlayers = 2;
+        private readonly int maxPlayers = 4;
         private int currentNumber = 1;
+
+        public Text CurrentMapNumberText;
+        private readonly int minMaps = 1;
+        private readonly int maxMaps = 5;
+        private int currentMapNumber = 3;
 
         public void Init()
         {
             UI.SetActive(true);
             currentNumber = 1;
+            currentMapNumber = 3;
+            CurrentMapNumberText.text = currentMapNumber.ToString();
             CreatePlayers(1);
+        }
+
+        public void Button_AddMap()
+        {
+            if(currentMapNumber < maxMaps)
+            {
+                currentMapNumber++;
+                CurrentMapNumberText.text = currentMapNumber.ToString();
+            }
+        }
+        public void Button_RemoveMap()
+        {
+            if(currentMapNumber > minMaps)
+            {
+                currentMapNumber--;
+                CurrentMapNumberText.text = currentMapNumber.ToString();
+            }
         }
 
         public void ButtonStart()
@@ -39,13 +63,13 @@ namespace Assets.UI
             UiManager.Instance.CloseInterface_LocalMultiplayer();
             UiManager.Instance.OpenInterface_InGameHud();
             UiManager.Instance.Update_ScoreBoard_Rows();
-            GameManager.Instance.Setup_LocalMultiplayer();
+            GameManager.Instance.Setup_LocalMultiplayer(currentMapNumber);
         }
         public void ButtonBack()
         {
             UiManager.Instance.CloseInterface_LocalMultiplayer();
             RemovePlayersAll();
-            GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition(true);
+            GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition(true); //Necessary cuz the map doesnt change
         }
 
         public void CreatePlayers(int num)
