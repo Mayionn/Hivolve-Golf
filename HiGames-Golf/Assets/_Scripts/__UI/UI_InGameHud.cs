@@ -69,7 +69,7 @@ public class UI_InGameHud : MonoBehaviour
         UI_InGame.ImgMedalSilver.sprite = UiManager.Instance.UI_Images.SilverMedal;
         UI_InGame.ImgMedalBronze.sprite = UiManager.Instance.UI_Images.BronzeMedal;
     }
-    public void CloseInterface()
+    public void Terminate()
     {
         UI.SetActive(false);
         TimerStop();

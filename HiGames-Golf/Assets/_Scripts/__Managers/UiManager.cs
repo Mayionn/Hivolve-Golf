@@ -24,19 +24,6 @@ public class UiManager : Singleton<UiManager>
     {
         public Sprite DefaultBackground;
     }
-    [Serializable] public struct InfoCompletedMap
-    {
-        public GameObject Go;
-        public Text Txt_Medal01;
-        public Text Txt_Medal02;
-        public Text Txt_Medal03;
-        public Text Txt_PBStrikes;
-        public Text Txt_PBTimer;
-        public Text Txt_CurrStrikes;
-        public Text Txt_CurrTimer;
-        public Image Img_PBStrikes;
-        public Image Img_CurrStrikes;
-    }
     
     //Struct Variables
     public UIImages UI_Images;
@@ -100,7 +87,7 @@ public class UiManager : Singleton<UiManager>
 
     public void CloseInterface_InGameHud()
     {
-        UI_InGameHud.CloseInterface();
+        UI_InGameHud.Terminate();
     }
     public void CloseInterface_InGameReadyCheck()
     {

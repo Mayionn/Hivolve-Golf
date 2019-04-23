@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1125,7 +1125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 17.761719}
+  m_AnchoredPosition: {x: 0, y: 18}
   m_SizeDelta: {x: -50, y: -335.42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &152849373
@@ -1539,97 +1539,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef207f065e76624dafaf01d2bf85308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &285510448
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 285510452}
-  - component: {fileID: 285510451}
-  - component: {fileID: 285510450}
-  - component: {fileID: 285510449}
-  m_Layer: 0
-  m_Name: Cube (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &285510449
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285510448}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &285510450
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285510448}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &285510451
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285510448}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &285510452
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285510448}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.19, y: 10.748871, z: 4.89}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &287390454 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8222097263634083063, guid: ffdf22cdb64b7504bb1a8c8ded464039,
@@ -2216,7 +2125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -128.49023, y: -146}
+  m_AnchoredPosition: {x: -128.5, y: -146}
   m_SizeDelta: {x: -256.98, y: -37.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &449493917
@@ -3404,97 +3313,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800995146}
   m_CullTransparentMesh: 0
---- !u!1 &862561879
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 862561884}
-  - component: {fileID: 862561883}
-  - component: {fileID: 862561882}
-  - component: {fileID: 862561881}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &862561881
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 862561879}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &862561882
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 862561879}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &862561883
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 862561879}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &862561884
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 862561879}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.023582, y: 10.748871, z: 15.255106}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &876534428
 GameObject:
   m_ObjectHideFlags: 0
@@ -5910,7 +5728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -128.49023, y: -74.80078}
+  m_AnchoredPosition: {x: -128.5, y: -75}
   m_SizeDelta: {x: -256.98, y: -37.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1463795031
@@ -6974,97 +6792,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747691386}
   m_CullTransparentMesh: 0
---- !u!1 &1780451350
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1780451354}
-  - component: {fileID: 1780451353}
-  - component: {fileID: 1780451352}
-  - component: {fileID: 1780451351}
-  m_Layer: 0
-  m_Name: Cube (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1780451351
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780451350}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1780451352
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780451350}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1780451353
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780451350}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1780451354
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780451350}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.9, y: 10.748871, z: 18.73}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1783716012
 GameObject:
   m_ObjectHideFlags: 0
@@ -9099,336 +8826,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI
-      value: 
-      objectReference: {fileID: 642671863}
-    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_CompletedMapInfo.Txt_Medal01
-      value: 
-      objectReference: {fileID: 658759608}
-    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_CompletedMapInfo.Txt_Medal02
-      value: 
-      objectReference: {fileID: 225459043}
-    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_CompletedMapInfo.Txt_Medal03
-      value: 
-      objectReference: {fileID: 2035847833}
-    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_CompletedMapInfo.Txt_PBStrikes
-      value: 
-      objectReference: {fileID: 1079667821}
-    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_CompletedMapInfo.Txt_PBTimer
-      value: 
-      objectReference: {fileID: 1424099738}
-    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_CompletedMapInfo.Txt_CurrStrikes
-      value: 
-      objectReference: {fileID: 1990267753}
-    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_CompletedMapInfo.Txt_CurrTimer
-      value: 
-      objectReference: {fileID: 460631703}
-    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_CompletedMapInfo.Img_PBStrikes
-      value: 
-      objectReference: {fileID: 1847298452}
-    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_CompletedMapInfo.Img_CurrStrikes
-      value: 
-      objectReference: {fileID: 786604116}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI
-      value: 
-      objectReference: {fileID: 9152770746508948713}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_GameResults
-      value: 
-      objectReference: {fileID: 1142254622}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: MapCounter
-      value: 
-      objectReference: {fileID: 8740646501798496365}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: Text_Button
-      value: 
-      objectReference: {fileID: 3392424089089965574}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[0].PlayerName
-      value: 
-      objectReference: {fileID: 9056356665131406667}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[0].PlayerNumber
-      value: 
-      objectReference: {fileID: 262606282939028683}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[0].PlayerIndexNumber
-      value: 
-      objectReference: {fileID: 4030140545265058639}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[0].PlayerTimer
-      value: 
-      objectReference: {fileID: 6071861731770785116}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[0].ImgTimer
-      value: 
-      objectReference: {fileID: 670945058704624350}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[0].PlayerStrikes
-      value: 
-      objectReference: {fileID: 8266857870696948516}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[0].ImgStrikes
-      value: 
-      objectReference: {fileID: 5592355490423823498}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[0].TotalPoints
-      value: 
-      objectReference: {fileID: 3178897830440357612}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[0].Medal
-      value: 
-      objectReference: {fileID: 5653508479667350621}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[1].PlayerName
-      value: 
-      objectReference: {fileID: 4876055495371673396}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[1].PlayerNumber
-      value: 
-      objectReference: {fileID: 1300382550007115799}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[1].PlayerIndexNumber
-      value: 
-      objectReference: {fileID: 8249195352048393447}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[1].PlayerTimer
-      value: 
-      objectReference: {fileID: 4805738874309309554}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[1].ImgTimer
-      value: 
-      objectReference: {fileID: 8302882533073732605}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[1].PlayerStrikes
-      value: 
-      objectReference: {fileID: 6422247475731919160}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[1].ImgStrikes
-      value: 
-      objectReference: {fileID: 6781128940102905786}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[1].TotalPoints
-      value: 
-      objectReference: {fileID: 2240268021832410428}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[1].Medal
-      value: 
-      objectReference: {fileID: 5602050826267637403}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[2].PlayerName
-      value: 
-      objectReference: {fileID: 8420940775890259793}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[2].PlayerNumber
-      value: 
-      objectReference: {fileID: 8187586233879849303}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[2].PlayerIndexNumber
-      value: 
-      objectReference: {fileID: 5729917224718256423}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[2].PlayerTimer
-      value: 
-      objectReference: {fileID: 5548192813658956046}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[2].ImgTimer
-      value: 
-      objectReference: {fileID: 6907219095698444878}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[2].PlayerStrikes
-      value: 
-      objectReference: {fileID: 2358232979406635881}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[2].ImgStrikes
-      value: 
-      objectReference: {fileID: 8638981017492873454}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[2].TotalPoints
-      value: 
-      objectReference: {fileID: 782279793329151834}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[2].Medal
-      value: 
-      objectReference: {fileID: 1432544599725908163}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[3].PlayerName
-      value: 
-      objectReference: {fileID: 7679995939353444060}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[3].PlayerNumber
-      value: 
-      objectReference: {fileID: 1909946761444819340}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[3].PlayerIndexNumber
-      value: 
-      objectReference: {fileID: 5972766836983286635}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[3].PlayerTimer
-      value: 
-      objectReference: {fileID: 898646942402246353}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[3].ImgTimer
-      value: 
-      objectReference: {fileID: 8158108602706149798}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[3].PlayerStrikes
-      value: 
-      objectReference: {fileID: 6764837371465741992}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[3].ImgStrikes
-      value: 
-      objectReference: {fileID: 8141546866237480668}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[3].TotalPoints
-      value: 
-      objectReference: {fileID: 4243993504024954315}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_Scoreboard.Array.data[3].Medal
-      value: 
-      objectReference: {fileID: 2235309314944396976}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_ScoreResults.Array.data[0].Text_PlayerName
-      value: 
-      objectReference: {fileID: 450054646}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_ScoreResults.Array.data[0].Text_PlayerScore
-      value: 
-      objectReference: {fileID: 1254812374}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_ScoreResults.Array.data[0].Image_Medal
-      value: 
-      objectReference: {fileID: 1191750005}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_ScoreResults.Array.data[1].Text_PlayerName
-      value: 
-      objectReference: {fileID: 1911398926}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_ScoreResults.Array.data[1].Text_PlayerScore
-      value: 
-      objectReference: {fileID: 800995148}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_ScoreResults.Array.data[1].Image_Medal
-      value: 
-      objectReference: {fileID: 1948730455}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_ScoreResults.Array.data[2].Text_PlayerName
-      value: 
-      objectReference: {fileID: 941470789}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_ScoreResults.Array.data[2].Text_PlayerScore
-      value: 
-      objectReference: {fileID: 1077027146}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_ScoreResults.Array.data[2].Image_Medal
-      value: 
-      objectReference: {fileID: 387471537}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_ScoreResults.Array.data[3].Text_PlayerName
-      value: 
-      objectReference: {fileID: 955691028}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_ScoreResults.Array.data[3].Text_PlayerScore
-      value: 
-      objectReference: {fileID: 770397418}
-    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI_ScoreResults.Array.data[3].Image_Medal
-      value: 
-      objectReference: {fileID: 1823198527}
-    - target: {fileID: 8222097263634083063, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: UI
-      value: 
-      objectReference: {fileID: 166553804}
-    - target: {fileID: 8222097263634083063, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: ReadyCheckInfo.Background
-      value: 
-      objectReference: {fileID: 1143545228}
-    - target: {fileID: 8222097263634083063, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: ReadyCheckInfo.Image_Button
-      value: 
-      objectReference: {fileID: 1943802097}
-    - target: {fileID: 8222097263634083063, guid: ffdf22cdb64b7504bb1a8c8ded464039,
-        type: 3}
-      propertyPath: ReadyCheckInfo.Text_CurrentPlayer
-      value: 
-      objectReference: {fileID: 797996363}
     - target: {fileID: 1042123729047603269, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
       propertyPath: m_Name
@@ -9784,6 +9181,336 @@ PrefabInstance:
       propertyPath: UI
       value: 
       objectReference: {fileID: 1218133063}
+    - target: {fileID: 8222097263634083063, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 166553804}
+    - target: {fileID: 8222097263634083063, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: ReadyCheckInfo.Background
+      value: 
+      objectReference: {fileID: 1143545228}
+    - target: {fileID: 8222097263634083063, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: ReadyCheckInfo.Image_Button
+      value: 
+      objectReference: {fileID: 1943802097}
+    - target: {fileID: 8222097263634083063, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: ReadyCheckInfo.Text_CurrentPlayer
+      value: 
+      objectReference: {fileID: 797996363}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 9152770746508948713}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_GameResults
+      value: 
+      objectReference: {fileID: 1142254622}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: MapCounter
+      value: 
+      objectReference: {fileID: 8740646501798496365}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Text_Button
+      value: 
+      objectReference: {fileID: 3392424089089965574}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[0].PlayerName
+      value: 
+      objectReference: {fileID: 9056356665131406667}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[0].PlayerNumber
+      value: 
+      objectReference: {fileID: 262606282939028683}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[0].PlayerIndexNumber
+      value: 
+      objectReference: {fileID: 4030140545265058639}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[0].PlayerTimer
+      value: 
+      objectReference: {fileID: 6071861731770785116}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[0].ImgTimer
+      value: 
+      objectReference: {fileID: 670945058704624350}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[0].PlayerStrikes
+      value: 
+      objectReference: {fileID: 8266857870696948516}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[0].ImgStrikes
+      value: 
+      objectReference: {fileID: 5592355490423823498}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[0].TotalPoints
+      value: 
+      objectReference: {fileID: 3178897830440357612}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[0].Medal
+      value: 
+      objectReference: {fileID: 5653508479667350621}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[1].PlayerName
+      value: 
+      objectReference: {fileID: 4876055495371673396}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[1].PlayerNumber
+      value: 
+      objectReference: {fileID: 1300382550007115799}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[1].PlayerIndexNumber
+      value: 
+      objectReference: {fileID: 8249195352048393447}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[1].PlayerTimer
+      value: 
+      objectReference: {fileID: 4805738874309309554}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[1].ImgTimer
+      value: 
+      objectReference: {fileID: 8302882533073732605}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[1].PlayerStrikes
+      value: 
+      objectReference: {fileID: 6422247475731919160}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[1].ImgStrikes
+      value: 
+      objectReference: {fileID: 6781128940102905786}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[1].TotalPoints
+      value: 
+      objectReference: {fileID: 2240268021832410428}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[1].Medal
+      value: 
+      objectReference: {fileID: 5602050826267637403}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[2].PlayerName
+      value: 
+      objectReference: {fileID: 8420940775890259793}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[2].PlayerNumber
+      value: 
+      objectReference: {fileID: 8187586233879849303}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[2].PlayerIndexNumber
+      value: 
+      objectReference: {fileID: 5729917224718256423}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[2].PlayerTimer
+      value: 
+      objectReference: {fileID: 5548192813658956046}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[2].ImgTimer
+      value: 
+      objectReference: {fileID: 6907219095698444878}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[2].PlayerStrikes
+      value: 
+      objectReference: {fileID: 2358232979406635881}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[2].ImgStrikes
+      value: 
+      objectReference: {fileID: 8638981017492873454}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[2].TotalPoints
+      value: 
+      objectReference: {fileID: 782279793329151834}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[2].Medal
+      value: 
+      objectReference: {fileID: 1432544599725908163}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[3].PlayerName
+      value: 
+      objectReference: {fileID: 7679995939353444060}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[3].PlayerNumber
+      value: 
+      objectReference: {fileID: 1909946761444819340}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[3].PlayerIndexNumber
+      value: 
+      objectReference: {fileID: 5972766836983286635}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[3].PlayerTimer
+      value: 
+      objectReference: {fileID: 898646942402246353}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[3].ImgTimer
+      value: 
+      objectReference: {fileID: 8158108602706149798}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[3].PlayerStrikes
+      value: 
+      objectReference: {fileID: 6764837371465741992}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[3].ImgStrikes
+      value: 
+      objectReference: {fileID: 8141546866237480668}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[3].TotalPoints
+      value: 
+      objectReference: {fileID: 4243993504024954315}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_Scoreboard.Array.data[3].Medal
+      value: 
+      objectReference: {fileID: 2235309314944396976}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_ScoreResults.Array.data[0].Text_PlayerName
+      value: 
+      objectReference: {fileID: 450054646}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_ScoreResults.Array.data[0].Text_PlayerScore
+      value: 
+      objectReference: {fileID: 1254812374}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_ScoreResults.Array.data[0].Image_Medal
+      value: 
+      objectReference: {fileID: 1191750005}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_ScoreResults.Array.data[1].Text_PlayerName
+      value: 
+      objectReference: {fileID: 1911398926}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_ScoreResults.Array.data[1].Text_PlayerScore
+      value: 
+      objectReference: {fileID: 800995148}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_ScoreResults.Array.data[1].Image_Medal
+      value: 
+      objectReference: {fileID: 1948730455}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_ScoreResults.Array.data[2].Text_PlayerName
+      value: 
+      objectReference: {fileID: 941470789}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_ScoreResults.Array.data[2].Text_PlayerScore
+      value: 
+      objectReference: {fileID: 1077027146}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_ScoreResults.Array.data[2].Image_Medal
+      value: 
+      objectReference: {fileID: 387471537}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_ScoreResults.Array.data[3].Text_PlayerName
+      value: 
+      objectReference: {fileID: 955691028}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_ScoreResults.Array.data[3].Text_PlayerScore
+      value: 
+      objectReference: {fileID: 770397418}
+    - target: {fileID: 7588376441600531624, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_ScoreResults.Array.data[3].Image_Medal
+      value: 
+      objectReference: {fileID: 1823198527}
+    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 642671863}
+    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_CompletedMapInfo.Txt_Medal01
+      value: 
+      objectReference: {fileID: 658759608}
+    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_CompletedMapInfo.Txt_Medal02
+      value: 
+      objectReference: {fileID: 225459043}
+    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_CompletedMapInfo.Txt_Medal03
+      value: 
+      objectReference: {fileID: 2035847833}
+    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_CompletedMapInfo.Txt_PBStrikes
+      value: 
+      objectReference: {fileID: 1079667821}
+    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_CompletedMapInfo.Txt_PBTimer
+      value: 
+      objectReference: {fileID: 1424099738}
+    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_CompletedMapInfo.Txt_CurrStrikes
+      value: 
+      objectReference: {fileID: 1990267753}
+    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_CompletedMapInfo.Txt_CurrTimer
+      value: 
+      objectReference: {fileID: 460631703}
+    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_CompletedMapInfo.Img_PBStrikes
+      value: 
+      objectReference: {fileID: 1847298452}
+    - target: {fileID: 2896147661109002373, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_CompletedMapInfo.Img_CurrStrikes
+      value: 
+      objectReference: {fileID: 786604116}
     - target: {fileID: 1042123729047603268, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
       propertyPath: test
@@ -9962,7 +9689,7 @@ PrefabInstance:
     - target: {fileID: 5362016092707791814, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
       propertyPath: step
-      value: 0.02
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1042123729047603291, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
