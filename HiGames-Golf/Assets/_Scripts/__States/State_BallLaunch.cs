@@ -7,7 +7,7 @@ using Assets.Managers;
 public class State_BallLaunch : State
 {
     private readonly float ballRotationSpeed = 2f;
-    private readonly float throwForce = 10f;
+    private readonly float throwForce = 20f;
     private bool _launched;
 
     public override void CheckState()

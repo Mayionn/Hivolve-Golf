@@ -9689,7 +9689,7 @@ PrefabInstance:
     - target: {fileID: 5362016092707791814, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
       propertyPath: step
-      value: 0.03
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1042123729047603291, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
@@ -9800,7 +9800,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Chapter1.Array.data[0]
       value: 
-      objectReference: {fileID: 7033088058627979230, guid: 535fd9ed13ee7764d9d336edd364dc50,
+      objectReference: {fileID: 7033088058627979230, guid: 34e7c2ade3a59454aa6a6f30f764aac5,
         type: 3}
     - target: {fileID: 1042123728740725234, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
