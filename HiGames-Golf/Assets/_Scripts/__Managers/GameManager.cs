@@ -27,8 +27,8 @@ namespace Assets.Managers
         private State State_BallLaunch;
         private State State_BallMoving;
 
-        public Map CurrentMap;
-        public Player CurrentPlayer;
+        [HideInInspector] public Map CurrentMap;
+        [HideInInspector] public Player CurrentPlayer;
         [HideInInspector] public List<Player> Players;
         [HideInInspector] public List<Map> LocalMultiplayerMaps;
         [HideInInspector] public int MapIndex;

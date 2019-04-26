@@ -111,7 +111,7 @@ public class Ball : MonoBehaviour
         else transform.position = position;
     }
     
-    private void StopBall()
+    public void StopBall()
     {
         RigBody.Sleep();
         RigBody.velocity = Vector3.zero;
