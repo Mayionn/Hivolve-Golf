@@ -34,6 +34,7 @@ Transform:
   - {fileID: 1042123730385134810}
   - {fileID: 7274594069780481143}
   - {fileID: 1042123730034235357}
+  - {fileID: 2760242127433296240}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49,11 +50,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ffb3d5a00b944440ab28f91c80d17fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _GameMode: 0
   _GameState: 0
   CameraManager: {fileID: 0}
-  SkinsManager: {fileID: 0}
   States: {fileID: 7999750624282387988}
   CurrentMap: {fileID: 0}
+  LocalMultiplayerMaps: []
+  MapIndex: 0
   CurrentState: {fileID: 0}
 --- !u!114 &5362016092707791814
 MonoBehaviour:
@@ -111,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a38a4156b47051445b49f2810803379a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  List_Skins_Balls: []
   DefaultBall: {fileID: 1268160296630645033, guid: 404ea2391144cd442b2e061e00701ef6,
     type: 3}
 --- !u!1 &1042123730385134811
@@ -159,6 +163,51 @@ MonoBehaviour:
   Camera: {fileID: 0}
   CameraOffSet: {x: 0, y: 15, z: -30}
   CameraHeightOffSet: {x: 0, y: 10, z: 0}
+--- !u!1 &8610976309813654386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2760242127433296240}
+  - component: {fileID: 6801899602754383803}
+  m_Layer: 0
+  m_Name: _ProfileManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2760242127433296240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8610976309813654386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1042123729047603291}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6801899602754383803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8610976309813654386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c2cd87898a71ae4cb3adf08c5795e88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Coins: 0
+  Diamonds: 0
 --- !u!1001 &1042123729203108163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -327,11 +376,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1042123729047603291}
     m_Modifications:
-    - target: {fileID: 9092723608043246744, guid: 6cefd2522ba81cd498081dfc256b6530,
-        type: 3}
-      propertyPath: m_Name
-      value: _MapManager
-      objectReference: {fileID: 0}
     - target: {fileID: 9092723608043246746, guid: 6cefd2522ba81cd498081dfc256b6530,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -386,6 +430,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9092723608043246744, guid: 6cefd2522ba81cd498081dfc256b6530,
+        type: 3}
+      propertyPath: m_Name
+      value: _MapManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cefd2522ba81cd498081dfc256b6530, type: 3}

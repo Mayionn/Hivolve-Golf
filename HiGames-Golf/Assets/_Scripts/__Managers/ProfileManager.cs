@@ -7,6 +7,10 @@ public class ProfileManager : Singleton<ProfileManager>
 {
     public int Coins;
     public int Diamonds;
-    public Material Skin_Ball;
 
+    public void Init()
+    {
+        Coins = 10;
+        Diamonds = 2;
+    }
 }

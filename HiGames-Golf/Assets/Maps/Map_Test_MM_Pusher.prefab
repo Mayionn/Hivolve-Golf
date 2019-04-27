@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569b082dce905fa41af5d26bede523a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 1 - 0
+  Name: 1 - 1
   Author: Lucas
   Chapter: 0
   MedalGold: 1
@@ -693,41 +693,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7033088058627979225}
     m_Modifications:
-    - target: {fileID: 4139012887721546442, guid: ef6b554129b4c9341a9a27e0e269af9b,
-        type: 3}
-      propertyPath: Destinations.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4139012887721546442, guid: ef6b554129b4c9341a9a27e0e269af9b,
-        type: 3}
-      propertyPath: MovingPiece
-      value: 
-      objectReference: {fileID: 3260755013528954191}
-    - target: {fileID: 4139012887721546442, guid: ef6b554129b4c9341a9a27e0e269af9b,
-        type: 3}
-      propertyPath: Begin.GO
-      value: 
-      objectReference: {fileID: 7878391279785819967}
-    - target: {fileID: 4139012887721546442, guid: ef6b554129b4c9341a9a27e0e269af9b,
-        type: 3}
-      propertyPath: End.GO
-      value: 
-      objectReference: {fileID: 8608860417987111467}
-    - target: {fileID: 4139012887721546442, guid: ef6b554129b4c9341a9a27e0e269af9b,
-        type: 3}
-      propertyPath: PushSpeed
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 4139012887721546442, guid: ef6b554129b4c9341a9a27e0e269af9b,
-        type: 3}
-      propertyPath: WaitTimeBegin
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4139012887721546442, guid: ef6b554129b4c9341a9a27e0e269af9b,
-        type: 3}
-      propertyPath: WaitTimeEnd
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2103123143528112558, guid: ef6b554129b4c9341a9a27e0e269af9b,
         type: 3}
       propertyPath: m_Name
@@ -792,6 +757,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MovingPiece
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139012887721546442, guid: ef6b554129b4c9341a9a27e0e269af9b,
+        type: 3}
+      propertyPath: Destinations.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139012887721546442, guid: ef6b554129b4c9341a9a27e0e269af9b,
+        type: 3}
+      propertyPath: MovingPiece
+      value: 
+      objectReference: {fileID: 3260755013528954191}
+    - target: {fileID: 4139012887721546442, guid: ef6b554129b4c9341a9a27e0e269af9b,
+        type: 3}
+      propertyPath: Begin.GO
+      value: 
+      objectReference: {fileID: 7878391279785819967}
+    - target: {fileID: 4139012887721546442, guid: ef6b554129b4c9341a9a27e0e269af9b,
+        type: 3}
+      propertyPath: End.GO
+      value: 
+      objectReference: {fileID: 8608860417987111467}
+    - target: {fileID: 4139012887721546442, guid: ef6b554129b4c9341a9a27e0e269af9b,
+        type: 3}
+      propertyPath: PushSpeed
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139012887721546442, guid: ef6b554129b4c9341a9a27e0e269af9b,
+        type: 3}
+      propertyPath: WaitTimeBegin
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4139012887721546442, guid: ef6b554129b4c9341a9a27e0e269af9b,
+        type: 3}
+      propertyPath: WaitTimeEnd
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef6b554129b4c9341a9a27e0e269af9b, type: 3}

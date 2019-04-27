@@ -15,14 +15,18 @@ public class Player
     public bool EndedMap = false;
     public Ball SelectedBall;
     public Ball Example; //Used to prevent deleting the original gameobject
-    //public Hand Hand;
+    public GameObject Hat;
+
+    //Skins
+    public Skin_Hat Skin_Hat;
+    public Skin_Ball Skin_Ball;
 
     public Player()
     {
         SetPlayerNumber();
         SetRandomGeneratedName();
         SetScore();
-        SetChoosenBall();
+        Setup_ChoosenBall();
     }
 
     private void SetPlayerNumber()
@@ -41,11 +45,20 @@ public class Player
         WaypointCounter = 0;
         LocalgamePoints = 0;
     }
-    private void SetChoosenBall()
+    private void Setup_ChoosenBall()
     {
-        Example = GameManager.Instance.SkinsManager.DefaultBall;
-        //SelectedBall = Instantiate(Example);
-        //SelectedBall.Init();
+        Example = SkinsManager.Instance.DefaultBall;
+        Skin_Ball = SkinsManager.Instance.List_Skins_Balls[0]; //default
+        Skin_Hat = SkinsManager.Instance.List_Skins_Hats[0];   //default
+    }
+
+    public void Setup_Skin_Ball(Skin_Ball skin)
+    {
+        Skin_Ball = skin;
+    }
+    public void Setup_Skin_Hat(Skin_Hat skin)
+    {
+        Skin_Hat = skin;
     }
 
     public void TruncateTimer()

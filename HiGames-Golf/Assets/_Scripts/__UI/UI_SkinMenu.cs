@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Managers;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,37 +16,127 @@ public class UI_SkinMenu : MonoBehaviour
         public Text Text_Diamond;
         public Button Button_Back;
     }
-    public enum Tab { Ball, Hat, Trail, Hand};
+    [Serializable] public struct Info_Displays
+    {
+        public Text Cost_Coins;
+        public Text Cost_Diamonds;
+        public Image Image_Icon_Coin;
+        public Image Image_Icon_Diamond;
+        public Image Image_Display;
+        public Image Image_Locked;
+
+        [HideInInspector] public Skin Skin;
+    }
+    public enum Tab { Ball, Hat, Trail, Hand, Acessories};
 
     public GameObject GO;
-    public GameObject Tab_Ball;
-    public GameObject Tab_Ball_Hat;
-    public GameObject Tab_Ball_Trail;
-    public GameObject Tab_Hand;
+    public Tab CurrentTab;
+    public Info_Displays[] Displays = new Info_Displays[6];
 
     public void Init()
     {
         GO.SetActive(true);
-        Tab_Ball.SetActive(true);
+        Init_Tab("Ball");
     }
     public void Terminate()
     {
-        CloseAllTabs();
         GO.SetActive(false);
     }
 
-
-    public void BUTTON_OpenTab(GameObject go)
+    public void Init_Tab(string tab)
     {
-        CloseAllTabs();
-        go.SetActive(true);
+        switch (tab)
+        {
+            case "Ball":
+                CurrentTab = Tab.Ball;
+                break;
+            case "Hat":
+                CurrentTab = Tab.Hat;
+                break;
+            case "Trail":
+                CurrentTab = Tab.Trail;
+                break;
+            case "Hand":
+                CurrentTab = Tab.Hand;
+                break;
+            default:
+                break;
+        }
+        Setup_Displays(1);
     }
 
-    private void CloseAllTabs()
+    public void BUTTON_InteractSkin(int displayIndex)
     {
-        Tab_Ball.SetActive(false);
-        Tab_Ball_Hat.SetActive(false);
-        Tab_Ball_Trail.SetActive(false);
-        Tab_Hand.SetActive(false);
+        if (Displays[displayIndex].Skin.IsUnlocked)
+        {
+            //Load skin for main player
+            Displays[displayIndex].Skin.Load_Skin(GameManager.Instance.Get_MainPlayer());
+        }
+        else Displays[displayIndex].Skin.Buy_Skin();
+    }
+
+    private void Setup_Displays(int page)
+    {
+        var bl = GetSkins<List<Skin>>();
+        int offset = (page - 1) * 6;
+
+        for (int i = 0; i < Displays.Length; i++)
+        {
+            if(i + offset < bl.Count)
+            {
+                var b = bl[i + offset];
+
+                if (b.IsUnlocked)
+                {
+                    Displays[i].Cost_Coins.text = "";
+                    Displays[i].Cost_Diamonds.text = "";
+                    Displays[i].Image_Icon_Coin.color = Color.clear;
+                    Displays[i].Image_Icon_Diamond.color = Color.clear;
+                    Displays[i].Image_Display.color = Color.white;
+                    Displays[i].Image_Locked.color = Color.clear;
+                    Displays[i].Image_Display.sprite = b.Sprite_Display;
+                }
+                else
+                {
+                    Displays[i].Cost_Coins.text = b.Cost_Coins.ToString();
+                    Displays[i].Cost_Diamonds.text = b.Cost_Diamonds.ToString();
+                    Displays[i].Image_Icon_Coin.color = Color.white;
+                    Displays[i].Image_Icon_Diamond.color = Color.white;
+                    Displays[i].Image_Icon_Coin.sprite = UiManager.Instance.UI_SkinMenuImages.Sprite_Icon_Coin;
+                    Displays[i].Image_Icon_Diamond.sprite = UiManager.Instance.UI_SkinMenuImages.Sprite_Icon_Diamond;
+                    Displays[i].Image_Locked.sprite = UiManager.Instance.UI_SkinMenuImages.LockedSkin;
+                    Displays[i].Image_Display.color = Color.white;
+                    Displays[i].Image_Locked.color = Color.white;
+                }
+                //Displays[i].Skin = SkinsManager.Instance.List_Skins_Balls[i + offset];
+            }
+            else
+            {
+                Displays[i].Cost_Coins.text = "";
+                Displays[i].Cost_Diamonds.text = "";
+                Displays[i].Image_Icon_Coin.color = Color.clear;
+                Displays[i].Image_Icon_Diamond.color = Color.clear;
+                Displays[i].Image_Display.color = Color.clear;
+                Displays[i].Image_Locked.color = Color.clear;
+            }
+        }
+    }
+    public List<T> GetSkins<T>()
+    {
+        switch (CurrentTab)
+        {
+            case Tab.Ball:
+                return (List<T>)(object)SkinsManager.Instance.List_Skins_Balls;
+            case Tab.Hat:
+                return (List<T>)(object)SkinsManager.Instance.List_Skins_Hats;
+            case Tab.Trail:
+                return (List<T>)(object)SkinsManager.Instance.List_Skins_Balls;
+            case Tab.Hand:
+                return (List<T>)(object)SkinsManager.Instance.List_Skins_Balls;
+            case Tab.Acessories:
+                return (List<T>)(object)SkinsManager.Instance.List_Skins_Balls;
+            default:
+                return (List<T>)(object)SkinsManager.Instance.List_Skins_Balls;
+        }
     }
 }

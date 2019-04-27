@@ -21,7 +21,6 @@ namespace Assets.Managers
         public GameState _GameState;
 
         [HideInInspector] public CameraManager CameraManager;
-        [HideInInspector] public SkinsManager SkinsManager;
         [HideInInspector] public GameObject States;
 
         private State State_BallLaunch;
@@ -49,6 +48,7 @@ namespace Assets.Managers
 
             MapManager.Instance.Init();
             UiManager.Instance.Init();
+            ProfileManager.Instance.Init();
 
             //Create FirstPlayer
             Players = new List<Player>();
@@ -74,7 +74,6 @@ namespace Assets.Managers
         private void GetManagers()
         {
             CameraManager = transform.Find("_CameraManager").GetComponent<CameraManager>();
-            SkinsManager = transform.Find("_SkinsManager").GetComponent<SkinsManager>();
             States = transform.Find("States").gameObject;
         }
 
@@ -115,6 +114,17 @@ namespace Assets.Managers
                 //No Players playing then, end map and opem Local ScoreBoard();
                 UiManager.Instance.OpenInterface_LocalScoreboard();
             }
+        }
+        public Player Get_MainPlayer()
+        {
+            foreach (Player p in Players)
+            {
+                if (p.PlayerNum == 0)
+                {
+                    return p;
+                }
+            }
+            return null;
         }
         private void RemoveAllPlayers()
         {
@@ -261,12 +271,22 @@ namespace Assets.Managers
         }
         
         //Player Ball Methods
-        public void PlayerBall_Instantiate(Player p)
+        public void PlayerBall_Instantiate(Player p) 
         {
             p.SelectedBall = Instantiate(p.Example);
+            p.Skin_Ball.Load_Skin(p);
+
             p.SelectedBall.transform.name = "Player: " + (p.PlayerNum + 1);
             p.SelectedBall.Init();
             p.SelectedBall.Player = p;
+
+            PlayerBall_Hat_Instantiate(p);
+        }
+        public void PlayerBall_Hat_Instantiate(Player p)
+        {
+            p.Hat = Instantiate(p.Skin_Hat.Hat, p.SelectedBall.transform.position + (Vector3.up * p.SelectedBall.SphereCollider.radius), Quaternion.Euler(-90, 0, 0), p.SelectedBall.transform);
+            p.Hat.transform.localScale *= 0.5f;
+            p.Hat.transform.name = "Hat";
         }
         public void PlayerBall_Destroy(Player player)
         {
