@@ -27,6 +27,7 @@ public class UI_InGameHud : MonoBehaviour
         public Button ResetGame;
         public Text MapInfo;
         public Text CurrentPlayerInfo;
+        public Button SkinMenu;
     }
     public InfoInGame UI_InGame;
 
@@ -38,8 +39,17 @@ public class UI_InGameHud : MonoBehaviour
         m = GameManager.Instance.CurrentMap;
         switch (GameManager.Instance._GameMode)
         {
+            case GameManager.GameMode.Menu:
+                UI.SetActive(true);
+                Setup_MenuInfo();
+                HideButtonRestart();
+                HideMapInfo();
+                HideMapInfo_CurrentStrikes();
+                HideMapInfo_Medals();
+                break;
             case GameManager.GameMode.Singleplayer:
                 UI.SetActive(true);
+                Unset_MenuInfo();
                 TimerStart();
                 SetCurrentPlayerInfo();
                 SetMapInfo();
@@ -52,6 +62,7 @@ public class UI_InGameHud : MonoBehaviour
                 break;
             case GameManager.GameMode.Localgame:
                 UI.SetActive(true);
+                Unset_MenuInfo();
                 TimerStart();
                 SetCurrentPlayerInfo();
                 SetMapInfo();
@@ -116,6 +127,10 @@ public class UI_InGameHud : MonoBehaviour
     {
         UI_InGame.ResetGame.gameObject.SetActive(true);
     }
+    private void Setup_MenuInfo()
+    {
+        UI_InGame.SkinMenu.gameObject.SetActive(true);
+    }
     private void HideMapInfo()
     {
         UI_InGame.MapInfo.text = "";
@@ -137,7 +152,10 @@ public class UI_InGameHud : MonoBehaviour
     {
         UI_InGame.ResetGame.gameObject.SetActive(false);
     }
-
+    private void Unset_MenuInfo()
+    {
+        UI_InGame.SkinMenu.gameObject.SetActive(false);
+    }
     //Timer Functions
     private void TimerStart()
     {

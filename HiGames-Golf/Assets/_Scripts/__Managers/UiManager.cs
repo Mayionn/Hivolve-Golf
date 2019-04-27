@@ -20,6 +20,10 @@ public class UiManager : Singleton<UiManager>
         public Sprite Hidden;
         public Sprite Reset;
     }
+    [Serializable] public struct UISkinMenuImages
+    {
+        public Sprite LockedSKin;
+    }
     [Serializable] public struct UIBackgroundImages
     {
         public Sprite DefaultBackground;
@@ -35,6 +39,7 @@ public class UiManager : Singleton<UiManager>
     private UI_ReadyCheck UI_ReadyCheck;
     private UI_LocalScoreboard UI_LocalScoreboard;
     private UI_CompletedMap UI_CompletedMap;
+    private UI_SkinMenu UI_SkinMenu;
     
     public void Init()
     {
@@ -44,6 +49,7 @@ public class UiManager : Singleton<UiManager>
         UI_ReadyCheck = GetComponent<UI_ReadyCheck>();
         UI_LocalScoreboard = GetComponent<UI_LocalScoreboard>();
         UI_CompletedMap = GetComponent<UI_CompletedMap>();
+        UI_SkinMenu = GetComponent<UI_SkinMenu>();
     }
 
     //Open / Close --- Interface
@@ -84,6 +90,12 @@ public class UiManager : Singleton<UiManager>
         GameManager.Instance.TimeScaleStop();
         UI_LocalScoreboard.Init_Results();
     }
+    public void OpenInterface_SkinsMenu()
+    {
+        GameManager.Instance.TimeScaleStop();
+        CloseInterface_InGameHud();
+        UI_SkinMenu.Init();
+    }
 
     public void CloseInterface_InGameHud()
     {
@@ -118,6 +130,11 @@ public class UiManager : Singleton<UiManager>
     {
         GameManager.Instance.TimeScaleResume();
         UI_LocalScoreboard.Terminate_Results();
+    }
+    public void CloseInterface_SkinsMenu()
+    {
+        GameManager.Instance.TimeScaleResume();
+        UI_SkinMenu.Terminate();
     }
 
     //Update Info Methods
