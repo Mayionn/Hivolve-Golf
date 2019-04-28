@@ -77,14 +77,14 @@ public class UI_SkinMenu : MonoBehaviour
 
     private void Setup_Displays(int page)
     {
-        var bl = GetSkins<List<Skin>>();
+        var bl = GetSkins<Skin>();
         int offset = (page - 1) * 6;
 
         for (int i = 0; i < Displays.Length; i++)
         {
             if(i + offset < bl.Count)
             {
-                var b = bl[i + offset];
+                Skin b = bl[i + offset];
 
                 if (b.IsUnlocked)
                 {
