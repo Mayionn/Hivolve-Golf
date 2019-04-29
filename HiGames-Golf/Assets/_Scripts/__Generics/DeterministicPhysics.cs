@@ -10,7 +10,6 @@ public class DeterministicPhysics : MonoBehaviour
     void FixedUpdate()
     {
         Physics.autoSimulation = false;
-
         Physics.Simulate(step);
     }
 }
