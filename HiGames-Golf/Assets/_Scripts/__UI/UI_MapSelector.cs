@@ -16,14 +16,13 @@ public class UI_MapSelector : MonoBehaviour
     private float MIDDLE_POSITION;
     private float DOWN_POSITION;
     private readonly float SWIPE_DISTANCE = 100f;
-    private readonly float MAXSPEED = 40;
+    private readonly float MAXSPEED = 60;
 
     //Map Selector
     private Vector3 UpPos, DownPos;
     private Chapter[] chaptersToMove = new Chapter[2];
     private float speed, chapterMoveDistance, distanceSoFar;
     private bool down = false, activate = false, isMoving = false;
-    public bool detectSwipeOnlyAfterRelease = true;
 
     private void Start()
     {
@@ -270,6 +269,7 @@ public class UI_MapSelector : MonoBehaviour
             isMoving = false;
         }
     }
+    
     //Swiping Methods
     private void DetectSwipe()
     {
