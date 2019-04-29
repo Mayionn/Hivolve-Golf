@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //Begin - End
 //Start - Stop
@@ -32,8 +33,11 @@ namespace Assets.Managers
         [HideInInspector] public List<Map> LocalMultiplayerMaps;
         [HideInInspector] public int MapIndex;
 
+        public Canvas Canvas;
         public Action ActUpdate;
         public State CurrentState;
+
+        public Text DebugTxt;
 
 
         //Base Methods
