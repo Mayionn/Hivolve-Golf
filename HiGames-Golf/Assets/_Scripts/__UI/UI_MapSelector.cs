@@ -249,6 +249,7 @@ public class UI_MapSelector : MonoBehaviour
                     d.GO.GetComponent<RectTransform>().offsetMin += new Vector2(0, speed);
                 }
             }
+            isMoving = true;
         }
         //Sthap
         else
@@ -272,23 +273,41 @@ public class UI_MapSelector : MonoBehaviour
     //Swiping Methods
     private void DetectSwipe()
     {
-        if (Input.GetMouseButtonDown(0) && !down)
+        foreach (Touch t in Input.touches)
         {
-            UpPos = Input.mousePosition;
-            DownPos = Input.mousePosition;
-            down = true;
+            if(t.phase == TouchPhase.Began)
+            {
+                UpPos = t.position;
+                DownPos = t.position;
+            }
+            //if(t.phase == TouchPhase.Moved)
+            //{
+            //    DownPos = t.position;
+            //    CheckSwipe();
+            //}
+            if (t.phase == TouchPhase.Ended)
+            {
+                DownPos = t.position;
+                CheckSwipe();
+            }
         }
-        if (down)
-        {
-            DownPos = Input.mousePosition;
-            activate = true;
-        }
-        if (Input.GetMouseButtonUp(0) && activate)
-        {
-            down = false;
-            activate = false;
-            CheckSwipe();
-        }
+        //if (Input.GetMouseButtonDown(0) && !down)
+        //{
+        //    UpPos = Input.mousePosition;
+        //    DownPos = Input.mousePosition;
+        //    down = true;
+        //}
+        //if (down)
+        //{
+        //    DownPos = Input.mousePosition;
+        //    activate = true;
+        //}
+        //if (Input.GetMouseButtonUp(0) && activate)
+        //{
+        //    down = false;
+        //    activate = false;
+        //    CheckSwipe();
+        //}
     }
     private void CheckSwipe()
     {
@@ -298,12 +317,10 @@ public class UI_MapSelector : MonoBehaviour
             {
                 if (DownPos.y - UpPos.y > 0)
                 {
-                    //Swipe Up
                     MoveUp();
                 }
                 else if (DownPos.y - UpPos.y < 0)
                 {
-                    //Swipe Down
                     MoveDown();
                 }
                 UpPos = DownPos;
