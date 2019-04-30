@@ -23,6 +23,7 @@ public class State_BallLaunch : State
     private float MAXSWIPEDISTANCE;
 
     private bool _launched;
+    private bool _striking;
 
     public override void CheckState()
     {
@@ -50,6 +51,8 @@ public class State_BallLaunch : State
     public override void StartState()
     {
         _launched = false;
+        _striking = false;
+
         WIDTH = GameManager.Canvas.pixelRect.width;
         HEIGHT = GameManager.Canvas.pixelRect.height;
         TOPSIDE = (HEIGHT / 3) * 2;
@@ -64,43 +67,46 @@ public class State_BallLaunch : State
     //--- Methods
     private void CheckCameraMovement()
     {
-        bool isTouch = false;
-
-        foreach(Touch touch in Input.touches)
+        if (!_striking)
         {
-            if(IsLeftSide(touch))
+            bool isTouch = false;
+
+            foreach(Touch touch in Input.touches)
             {
-                GameManager.Instance.CameraManager.CameraOffSet 
-                    = Quaternion.AngleAxis(-rotSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
+                if(IsLeftSide(touch))
+                {
+                    GameManager.Instance.CameraManager.CameraOffSet 
+                        = Quaternion.AngleAxis(-rotSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
+                    isTouch = true;
+                }
+                else if(IsRightSide(touch))
+                {
+                    GameManager.Instance.CameraManager.CameraOffSet 
+                        = Quaternion.AngleAxis(+rotSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
+                    isTouch = true;
+                }
+            }
+
+            if (Input.GetKey(KeyCode.A))
+            {
+                GameManager.Instance.CameraManager.CameraOffSet = Quaternion.AngleAxis(+rotSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
                 isTouch = true;
             }
-            else if(IsRightSide(touch))
+            else if(Input.GetKey(KeyCode.D))
             {
-                GameManager.Instance.CameraManager.CameraOffSet 
-                    = Quaternion.AngleAxis(+rotSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
+                GameManager.Instance.CameraManager.CameraOffSet = Quaternion.AngleAxis(-rotSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
                 isTouch = true;
             }
-        }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            GameManager.Instance.CameraManager.CameraOffSet = Quaternion.AngleAxis(+rotSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
-            isTouch = true;
-        }
-        else if(Input.GetKey(KeyCode.D))
-        {
-            GameManager.Instance.CameraManager.CameraOffSet = Quaternion.AngleAxis(-rotSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
-            isTouch = true;
-        }
-
-        if (isTouch)
-        {
-            if (rotSpeed < MAXROTSPEED)
+            if (isTouch)
             {
-                rotSpeed += INCROTSPEED;
+                if (rotSpeed < MAXROTSPEED)
+                {
+                    rotSpeed += INCROTSPEED;
+                }
             }
+            else rotSpeed = 0;
         }
-        else rotSpeed = 0;
     }
 
     private bool IsLeftSide(Touch t)
@@ -126,9 +132,12 @@ public class State_BallLaunch : State
         //Get Finger Position
         foreach (Touch t in Input.touches)
         {
-            if(t.phase == TouchPhase.Began)
-                if(IsBottomSide(t) && !IsRightSide(t) && !IsLeftSide(t))
+            if (t.phase == TouchPhase.Began)
+                if (IsBottomSide(t) && !IsRightSide(t) && !IsLeftSide(t))
+                { 
                     touchPos1 = t.position;
+                    _striking = true;
+                }
             //for debug only
             if(t.phase == TouchPhase.Moved)
             {
@@ -140,6 +149,7 @@ public class State_BallLaunch : State
                 if (t.position.y < touchPos1.y)
                 {
                     touchPos2 = t.position;
+                    _striking = false;
                     canLaunch = true;
                 }
             }
