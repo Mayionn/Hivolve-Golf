@@ -63,7 +63,7 @@ namespace Assets.Managers
             Create_StateMachine();
             Create_Menu();
 
-            UiManager.Instance.OpenInterface_MapSelector();
+            //UiManager.Instance.OpenInterface_MapSelector();
 
             CameraManager.Init();
         }

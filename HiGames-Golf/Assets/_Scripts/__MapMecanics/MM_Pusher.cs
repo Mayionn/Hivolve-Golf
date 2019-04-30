@@ -89,7 +89,7 @@ public class MM_Pusher : MonoBehaviour
             Vector3 reflect = Vector3.Normalize(Vector3.Reflect(dir, norm));
 
             collision.gameObject.GetComponent<Ball>().RigBody.AddForce(reflect * PushSpeed);
-            collision.gameObject.GetComponent<Ball>().RigBody.AddForce(norm * PushSpeed, ForceMode.Impulse);
+            collision.gameObject.GetComponent<Ball>().RigBody.AddForce(norm * (PushSpeed / 2), ForceMode.Impulse);
             //fazer qualquer coisa
             Debug.Log("Manteiga");
         }       

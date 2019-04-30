@@ -8,11 +8,11 @@ public class State_BallLaunch : State
 {
     private float rotSpeed = 0;
     private readonly float INCROTSPEED = 0.2f;
-    private readonly float MAXROTSPEED = 3f;
+    private readonly float MAXROTSPEED = 4f;
 
-    private float throwForce = 20f;
+    private float throwForce;
     private readonly float MAXTHROWFORCE = 15f;
-    private Vector2 touchPos1, touchPos2;
+    private Vector2 touchPos1, touchPos2, p;
 
     private float WIDTH;
     private float HEIGHT;
@@ -20,6 +20,7 @@ public class State_BallLaunch : State
     private float BOTTOMSIDE;
     private float LEFTSIDE;
     private float RIGHTSIDE;
+    private float MAXSWIPEDISTANCE;
 
     private bool _launched;
 
@@ -55,6 +56,8 @@ public class State_BallLaunch : State
         BOTTOMSIDE = HEIGHT / 3;
         LEFTSIDE = WIDTH / 3;
         RIGHTSIDE = (WIDTH / 3) * 2;
+        MAXSWIPEDISTANCE = BOTTOMSIDE / 3;
+
         GameManager.ActUpdate += OnState;
     }
     
@@ -116,21 +119,23 @@ public class State_BallLaunch : State
         else return false;
     }
 
-
     private void CheckBallThrow()
     {
         bool canLaunch = false;
 
+        //Get Finger Position
         foreach (Touch t in Input.touches)
         {
             if(t.phase == TouchPhase.Began)
-            {
                 if(IsBottomSide(t) && !IsRightSide(t) && !IsLeftSide(t))
-                {
                     touchPos1 = t.position;
-                }
+            //for debug only
+            if(t.phase == TouchPhase.Moved)
+            {
+                p = t.position;
             }
-            if(t.phase == TouchPhase.Ended)
+
+            if (t.phase == TouchPhase.Ended)
             {
                 if (t.position.y < touchPos1.y)
                 {
@@ -138,11 +143,24 @@ public class State_BallLaunch : State
                     canLaunch = true;
                 }
             }
+
+            float throwForce2;
+            float distance2 = Vector2.Distance(touchPos1, p);
+            if (distance2 > MAXSWIPEDISTANCE) distance2 = MAXSWIPEDISTANCE;
+            distance2 /= MAXSWIPEDISTANCE;
+            //make strike force, depending on distance between fingers;
+            throwForce2 = distance2 * MAXTHROWFORCE;
+            GameManager.Instance.DebugTxt.text = throwForce2.ToString();
+
         }
         if (canLaunch)
         {
-            throwForce = Vector2.Distance(touchPos1, touchPos2) / 100;
-            GameManager.Instance.DebugTxt.text = throwForce.ToString();
+            //Calculate finger distance
+            float distance = Vector2.Distance(touchPos1, touchPos2);
+                if (distance > MAXSWIPEDISTANCE) distance = MAXSWIPEDISTANCE;
+            distance /= MAXSWIPEDISTANCE;
+            //make strike force, depending on distance between fingers;
+            throwForce = distance * MAXTHROWFORCE;
 
             //TODO - CAUCLUATE DISTANCE BETWEN POS = THROWN FORCE
             if (Ball.RigBody.isKinematic)
