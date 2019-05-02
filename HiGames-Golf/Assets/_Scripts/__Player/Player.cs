@@ -16,6 +16,7 @@ public class Player
     public Ball SelectedBall;
     public Ball Example; //Used to prevent deleting the original gameobject
     public GameObject Hat;
+    public GameObject Hat_Prefab;
 
     //Skins
     public Skin_Hat Skin_Hat;
@@ -59,6 +60,7 @@ public class Player
     public void Setup_Skin_Hat(Skin_Hat skin)
     {
         Skin_Hat = skin;
+        Hat_Prefab = skin.Hat;
     }
 
     public void TruncateTimer()

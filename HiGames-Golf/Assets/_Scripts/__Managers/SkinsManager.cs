@@ -42,7 +42,6 @@ using UnityEngine.UI;
     public override void Load_Skin(Player p)
     {
         p.Setup_Skin_Hat(this);
-        p.Hat = Hat;
         GameManager.Instance.PlayerBall_Hat_Instantiate(p);
     }
 }

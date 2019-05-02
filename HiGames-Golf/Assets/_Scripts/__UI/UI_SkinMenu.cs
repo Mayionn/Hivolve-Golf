@@ -48,7 +48,6 @@ public class UI_SkinMenu : MonoBehaviour
     public Tab CurrentTab;
     private int currentPage;
     public Skin_Display[] Displays = new Skin_Display[6];
-    //public Info_Displays[] Displays = new Info_Displays[6];
 
     public void Init()
     {
