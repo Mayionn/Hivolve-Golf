@@ -284,16 +284,17 @@ namespace Assets.Managers
             p.SelectedBall.Init();
             p.SelectedBall.Player = p;
 
-            PlayerBall_Hat_Instantiate(p);
+            Player_Hat_Instantiate(p);
         }
-        public void PlayerBall_Hat_Instantiate(Player p)
+        public void Player_Hat_Instantiate(Player p)
         {
-
             if(p.Hat != null) Destroy(p.Hat);
             if(p.Hat_Prefab != null)
             {
-                p.Hat = Instantiate(p.Hat_Prefab, p.SelectedBall.transform.position + (Vector3.up * p.SelectedBall.SphereCollider.radius), Quaternion.Euler(-90, 0, 0), p.SelectedBall.transform);
-                p.Hat.transform.localScale *= 0.5f;
+                p.Hat = Instantiate(p.Hat_Prefab, p.SelectedBall.transform.position + (Vector3.up * p.SelectedBall.SphereCollider.radius), Quaternion.Euler(-90, 0, 0));
+                p.Hat.AddComponent<KeepHatInPlace>();
+                p.Hat.GetComponent<KeepHatInPlace>().Player = p;
+                p.Hat.transform.localScale *= 0.75f;
                 p.Hat.transform.name = "Hat";
             }
         }

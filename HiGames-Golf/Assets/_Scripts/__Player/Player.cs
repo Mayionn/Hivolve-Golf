@@ -53,16 +53,6 @@ public class Player
         Skin_Hat = SkinsManager.Instance.List_Skins_Hats[0];   //default
     }
 
-    public void Setup_Skin_Ball(Skin_Ball skin)
-    {
-        Skin_Ball = skin;
-    }
-    public void Setup_Skin_Hat(Skin_Hat skin)
-    {
-        Skin_Hat = skin;
-        Hat_Prefab = skin.Hat;
-    }
-
     public void TruncateTimer()
     {
         float truncated = (float)(Math.Truncate((double)Timer * 100.0) / 100.0);

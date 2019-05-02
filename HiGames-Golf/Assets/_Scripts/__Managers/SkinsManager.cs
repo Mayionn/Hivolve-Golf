@@ -31,7 +31,7 @@ using UnityEngine.UI;
 
     public override void Load_Skin(Player p)
     {
-        p.Setup_Skin_Ball(this);
+        p.Skin_Ball = this;
         p.SelectedBall.GetComponent<Renderer>().material = Material;
     }
 }
@@ -41,8 +41,9 @@ using UnityEngine.UI;
 
     public override void Load_Skin(Player p)
     {
-        p.Setup_Skin_Hat(this);
-        GameManager.Instance.PlayerBall_Hat_Instantiate(p);
+        p.Skin_Hat = this;
+        p.Hat_Prefab = Hat;
+        GameManager.Instance.Player_Hat_Instantiate(p);
     }
 }
 

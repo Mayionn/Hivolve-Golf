@@ -196,7 +196,7 @@ public class State_BallLaunch : State
             }
 
             Vector3 direction = GetThrowDirection();
-            Ball.GetComponent<Rigidbody>().AddForce(direction * throwForce,ForceMode.Impulse);
+            Ball.GetComponent<Rigidbody>().AddForce(direction * 10,ForceMode.Impulse);
             _launched = true;
 
             //-Update Map and UI
