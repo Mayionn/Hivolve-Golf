@@ -73,13 +73,13 @@ public class State_BallLaunch : State
 
             foreach(Touch touch in Input.touches)
             {
-                if(IsLeftSide(touch))
+                if(IsLeftSide(touch) && !IsBottomSide(touch))
                 {
                     GameManager.Instance.CameraManager.CameraOffSet 
                         = Quaternion.AngleAxis(-rotSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
                     isTouch = true;
                 }
-                else if(IsRightSide(touch))
+                else if(IsRightSide(touch) && !IsBottomSide(touch))
                 {
                     GameManager.Instance.CameraManager.CameraOffSet 
                         = Quaternion.AngleAxis(+rotSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
@@ -142,31 +142,43 @@ public class State_BallLaunch : State
             if(t.phase == TouchPhase.Moved)
             {
                 p = t.position;
+                //If in the middle of the aim, the finger leaves the zone
+                if(!IsBottomSide(t) || IsRightSide(t) || IsLeftSide(t))
+                {
+                    break;
+                }
             }
-
             if (t.phase == TouchPhase.Ended)
             {
                 if (t.position.y < touchPos1.y)
                 {
+                    if(IsBottomSide(t) && !IsLeftSide(t) && !IsRightSide(t))
+                    {
+                        canLaunch = true;
+                    }
+
                     touchPos2 = t.position;
                     _striking = false;
-                    canLaunch = true;
                 }
             }
 
-            float throwForce2;
-            float distance2 = Vector2.Distance(touchPos1, p);
-            if (distance2 > MAXSWIPEDISTANCE) distance2 = MAXSWIPEDISTANCE;
-            distance2 /= MAXSWIPEDISTANCE;
-            //make strike force, depending on distance between fingers;
-            throwForce2 = distance2 * MAXTHROWFORCE;
-            GameManager.Instance.DebugTxt.text = throwForce2.ToString();
+            //Delete on final version - Or use to make interactive display of strike power
+            if(touchPos1.y > p.y)
+            {
+                float throwForce2;
+                float distance2 = touchPos1.y - p.y;
+                if (distance2 > MAXSWIPEDISTANCE) distance2 = MAXSWIPEDISTANCE;
+                distance2 /= MAXSWIPEDISTANCE;
+                //make strike force, depending on distance between fingers;
+                throwForce2 = distance2 * MAXTHROWFORCE;
+                GameManager.Instance.DebugTxt.text = throwForce2.ToString();
+            }
 
         }
         if (canLaunch)
         {
             //Calculate finger distance
-            float distance = Vector2.Distance(touchPos1, touchPos2);
+            float distance = touchPos1.y - touchPos2.y;
                 if (distance > MAXSWIPEDISTANCE) distance = MAXSWIPEDISTANCE;
             distance /= MAXSWIPEDISTANCE;
             //make strike force, depending on distance between fingers;
