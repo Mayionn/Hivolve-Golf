@@ -82,7 +82,11 @@ public class Ball : MonoBehaviour
                     break;
             }
         }
-        else if(other.tag == "OOB")
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "OOB")
         {
             GoLastPosition(true);
         }

@@ -2856,7 +2856,7 @@ PrefabInstance:
     - target: {fileID: 1042123730385134809, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
       propertyPath: OffSetLaunchRange
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1042123730385134809, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
@@ -2866,12 +2866,12 @@ PrefabInstance:
     - target: {fileID: 1042123730385134809, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
       propertyPath: HeigthOffSetLaunchRange
-      value: 12
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1042123730385134809, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
       propertyPath: HeigthOffSetLaunchRecovery
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1042123728740725234, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
@@ -4554,6 +4554,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492847157286083946, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -386.00098
       objectReference: {fileID: 0}
     - target: {fileID: 3484223149352365958, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
         type: 3}

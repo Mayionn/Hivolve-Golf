@@ -22,7 +22,7 @@ public class UI_MapSelector : MonoBehaviour
     private Vector3 UpPos, DownPos;
     private Chapter[] chaptersToMove = new Chapter[2];
     private float speed, chapterMoveDistance, distanceSoFar;
-    private bool down = false, activate = false, isMoving = false;
+    private bool isMoving = false;
 
     private void Start()
     {
