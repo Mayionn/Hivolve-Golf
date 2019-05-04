@@ -7,6 +7,7 @@ using Assets.Managers;
 public class Map : MonoBehaviour
 {
     public enum GameType { Menu, OneShot, Waypoint, FreeForm};
+    public enum SkyboxType { Garage, LivingRoom, Outdoor};
     public struct PersonalBest
     {
         public int Strikes;
@@ -20,6 +21,7 @@ public class Map : MonoBehaviour
     public int MedalSilver;
     public int MedalBronze;
     public GameType _GameType;
+    public SkyboxType Skybox;
     public PersonalBest PB;
     [HideInInspector] public Display Display;
 
@@ -45,6 +47,8 @@ public class Map : MonoBehaviour
         HideWaypointPositions();
         //Prepare Strikes and Time
         ResetPlayerScore();
+        //Setup Skybox
+        SkinsManager.Instance.SetSkybox(Skybox);
         //Prepare UI
         UiManager.Instance.OpenInterface_InGameHud();
     }

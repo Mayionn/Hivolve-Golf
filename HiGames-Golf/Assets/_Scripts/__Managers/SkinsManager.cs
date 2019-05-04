@@ -51,5 +51,25 @@ public class SkinsManager : Singleton<SkinsManager>
 {
     public List<Skin_Ball> List_Skins_Balls;
     public List<Skin_Hat> List_Skins_Hats;
+    public List<Material> List_SkyBoxes;
     public Ball DefaultBall;
+
+    //TODO: REWRITE THIS
+    public void SetSkybox(Map.SkyboxType s)
+    {
+        switch (s)
+        {
+            case Map.SkyboxType.Garage:
+                RenderSettings.skybox = List_SkyBoxes[0];
+                break;
+            case Map.SkyboxType.LivingRoom:
+                RenderSettings.skybox = List_SkyBoxes[1];
+                break;
+            case Map.SkyboxType.Outdoor:
+                RenderSettings.skybox = List_SkyBoxes[2];
+                break;
+            default:
+                break;
+        }
+    }
 }

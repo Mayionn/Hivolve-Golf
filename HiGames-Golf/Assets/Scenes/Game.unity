@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3d3b7fca38c309a4d8a2fd3a227edeb4, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4569806, g: 0.44852358, b: 0.5035235, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -645,7 +645,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -3550,6 +3550,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
+      propertyPath: List_SkyBoxes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
       propertyPath: List_Skins_Balls.Array.data[0].SkinName
       value: Default Skin
       objectReference: {fileID: 0}
@@ -3969,6 +3974,21 @@ PrefabInstance:
       propertyPath: List_Skins_Balls.Array.data[11].Material
       value: 
       objectReference: {fileID: 2100000, guid: ce617bf013413df4189a57f9dcdf2cfa, type: 2}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_SkyBoxes.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c685611d5ae62441a5c3bc2a10319bd, type: 2}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_SkyBoxes.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: ffec3f7201686914fbd8cee81f0f268a, type: 2}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_SkyBoxes.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d3b7fca38c309a4d8a2fd3a227edeb4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffdf22cdb64b7504bb1a8c8ded464039, type: 3}
 --- !u!114 &1300382550007115799 stripped
