@@ -41,6 +41,11 @@ public class UI_SkinMenu : MonoBehaviour
 
     public enum Tab { Ball, Hat, Trail, Hand, Acessories};
 
+    public Text CurrencyGold;
+    public Text CurrencyDiamonds;
+    public Image ImageGold;
+    public Image ImageDiamonds;
+
     public GameObject GO;
     public GameObject BUTTON_Next;
     public GameObject BUTTON_Prev;
@@ -52,6 +57,7 @@ public class UI_SkinMenu : MonoBehaviour
     public void Init()
     {
         GO.SetActive(true);
+        Setup_Currency();
         Init_Tab("Ball");
     }
     public void Terminate()
@@ -88,8 +94,13 @@ public class UI_SkinMenu : MonoBehaviour
         {
             //Load skin for main player
             Displays[displayIndex].Skin.Load_Skin(GameManager.Instance.Get_MainPlayer());
+            Displays[displayIndex].Skin.SaveCurrent_Skin();
         }
-        else Displays[displayIndex].Skin.Buy_Skin();
+        else
+        {
+            Displays[displayIndex].Skin.Buy_Skin();
+            Displays[displayIndex].Skin.Save_Skin();
+        }
     }
     public void BUTTON_NextPage()
     {
@@ -132,6 +143,11 @@ public class UI_SkinMenu : MonoBehaviour
         }
     }
 
+    private void Setup_Currency()
+    {
+        CurrencyGold.text = ProfileManager.Instance.Gold.ToString();
+        CurrencyDiamonds.text = ProfileManager.Instance.Diamonds.ToString();
+    }
     private void Setup_Displays_Ball(int page)
     {
         var bl = SkinsManager.Instance.List_Skins_Balls;

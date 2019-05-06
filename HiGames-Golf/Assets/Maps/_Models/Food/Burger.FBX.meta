@@ -1,0 +1,204 @@
+fileFormatVersion: 2
+guid: bc491fafffe058a4b9684dcae81b7d15
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: BurgerBottomBun
+    100004: BurgerTopBun
+    100006: Cheese
+    100008: Lettuce
+    100010: Patty
+    100012: Seed1
+    100014: Seed10
+    100016: Seed11
+    100018: Seed12
+    100020: Seed13
+    100022: Seed2
+    100024: Seed3
+    100026: Seed4
+    100028: Seed5
+    100030: Seed6
+    100032: Seed7
+    100034: Seed8
+    100036: Seed9
+    100038: Tomato1
+    100040: tomato2
+    100042: Tomato3
+    400000: //RootNode
+    400002: BurgerBottomBun
+    400004: BurgerTopBun
+    400006: Cheese
+    400008: Lettuce
+    400010: Patty
+    400012: Seed1
+    400014: Seed10
+    400016: Seed11
+    400018: Seed12
+    400020: Seed13
+    400022: Seed2
+    400024: Seed3
+    400026: Seed4
+    400028: Seed5
+    400030: Seed6
+    400032: Seed7
+    400034: Seed8
+    400036: Seed9
+    400038: Tomato1
+    400040: tomato2
+    400042: Tomato3
+    2100000: Bun + Chopsticks + Pizza Box
+    2100002: Meat Patty + Pepperoni + Tomato
+    2100004: No Name
+    2100006: Chips + Cheese
+    2100008: Mushroom + Burger Seeds
+    2100010: Lettuce
+    2300000: BurgerBottomBun
+    2300002: BurgerTopBun
+    2300004: Cheese
+    2300006: Lettuce
+    2300008: Patty
+    2300010: Seed1
+    2300012: Seed10
+    2300014: Seed11
+    2300016: Seed12
+    2300018: Seed13
+    2300020: Seed2
+    2300022: Seed3
+    2300024: Seed4
+    2300026: Seed5
+    2300028: Seed6
+    2300030: Seed7
+    2300032: Seed8
+    2300034: Seed9
+    2300036: Tomato1
+    2300038: tomato2
+    2300040: Tomato3
+    3300000: BurgerBottomBun
+    3300002: BurgerTopBun
+    3300004: Cheese
+    3300006: Lettuce
+    3300008: Patty
+    3300010: Seed1
+    3300012: Seed10
+    3300014: Seed11
+    3300016: Seed12
+    3300018: Seed13
+    3300020: Seed2
+    3300022: Seed3
+    3300024: Seed4
+    3300026: Seed5
+    3300028: Seed6
+    3300030: Seed7
+    3300032: Seed8
+    3300034: Seed9
+    3300036: Tomato1
+    3300038: tomato2
+    3300040: Tomato3
+    4300000: BurgerTopBun
+    4300002: Tomato1
+    4300004: Patty
+    4300006: tomato2
+    4300008: Tomato3
+    4300010: Cheese
+    4300012: BurgerBottomBun
+    4300014: Seed1
+    4300016: Seed2
+    4300018: Seed3
+    4300020: Seed4
+    4300022: Seed5
+    4300024: Seed6
+    4300026: Seed7
+    4300028: Seed8
+    4300030: Seed9
+    4300032: Seed10
+    4300034: Seed11
+    4300036: Seed12
+    4300038: Seed13
+    4300040: Lettuce
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -52,6 +52,10 @@ public class Player
         Skin_Ball = SkinsManager.Instance.List_Skins_Balls[0]; //default
         Skin_Hat = SkinsManager.Instance.List_Skins_Hats[0];   //default
     }
+    public void Setup_HatSkin()
+    {
+        Hat_Prefab = Skin_Hat.Hat;
+    }
 
     public void TruncateTimer()
     {

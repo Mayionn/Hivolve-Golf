@@ -16,12 +16,14 @@ namespace Assets.Managers
 {
     public class GameManager : Singleton<GameManager>
     {
+        //Saved Data
+        public SaveData Data;
+
         public enum GameMode { Menu, Singleplayer, Multiplayer, Localgame };
         public GameMode _GameMode;
         public enum GameState { Resumed, Paused };
         public GameState _GameState;
 
-        [HideInInspector] public CameraManager CameraManager;
         [HideInInspector] public GameObject States;
 
         private State State_BallLaunch;
@@ -39,7 +41,6 @@ namespace Assets.Managers
 
         public Text DebugTxt;
 
-
         //Base Methods
         void Start()
         {
@@ -48,24 +49,21 @@ namespace Assets.Managers
 
             MapIndex = 0;
             LocalMultiplayerMaps = new List<Map>();
-            GetManagers();
+            GetStates();
 
+
+            //SaveSystem.ClearData();
+            //Data = SaveSystem.LoadData();
             MapManager.Instance.Init();
             UiManager.Instance.Init();
             ProfileManager.Instance.Init();
+            SkinsManager.Instance.Init();
 
-            //Create FirstPlayer
-            Players = new List<Player>();
-            CreatePlayer();
-            PlayerBall_Instantiate(Players[0]);
-            CurrentPlayer = Players[0];
-
+            Create_FirstPlayer();
             Create_StateMachine();
             Create_Menu();
 
-            //UiManager.Instance.OpenInterface_MapSelector();
-
-            CameraManager.Init();
+            CameraManager.Instance.Init();
         }
 
         //---Action Update
@@ -75,13 +73,26 @@ namespace Assets.Managers
         }
 
         //------Aux Methods
-        private void GetManagers()
+        private void GetStates()
         {
-            CameraManager = transform.Find("_CameraManager").GetComponent<CameraManager>();
             States = transform.Find("States").gameObject;
         }
 
         //Player Methods
+        private void Create_FirstPlayer()
+        {
+            //Create FirstPlayer
+            Players = new List<Player>();
+            CreatePlayer();
+            CurrentPlayer = Players[0];
+            //INSTANTIATE BALL
+            PlayerBall_Instantiate(Players[0]);
+            //SKIN BALL
+            //SkinsManager.Instance.LoadCurrentSkin_Ball();
+            //SKIN HAT
+            //SkinsManager.Instance.LoadCurrentSkin_Hat();
+
+        }
         public void CreatePlayer() => Players.Add(new Player());
         public void RemovePlayer() => Players.RemoveAt(Players.Count - 1);
         public void ChoosePlayer(int index)
@@ -283,8 +294,6 @@ namespace Assets.Managers
             p.SelectedBall.transform.name = "Player: " + (p.PlayerNum + 1);
             p.SelectedBall.Init();
             p.SelectedBall.Player = p;
-
-            Player_Hat_Instantiate(p);
         }
         public void Player_Hat_Instantiate(Player p)
         {

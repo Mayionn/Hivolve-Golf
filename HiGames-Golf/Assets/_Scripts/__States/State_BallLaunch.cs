@@ -32,14 +32,12 @@ public class State_BallLaunch : State
             LeaveState(ConnectedStates[0]);
         }
     }
-
     public override void LeaveState(State state)
     {
         GameManager.ActUpdate -= OnState;
         GameManager.CurrentState = state;
         GameManager.CurrentState.StartState();
     }
-
     public override void OnState()
     {
         CheckCameraMovement();
@@ -47,7 +45,6 @@ public class State_BallLaunch : State
 
         CheckState();
     }
-
     public override void StartState()
     {
         _launched = false;
@@ -75,26 +72,26 @@ public class State_BallLaunch : State
             {
                 if(IsLeftSide(touch) && !IsBottomSide(touch))
                 {
-                    GameManager.Instance.CameraManager.CameraOffSet 
-                        = Quaternion.AngleAxis(-rotSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
+                    CameraManager.Instance.CameraOffSet 
+                        = Quaternion.AngleAxis(-rotSpeed, Vector3.up) * CameraManager.Instance.CameraOffSet;
                     isTouch = true;
                 }
                 else if(IsRightSide(touch) && !IsBottomSide(touch))
                 {
-                    GameManager.Instance.CameraManager.CameraOffSet 
-                        = Quaternion.AngleAxis(+rotSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
+                    CameraManager.Instance.CameraOffSet 
+                        = Quaternion.AngleAxis(+rotSpeed, Vector3.up) * CameraManager.Instance.CameraOffSet;
                     isTouch = true;
                 }
             }
 
             if (Input.GetKey(KeyCode.A))
             {
-                GameManager.Instance.CameraManager.CameraOffSet = Quaternion.AngleAxis(+rotSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
+                CameraManager.Instance.CameraOffSet = Quaternion.AngleAxis(+rotSpeed, Vector3.up) * CameraManager.Instance.CameraOffSet;
                 isTouch = true;
             }
             else if(Input.GetKey(KeyCode.D))
             {
-                GameManager.Instance.CameraManager.CameraOffSet = Quaternion.AngleAxis(-rotSpeed, Vector3.up) * GameManager.Instance.CameraManager.CameraOffSet;
+                CameraManager.Instance.CameraOffSet = Quaternion.AngleAxis(-rotSpeed, Vector3.up) * CameraManager.Instance.CameraOffSet;
                 isTouch = true;
             }
 
@@ -218,7 +215,7 @@ public class State_BallLaunch : State
     }
     private Vector3 GetThrowDirection()
     {
-        Vector3 throwDirection = GameManager.Instance.CameraManager.Camera.transform.forward;
+        Vector3 throwDirection = CameraManager.Instance.Camera.transform.forward;
         throwDirection.y = 0;
         return throwDirection;
     }

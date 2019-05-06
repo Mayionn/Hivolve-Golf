@@ -1,0 +1,202 @@
+fileFormatVersion: 2
+guid: 37b9c9974d7597c459d911f7dbbcc7d4
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Popcorn1
+    100004: Popcorn10
+    100006: Popcorn11
+    100008: Popcorn12
+    100010: Popcorn13
+    100012: Popcorn14
+    100014: Popcorn15
+    100016: Popcorn16
+    100018: Popcorn17
+    100020: Popcorn18
+    100022: Popcorn19
+    100024: Popcorn2
+    100026: Popcorn20
+    100028: Popcorn3
+    100030: Popcorn4
+    100032: Popcorn5
+    100034: Popcorn6
+    100036: Popcorn7
+    100038: Popcorn8
+    100040: Popcorn9
+    100042: PopCornBox
+    400000: //RootNode
+    400002: Popcorn1
+    400004: Popcorn10
+    400006: Popcorn11
+    400008: Popcorn12
+    400010: Popcorn13
+    400012: Popcorn14
+    400014: Popcorn15
+    400016: Popcorn16
+    400018: Popcorn17
+    400020: Popcorn18
+    400022: Popcorn19
+    400024: Popcorn2
+    400026: Popcorn20
+    400028: Popcorn3
+    400030: Popcorn4
+    400032: Popcorn5
+    400034: Popcorn6
+    400036: Popcorn7
+    400038: Popcorn8
+    400040: Popcorn9
+    400042: PopCornBox
+    2100000: Red
+    2100002: White
+    2100004: Peppers + Noodles
+    2300000: Popcorn1
+    2300002: Popcorn10
+    2300004: Popcorn11
+    2300006: Popcorn12
+    2300008: Popcorn13
+    2300010: Popcorn14
+    2300012: Popcorn15
+    2300014: Popcorn16
+    2300016: Popcorn17
+    2300018: Popcorn18
+    2300020: Popcorn19
+    2300022: Popcorn2
+    2300024: Popcorn20
+    2300026: Popcorn3
+    2300028: Popcorn4
+    2300030: Popcorn5
+    2300032: Popcorn6
+    2300034: Popcorn7
+    2300036: Popcorn8
+    2300038: Popcorn9
+    2300040: PopCornBox
+    3300000: Popcorn1
+    3300002: Popcorn10
+    3300004: Popcorn11
+    3300006: Popcorn12
+    3300008: Popcorn13
+    3300010: Popcorn14
+    3300012: Popcorn15
+    3300014: Popcorn16
+    3300016: Popcorn17
+    3300018: Popcorn18
+    3300020: Popcorn19
+    3300022: Popcorn2
+    3300024: Popcorn20
+    3300026: Popcorn3
+    3300028: Popcorn4
+    3300030: Popcorn5
+    3300032: Popcorn6
+    3300034: Popcorn7
+    3300036: Popcorn8
+    3300038: Popcorn9
+    3300040: PopCornBox
+    4300000: PopCornBox
+    4300002: Popcorn1
+    4300004: Popcorn2
+    4300006: Popcorn3
+    4300008: Popcorn4
+    4300010: Popcorn6
+    4300012: Popcorn7
+    4300014: Popcorn11
+    4300016: Popcorn12
+    4300018: Popcorn8
+    4300020: Popcorn13
+    4300022: Popcorn9
+    4300024: Popcorn14
+    4300026: Popcorn5
+    4300028: Popcorn10
+    4300030: Popcorn15
+    4300032: Popcorn19
+    4300034: Popcorn20
+    4300036: Popcorn16
+    4300038: Popcorn17
+    4300040: Popcorn18
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
