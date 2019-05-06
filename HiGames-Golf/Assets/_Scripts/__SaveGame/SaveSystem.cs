@@ -5,7 +5,6 @@ using Assets.Managers;
 
 public static class SaveSystem
 {
-
     public static void SaveCurrency(int gold, int diamonds)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -79,10 +78,15 @@ public static class SaveSystem
         }
         else
         {
-            StreamWriter stream = File.CreateText(Application.persistentDataPath + "/SaveData.sd");
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Create);
+
+            SaveData data = new SaveData();
+
+            formatter.Serialize(stream, data);
             stream.Close();
-            Debug.LogError("Save File Not Found " + path);
-            return null;
+
+            return data;
         }
     }
 

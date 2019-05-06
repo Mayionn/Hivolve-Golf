@@ -18,6 +18,15 @@ public class SaveData
 
     //Map Progress
 
+    public SaveData()
+    {
+        Gold = 0;
+        Diamonds = 0;
+        CurrentSkin_Hat_Index = 0;
+        CurrentSkin_Ball_Index = 0;
+        UnlockedSkins_Hats = new int[0];
+        UnlockedSkins_Balls = new int[0];
+    }
 
     #region -Currency
     public void Setup_Currency(int gold, int diamonds)

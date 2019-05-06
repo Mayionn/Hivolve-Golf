@@ -53,7 +53,7 @@ namespace Assets.Managers
 
 
             //SaveSystem.ClearData();
-            //Data = SaveSystem.LoadData();
+            Data = SaveSystem.LoadData();
             MapManager.Instance.Init();
             UiManager.Instance.Init();
             ProfileManager.Instance.Init();
@@ -88,9 +88,9 @@ namespace Assets.Managers
             //INSTANTIATE BALL
             PlayerBall_Instantiate(Players[0]);
             //SKIN BALL
-            //SkinsManager.Instance.LoadCurrentSkin_Ball();
+            SkinsManager.Instance.LoadCurrentSkin_Ball();
             //SKIN HAT
-            //SkinsManager.Instance.LoadCurrentSkin_Hat();
+            SkinsManager.Instance.LoadCurrentSkin_Hat();
 
         }
         public void CreatePlayer() => Players.Add(new Player());

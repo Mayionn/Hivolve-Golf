@@ -81,8 +81,8 @@ public class SkinsManager : Singleton<SkinsManager>
     {
         InitSkinIndexes();
 
-        //LoadUnlockedSkins_Balls();
-        //LoadUnlockedSkins_Hats();
+        LoadUnlockedSkins_Balls();
+        LoadUnlockedSkins_Hats();
     }
 
     //TODO: REWRITE THIS
