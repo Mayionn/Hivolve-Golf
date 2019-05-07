@@ -43,6 +43,7 @@ public class Display
         Map = map;
         GO.GetComponent<GetMap>().map = Map;
         Map.Display = this as Display;
+        Locked = Map.IsLocked;
         //Level
         levelNumber = level;
         //DI - Display Info

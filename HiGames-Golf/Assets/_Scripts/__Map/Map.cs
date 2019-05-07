@@ -24,6 +24,7 @@ public class Map : MonoBehaviour
     public GameType _GameType;
     public SkyboxType Skybox;
     public PersonalBest PB;
+    public bool IsLocked = true;
     [HideInInspector] public Display Display;
 
     public GameObject Prefab;

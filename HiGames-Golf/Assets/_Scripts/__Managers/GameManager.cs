@@ -16,9 +16,6 @@ namespace Assets.Managers
 {
     public class GameManager : Singleton<GameManager>
     {
-        //Saved Data
-        public SaveData Data;
-
         public enum GameMode { Menu, Singleplayer, Multiplayer, Localgame };
         public GameMode _GameMode;
         public enum GameState { Resumed, Paused };
@@ -51,9 +48,8 @@ namespace Assets.Managers
             LocalMultiplayerMaps = new List<Map>();
             GetStates();
 
-
             //SaveSystem.ClearData();
-            Data = SaveSystem.LoadData();
+            SaveManager.Instance.Init();
             MapManager.Instance.Init();
             UiManager.Instance.Init();
             ProfileManager.Instance.Init();
@@ -62,6 +58,13 @@ namespace Assets.Managers
             Create_FirstPlayer();
             Create_StateMachine();
             Create_Menu();
+
+            SaveManager.Instance.LoadUnlockedSkins_Balls();
+            SaveManager.Instance.LoadUnlockedSkins_Hats();
+            SaveManager.Instance.LoadMapProgress();
+            SaveManager.Instance.LoadCurrentSkin_Ball();
+            SaveManager.Instance.LoadCurrentSkin_Hat();
+            SaveManager.Instance.LoadCurrency();
 
             CameraManager.Instance.Init();
         }
@@ -87,11 +90,6 @@ namespace Assets.Managers
             CurrentPlayer = Players[0];
             //INSTANTIATE BALL
             PlayerBall_Instantiate(Players[0]);
-            //SKIN BALL
-            SkinsManager.Instance.LoadCurrentSkin_Ball();
-            //SKIN HAT
-            SkinsManager.Instance.LoadCurrentSkin_Hat();
-
         }
         public void CreatePlayer() => Players.Add(new Player());
         public void RemovePlayer() => Players.RemoveAt(Players.Count - 1);

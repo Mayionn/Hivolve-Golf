@@ -41,11 +41,11 @@ using UnityEngine.UI;
     }
     public override void SaveCurrent_Skin()
     {
-        SkinsManager.Instance.SaveCurrentSkin_Ball(Index);
+        SaveManager.Instance.SaveCurrentSkin_Ball(Index);
     }
     public override void Save_Skin()
     {
-        SkinsManager.Instance.SaveUnlockedSkins_Balls();
+        SaveManager.Instance.SaveUnlockedSkins_Balls();
     }
 }
 //----- HAT SKIN
@@ -61,11 +61,11 @@ using UnityEngine.UI;
     }
     public override void SaveCurrent_Skin()
     {
-        SkinsManager.Instance.SaveCurrentSkin_Hat(Index);
+        SaveManager.Instance.SaveCurrentSkin_Hat(Index);
     }
     public override void Save_Skin()
     {
-        SkinsManager.Instance.SaveUnlockedSkins_Hats();
+        SaveManager.Instance.SaveUnlockedSkins_Hats();
     }
 }
 //----- COMIN SOON:
@@ -80,9 +80,6 @@ public class SkinsManager : Singleton<SkinsManager>
     public void Init()
     {
         InitSkinIndexes();
-
-        LoadUnlockedSkins_Balls();
-        LoadUnlockedSkins_Hats();
     }
 
     //TODO: REWRITE THIS
@@ -112,100 +109,6 @@ public class SkinsManager : Singleton<SkinsManager>
                 break;
             default:
                 break;
-        }
-    }
-
-    //Current Skin ---- BALL
-    public void SaveCurrentSkin_Ball(int index)
-    {
-        SaveSystem.SaveCurrentSkin_Ball(index);
-    }
-    public void LoadCurrentSkin_Ball()
-    {
-        SaveData data = SaveSystem.LoadData();
-        GameManager.Instance.CurrentPlayer.Skin_Ball = List_Skins_Balls[data.CurrentSkin_Ball_Index];
-        Material material = List_Skins_Balls[data.CurrentSkin_Ball_Index].Material;
-        GameManager.Instance.CurrentPlayer.SelectedBall.GetComponent<Renderer>().material = material;
-    }
-    //Current Skin ---- HAT
-    public void SaveCurrentSkin_Hat(int index)
-    {
-        SaveSystem.SaveCurrentSkin_Hat(index);
-    }
-    public void LoadCurrentSkin_Hat()
-    {
-        SaveData data = SaveSystem.LoadData();
-        GameManager.Instance.CurrentPlayer.Skin_Hat = List_Skins_Hats[data.CurrentSkin_Hat_Index];
-        GameManager.Instance.CurrentPlayer.Skin_Hat.Load_Skin(GameManager.Instance.CurrentPlayer);
-    }
-    //Unlocked Skins ---- BALLS
-    public void SaveUnlockedSkins_Balls()
-    {
-        int count = 0;
-        List<int> indexesList = new List<int>();
-        //GetIndexes of Unlocked Ball Skins
-        for (int i = 0; i < List_Skins_Balls.Count; i++)
-        {
-            if (List_Skins_Balls[i].IsUnlocked)
-            {
-                count++;
-                indexesList.Add(i);
-            }
-        }
-        //transform list to array
-        int[] indexes = new int[count];
-        for (int i = 0; i < count; i++)
-        {
-            indexes[i] = indexesList[i];
-        }
-        //Send array to SaveSystem to save
-        SaveSystem.SaveSkins_Ball(count, indexes);
-    }
-    public void LoadUnlockedSkins_Balls()
-    {
-        SaveData data = SaveSystem.LoadData();
-
-        if(data.UnlockedSkins_Balls != null)
-        {
-            for (int i = 0; i < data.UnlockedSkins_Balls.Length; i++)
-            {
-                List_Skins_Balls[data.UnlockedSkins_Balls[i]].IsUnlocked = true;
-            }
-        }
-    }
-    //Unlocked Skins ---- HATS
-    public void SaveUnlockedSkins_Hats()
-    {
-        int count = 0;
-        List<int> indexesList = new List<int>();
-        //GetIndexes of Unlocked Ball Skins
-        for (int i = 0; i < List_Skins_Hats.Count; i++)
-        {
-            if (List_Skins_Hats[i].IsUnlocked)
-            {
-                count++;
-                indexesList.Add(i);
-            }
-        }
-        //transform list to array
-        int[] indexes = new int[count];
-        for (int i = 0; i < count; i++)
-        {
-            indexes[i] = indexesList[i];
-        }
-        //Send array to SaveSystem to save
-        SaveSystem.SaveSkins_Hats(count, indexes);
-    }
-    public void LoadUnlockedSkins_Hats()
-    {
-        SaveData data = SaveSystem.LoadData();
-
-        if (data.UnlockedSkins_Hats != null)
-        {
-            for (int i = 0; i < data.UnlockedSkins_Hats.Length; i++)
-            {
-                List_Skins_Hats[data.UnlockedSkins_Hats[i]].IsUnlocked = true;
-            }
         }
     }
 }

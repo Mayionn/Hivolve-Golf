@@ -51,7 +51,6 @@ public class UI_CompletedMap : MonoBehaviour
         Setup_ScoreImages(m,p);
 
         SaveManager.Instance.SaveMapProgress();
-        SaveManager.Instance.LoadMapProgress();
     }
 
     public void Terminate()

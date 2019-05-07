@@ -221,6 +221,8 @@ MonoBehaviour:
   MedalSilver: 2
   MedalBronze: 3
   _GameType: 1
+  Skybox: 0
+  IsLocked: 1
   Prefab: {fileID: 7033088058627979224}
   SpawnedPrefab: {fileID: 0}
   StartingPosition: {fileID: 3780208784181558198}
@@ -632,6 +634,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7033088058627979225}
     m_Modifications:
+    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
+        type: 3}
+      propertyPath: m_Name
+      value: FinalHole
+      objectReference: {fileID: 0}
     - target: {fileID: 470962584330555895, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -687,11 +694,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
-        type: 3}
-      propertyPath: m_Name
-      value: FinalHole
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee44f248f0f5a8f48a04017116891dac, type: 3}
 --- !u!4 &3020403329561546199 stripped
@@ -707,6 +709,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7033088058627979225}
     m_Modifications:
+    - target: {fileID: 100000, guid: af66634a3cb268e44b6151c36187ef13, type: 3}
+      propertyPath: m_Name
+      value: Loop
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: af66634a3cb268e44b6151c36187ef13, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.58
@@ -762,10 +768,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: af66634a3cb268e44b6151c36187ef13, type: 3}
       propertyPath: m_LocalScale.z
       value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: af66634a3cb268e44b6151c36187ef13, type: 3}
-      propertyPath: m_Name
-      value: Loop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af66634a3cb268e44b6151c36187ef13, type: 3}
