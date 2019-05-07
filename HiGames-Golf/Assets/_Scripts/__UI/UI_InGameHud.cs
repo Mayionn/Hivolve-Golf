@@ -44,8 +44,11 @@ public class UI_InGameHud : MonoBehaviour
                 Setup_MenuInfo();
                 HideButtonRestart();
                 HideMapInfo();
+                HideMapInfo_Player();
+                HideMapInfo_Waypoints();
                 HideMapInfo_CurrentStrikes();
                 HideMapInfo_Medals();
+                HideTimer();
                 break;
             case GameManager.GameMode.Singleplayer:
                 UI.SetActive(true);
@@ -109,18 +112,19 @@ public class UI_InGameHud : MonoBehaviour
     private void SetMapInfo_CurrentStrikes()
     {
         UI_InGame.CurrentStrikes.text = "Strikes: 0";
+        UI_InGame.ImgCurrentStrikes.color = Color.white;
     }
     private void SetMapInfo_Waypoints()
     {
         if (m.Waypoints.Length > 0)
         {
-            UI_InGame.Waypoint.gameObject.SetActive(true);
             UI_InGame.ImgWaypoint.sprite = UiManager.Instance.UI_Images.Waypoint;
+            UI_InGame.ImgWaypoint.color = Color.white;
             UI_InGame.Waypoint.text = m.Waypoints.Length + " \\ " + 0;
         }
         else
         {
-            UI_InGame.Waypoint.gameObject.SetActive(false);
+            HideMapInfo_Waypoints();
         }
     }
     private void SetButtonRestart()
@@ -135,6 +139,10 @@ public class UI_InGameHud : MonoBehaviour
     {
         UI_InGame.MapInfo.text = "";
     }
+    private void HideMapInfo_Player()
+    {
+        UI_InGame.CurrentPlayerInfo.text = "";
+    }
     private void HideMapInfo_Medals()
     {
         UI_InGame.MedalGold.text = "";
@@ -144,13 +152,23 @@ public class UI_InGameHud : MonoBehaviour
         UI_InGame.MedalBronze.text = "";
         UI_InGame.ImgMedalBronze.color = Color.clear;
     }
+    private void HideMapInfo_Waypoints()
+    {
+        UI_InGame.Waypoint.text = "";
+        UI_InGame.ImgWaypoint.color = Color.clear;
+    }
     private void HideMapInfo_CurrentStrikes()
     {
         UI_InGame.CurrentStrikes.text = "";
+        UI_InGame.ImgCurrentStrikes.color = Color.clear;
     }
     private void HideButtonRestart()
     {
         UI_InGame.ResetGame.gameObject.SetActive(false);
+    }
+    private void HideTimer()
+    {
+        UI_InGame.CurrentTime.text = "";
     }
     private void Unset_MenuInfo()
     {

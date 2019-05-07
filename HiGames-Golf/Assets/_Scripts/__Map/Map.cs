@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Assets.Managers;
 
+[Serializable]
 public class Map : MonoBehaviour
 {
     public enum GameType { Menu, OneShot, Waypoint, FreeForm};

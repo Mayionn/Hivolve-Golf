@@ -154,6 +154,13 @@ public class Chapter
     }
 }
 
+[Serializable]
+public class MapChapter
+{
+    public string Name;
+    public Map[] Maps;
+}
+
 public class MapManager : Singleton<MapManager>
 {
     [Serializable] public struct DisplayInfo
@@ -164,7 +171,7 @@ public class MapManager : Singleton<MapManager>
         public Sprite SpriteUnlocked;
     }
 
-    public Map[] Chapter1, Chapter2, Chapter3, Chapter4;
+    public List<MapChapter> ChapterMaps;
     public DisplayInfo[] Chapter1Displays, Chapter2Displays, Chapter3Displays, Chapter4Displays;
     public List<Chapter> Chapters;
     public int CurrentChapterNumber;
@@ -177,15 +184,16 @@ public class MapManager : Singleton<MapManager>
 
     public void Init()
     {
+
         CurrentChapterNumber = 1;
         Chapters = new List<Chapter>();
-        Chapter c = new Chapter(Chapter1, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 1, Chapter1Displays); 
+        Chapter c = new Chapter(ChapterMaps[0].Maps, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 1, Chapter1Displays); 
         Chapters.Add(c);
-        c = new Chapter(Chapter2, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 2, Chapter2Displays);
+        c = new Chapter(ChapterMaps[1].Maps, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 2, Chapter2Displays);
         Chapters.Add(c);
-        c = new Chapter(Chapter3, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 3, Chapter3Displays);
+        c = new Chapter(ChapterMaps[2].Maps, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 3, Chapter3Displays);
         Chapters.Add(c);
-        c = new Chapter(Chapter4, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 4, Chapter4Displays);
+        c = new Chapter(ChapterMaps[3].Maps, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 4, Chapter4Displays);
         Chapters.Add(c);
     }
 

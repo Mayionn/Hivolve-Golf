@@ -49,7 +49,11 @@ public class UI_CompletedMap : MonoBehaviour
         UI_CompletedMapInfo.Txt_CurrTimer.text = p.Timer.ToString();
         //UPDATE IMAGES
         Setup_ScoreImages(m,p);
+
+        SaveManager.Instance.SaveMapProgress();
+        SaveManager.Instance.LoadMapProgress();
     }
+
     public void Terminate()
     {
         UI.SetActive(false);
@@ -65,7 +69,6 @@ public class UI_CompletedMap : MonoBehaviour
     {
         UiManager.Instance.CloseInterface_CompletedMap();
         UiManager.Instance.OpenInterface_MapSelector();
-        //GameManager.Instance.SetupMenuMap();
     }
 
     public void Setup_ScoreImages(Map m, Player p)

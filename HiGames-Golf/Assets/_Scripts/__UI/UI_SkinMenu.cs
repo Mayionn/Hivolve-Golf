@@ -100,6 +100,7 @@ public class UI_SkinMenu : MonoBehaviour
         {
             Displays[displayIndex].Skin.Buy_Skin();
             Displays[displayIndex].Skin.Save_Skin();
+            SetupDisplay_Unlocked(displayIndex, Displays[displayIndex].Skin);
         }
     }
     public void BUTTON_NextPage()
@@ -162,36 +163,17 @@ public class UI_SkinMenu : MonoBehaviour
 
                 if (b.IsUnlocked)
                 {
-                    Displays[i].Cost_Coins.text = "";
-                    Displays[i].Cost_Diamonds.text = "";
-                    Displays[i].Image_Icon_Coin.color = Color.clear;
-                    Displays[i].Image_Icon_Diamond.color = Color.clear;
-                    Displays[i].Image_Display.color = Color.white;
-                    Displays[i].Image_Locked.color = Color.clear;
-                    Displays[i].Image_Display.sprite = b.Sprite_Display;
+                    SetupDisplay_Unlocked(i, b);
                 }
                 else
                 {
-                    Displays[i].Cost_Coins.text = b.Cost_Coins.ToString();
-                    Displays[i].Cost_Diamonds.text = b.Cost_Diamonds.ToString();
-                    Displays[i].Image_Icon_Coin.color = Color.white;
-                    Displays[i].Image_Icon_Diamond.color = Color.white;
-                    Displays[i].Image_Icon_Coin.sprite = UiManager.Instance.UI_SkinMenuImages.Sprite_Icon_Coin;
-                    Displays[i].Image_Icon_Diamond.sprite = UiManager.Instance.UI_SkinMenuImages.Sprite_Icon_Diamond;
-                    Displays[i].Image_Locked.sprite = UiManager.Instance.UI_SkinMenuImages.LockedSkin;
-                    Displays[i].Image_Display.color = Color.white;
-                    Displays[i].Image_Locked.color = Color.white;
+                    SetupDisplay_Locked(i, b);
                 }
                 Displays[i].Skin = SkinsManager.Instance.List_Skins_Balls[i + offset];
             }
             else
             {
-                Displays[i].Cost_Coins.text = "";
-                Displays[i].Cost_Diamonds.text = "";
-                Displays[i].Image_Icon_Coin.color = Color.clear;
-                Displays[i].Image_Icon_Diamond.color = Color.clear;
-                Displays[i].Image_Display.color = Color.clear;
-                Displays[i].Image_Locked.color = Color.clear;
+                SetupDisplay_Hidden(i);
             }
         }
 
@@ -265,6 +247,38 @@ public class UI_SkinMenu : MonoBehaviour
             BUTTON_Prev.SetActive(true);
         }
         else BUTTON_Prev.SetActive(false);
+    }
+
+    private void SetupDisplay_Hidden(int i)
+    {
+        Displays[i].Cost_Coins.text = "";
+        Displays[i].Cost_Diamonds.text = "";
+        Displays[i].Image_Icon_Coin.color = Color.clear;
+        Displays[i].Image_Icon_Diamond.color = Color.clear;
+        Displays[i].Image_Display.color = Color.clear;
+        Displays[i].Image_Locked.color = Color.clear;
+    }
+    private void SetupDisplay_Locked(int i, Skin b)
+    {
+        Displays[i].Cost_Coins.text = b.Cost_Coins.ToString();
+        Displays[i].Cost_Diamonds.text = b.Cost_Diamonds.ToString();
+        Displays[i].Image_Icon_Coin.color = Color.white;
+        Displays[i].Image_Icon_Diamond.color = Color.white;
+        Displays[i].Image_Icon_Coin.sprite = UiManager.Instance.UI_SkinMenuImages.Sprite_Icon_Coin;
+        Displays[i].Image_Icon_Diamond.sprite = UiManager.Instance.UI_SkinMenuImages.Sprite_Icon_Diamond;
+        Displays[i].Image_Locked.sprite = UiManager.Instance.UI_SkinMenuImages.LockedSkin;
+        Displays[i].Image_Display.color = Color.white;
+        Displays[i].Image_Locked.color = Color.white;
+    }
+    private void SetupDisplay_Unlocked(int i, Skin b)
+    {
+        Displays[i].Cost_Coins.text = "";
+        Displays[i].Cost_Diamonds.text = "";
+        Displays[i].Image_Icon_Coin.color = Color.clear;
+        Displays[i].Image_Icon_Diamond.color = Color.clear;
+        Displays[i].Image_Display.color = Color.white;
+        Displays[i].Image_Locked.color = Color.clear;
+        Displays[i].Image_Display.sprite = b.Sprite_Display;
     }
 
     //Not working, need more time to finish

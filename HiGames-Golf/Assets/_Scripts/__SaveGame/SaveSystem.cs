@@ -39,7 +39,6 @@ public static class SaveSystem
         formatter.Serialize(stream, GameManager.Instance.Data);
         stream.Close();
     }
-
     public static void SaveSkins_Ball(int count, int[] indexes)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -58,6 +57,29 @@ public static class SaveSystem
         FileStream stream = new FileStream(path, FileMode.Create);
 
         GameManager.Instance.Data.SetupSkins_Hats(count, indexes);
+
+        formatter.Serialize(stream, GameManager.Instance.Data);
+        stream.Close();
+    }
+
+
+    public static void SaveMapProgressScore_Strikes(int chapter, float[,] score) {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/SaveData.sd";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        GameManager.Instance.Data.SetupMapProgressScore_Strikes(chapter, score);
+
+        formatter.Serialize(stream, GameManager.Instance.Data);
+        stream.Close();
+    }
+    public static void SaveMapProgressScore_Timer(int chapter, float[,] score)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/SaveData.sd";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        GameManager.Instance.Data.SetupMapProgressScore_Timer(chapter, score);
 
         formatter.Serialize(stream, GameManager.Instance.Data);
         stream.Close();

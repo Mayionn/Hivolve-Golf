@@ -17,6 +17,8 @@ public class SaveData
     public int[] UnlockedSkins_Balls;
 
     //Map Progress
+    public float[,] Chapter01_Score_Strikes;
+    public float[,] Chapter01_Score_Timer;
 
     public SaveData()
     {
@@ -64,6 +66,27 @@ public class SaveData
     #endregion
 
     #region ---Map Progress
-
+    public void SetupMapProgressScore_Strikes(int chapter, float[,] score)
+    {
+        switch (chapter)
+        {
+            case 1:
+                Chapter01_Score_Strikes = score;
+                break;
+            default:
+                break;
+        }
+    }
+    public void SetupMapProgressScore_Timer(int chapter, float[,] score)
+    {
+        switch (chapter)
+        {
+            case 1:
+                Chapter01_Score_Timer = score;
+                break;
+            default:
+                break;
+        }
+    }
     #endregion
 }
