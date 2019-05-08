@@ -28,10 +28,11 @@ public class SaveManager : Singleton<SaveManager>
     public void SaveMapProgress()
     {
         int unlockedChaptersCount = 0;
-        List<MapChapter> cm = MapManager.Instance.ChapterMaps;
-        for (int i = 0; i < cm.Count; i++)
+        List<Chapter> chapters = MapManager.Instance.Chapters;
+       
+        for (int i = 0; i < chapters.Count; i++)
         {
-            if(!cm[i].Maps[0].IsLocked)
+            if (!chapters[i].Displays[0].Locked)
             {
                 unlockedChaptersCount++;
             }
@@ -40,9 +41,9 @@ public class SaveManager : Singleton<SaveManager>
         int unlockedMapCount = 0;
         for (int i = 0; i < unlockedChaptersCount; i++)
         {
-            for (int o = 0; o < cm[i].Maps.Length; o++)
+            for (int o = 0; o < chapters[i].Displays.Length; o++)
             {
-                if(!cm[i].Maps[o].IsLocked)
+                if(!chapters[i].Displays[o].Locked)
                 {
                     unlockedMapCount++;
                 }
@@ -52,8 +53,8 @@ public class SaveManager : Singleton<SaveManager>
             float[,] scoreTimer = new float[unlockedMapCount, 1];
             for (int p = 0; p < unlockedMapCount; p++)
             {
-                scoreStrikes[p, 0] = cm[i].Maps[p].PB.Strikes;
-                scoreTimer[p, 0] = cm[i].Maps[p].PB.Time;
+                scoreStrikes[p, 0] = chapters[i].Maps[p].PB.Strikes;
+                scoreTimer[p, 0] = chapters[i].Maps[p].PB.Time;
 
                 SaveSystem.SaveMapProgressScore_Strikes(i, scoreStrikes);
                 SaveSystem.SaveMapProgressScore_Timer(i, scoreTimer);
@@ -73,6 +74,7 @@ public class SaveManager : Singleton<SaveManager>
                     case 0:
                         for (int o = 0; o < data.Chapter01_Score_Strikes.Length; o++)
                         {
+                            MapManager.Instance.Chapters[i].Displays[o].Locked = false;
                             MapManager.Instance.ChapterMaps[i].Maps[o].PB.Strikes = (int)data.Chapter01_Score_Strikes[o,0];
                             MapManager.Instance.ChapterMaps[i].Maps[o].PB.Time = data.Chapter01_Score_Timer[o, 0];
                         }

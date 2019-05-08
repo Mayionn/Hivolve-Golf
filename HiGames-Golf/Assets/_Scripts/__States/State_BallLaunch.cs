@@ -64,7 +64,7 @@ public class State_BallLaunch : State
     //--- Methods
     private void CheckCameraMovement()
     {
-        if (!_striking)
+        if (!_striking && GameManager._GameState == GameManager.GameState.Resumed)
         {
             bool isTouch = false;
 
@@ -105,6 +105,99 @@ public class State_BallLaunch : State
             else rotSpeed = 0;
         }
     }
+    private void CheckBallThrow()
+    {
+        bool canLaunch = false;
+        //Prevent Launch on Menus
+        if (GameManager._GameState == GameManager.GameState.Resumed)
+        {
+            //Get Finger Position
+            foreach (Touch t in Input.touches)
+            {
+                if (t.phase == TouchPhase.Began)
+                    if (IsBottomSide(t) && !IsRightSide(t) && !IsLeftSide(t))
+                    {
+                        touchPos1 = t.position;
+                        _striking = true;
+                    }
+                //for debug only
+                if (t.phase == TouchPhase.Moved)
+                {
+                    p = t.position;
+                    //If in the middle of the aim, the finger leaves the zone
+                    if (!IsBottomSide(t) || IsRightSide(t) || IsLeftSide(t))
+                    {
+                        break;
+                    }
+                }
+                if (t.phase == TouchPhase.Ended)
+                {
+                    if (t.position.y < touchPos1.y)
+                    {
+                        if (IsBottomSide(t) && !IsLeftSide(t) && !IsRightSide(t))
+                        {
+                            canLaunch = true;
+                        }
+
+                        touchPos2 = t.position;
+                        _striking = false;
+                    }
+                }
+
+                //Delete on final version - Or use to make interactive display of strike power
+                if (touchPos1.y > p.y)
+                {
+                    float throwForce2;
+                    float distance2 = touchPos1.y - p.y;
+                    if (distance2 > MAXSWIPEDISTANCE) distance2 = MAXSWIPEDISTANCE;
+                    distance2 /= MAXSWIPEDISTANCE;
+                    //make strike force, depending on distance between fingers;
+                    throwForce2 = distance2 * MAXTHROWFORCE;
+                    GameManager.Instance.DebugTxt.text = throwForce2.ToString();
+                }
+
+            }
+            if (canLaunch)
+            {
+                //Calculate finger distance
+                float distance = touchPos1.y - touchPos2.y;
+                if (distance > MAXSWIPEDISTANCE) distance = MAXSWIPEDISTANCE;
+                distance /= MAXSWIPEDISTANCE;
+                //make strike force, depending on distance between fingers;
+                throwForce = distance * MAXTHROWFORCE;
+
+                //TODO - CAUCLUATE DISTANCE BETWEN POS = THROWN FORCE
+                if (Ball.RigBody.isKinematic)
+                {
+                    Ball.RigBody.isKinematic = false;
+                }
+
+                Vector3 direction = GetThrowDirection();
+                Ball.GetComponent<Rigidbody>().AddForce(direction * throwForce, ForceMode.Impulse);
+                _launched = true;
+
+                //-Update Map and UI
+                GameManager.Instance.CurrentPlayer.Strikes++;
+                UiManager.Instance.UpdateMapInfoCurrentStrikes();
+            }
+            //COMPUTER
+            if (Input.GetKey(KeyCode.Space) && GameManager._GameState == GameManager.GameState.Resumed)
+            {
+                if (Ball.RigBody.isKinematic)
+                {
+                    Ball.RigBody.isKinematic = false;
+                }
+
+                Vector3 direction = GetThrowDirection();
+                Ball.GetComponent<Rigidbody>().AddForce(direction * 10, ForceMode.Impulse);
+                _launched = true;
+
+                //-Update Map and UI
+                GameManager.Instance.CurrentPlayer.Strikes++;
+                UiManager.Instance.UpdateMapInfoCurrentStrikes();
+            }
+        }
+    }
 
     private bool IsLeftSide(Touch t)
     {
@@ -122,97 +215,6 @@ public class State_BallLaunch : State
         else return false;
     }
 
-    private void CheckBallThrow()
-    {
-        bool canLaunch = false;
-
-        //Get Finger Position
-        foreach (Touch t in Input.touches)
-        {
-            if (t.phase == TouchPhase.Began)
-                if (IsBottomSide(t) && !IsRightSide(t) && !IsLeftSide(t))
-                { 
-                    touchPos1 = t.position;
-                    _striking = true;
-                }
-            //for debug only
-            if(t.phase == TouchPhase.Moved)
-            {
-                p = t.position;
-                //If in the middle of the aim, the finger leaves the zone
-                if(!IsBottomSide(t) || IsRightSide(t) || IsLeftSide(t))
-                {
-                    break;
-                }
-            }
-            if (t.phase == TouchPhase.Ended)
-            {
-                if (t.position.y < touchPos1.y)
-                {
-                    if(IsBottomSide(t) && !IsLeftSide(t) && !IsRightSide(t))
-                    {
-                        canLaunch = true;
-                    }
-
-                    touchPos2 = t.position;
-                    _striking = false;
-                }
-            }
-
-            //Delete on final version - Or use to make interactive display of strike power
-            if(touchPos1.y > p.y)
-            {
-                float throwForce2;
-                float distance2 = touchPos1.y - p.y;
-                if (distance2 > MAXSWIPEDISTANCE) distance2 = MAXSWIPEDISTANCE;
-                distance2 /= MAXSWIPEDISTANCE;
-                //make strike force, depending on distance between fingers;
-                throwForce2 = distance2 * MAXTHROWFORCE;
-                GameManager.Instance.DebugTxt.text = throwForce2.ToString();
-            }
-
-        }
-        if (canLaunch)
-        {
-            //Calculate finger distance
-            float distance = touchPos1.y - touchPos2.y;
-                if (distance > MAXSWIPEDISTANCE) distance = MAXSWIPEDISTANCE;
-            distance /= MAXSWIPEDISTANCE;
-            //make strike force, depending on distance between fingers;
-            throwForce = distance * MAXTHROWFORCE;
-
-            //TODO - CAUCLUATE DISTANCE BETWEN POS = THROWN FORCE
-            if (Ball.RigBody.isKinematic)
-            {
-                Ball.RigBody.isKinematic = false;
-            }
-
-            Vector3 direction = GetThrowDirection();
-            Ball.GetComponent<Rigidbody>().AddForce(direction * throwForce, ForceMode.Impulse);
-            _launched = true;
-
-            //-Update Map and UI
-            GameManager.Instance.CurrentPlayer.Strikes++;
-            UiManager.Instance.UpdateMapInfoCurrentStrikes();
-        }
-
-        //COMPUTER
-        if(Input.GetKey(KeyCode.Space) && GameManager._GameState == GameManager.GameState.Resumed)
-        {
-            if (Ball.RigBody.isKinematic)
-            {
-                Ball.RigBody.isKinematic = false;
-            }
-
-            Vector3 direction = GetThrowDirection();
-            Ball.GetComponent<Rigidbody>().AddForce(direction * 10,ForceMode.Impulse);
-            _launched = true;
-
-            //-Update Map and UI
-            GameManager.Instance.CurrentPlayer.Strikes++;
-            UiManager.Instance.UpdateMapInfoCurrentStrikes();
-        }
-    }
     private Vector3 GetThrowDirection()
     {
         Vector3 throwDirection = CameraManager.Instance.Camera.transform.forward;

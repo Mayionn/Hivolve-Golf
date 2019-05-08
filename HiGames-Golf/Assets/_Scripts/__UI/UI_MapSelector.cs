@@ -39,7 +39,6 @@ public class UI_MapSelector : MonoBehaviour
         if (MapManager.Instance.Chapters[0].Displays[0].Locked)
         {
             MapManager.Instance.Chapters[0].Displays[0].Locked = false;
-            MapManager.Instance.ChapterMaps[0].Maps[0].IsLocked = false;
         }
         //Display Map Based on Old Location!
         int curr = MapManager.Instance.CurrentChapterNumber;
@@ -82,16 +81,13 @@ public class UI_MapSelector : MonoBehaviour
             if (MapManager.Instance.Chapters[curr] != null)
             {
                 MapManager.Instance.Chapters[curr].Displays[0].Locked = false;
-                MapManager.Instance.Chapters[curr].Displays[0].Map.IsLocked = false;
             }
-            else Debug.Log("No More Chapters");
+            else Debug.Log("No More Levels Available");
         }
         else
         {
             c.Displays[level].Locked = false;
-            c.Displays[level].Map.IsLocked = false;
         }
-        SaveManager.Instance.SaveMapProgress();
     }
     public void BUTTON_StartMap(GetMap gm)
     {

@@ -24,7 +24,6 @@ public class Map : MonoBehaviour
     public GameType _GameType;
     public SkyboxType Skybox;
     public PersonalBest PB;
-    public bool IsLocked = true;
     [HideInInspector] public Display Display;
 
     public GameObject Prefab;
@@ -44,6 +43,22 @@ public class Map : MonoBehaviour
         //SetUp Ball
         SetupBalls();
         GameManager.Instance.ChoosePlayer(0);
+        //Aim Camera
+        Vector3 start = GameManager.Instance.CurrentPlayer.SelectedBall.transform.position;
+        Vector3 cameraPosition = CameraManager.Instance.Camera.transform.position;
+        Vector3 lookingPosition = -StartingPosition.transform.Find("Direction").transform.position;
+
+        Vector3 center = Vector3.Normalize(new Vector3(start.x, 0, start.z));
+        Vector3 positionA = Vector3.Normalize(new Vector3(cameraPosition.x, 0, cameraPosition.z));
+        Vector3 positionB = Vector3.Normalize(new Vector3(lookingPosition.x, 0, lookingPosition.z));
+
+        CameraManager.Instance.CameraOffSet = Quaternion.AngleAxis(Vector3.Angle(positionA, positionB), Vector3.up) * CameraManager.Instance.CameraOffSet;
+        Debug.Log(Vector3.Angle(positionA, positionB));
+        //GameManager.Instance.CurrentPlayer.SelectedBall.transform.LookAt(StartingPosition.transform.Find("Direction").transform.position);
+        //CameraManager.Instance.Camera.transform.LookAt(StartingPosition.transform.Find("Direction").transform.position);
+        //CameraManager.Instance.Camera.transform.position = StartingPosition.transform.Find("Direction").transform.position;
+        //CameraManager.Instance.Camera.transform.forward = StartingPosition.transform.position - StartingPosition.transform.Find("Direction").transform.position;
+        
         //Prepare Waypoints
         SetupWaypoints();
         HideWaypointPositions();
