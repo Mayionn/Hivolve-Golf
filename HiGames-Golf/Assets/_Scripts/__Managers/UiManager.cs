@@ -19,6 +19,8 @@ public class UiManager : Singleton<UiManager>
         public Sprite Strikes;
         public Sprite Hidden;
         public Sprite Reset;
+        public Sprite Gold;
+        public Sprite Diamonds;
     }
     [Serializable] public struct UISkinMenuImages
     {
@@ -106,8 +108,8 @@ public class UiManager : Singleton<UiManager>
     }
     public void CloseInterface_InGameReadyCheck()
     {
-        GameManager.Instance.TimeScaleResume();
         UI_ReadyCheck.Terminate();
+        GameManager.Instance.TimeScaleResume();
     }
     public void CloseInterface_MapSelector()
     {

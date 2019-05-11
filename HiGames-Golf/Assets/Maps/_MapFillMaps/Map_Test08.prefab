@@ -348,6 +348,7 @@ MonoBehaviour:
   MedalSilver: 6
   MedalBronze: 8
   _GameType: 2
+  Skybox: 0
   Prefab: {fileID: 6897589549046516116}
   SpawnedPrefab: {fileID: 0}
   StartingPosition: {fileID: 3780208784181558198}
@@ -872,6 +873,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8672314389447256509}
     m_Modifications:
+    - target: {fileID: 3344833910639695167, guid: 9805019a32c0f484d98032f663f2b482,
+        type: 3}
+      propertyPath: m_Name
+      value: TestSprite
+      objectReference: {fileID: 0}
     - target: {fileID: 7183772313598241430, guid: 9805019a32c0f484d98032f663f2b482,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -926,11 +932,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3344833910639695167, guid: 9805019a32c0f484d98032f663f2b482,
-        type: 3}
-      propertyPath: m_Name
-      value: TestSprite
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9805019a32c0f484d98032f663f2b482, type: 3}

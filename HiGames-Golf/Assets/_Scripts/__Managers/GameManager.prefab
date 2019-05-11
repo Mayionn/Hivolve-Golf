@@ -30,11 +30,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1042123728740725233}
-  - {fileID: 1042123728898490210}
+  - {fileID: 2972850881252671764}
   - {fileID: 1042123730385134810}
   - {fileID: 7274594069780481143}
   - {fileID: 1042123730034235357}
   - {fileID: 2760242127433296240}
+  - {fileID: 7669580979869899792}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,12 +53,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _GameMode: 0
   _GameState: 0
-  CameraManager: {fileID: 0}
   States: {fileID: 7999750624282387988}
   CurrentMap: {fileID: 0}
   LocalMultiplayerMaps: []
   MapIndex: 0
+  Canvas: {fileID: 0}
   CurrentState: {fileID: 0}
+  DebugTxt: {fileID: 0}
 --- !u!114 &5362016092707791814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   List_Skins_Balls: []
+  List_Skins_Hats: []
+  List_SkyBoxes: []
   DefaultBall: {fileID: 1268160296630645033, guid: 404ea2391144cd442b2e061e00701ef6,
     type: 3}
 --- !u!1 &1042123730385134811
@@ -162,7 +166,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 0}
   CameraOffSet: {x: 0, y: 15, z: -30}
-  CameraHeightOffSet: {x: 0, y: 10, z: 0}
+  CameraHeigthOffSet: {x: 0, y: 0, z: 0}
+  OffSetLaunchRange: 0
+  OffSetLaunchRecovery: 0
+  HeigthOffSetLaunchRange: 0
+  HeigthOffSetLaunchRecovery: 0
+--- !u!1 &3337125377723227176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7669580979869899792}
+  - component: {fileID: 5327001895139187190}
+  m_Layer: 0
+  m_Name: _SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7669580979869899792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3337125377723227176}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1042123729047603291}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5327001895139187190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3337125377723227176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798268c9a576d5544b8de081e2c3ff3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Data:
+    Gold: 0
+    Diamonds: 0
+    CurrentSkin_Hat_Index: 0
+    CurrentSkin_Ball_Index: 0
+    UnlockedSkins_Hats: 
+    UnlockedSkins_Balls: 
 --- !u!1 &8610976309813654386
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2cd87898a71ae4cb3adf08c5795e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coins: 0
+  Gold: 0
   Diamonds: 0
 --- !u!1001 &1042123729203108163
 PrefabInstance:
@@ -363,7 +421,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5f13c6fc04dedf46bbcbff8364c37aa, type: 3}
---- !u!4 &1042123728898490210 stripped
+--- !u!4 &2972850881252671764 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2825989124144119793, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
     type: 3}
@@ -376,6 +434,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1042123729047603291}
     m_Modifications:
+    - target: {fileID: 9092723608043246744, guid: 6cefd2522ba81cd498081dfc256b6530,
+        type: 3}
+      propertyPath: m_Name
+      value: _MapManager
+      objectReference: {fileID: 0}
     - target: {fileID: 9092723608043246746, guid: 6cefd2522ba81cd498081dfc256b6530,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -430,11 +493,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9092723608043246744, guid: 6cefd2522ba81cd498081dfc256b6530,
-        type: 3}
-      propertyPath: m_Name
-      value: _MapManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cefd2522ba81cd498081dfc256b6530, type: 3}
