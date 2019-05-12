@@ -10,19 +10,26 @@ public class UI_CompletedMap : MonoBehaviour
     [Serializable]
     public struct InfoCompletedMap
     {
-        public Text Txt_Medal01;
-        public Text Txt_Medal02;
-        public Text Txt_Medal03;
+        public Image Image_MapGoldMedal;
+        public Image Image_MapSilverMedal;
+        public Image Image_MapBronzeMedal;
+        public Text Txt_GoldMedal;
+        public Text Txt_SilverMedal;
+        public Text Txt_BronzeMedal;
+
+        public Image Img_PBStrikes;
+        public Image Image_PBTimer;
         public Text Txt_PBStrikes;
         public Text Txt_PBTimer;
+
+        public Image Img_CurrStrikes;
+        public Image Image_CurrentTimer;
         public Text Txt_CurrStrikes;
         public Text Txt_CurrTimer;
-        public Image Img_PBStrikes;
-        public Image Img_CurrStrikes;
     }
 
     public GameObject UI;
-    public InfoCompletedMap UI_CompletedMapInfo;
+    public InfoCompletedMap Info;
 
     public void Init()
     {
@@ -38,15 +45,20 @@ public class UI_CompletedMap : MonoBehaviour
         }
         //UPDATE TEXT
         //Map Medals
-        UI_CompletedMapInfo.Txt_Medal01.text = m.MedalGold.ToString();
-        UI_CompletedMapInfo.Txt_Medal02.text = m.MedalSilver.ToString();
-        UI_CompletedMapInfo.Txt_Medal03.text = m.MedalBronze.ToString();
+        Info.Txt_GoldMedal.text = m.MedalGold.ToString();
+        Info.Image_MapGoldMedal.sprite = UiManager.Instance.UI_Images.GoldMedal;
+        Info.Txt_SilverMedal.text = m.MedalSilver.ToString();
+        Info.Image_MapSilverMedal.sprite = UiManager.Instance.UI_Images.SilverMedal;
+        Info.Txt_BronzeMedal.text = m.MedalBronze.ToString();
+        Info.Image_MapBronzeMedal.sprite = UiManager.Instance.UI_Images.BronzeMedal;
         //PB
-        UI_CompletedMapInfo.Txt_PBStrikes.text = m.PB.Strikes.ToString();
-        UI_CompletedMapInfo.Txt_PBTimer.text = m.PB.Time.ToString();
+        Info.Image_PBTimer.sprite = UiManager.Instance.UI_Images.StopWatch;
+        Info.Txt_PBStrikes.text = m.PB.Strikes.ToString();
+        Info.Txt_PBTimer.text = m.PB.Time.ToString();
         //Current Score
-        UI_CompletedMapInfo.Txt_CurrStrikes.text = p.Strikes.ToString();
-        UI_CompletedMapInfo.Txt_CurrTimer.text = p.Timer.ToString();
+        Info.Image_CurrentTimer.sprite = UiManager.Instance.UI_Images.StopWatch;
+        Info.Txt_CurrStrikes.text = p.Strikes.ToString();
+        Info.Txt_CurrTimer.text = p.Timer.ToString();
         //UPDATE IMAGES
         Setup_ScoreImages(m,p);
 
@@ -75,33 +87,33 @@ public class UI_CompletedMap : MonoBehaviour
         //UPDATE PERSONAL BEST - PB
         if (m.PB.Strikes <= m.MedalGold)
         {
-            UI_CompletedMapInfo.Img_PBStrikes.sprite = UiManager.Instance.UI_Images.GoldMedal;
+            Info.Img_PBStrikes.sprite = UiManager.Instance.UI_Images.GoldMedal;
         }
         else if (m.PB.Strikes <= m.MedalSilver)
         {
-            UI_CompletedMapInfo.Img_PBStrikes.sprite = UiManager.Instance.UI_Images.SilverMedal;
+            Info.Img_PBStrikes.sprite = UiManager.Instance.UI_Images.SilverMedal;
         }
         else if (m.PB.Strikes <= m.MedalBronze)
         {
-            UI_CompletedMapInfo.Img_PBStrikes.sprite = UiManager.Instance.UI_Images.BronzeMedal;
+            Info.Img_PBStrikes.sprite = UiManager.Instance.UI_Images.BronzeMedal;
         }
 
         //UPDATE CURRENT SCORE
         if (p.Strikes <= m.MedalGold)
         {
-            UI_CompletedMapInfo.Img_CurrStrikes.sprite = UiManager.Instance.UI_Images.GoldMedal;
+            Info.Img_CurrStrikes.sprite = UiManager.Instance.UI_Images.GoldMedal;
         }
         else if (p.Strikes <= m.MedalSilver)
         {
-            UI_CompletedMapInfo.Img_CurrStrikes.sprite = UiManager.Instance.UI_Images.SilverMedal;
+           Info.Img_CurrStrikes.sprite = UiManager.Instance.UI_Images.SilverMedal;
         }
         else if (p.Strikes <= m.MedalBronze)
         {
-            UI_CompletedMapInfo.Img_CurrStrikes.sprite = UiManager.Instance.UI_Images.BronzeMedal;
+            Info.Img_CurrStrikes.sprite = UiManager.Instance.UI_Images.BronzeMedal;
         }
         else
         {
-            UI_CompletedMapInfo.Img_CurrStrikes.sprite = null;
+            Info.Img_CurrStrikes.sprite = null;
         }
     }
 }

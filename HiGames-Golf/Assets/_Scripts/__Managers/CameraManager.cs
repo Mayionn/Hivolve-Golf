@@ -7,6 +7,7 @@ using System;
 
 public class CameraManager : Singleton<CameraManager>
 {
+    public enum CameraDirection { West,East,South,North}
     public GameObject Camera;
     public Vector3 CameraOffSet;
     public Vector3 CameraHeigthOffSet;
@@ -16,6 +17,10 @@ public class CameraManager : Singleton<CameraManager>
     public float HeigthOffSetLaunchRange;
     public float HeigthOffSetLaunchRecovery;
 
+    private Vector3 _westOffSet; //Default
+    private Vector3 _eastOffSet;
+    private Vector3 _northOffSet;
+    private Vector3 _southOffSet;
 
     private float ofY;
     private float ohfY;
@@ -28,8 +33,33 @@ public class CameraManager : Singleton<CameraManager>
 
         ofY = CameraOffSet.y;
         ohfY = CameraHeigthOffSet.y;
+
+        _westOffSet = CameraOffSet;
+        _northOffSet = Quaternion.AngleAxis(90, Vector3.up) * CameraOffSet;
+        _eastOffSet = Quaternion.AngleAxis(180, Vector3.up) * CameraOffSet;
+        _southOffSet = Quaternion.AngleAxis(270, Vector3.up) * CameraOffSet;
     }
 
+    public void LookDirection(CameraDirection direction)
+    {
+        switch (direction)
+        {
+            case CameraDirection.West:
+                CameraOffSet = _westOffSet;
+                break;
+            case CameraDirection.East:
+                CameraOffSet = _eastOffSet;
+                break;
+            case CameraDirection.South:
+                CameraOffSet = _southOffSet;
+                break;
+            case CameraDirection.North:
+                CameraOffSet = _northOffSet;
+                break;
+            default:
+                break;
+        }
+    }
 
     void LateUpdate()
     {

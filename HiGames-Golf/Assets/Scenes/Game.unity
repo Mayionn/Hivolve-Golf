@@ -427,6 +427,18 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &274737903 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8156662973045977555, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8156662972718617986}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &323903236 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 165630982082856826, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
@@ -754,7 +766,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0.08715578, y: -0, z: -0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -894,6 +906,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &742804759 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8156662972848755382, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8156662972718617986}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &770397418 stripped
@@ -1272,6 +1296,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1274796333 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8156662973136307349, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8156662972718617986}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1276693476 stripped
@@ -1711,6 +1747,18 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1774641009 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8156662974166448386, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8156662972718617986}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1823198527 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8156662974536374461, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
@@ -1906,6 +1954,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2117933908 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8156662974033990575, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8156662972718617986}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &262606282939028683 stripped
@@ -4972,6 +5032,106 @@ PrefabInstance:
       propertyPath: UI_CompletedMapInfo.Txt_CurrTimer
       value: 
       objectReference: {fileID: 460631703}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_CompletedMapInfo.Image_MapGoldMedal
+      value: 
+      objectReference: {fileID: 1774641009}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_CompletedMapInfo.Image_MapSilverMedal
+      value: 
+      objectReference: {fileID: 274737903}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: UI_CompletedMapInfo.Image_MapBronzeMedal
+      value: 
+      objectReference: {fileID: 2117933908}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Image_MapGoldMedal
+      value: 
+      objectReference: {fileID: 1774641009}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Image_MapSilverMedal
+      value: 
+      objectReference: {fileID: 274737903}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Image_MapBronzeMedal
+      value: 
+      objectReference: {fileID: 2117933908}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Txt_Medal01
+      value: 
+      objectReference: {fileID: 658759608}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Txt_Medal02
+      value: 
+      objectReference: {fileID: 225459043}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Txt_Medal03
+      value: 
+      objectReference: {fileID: 2035847833}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Img_PBStrikes
+      value: 
+      objectReference: {fileID: 1847298452}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Img_CurrStrikes
+      value: 
+      objectReference: {fileID: 786604116}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Txt_CurrStrikes
+      value: 
+      objectReference: {fileID: 1990267753}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Txt_CurrTimer
+      value: 
+      objectReference: {fileID: 460631703}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Txt_PBStrikes
+      value: 
+      objectReference: {fileID: 1079667821}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Txt_PBTimer
+      value: 
+      objectReference: {fileID: 1424099738}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Txt_GoldMedal
+      value: 
+      objectReference: {fileID: 658759608}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Txt_SilverMedal
+      value: 
+      objectReference: {fileID: 225459043}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Txt_BronzeMedal
+      value: 
+      objectReference: {fileID: 2035847833}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Image_PBTimer
+      value: 
+      objectReference: {fileID: 742804759}
+    - target: {fileID: 2972850881252672488, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: Info.Image_CurrentTimer
+      value: 
+      objectReference: {fileID: 1274796333}
     - target: {fileID: 2972850881252672494, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
       propertyPath: CurrencyGold
@@ -5652,7 +5812,7 @@ PrefabInstance:
     - target: {fileID: 2217479597518538133, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -53.200012
+      value: -53.19922
       objectReference: {fileID: 0}
     - target: {fileID: 2217479597518538133, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
         type: 3}
@@ -10755,6 +10915,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8156662972848755376, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+        type: 3}
+      propertyPath: m_Name
+      value: Image PersonalBest Timer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156662973045977549, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+        type: 3}
+      propertyPath: m_Name
+      value: Map Silver Medal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156662973136307351, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+        type: 3}
+      propertyPath: m_Name
+      value: Image Current Timer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156662973492573648, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+        type: 3}
+      propertyPath: m_Name
+      value: Image Current Strikes
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156662974033990569, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+        type: 3}
+      propertyPath: m_Name
+      value: Map Bronze Medal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156662974166448636, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+        type: 3}
+      propertyPath: m_Name
+      value: Map Gold Medal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156662974562573328, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+        type: 3}
+      propertyPath: m_Name
+      value: Image PersonalBest Strikes
+      objectReference: {fileID: 0}
     - target: {fileID: 7018674647019988859, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
         type: 3}
       propertyPath: m_Sprite
@@ -10818,6 +11013,16 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8156662972895833827, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+        type: 3}
+      propertyPath: m_Name
+      value: Text Silver Medal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156662973130947351, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+        type: 3}
+      propertyPath: m_Name
+      value: Text Current Timer
+      objectReference: {fileID: 0}
     - target: {fileID: 8156662973163847853, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
         type: 3}
       propertyPath: m_FontData.m_Font
@@ -10829,6 +11034,16 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontStyle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8156662973335226932, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+        type: 3}
+      propertyPath: m_Name
+      value: Text Gold Medal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156662973786749417, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+        type: 3}
+      propertyPath: m_Name
+      value: Text PersonalBest Strikes
+      objectReference: {fileID: 0}
     - target: {fileID: 8156662973802070991, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
         type: 3}
       propertyPath: m_FontData.m_Font
@@ -10839,6 +11054,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_FontStyle
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156662974130134042, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+        type: 3}
+      propertyPath: m_Name
+      value: Text PersonalBest Timer
       objectReference: {fileID: 0}
     - target: {fileID: 8156662974320554402, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
         type: 3}
@@ -10879,6 +11099,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: d0883d493562b5e43872faa4cacea63b,
         type: 3}
+    - target: {fileID: 8156662974704551653, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+        type: 3}
+      propertyPath: m_Name
+      value: Text Current Strikes
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156662974709303061, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
+        type: 3}
+      propertyPath: m_Name
+      value: Text Bronze Medal
+      objectReference: {fileID: 0}
     - target: {fileID: 3721379963423958280, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
         type: 3}
       propertyPath: m_Sprite

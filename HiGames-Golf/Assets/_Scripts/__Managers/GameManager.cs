@@ -44,7 +44,7 @@ namespace Assets.Managers
             _GameMode = GameMode.Menu;
             _GameState = GameState.Resumed;
 
-            MapIndex = 0;
+            MapIndex = 0; //???? dont remember why its here
             LocalMultiplayerMaps = new List<Map>();
             GetStates();
 
@@ -57,7 +57,6 @@ namespace Assets.Managers
 
             Create_FirstPlayer();
             Create_StateMachine();
-            Create_Menu();
 
             SaveManager.Instance.LoadUnlockedSkins_Balls();
             SaveManager.Instance.LoadUnlockedSkins_Hats();
@@ -67,6 +66,7 @@ namespace Assets.Managers
             SaveManager.Instance.LoadCurrency();
 
             CameraManager.Instance.Init();
+            Create_Menu();
         }
 
         //---Action Update

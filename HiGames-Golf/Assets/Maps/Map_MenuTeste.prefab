@@ -302,6 +302,7 @@ MonoBehaviour:
   MedalBronze: 3
   _GameType: 0
   Skybox: 1
+  CameraDirection: 0
   Prefab: {fileID: 122}
   SpawnedPrefab: {fileID: 0}
   StartingPosition: {fileID: 4385611082345561412}
