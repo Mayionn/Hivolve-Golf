@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2825989124144119792
+--- !u!1 &177
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,15 +8,15 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2825989124144119793}
-  - component: {fileID: 2825989124144119794}
-  - component: {fileID: 6818436173594457390}
-  - component: {fileID: 3925893565709228640}
-  - component: {fileID: 4027844135146354228}
-  - component: {fileID: 6582980376503463012}
-  - component: {fileID: 4615877404077792315}
-  - component: {fileID: 103757425441423382}
-  - component: {fileID: 629505241821581600}
+  - component: {fileID: 391}
+  - component: {fileID: 897}
+  - component: {fileID: 911}
+  - component: {fileID: 898}
+  - component: {fileID: 899}
+  - component: {fileID: 910}
+  - component: {fileID: 903}
+  - component: {fileID: 891}
+  - component: {fileID: 893}
   m_Layer: 0
   m_Name: _UiManager
   m_TagString: Untagged
@@ -24,13 +24,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2825989124144119793
+--- !u!4 &391
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2825989124144119792}
+  m_GameObject: {fileID: 177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -38,37 +38,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2825989124144119794
+--- !u!114 &897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2825989124144119792}
+  m_GameObject: {fileID: 177}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ef207f065e76624dafaf01d2bf85308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UI_Images:
-    GoldMedal: {fileID: 21300000, guid: 90d58869ce1514d42bd004a4cd9a570e, type: 3}
-    SilverMedal: {fileID: 21300000, guid: 91c0567e138f4ab45b70d04b074ead83, type: 3}
-    BronzeMedal: {fileID: 21300000, guid: 1e1088c5b3561004b980e60eb1c80935, type: 3}
-    StopWatch: {fileID: 21300000, guid: 1b122c7c75771ee4f81629a948b4fc63, type: 3}
+    GoldMedal: {fileID: 21300000, guid: 11d75562a9c64cc4b8bdadaebf197f1c, type: 3}
+    SilverMedal: {fileID: 21300000, guid: 69b37f0b679ee814e8500fae92d962a2, type: 3}
+    BronzeMedal: {fileID: 21300000, guid: 92a9601dec0147644a4c519f5b58e4e6, type: 3}
+    StopWatch: {fileID: 21300000, guid: eb1cff380925b94469d40c723335a521, type: 3}
     Waypoint: {fileID: 21300000, guid: 6863859248a4b6543b8ae116ba78a9a6, type: 3}
-    Strikes: {fileID: 21300000, guid: 7344b991d05d3da4c94ab673db3cfc18, type: 3}
+    Strikes: {fileID: 21300000, guid: 76317942812dc2e4095abf67a08a20d5, type: 3}
     Hidden: {fileID: 21300000, guid: f21996470903ed84798d3b888c35f211, type: 3}
-    Reset: {fileID: 21300000, guid: 2be9f85ce3649bb40af00bd7b6a71e3a, type: 3}
+    Reset: {fileID: 21300000, guid: eb50b0a10576ce84b9e4359efc5a3d02, type: 3}
+    Gold: {fileID: 21300000, guid: 258448d67566781459826d59907f9be2, type: 3}
+    Diamonds: {fileID: 21300000, guid: 9c3e70f9e10f1214f85018601d1a16f5, type: 3}
   UI_BackgroundImages:
     DefaultBackground: {fileID: 21300000, guid: 43832e73e1465da43a1b83601aa86e58,
       type: 3}
---- !u!114 &6818436173594457390
+  UI_SkinMenuImages:
+    Sprite_Icon_Coin: {fileID: 21300000, guid: 6951d71a1a18e504cbb4c0ae1e0c962c, type: 3}
+    Sprite_Icon_Diamond: {fileID: 21300000, guid: c252f47bad42b8b499219c30f94cd546,
+      type: 3}
+    LockedSkin: {fileID: 21300000, guid: 455f637f7d401004981713b05c4a8bb8, type: 3}
+--- !u!114 &911
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2825989124144119792}
+  m_GameObject: {fileID: 177}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5647e0f17c513e4eba60b9ffd99930c, type: 3}
@@ -102,13 +109,13 @@ MonoBehaviour:
     Txt_PlayerName: {fileID: 0}
   CurrentNumberText: {fileID: 0}
   CurrentMapNumberText: {fileID: 0}
---- !u!114 &3925893565709228640
+--- !u!114 &898
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2825989124144119792}
+  m_GameObject: {fileID: 177}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fdf914de81d7a144b1bc7af6ed9256b, type: 3}
@@ -118,14 +125,13 @@ MonoBehaviour:
   DisplayPrefab: {fileID: 2628743406792792322, guid: 21d97cf802f34e044a99311691d79fd3,
     type: 3}
   canvas: {fileID: 0}
-  detectSwipeOnlyAfterRelease: 1
---- !u!114 &4027844135146354228
+--- !u!114 &899
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2825989124144119792}
+  m_GameObject: {fileID: 177}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a6240daeb432e0419be03450462ed13, type: 3}
@@ -149,13 +155,14 @@ MonoBehaviour:
     ResetGame: {fileID: 0}
     MapInfo: {fileID: 0}
     CurrentPlayerInfo: {fileID: 0}
---- !u!114 &6582980376503463012
+    SkinMenu: {fileID: 0}
+--- !u!114 &910
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2825989124144119792}
+  m_GameObject: {fileID: 177}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ecfdf3d7e8d0454bb1e1bd9d63e4c17, type: 3}
@@ -166,13 +173,13 @@ MonoBehaviour:
     Background: {fileID: 0}
     Image_Button: {fileID: 0}
     Text_CurrentPlayer: {fileID: 0}
---- !u!114 &4615877404077792315
+--- !u!114 &903
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2825989124144119792}
+  m_GameObject: {fileID: 177}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abb4fd09bbc309b499d93ae16e9f1bfe, type: 3}
@@ -232,13 +239,13 @@ MonoBehaviour:
   - Text_PlayerName: {fileID: 0}
     Text_PlayerScore: {fileID: 0}
     Image_Medal: {fileID: 0}
---- !u!114 &103757425441423382
+--- !u!114 &891
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2825989124144119792}
+  m_GameObject: {fileID: 177}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ce7bbc74c862004891db71430eab49b, type: 3}
@@ -255,20 +262,60 @@ MonoBehaviour:
     Txt_CurrTimer: {fileID: 0}
     Img_PBStrikes: {fileID: 0}
     Img_CurrStrikes: {fileID: 0}
---- !u!114 &629505241821581600
+--- !u!114 &893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2825989124144119792}
+  m_GameObject: {fileID: 177}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8fb290f86c45cf4a9fe4322864d1b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrencyGold: {fileID: 0}
+  CurrencyDiamonds: {fileID: 0}
+  ImageGold: {fileID: 0}
+  ImageDiamonds: {fileID: 0}
   GO: {fileID: 0}
-  Tab_Ball: {fileID: 0}
-  Tab_Ball_Hat: {fileID: 0}
-  Tab_Ball_Trail: {fileID: 0}
-  Tab_Hand: {fileID: 0}
+  BUTTON_Next: {fileID: 0}
+  BUTTON_Prev: {fileID: 0}
+  CurrentTab: 0
+  Displays:
+  - Cost_Coins: {fileID: 0}
+    Cost_Diamonds: {fileID: 0}
+    Image_Icon_Coin: {fileID: 0}
+    Image_Icon_Diamond: {fileID: 0}
+    Image_Display: {fileID: 0}
+    Image_Locked: {fileID: 0}
+  - Cost_Coins: {fileID: 0}
+    Cost_Diamonds: {fileID: 0}
+    Image_Icon_Coin: {fileID: 0}
+    Image_Icon_Diamond: {fileID: 0}
+    Image_Display: {fileID: 0}
+    Image_Locked: {fileID: 0}
+  - Cost_Coins: {fileID: 0}
+    Cost_Diamonds: {fileID: 0}
+    Image_Icon_Coin: {fileID: 0}
+    Image_Icon_Diamond: {fileID: 0}
+    Image_Display: {fileID: 0}
+    Image_Locked: {fileID: 0}
+  - Cost_Coins: {fileID: 0}
+    Cost_Diamonds: {fileID: 0}
+    Image_Icon_Coin: {fileID: 0}
+    Image_Icon_Diamond: {fileID: 0}
+    Image_Display: {fileID: 0}
+    Image_Locked: {fileID: 0}
+  - Cost_Coins: {fileID: 0}
+    Cost_Diamonds: {fileID: 0}
+    Image_Icon_Coin: {fileID: 0}
+    Image_Icon_Diamond: {fileID: 0}
+    Image_Display: {fileID: 0}
+    Image_Locked: {fileID: 0}
+  - Cost_Coins: {fileID: 0}
+    Cost_Diamonds: {fileID: 0}
+    Image_Icon_Coin: {fileID: 0}
+    Image_Icon_Diamond: {fileID: 0}
+    Image_Display: {fileID: 0}
+    Image_Locked: {fileID: 0}

@@ -24,8 +24,9 @@ public class Map : MonoBehaviour
     public GameType _GameType;
     public SkyboxType Skybox;
     public PersonalBest PB;
-    public bool IsLocked = true;
     [HideInInspector] public Display Display;
+
+    public CameraManager.CameraDirection CameraDirection;
 
     public GameObject Prefab;
     [HideInInspector] public GameObject SpawnedPrefab;
@@ -44,6 +45,8 @@ public class Map : MonoBehaviour
         //SetUp Ball
         SetupBalls();
         GameManager.Instance.ChoosePlayer(0);
+        //Set Starting look Direction
+        CameraManager.Instance.LookDirection(CameraDirection); 
         //Prepare Waypoints
         SetupWaypoints();
         HideWaypointPositions();

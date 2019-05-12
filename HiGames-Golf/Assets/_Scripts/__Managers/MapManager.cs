@@ -43,7 +43,6 @@ public class Display
         Map = map;
         GO.GetComponent<GetMap>().map = Map;
         Map.Display = this as Display;
-        Locked = Map.IsLocked;
         //Level
         levelNumber = level;
         //DI - Display Info
@@ -80,7 +79,7 @@ public class Display
         if (Locked) SetLocked();
         else SetUnlocked();
     }
-    public void SetUnlocked()
+    private void SetUnlocked()
     {
         //Set Images
         Image.sprite = SpriteUnlocked;
@@ -101,7 +100,7 @@ public class Display
         Txt_BestScore_Strikes.text = Map.PB.Strikes.ToString();
         Txt_BestScore_Time.text = Map.PB.Time.ToString();
     }
-    public void SetLocked()
+    private void SetLocked()
     {
         Image.sprite = SpriteLocked;
 

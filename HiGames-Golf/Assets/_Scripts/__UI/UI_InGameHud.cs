@@ -111,6 +111,7 @@ public class UI_InGameHud : MonoBehaviour
     }
     private void SetMapInfo_CurrentStrikes()
     {
+        UI_InGame.CurrentStrikes.gameObject.SetActive(true);
         UI_InGame.CurrentStrikes.text = "Strikes: 0";
         UI_InGame.ImgCurrentStrikes.color = Color.white;
     }
@@ -159,7 +160,8 @@ public class UI_InGameHud : MonoBehaviour
     }
     private void HideMapInfo_CurrentStrikes()
     {
-        UI_InGame.CurrentStrikes.text = "";
+        UI_InGame.CurrentStrikes.gameObject.SetActive(false);
+        //UI_InGame.CurrentStrikes.text = "";
         UI_InGame.ImgCurrentStrikes.color = Color.clear;
     }
     private void HideButtonRestart()

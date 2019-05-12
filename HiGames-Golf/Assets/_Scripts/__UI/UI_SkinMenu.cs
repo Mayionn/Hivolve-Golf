@@ -18,7 +18,7 @@ using UnityEngine.UI;
 
 public class UI_SkinMenu : MonoBehaviour
 {
-    [Serializable] public struct Info_SkinManu
+    [Serializable] public struct Info_SkinMenu
     {
         public Text Title;
         public Image Img_Coin;
@@ -41,14 +41,11 @@ public class UI_SkinMenu : MonoBehaviour
 
     public enum Tab { Ball, Hat, Trail, Hand, Acessories};
 
-    public Text CurrencyGold;
-    public Text CurrencyDiamonds;
-    public Image ImageGold;
-    public Image ImageDiamonds;
-
+    public Info_SkinMenu Menu;
     public GameObject GO;
     public GameObject BUTTON_Next;
     public GameObject BUTTON_Prev;
+
 
     public Tab CurrentTab;
     private int currentPage;
@@ -146,8 +143,10 @@ public class UI_SkinMenu : MonoBehaviour
 
     private void Setup_Currency()
     {
-        CurrencyGold.text = ProfileManager.Instance.Gold.ToString();
-        CurrencyDiamonds.text = ProfileManager.Instance.Diamonds.ToString();
+        Menu.Img_Coin.sprite = UiManager.Instance.UI_Images.Gold;
+        Menu.Img_Diamond.sprite = UiManager.Instance.UI_Images.Diamonds;
+        Menu.Text_Coin.text = ProfileManager.Instance.Gold.ToString();
+        Menu.Text_Diamond.text = ProfileManager.Instance.Diamonds.ToString();
     }
     private void Setup_Displays_Ball(int page)
     {
