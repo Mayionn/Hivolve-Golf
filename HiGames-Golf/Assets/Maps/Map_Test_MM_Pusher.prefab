@@ -208,7 +208,7 @@ MonoBehaviour:
   MedalBronze: 3
   _GameType: 1
   Skybox: 0
-  IsLocked: 1
+  IsLocked: 0
   Prefab: {fileID: 7033088058627979224}
   SpawnedPrefab: {fileID: 0}
   StartingPosition: {fileID: 3780208784181558198}
