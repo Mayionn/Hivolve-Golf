@@ -21,11 +21,6 @@ public class UiManager : Singleton<UiManager>
         public Sprite Reset;
         public Sprite Gold;
         public Sprite Diamonds;
-    }
-    [Serializable] public struct UISkinMenuImages
-    {
-        public Sprite Sprite_Icon_Coin;
-        public Sprite Sprite_Icon_Diamond;
         public Sprite LockedSkin;
     }
     [Serializable] public struct UIBackgroundImages
@@ -36,7 +31,6 @@ public class UiManager : Singleton<UiManager>
     //Struct Variables
     public UIImages UI_Images;
     public UIBackgroundImages UI_BackgroundImages;
-    public UISkinMenuImages UI_SkinMenuImages;
 
     private UI_LocalMultiplayer UI_LocalMultiplayer;
     private UI_MapSelector UI_MapSelector;

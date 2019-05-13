@@ -14,6 +14,11 @@ public class SaveManager : Singleton<SaveManager>
         Data = SaveSystem.LoadData();
     }
 
+    public void ClearData()
+    {
+        SaveSystem.ClearData();
+    }
+
     public void SaveCurrency(int gold, int diamonds)
     {
         SaveSystem.SaveCurrency(gold, diamonds);

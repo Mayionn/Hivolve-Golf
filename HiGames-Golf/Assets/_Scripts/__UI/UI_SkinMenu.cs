@@ -98,6 +98,7 @@ public class UI_SkinMenu : MonoBehaviour
             Displays[displayIndex].Skin.Buy_Skin();
             Displays[displayIndex].Skin.Save_Skin();
             SetupDisplay_Unlocked(displayIndex, Displays[displayIndex].Skin);
+            Setup_Currency();
         }
     }
     public void BUTTON_NextPage()
@@ -156,7 +157,7 @@ public class UI_SkinMenu : MonoBehaviour
 
         for (int i = 0; i < Displays.Length; i++)
         {
-            if(i + offset < bl.Count)
+            if (i + offset < bl.Count)
             {
                 Skin b = bl[i + offset];
 
@@ -176,17 +177,7 @@ public class UI_SkinMenu : MonoBehaviour
             }
         }
 
-        if(bl.Count > 6)
-        {
-            BUTTON_Next.SetActive(true);
-        }
-        else BUTTON_Next.SetActive(false);
-
-        if (page > 1)
-        {
-            BUTTON_Prev.SetActive(true);
-        }
-        else BUTTON_Prev.SetActive(false);
+        Setup_PageButtons(page, bl, offset);
     }
     private void Setup_Displays_Hat(int page)
     {
@@ -202,40 +193,40 @@ public class UI_SkinMenu : MonoBehaviour
 
                 if (b.IsUnlocked)
                 {
-                    Displays[i].Cost_Coins.text = "";
-                    Displays[i].Cost_Diamonds.text = "";
-                    Displays[i].Image_Icon_Coin.color = Color.clear;
-                    Displays[i].Image_Icon_Diamond.color = Color.clear;
-                    Displays[i].Image_Display.color = Color.white;
-                    Displays[i].Image_Locked.color = Color.clear;
-                    Displays[i].Image_Display.sprite = b.Sprite_Display;
+                    SetupDisplay_Unlocked(i, b);
                 }
                 else
                 {
-                    Displays[i].Cost_Coins.text = b.Cost_Coins.ToString();
-                    Displays[i].Cost_Diamonds.text = b.Cost_Diamonds.ToString();
-                    Displays[i].Image_Icon_Coin.color = Color.white;
-                    Displays[i].Image_Icon_Diamond.color = Color.white;
-                    Displays[i].Image_Icon_Coin.sprite = UiManager.Instance.UI_SkinMenuImages.Sprite_Icon_Coin;
-                    Displays[i].Image_Icon_Diamond.sprite = UiManager.Instance.UI_SkinMenuImages.Sprite_Icon_Diamond;
-                    Displays[i].Image_Locked.sprite = UiManager.Instance.UI_SkinMenuImages.LockedSkin;
-                    Displays[i].Image_Display.color = Color.white;
-                    Displays[i].Image_Locked.color = Color.white;
+                    SetupDisplay_Locked(i, b);
                 }
                 Displays[i].Skin = SkinsManager.Instance.List_Skins_Hats[i + offset];
             }
             else
             {
-                Displays[i].Cost_Coins.text = "";
-                Displays[i].Cost_Diamonds.text = "";
-                Displays[i].Image_Icon_Coin.color = Color.clear;
-                Displays[i].Image_Icon_Diamond.color = Color.clear;
-                Displays[i].Image_Display.color = Color.clear;
-                Displays[i].Image_Locked.color = Color.clear;
+                SetupDisplay_Hidden(i);
             }
         }
 
-        if (bl.Count > 6)
+        Setup_PageButtons_Hat(page, bl, offset);
+    }
+
+    private void Setup_PageButtons(int page, List<Skin_Ball> bl, int offset)
+    {
+        if (bl.Count > offset + 6)
+        {
+            BUTTON_Next.SetActive(true);
+        }
+        else BUTTON_Next.SetActive(false);
+
+        if (page > 1)
+        {
+            BUTTON_Prev.SetActive(true);
+        }
+        else BUTTON_Prev.SetActive(false);
+    }
+    private void Setup_PageButtons_Hat(int page, List<Skin_Hat> bl, int offset)
+    {
+        if (bl.Count > offset + 6)
         {
             BUTTON_Next.SetActive(true);
         }
@@ -250,6 +241,7 @@ public class UI_SkinMenu : MonoBehaviour
 
     private void SetupDisplay_Hidden(int i)
     {
+        Displays[i].Image_Display.transform.parent.GetComponent<Image>().color = Color.clear;
         Displays[i].Cost_Coins.text = "";
         Displays[i].Cost_Diamonds.text = "";
         Displays[i].Image_Icon_Coin.color = Color.clear;
@@ -259,18 +251,21 @@ public class UI_SkinMenu : MonoBehaviour
     }
     private void SetupDisplay_Locked(int i, Skin b)
     {
+        Displays[i].Image_Display.transform.parent.GetComponent<Image>().color = Color.white;
         Displays[i].Cost_Coins.text = b.Cost_Coins.ToString();
         Displays[i].Cost_Diamonds.text = b.Cost_Diamonds.ToString();
-        Displays[i].Image_Icon_Coin.color = Color.white;
-        Displays[i].Image_Icon_Diamond.color = Color.white;
-        Displays[i].Image_Icon_Coin.sprite = UiManager.Instance.UI_SkinMenuImages.Sprite_Icon_Coin;
-        Displays[i].Image_Icon_Diamond.sprite = UiManager.Instance.UI_SkinMenuImages.Sprite_Icon_Diamond;
-        Displays[i].Image_Locked.sprite = UiManager.Instance.UI_SkinMenuImages.LockedSkin;
+        Displays[i].Image_Icon_Coin.color = Color.black;
+        Displays[i].Image_Icon_Diamond.color = Color.black;
+        Displays[i].Image_Icon_Coin.sprite = UiManager.Instance.UI_Images.Gold;
+        Displays[i].Image_Icon_Diamond.sprite = UiManager.Instance.UI_Images.Diamonds;
+        Displays[i].Image_Locked.sprite = UiManager.Instance.UI_Images.LockedSkin;
+        Displays[i].Image_Display.sprite = b.Sprite_Display;
         Displays[i].Image_Display.color = Color.white;
-        Displays[i].Image_Locked.color = Color.white;
+        Displays[i].Image_Locked.color = Color.black;
     }
     private void SetupDisplay_Unlocked(int i, Skin b)
     {
+        Displays[i].Image_Display.transform.parent.GetComponent<Image>().color = Color.white;
         Displays[i].Cost_Coins.text = "";
         Displays[i].Cost_Diamonds.text = "";
         Displays[i].Image_Icon_Coin.color = Color.clear;

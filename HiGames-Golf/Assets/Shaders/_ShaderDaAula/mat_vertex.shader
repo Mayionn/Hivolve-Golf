@@ -4,7 +4,7 @@
 	{
 		_diff("Cena difusa", Color) = (1,1,1,1)
 		_spec("Cena especular", Color) = (1,1,1,1)
-		_sh("Cena shiny", Range(1,32)) = 1
+		_sh("Cena shiny", Range(0,32)) = 1
 	}
 		SubShader
 	{

@@ -9,12 +9,12 @@ using UnityEngine.UI;
 //----- SKIN
 [Serializable] public abstract class Skin
 {
-    public int Index;
-    public string SkinName;
-    public Sprite Sprite_Display;
+    public string Name;
     public int Cost_Coins;
     public int Cost_Diamonds;
     public bool IsUnlocked;
+    public Sprite Sprite_Display;
+    [HideInInspector] public int Index;
 
     public void Buy_Skin()
     {
