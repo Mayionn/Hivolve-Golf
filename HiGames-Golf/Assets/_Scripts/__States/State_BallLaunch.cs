@@ -11,7 +11,7 @@ public class State_BallLaunch : State
     private readonly float MAXROTSPEED = 4f;
 
     private float throwForce;
-    private readonly float MAXTHROWFORCE = 15f;
+    private readonly float MAXTHROWFORCE = 20f;
     private Vector2 touchPos1, touchPos2, p;
 
     private float WIDTH;
@@ -189,7 +189,7 @@ public class State_BallLaunch : State
                 }
 
                 Vector3 direction = GetThrowDirection();
-                Ball.GetComponent<Rigidbody>().AddForce(direction * 10, ForceMode.Impulse);
+                Ball.GetComponent<Rigidbody>().AddForce(direction * MAXTHROWFORCE, ForceMode.Impulse);
                 _launched = true;
 
                 //-Update Map and UI

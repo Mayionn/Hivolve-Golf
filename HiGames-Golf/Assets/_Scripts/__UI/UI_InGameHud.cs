@@ -28,6 +28,7 @@ public class UI_InGameHud : MonoBehaviour
         public Text MapInfo;
         public Text CurrentPlayerInfo;
         public Button SkinMenu;
+        public Button MapSelector;
     }
     public InfoInGame UI_InGame;
 
@@ -49,6 +50,7 @@ public class UI_InGameHud : MonoBehaviour
                 HideMapInfo_CurrentStrikes();
                 HideMapInfo_Medals();
                 HideTimer();
+                HideButtonReturnMapSelector();
                 break;
             case GameManager.GameMode.Singleplayer:
                 UI.SetActive(true);
@@ -60,6 +62,7 @@ public class UI_InGameHud : MonoBehaviour
                 SetMapInfo_Waypoints();
                 SetMapInfo_CurrentStrikes();
                 SetButtonRestart();
+                ShowButtonReturnMapSelector();
                 break;
             case GameManager.GameMode.Multiplayer:
                 break;
@@ -83,6 +86,16 @@ public class UI_InGameHud : MonoBehaviour
         UI_InGame.ImgMedalSilver.sprite = UiManager.Instance.UI_Images.SilverMedal;
         UI_InGame.ImgMedalBronze.sprite = UiManager.Instance.UI_Images.BronzeMedal;
     }
+
+    private void HideButtonReturnMapSelector()
+    {
+        UI_InGame.MapSelector.gameObject.SetActive(false);
+    }
+    private void ShowButtonReturnMapSelector()
+    {
+        UI_InGame.MapSelector.gameObject.SetActive(true);
+    }
+
     public void Terminate()
     {
         UI.SetActive(false);

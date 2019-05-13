@@ -48,7 +48,7 @@ namespace Assets.Managers
             LocalMultiplayerMaps = new List<Map>();
             GetStates();
 
-            SaveManager.Instance.ClearData();
+            //SaveManager.Instance.ClearData();
             SaveManager.Instance.Init();
             MapManager.Instance.Init();
             UiManager.Instance.Init();
@@ -332,6 +332,11 @@ namespace Assets.Managers
             CurrentMap.WaypointsReset();
             UiManager.Instance.UpdateMapInfoCurrentStrikes();
             UiManager.Instance.UpdateMapInfoWaypoints();
+        }
+        public void Button_BackToMapSelector()
+        {
+            UiManager.Instance.CloseInterface_InGameHud();
+            UiManager.Instance.OpenInterface_MapSelector();
         }
 
         //Timescale Methods

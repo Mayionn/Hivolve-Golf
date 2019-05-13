@@ -174,13 +174,13 @@ public class MapManager : Singleton<MapManager>
     public List<MapChapter> ChapterMaps;
     public DisplayInfo[] Chapter1Displays, Chapter2Displays, Chapter3Displays, Chapter4Displays;
     public List<Chapter> Chapters;
-    public int CurrentChapterNumber;
 
     public Map Menu;
-    public Map SelectedMap;
+    [HideInInspector] public int CurrentChapterNumber;
+    [HideInInspector] public Map SelectedMap;
 
     //TriggerObjects
-    public GameObject Waypoint;
+    [HideInInspector] public GameObject Waypoint;
 
     public void Init()
     {

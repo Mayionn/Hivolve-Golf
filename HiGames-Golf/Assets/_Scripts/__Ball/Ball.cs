@@ -76,6 +76,7 @@ public class Ball : MonoBehaviour
                             UiManager.Instance.Update_ScoreBoard_SaveScore(Player);
                             GameManager.Instance.NextPlayer();
                         }
+
                     }
                     break;
                 default:
@@ -88,7 +89,14 @@ public class Ball : MonoBehaviour
     {
         if(other.tag == "OOB")
         {
-            GoLastPosition(true);
+            if(GameManager.Instance._GameMode == GameManager.GameMode.Singleplayer)
+            {
+                GoStartingPosition(true);
+            }
+            else
+            {
+                GoLastPosition(true);
+            }
         }
     }
 

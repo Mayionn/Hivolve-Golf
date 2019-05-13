@@ -179,6 +179,9 @@ public class UiManager : Singleton<UiManager>
     }
     public void UpdateMapInfoCurrentStrikes()
     {
-        UI_InGameHud.UI_InGame.CurrentStrikes.text = "Strikes: " + GameManager.Instance.CurrentPlayer.Strikes;
+        if(GameManager.Instance._GameMode != GameManager.GameMode.Menu)
+        {
+            UI_InGameHud.UI_InGame.CurrentStrikes.text = "Strikes: " + GameManager.Instance.CurrentPlayer.Strikes;
+        }
     }
 }
