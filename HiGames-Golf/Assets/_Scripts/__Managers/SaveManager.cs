@@ -118,6 +118,17 @@ public class SaveManager : Singleton<SaveManager>
         GameManager.Instance.CurrentPlayer.Skin_Hat = SkinsManager.Instance.List_Skins_Hats[data.CurrentSkin_Hat_Index];
         GameManager.Instance.CurrentPlayer.Skin_Hat.Load_Skin(GameManager.Instance.CurrentPlayer);
     }
+    //Current Skin ---- ARROW
+    public void SaveCurrentSkin_Arrow(int index)
+    {
+        SaveSystem.SaveCurrentSkin_Arrow(index);
+    }
+    public void LoadCurrentSkin_Arrow()
+    {
+        SaveData data = SaveSystem.LoadData();
+        GameManager.Instance.CurrentPlayer.Skin_Arrow = SkinsManager.Instance.List_Skins_Arrows[data.CurrentSkin_Arrow_Index];
+        GameManager.Instance.CurrentPlayer.Skin_Arrow.Load_Skin(GameManager.Instance.CurrentPlayer);
+    }
     //Unlocked Skins ---- BALLS
     public void SaveUnlockedSkins_Balls()
     {
@@ -185,6 +196,41 @@ public class SaveManager : Singleton<SaveManager>
             for (int i = 0; i < data.UnlockedSkins_Hats.Length; i++)
             {
                 SkinsManager.Instance.List_Skins_Hats[data.UnlockedSkins_Hats[i]].IsUnlocked = true;
+            }
+        }
+    }
+    //Unlocked Skins ---- ARROWS
+    public void SaveUnlockedSkins_Arrows()
+    {
+        int count = 0;
+        List<int> indexesList = new List<int>();
+        //GetIndexes of Unlocked Ball Skins
+        for (int i = 0; i < SkinsManager.Instance.List_Skins_Arrows.Count; i++)
+        {
+            if (SkinsManager.Instance.List_Skins_Arrows[i].IsUnlocked)
+            {
+                count++;
+                indexesList.Add(i);
+            }
+        }
+        //transform list to array
+        int[] indexes = new int[count];
+        for (int i = 0; i < count; i++)
+        {
+            indexes[i] = indexesList[i];
+        }
+        //Send array to SaveSystem to save
+        SaveSystem.SaveSkins_Arrows(count, indexes);
+    }
+    public void LoadUnlockedSkins_Arrows()
+    {
+        SaveData data = SaveSystem.LoadData();
+
+        if (data.UnlockedSkins_Arrows != null)
+        {
+            for (int i = 0; i < data.UnlockedSkins_Arrows.Length; i++)
+            {
+                SkinsManager.Instance.List_Skins_Arrows[data.UnlockedSkins_Arrows[i]].IsUnlocked = true;
             }
         }
     }

@@ -15,8 +15,10 @@ namespace Assets.SaveData
         //TODO: ADD MORE SKIN TYPES
         public int CurrentSkin_Hat_Index;
         public int CurrentSkin_Ball_Index;
+        public int CurrentSkin_Arrow_Index;
         public int[] UnlockedSkins_Hats;
         public int[] UnlockedSkins_Balls;
+        public int[] UnlockedSkins_Arrows;
 
         //Map Progress
         public float[,] Chapter01_Score_Strikes;
@@ -28,8 +30,10 @@ namespace Assets.SaveData
             Diamonds = 0;
             CurrentSkin_Hat_Index = 0;
             CurrentSkin_Ball_Index = 0;
+            CurrentSkin_Arrow_Index = 0;
             UnlockedSkins_Hats = new int[0];
             UnlockedSkins_Balls = new int[0];
+            UnlockedSkins_Arrows = new int[0];
         }
 
         #region -Currency
@@ -49,6 +53,10 @@ namespace Assets.SaveData
         {
             CurrentSkin_Hat_Index = index;
         }
+        public void SetupCurrentSkin_Arrow(int index)
+        {
+            CurrentSkin_Arrow_Index = index;
+        }
         public void SetupSkins_Balls(int count, int[] indexes)
         {
             UnlockedSkins_Balls = new int[count];
@@ -63,6 +71,14 @@ namespace Assets.SaveData
             for (int i = 0; i < count; i++)
             {
                 UnlockedSkins_Hats[i] = indexes[i];
+            }
+        }
+        public void SetupSkins_Arrows(int count, int[] indexes)
+        {
+            UnlockedSkins_Arrows = new int[count];
+            for (int i = 0; i < count; i++)
+            {
+                UnlockedSkins_Arrows[i] = indexes[i];
             }
         }
         #endregion

@@ -25,6 +25,8 @@ public class State_BallLaunch : State
     private bool _launched;
     private bool _striking;
 
+    private readonly int ARROWSIZE = 5;
+
     public override void CheckState()
     {
         if (_launched)
@@ -34,6 +36,7 @@ public class State_BallLaunch : State
     }
     public override void LeaveState(State state)
     {
+        Ball.Player.Arrow.GetComponent<MeshRenderer>().enabled = false;
         GameManager.ActUpdate -= OnState;
         GameManager.CurrentState = state;
         GameManager.CurrentState.StartState();
@@ -58,6 +61,8 @@ public class State_BallLaunch : State
         RIGHTSIDE = (WIDTH / 3) * 2;
         MAXSWIPEDISTANCE = BOTTOMSIDE / 3;
 
+        Ball.Player.Arrow.GetComponent<MeshRenderer>().enabled = true;
+
         GameManager.ActUpdate += OnState;
     }
     
@@ -68,17 +73,17 @@ public class State_BallLaunch : State
         {
             bool isTouch = false;
 
-            foreach(Touch touch in Input.touches)
+            foreach (Touch touch in Input.touches)
             {
-                if(IsLeftSide(touch) && !IsBottomSide(touch))
+                if (IsLeftSide(touch) && !IsBottomSide(touch))
                 {
-                    CameraManager.Instance.CameraOffSet 
+                    CameraManager.Instance.CameraOffSet
                         = Quaternion.AngleAxis(-rotSpeed, Vector3.up) * CameraManager.Instance.CameraOffSet;
                     isTouch = true;
                 }
-                else if(IsRightSide(touch) && !IsBottomSide(touch))
+                else if (IsRightSide(touch) && !IsBottomSide(touch))
                 {
-                    CameraManager.Instance.CameraOffSet 
+                    CameraManager.Instance.CameraOffSet
                         = Quaternion.AngleAxis(+rotSpeed, Vector3.up) * CameraManager.Instance.CameraOffSet;
                     isTouch = true;
                 }
@@ -89,7 +94,7 @@ public class State_BallLaunch : State
                 CameraManager.Instance.CameraOffSet = Quaternion.AngleAxis(+rotSpeed, Vector3.up) * CameraManager.Instance.CameraOffSet;
                 isTouch = true;
             }
-            else if(Input.GetKey(KeyCode.D))
+            else if (Input.GetKey(KeyCode.D))
             {
                 CameraManager.Instance.CameraOffSet = Quaternion.AngleAxis(-rotSpeed, Vector3.up) * CameraManager.Instance.CameraOffSet;
                 isTouch = true;
@@ -103,6 +108,8 @@ public class State_BallLaunch : State
                 }
             }
             else rotSpeed = 0;
+
+            Setup_ArrowAim();
         }
     }
     private void CheckBallThrow()
@@ -120,42 +127,45 @@ public class State_BallLaunch : State
                         touchPos1 = t.position;
                         _striking = true;
                     }
-                //for debug only
-                if (t.phase == TouchPhase.Moved)
+                if (_striking)
                 {
-                    p = t.position;
-                    //If in the middle of the aim, the finger leaves the zone
-                    if (!IsBottomSide(t) || IsRightSide(t) || IsLeftSide(t))
+                    if (t.phase == TouchPhase.Moved)
                     {
-                        break;
-                    }
-                }
-                if (t.phase == TouchPhase.Ended)
-                {
-                    if (t.position.y < touchPos1.y)
-                    {
-                        if (IsBottomSide(t) && !IsLeftSide(t) && !IsRightSide(t))
+                        if (touchPos1.y > t.position.y)
                         {
-                            canLaunch = true;
-                        }
+                            float distance2 = touchPos1.y - t.position.y;
+                            if (distance2 > MAXSWIPEDISTANCE) distance2 = MAXSWIPEDISTANCE;
+                            distance2 /= MAXSWIPEDISTANCE;
 
-                        touchPos2 = t.position;
-                        _striking = false;
+                            Setup_ArrowSize(distance2);
+                            Setup_ArrowAim();
+                        }
+                        //If in the middle of the aim, the finger leaves the zone
+                        if (!IsBottomSide(t) || IsRightSide(t) || IsLeftSide(t))
+                        {
+                            _striking = false;
+                            Setup_ArrowSize(0);
+                            break;
+                        }
+                    }
+                    if (t.phase == TouchPhase.Ended)
+                    {
+                        if (t.position.y < touchPos1.y)
+                        {
+                            if (IsBottomSide(t) && !IsLeftSide(t) && !IsRightSide(t))
+                            {
+                                canLaunch = true;
+                            }
+                            touchPos2 = t.position;
+                            _striking = false;
+                            Setup_ArrowSize(0);
+                        }
                     }
                 }
 
+                /*DEBUG*/
                 //Delete on final version - Or use to make interactive display of strike power
-                if (touchPos1.y > p.y)
-                {
-                    float throwForce2;
-                    float distance2 = touchPos1.y - p.y;
-                    if (distance2 > MAXSWIPEDISTANCE) distance2 = MAXSWIPEDISTANCE;
-                    distance2 /= MAXSWIPEDISTANCE;
-                    //make strike force, depending on distance between fingers;
-                    throwForce2 = distance2 * MAXTHROWFORCE;
-                    GameManager.Instance.DebugTxt.text = throwForce2.ToString();
-                }
-
+              
             }
             if (canLaunch)
             {
@@ -197,6 +207,17 @@ public class State_BallLaunch : State
                 UiManager.Instance.UpdateMapInfoCurrentStrikes();
             }
         }
+    }
+
+    private void Setup_ArrowSize(float value)
+    {
+        Ball.Player.Arrow.transform.localScale = new Vector3(0.1f, 1, 0.4f + value);
+    }
+    private void Setup_ArrowAim()
+    {
+        var difference = Ball.transform.position - GetThrowDirection();
+        Ball.Player.Arrow.transform.position = Ball.transform.position + (GetThrowDirection() * Ball.Player.Arrow.transform.localScale.z * ARROWSIZE);
+        Ball.Player.Arrow.transform.forward = -GetThrowDirection();
     }
 
     private bool IsLeftSide(Touch t)

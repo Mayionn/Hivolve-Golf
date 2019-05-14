@@ -16,10 +16,10 @@ namespace Assets.Managers
 {
     public class GameManager : Singleton<GameManager>
     {
-        public enum GameMode { Menu, Singleplayer, Multiplayer, Localgame };
-        public GameMode _GameMode;
         public enum GameState { Resumed, Paused };
+        public enum GameMode { Menu, Singleplayer, Multiplayer, Localgame };
         public GameState _GameState;
+        public GameMode _GameMode;
 
         [HideInInspector] public GameObject States;
 
@@ -35,8 +35,6 @@ namespace Assets.Managers
         public Canvas Canvas;
         public Action ActUpdate;
         public State CurrentState;
-
-        public Text DebugTxt;
 
         //Base Methods
         void Start()
@@ -58,11 +56,13 @@ namespace Assets.Managers
             Create_FirstPlayer();
             Create_StateMachine();
 
+            SaveManager.Instance.LoadMapProgress();
             SaveManager.Instance.LoadUnlockedSkins_Balls();
             SaveManager.Instance.LoadUnlockedSkins_Hats();
-            SaveManager.Instance.LoadMapProgress();
+            SaveManager.Instance.LoadUnlockedSkins_Arrows();
             SaveManager.Instance.LoadCurrentSkin_Ball();
             SaveManager.Instance.LoadCurrentSkin_Hat();
+            SaveManager.Instance.LoadCurrentSkin_Arrow();
             SaveManager.Instance.LoadCurrency();
 
             CameraManager.Instance.Init();
@@ -303,6 +303,16 @@ namespace Assets.Managers
                 p.Hat.GetComponent<KeepHatInPlace>().Player = p;
                 p.Hat.transform.localScale *= 0.75f;
                 p.Hat.transform.name = "Hat";
+            }
+        }
+        public void Player_Arrow_Instantiate(Player p)
+        {
+            if (p.Arrow != null) Destroy(p.Arrow);
+            if (p.Arrow_Prefab != null)
+            {
+                p.Arrow = Instantiate(p.Arrow_Prefab, Vector3.zero, Quaternion.identity);
+                p.Arrow.transform.name = "Direction Arrow";
+                p.Arrow.GetComponent<MeshRenderer>().enabled = false;
             }
         }
         public void PlayerBall_Destroy(Player player)

@@ -68,14 +68,37 @@ using UnityEngine.UI;
         SaveManager.Instance.SaveUnlockedSkins_Hats();
     }
 }
-//----- COMIN SOON:
+//----- ARROW SKIN:
+[Serializable]
+public class Skin_Arrow : Skin
+{
+    public Material Arrow;
+
+    public override void Load_Skin(Player p)
+    {
+        p.Skin_Arrow = this;
+        GameManager.Instance.Player_Arrow_Instantiate(p);
+        p.Arrow.GetComponent<Renderer>().material = Arrow;
+    }
+    public override void SaveCurrent_Skin()
+    {
+        SaveManager.Instance.SaveCurrentSkin_Arrow(Index);
+    }
+    public override void Save_Skin()
+    {
+        SaveManager.Instance.SaveUnlockedSkins_Arrows();
+    }
+}
 
 public class SkinsManager : Singleton<SkinsManager>
 {
     public List<Skin_Ball> List_Skins_Balls;
     public List<Skin_Hat> List_Skins_Hats;
+    public List<Skin_Arrow> List_Skins_Arrows;
     public List<Material> List_SkyBoxes;
+
     public Ball DefaultBall;
+    public GameObject ArrowPrefab;
 
     public void Init()
     {
@@ -92,6 +115,10 @@ public class SkinsManager : Singleton<SkinsManager>
         for (int i = 0; i < List_Skins_Hats.Count; i++)
         {
             List_Skins_Hats[i].Index = i;
+        }
+        for (int i = 0; i < List_Skins_Arrows.Count; i++)
+        {
+            List_Skins_Arrows[i].Index = i;
         }
     }
     public void SetSkybox(Map.SkyboxType s)
