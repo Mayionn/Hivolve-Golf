@@ -4,33 +4,23 @@ using UnityEngine;
 using Assets.Managers;
 using System;
 using UnityEngine.UI;
+using static Struct;
 
 namespace Assets.UI
 {
     public class UI_LocalMultiplayer : MonoBehaviour
     {
         public GameObject UI;
-
-        [Serializable] public struct InfoLocalGrid
-        {
-            public int PlayerNum;
-            public string PlayerName;
-            public Image Image;
-            public Ball SelectedBall;
-            public Text Txt_PlayerNum;
-            public Text Txt_PlayerName;
-        }
         public InfoLocalGrid[] GridInfos;
-
         public Text CurrentNumberText;
+        public Text CurrentMapNumberText;
+
+        private int currentNumber = 1;
+        private int currentMapNumber = 3;
         private readonly int minPlayers = 2;
         private readonly int maxPlayers = 4;
-        private int currentNumber = 1;
-
-        public Text CurrentMapNumberText;
         private readonly int minMaps = 1;
         private readonly int maxMaps = 5;
-        private int currentMapNumber = 3;
 
         public void Init()
         {
@@ -57,7 +47,6 @@ namespace Assets.UI
                 CurrentMapNumberText.text = currentMapNumber.ToString();
             }
         }
-
         public void ButtonStart()
         {
             UiManager.Instance.CloseInterface_LocalMultiplayer();

@@ -1,33 +1,9 @@
 ﻿using Assets.Managers;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using static Struct;
 
 public class UI_CompletedMap : MonoBehaviour
 {
-    [Serializable]
-    public struct InfoCompletedMap
-    {
-        public Image Image_MapGoldMedal;
-        public Image Image_MapSilverMedal;
-        public Image Image_MapBronzeMedal;
-        public Text Txt_GoldMedal;
-        public Text Txt_SilverMedal;
-        public Text Txt_BronzeMedal;
-
-        public Image Img_PBStrikes;
-        public Image Image_PBTimer;
-        public Text Txt_PBStrikes;
-        public Text Txt_PBTimer;
-
-        public Image Img_CurrStrikes;
-        public Image Image_CurrentTimer;
-        public Text Txt_CurrStrikes;
-        public Text Txt_CurrTimer;
-    }
-
     public GameObject UI;
     public InfoCompletedMap Info;
 

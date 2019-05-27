@@ -10,7 +10,6 @@ public class UI_MapSelector : MonoBehaviour
     public GameObject UI;
     public GameObject DisplayPrefab;
     public GameObject Display_OneShot;
-
     public Canvas canvas;
     private float TOP_POSITION;
     private float MIDDLE_POSITION;

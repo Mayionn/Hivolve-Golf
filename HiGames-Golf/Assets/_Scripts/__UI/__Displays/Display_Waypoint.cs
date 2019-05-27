@@ -13,13 +13,13 @@ public class DisplayWaypoint : Display
     private Image Img_MedalBronze;
     private Image Img_BestScore_Strikes;
     private Image Img_BestScore_Time;
-    private Text Txt_Title;
-    private Text Txt_MedalGold;
-    private Text Txt_MedalSilver;
-    private Text Txt_MedalBronze;
-    private Text Txt_BestScore;
-    private Text Txt_BestScore_Strikes;
-    private Text Txt_BestScore_Time;
+    private Text txt_Title;
+    private Text txt_MedalGold;
+    private Text txt_MedalSilver;
+    private Text txt_MedalBronze;
+    private Text txt_BestScore;
+    private Text txt_BestScore_Strikes;
+    private Text txt_BestScore_Time;
 
     public override void Init(Chapter chapter, Map map, int level, DisplayInfo di)
     {
@@ -45,14 +45,14 @@ public class DisplayWaypoint : Display
         Img_BestScore_Strikes = GO.transform.Find("BestScore_Strikes").GetComponent<Image>();
         Img_BestScore_Time = GO.transform.Find("BestScore_Time").GetComponent<Image>();
         //Set Text Variables
-        Txt_Title = GO.transform.Find("Text").GetComponent<Text>();
-        Txt_Title.text = "Level: " + levelNumber;
-        Txt_MedalGold = GO.transform.Find("Text_MedalGold").GetComponent<Text>();
-        Txt_MedalSilver = GO.transform.Find("Text_MedalSilver").GetComponent<Text>();
-        Txt_MedalBronze = GO.transform.Find("Text_MedalBronze").GetComponent<Text>();
-        Txt_BestScore = GO.transform.Find("Text_BestScore").GetComponent<Text>();
-        Txt_BestScore_Strikes = GO.transform.Find("Text_BestScore_Strikes").GetComponent<Text>();
-        Txt_BestScore_Time = GO.transform.Find("Text_BestScore_Time").GetComponent<Text>();
+        txt_Title = GO.transform.Find("Text").GetComponent<Text>();
+        txt_Title.text = "Level: " + levelNumber;
+        txt_MedalGold = GO.transform.Find("Text_MedalGold").GetComponent<Text>();
+        txt_MedalSilver = GO.transform.Find("Text_MedalSilver").GetComponent<Text>();
+        txt_MedalBronze = GO.transform.Find("Text_MedalBronze").GetComponent<Text>();
+        txt_BestScore = GO.transform.Find("Text_BestScore").GetComponent<Text>();
+        txt_BestScore_Strikes = GO.transform.Find("Text_BestScore_Strikes").GetComponent<Text>();
+        txt_BestScore_Time = GO.transform.Find("Text_BestScore_Time").GetComponent<Text>();
         //Set Image Sprites
         Img_Level.sprite = SpriteLevel;
         Img_MedalGold.sprite = UiManager.Instance.UI_Images.GoldMedal;
@@ -79,12 +79,12 @@ public class DisplayWaypoint : Display
         Img_BestScore_Time.color = Color.white;
 
         //Set Text
-        Txt_MedalGold.text = Map.MedalGold.ToString();
-        Txt_MedalSilver.text = Map.MedalSilver.ToString();
-        Txt_MedalBronze.text = Map.MedalBronze.ToString();
-        Txt_BestScore.text = "Best Score:";
-        Txt_BestScore_Strikes.text = Map.PB.Strikes.ToString();
-        Txt_BestScore_Time.text = Map.PB.Time.ToString();
+        txt_MedalGold.text = Map.MedalGold.ToString();
+        txt_MedalSilver.text = Map.MedalSilver.ToString();
+        txt_MedalBronze.text = Map.MedalBronze.ToString();
+        txt_BestScore.text = "Best Score:";
+        txt_BestScore_Strikes.text = Map.PB.Strikes.ToString();
+        txt_BestScore_Time.text = Map.PB.Time.ToString();
     }
     public override void SetLocked()
     {
@@ -98,11 +98,11 @@ public class DisplayWaypoint : Display
         Img_BestScore_Time.color = Color.clear;
 
         //Set Text Blank
-        Txt_MedalGold.text = "";
-        Txt_MedalSilver.text = "";
-        Txt_MedalBronze.text = "";
-        Txt_BestScore.text = "";
-        Txt_BestScore_Strikes.text = "";
-        Txt_BestScore_Time.text = "";
+        txt_MedalGold.text = "";
+        txt_MedalSilver.text = "";
+        txt_MedalBronze.text = "";
+        txt_BestScore.text = "";
+        txt_BestScore_Strikes.text = "";
+        txt_BestScore_Time.text = "";
     }
 }

@@ -6,8 +6,8 @@ using static Struct;
 
 public class DisplayOneShot : Display
 {
-    private Image Image;
-    private Image Img_Level;
+    private Image image;
+    private Image img_Level;
     private Image img_Star;
     private Image img_Time;
     private Text txt_Title;
@@ -29,8 +29,8 @@ public class DisplayOneShot : Display
         SpriteLevel = di.SpriteLevel;
 
         //Set Image Components
-        Image = GO.GetComponent<Image>();
-        Img_Level = GO.transform.Find("MapImage").GetComponent<Image>();
+        image = GO.GetComponent<Image>();
+        img_Level = GO.transform.Find("MapImage").GetComponent<Image>();
         img_Star = GO.transform.Find("Star").GetComponent<Image>();
         img_Time = GO.transform.Find("BestScore_Time").GetComponent<Image>();
         //Set Text Variables
@@ -38,7 +38,7 @@ public class DisplayOneShot : Display
         txt_Title.text = "Level: " + levelNumber;
         txt_Time = GO.transform.Find("Text_BestScore_Time").GetComponent<Text>();
         //Set Image Sprites
-        Img_Level.sprite = SpriteLevel;
+        img_Level.sprite = SpriteLevel;
         img_Time.sprite = UiManager.Instance.UI_Images.StopWatch;
         if (map.PB.Strikes == 1)
         {
@@ -54,11 +54,11 @@ public class DisplayOneShot : Display
     public override void SetLocked()
     {
         //Set Images
-        Image.sprite = SpriteLocked;
+        image.sprite = SpriteLocked;
 
         //Turn Color On
-        Img_Level.color = Color.clear;
-        Img_Level.color = Color.clear;
+        img_Level.color = Color.clear;
+        img_Level.color = Color.clear;
         img_Star.color = Color.clear;
         img_Time.color = Color.clear;
 
@@ -68,11 +68,11 @@ public class DisplayOneShot : Display
     public override void SetUnlocked()
     {
         //Set Images
-        Image.sprite = SpriteUnlocked;
+        image.sprite = SpriteUnlocked;
 
         //Turn Color On
-        Img_Level.color = Color.white;
-        Img_Level.color = Color.white;
+        img_Level.color = Color.white;
+        img_Level.color = Color.white;
         img_Star.color = Color.white;
         img_Time.color = Color.white;
 

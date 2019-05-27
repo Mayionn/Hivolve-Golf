@@ -4,30 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Struct;
 
 public class UI_LocalScoreboard : MonoBehaviour
 {
-    [Serializable]
-    public struct InfoScoreboard
-    {
-        public Text PlayerName;
-        public Text PlayerNumber;
-        public Text PlayerIndexNumber;
-        public Text PlayerTimer;
-        public Image ImgTimer;
-        public Text PlayerStrikes;
-        public Image ImgStrikes;
-        public Text TotalPoints;
-        public Image Medal;
-    }
-    [Serializable]
-    public struct InfoResults
-    {
-        public Text Text_PlayerName;
-        public Text Text_PlayerScore;
-        public Image Image_Medal;
-    }
-
     public GameObject UI;
     public GameObject UI_GameResults;
     public Text MapCounter;

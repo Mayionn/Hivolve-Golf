@@ -95,7 +95,7 @@
 				
 				float4 sample = tex2D(_MainTex, i.uv);
 
-				return _Color * sample * (_AmbientColor + light + specular + rimIntensity);
+				return _Color * sample * (_AmbientColor + light + specular + (rimIntensity * _RimColor));
 			}
 			ENDCG
 		}

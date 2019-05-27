@@ -2732,10 +2732,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2273427636391796231}
     m_Modifications:
-    - target: {fileID: 100000, guid: 21d3a33ab6eefe242ae3c941f00a7f54, type: 3}
-      propertyPath: m_Name
-      value: Bloco de Notas
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 21d3a33ab6eefe242ae3c941f00a7f54, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.199997
@@ -2791,6 +2787,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 21d3a33ab6eefe242ae3c941f00a7f54, type: 3}
       propertyPath: m_LocalScale.z
       value: 3.2015877
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 21d3a33ab6eefe242ae3c941f00a7f54, type: 3}
+      propertyPath: m_Name
+      value: Bloco de Notas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21d3a33ab6eefe242ae3c941f00a7f54, type: 3}

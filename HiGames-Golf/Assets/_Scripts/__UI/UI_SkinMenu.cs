@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Enums;
+using static Struct;
 
 [Serializable] public class Skin_Display
 {
@@ -18,38 +20,15 @@ using UnityEngine.UI;
 
 public class UI_SkinMenu : MonoBehaviour
 {
-    [Serializable] public struct Info_SkinMenu
-    {
-        public Text Title;
-        public Image Img_Coin;
-        public Image Img_Diamond;
-        public Text Text_Coin;
-        public Text Text_Diamond;
-        public Button Button_Back;
-    }
-    [Serializable] public struct Info_Displays
-    {
-        public Text Cost_Coins;
-        public Text Cost_Diamonds;
-        public Image Image_Icon_Coin;
-        public Image Image_Icon_Diamond;
-        public Image Image_Display;
-        public Image Image_Locked;
-
-        [HideInInspector] public Skin Skin;
-    }
-
-    public enum Tab { Ball, Hat, Trail, Hand, Acessories};
-
+    public Tab CurrentTab;
     public Info_SkinMenu Menu;
+    public Skin_Display[] Displays = new Skin_Display[6];
     public GameObject GO;
     public GameObject BUTTON_Next;
     public GameObject BUTTON_Prev;
 
-
-    public Tab CurrentTab;
     private int currentPage;
-    public Skin_Display[] Displays = new Skin_Display[6];
+
 
     public void Init()
     {

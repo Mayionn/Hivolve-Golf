@@ -1,21 +1,9 @@
 ﻿using Assets.Managers;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
-
+using static Struct;
 
 public class UI_ReadyCheck : MonoBehaviour
 {
-    [Serializable]
-    public struct UILocalReadyCheck
-    {
-        public Image Background;
-        public Image Image_Button;
-        public Text Text_CurrentPlayer;
-    }
     public GameObject UI;
     public UILocalReadyCheck ReadyCheckInfo;
 

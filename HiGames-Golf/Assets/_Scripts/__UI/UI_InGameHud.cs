@@ -88,7 +88,6 @@ public class UI_InGameHud : MonoBehaviour
         UI_InGame.CurrentPlayerInfo.text = "Current Player: " + p.Name
                                                 + "\nPlayer Number: " + p.PlayerNum;
     }
-
     private void SetMapInfo()
     {
         UI_InGame.MapInfo.text = m.gameObject.name + "\n" + m.Author;

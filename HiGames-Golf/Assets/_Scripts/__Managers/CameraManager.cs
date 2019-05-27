@@ -9,41 +9,58 @@ public class CameraManager : Singleton<CameraManager>
 {
     public enum CameraDirection { West,East,South,North}
 
-    public GameObject Camera;
-    public GameObject SideCamera;
+    public Camera Camera;
+    public Camera SideCamera;
     public Vector3 CameraOffSet;
     public Vector3 CameraHeigthOffSet;
-
-    public float FielOfView = 70f;
+    public float FieldOfView = 70f;
     public float OffSetLaunchRange;
     public float OffSetLaunchRecovery;
     public float HeigthOffSetLaunchRange;
     public float HeigthOffSetLaunchRecovery;
 
-
     private Vector3 _westOffSet; //Default
     private Vector3 _eastOffSet;
     private Vector3 _northOffSet;
     private Vector3 _southOffSet;
-
     private float ofY;
     private float ohfY;
+    private float defaultFieldOfView;
+
+    void LateUpdate()
+    {
+        float velocity = GameManager.Instance.CurrentPlayer.SelectedBall.RigBody.velocity.magnitude + (FieldOfView - defaultFieldOfView);
+
+        Vector3 newOffSet = new Vector3(CameraOffSet.x, ofY + (velocity / OffSetLaunchRange), CameraOffSet.z);
+        Vector3 newCameraHeightOffSet = new Vector3(CameraHeigthOffSet.x, ohfY - (velocity / HeigthOffSetLaunchRange), CameraHeigthOffSet.z);
+
+        CameraHeigthOffSet = Vector3.Lerp(CameraHeigthOffSet, newCameraHeightOffSet, Time.deltaTime * OffSetLaunchRecovery);
+        CameraOffSet = Vector3.Lerp(CameraOffSet, newOffSet, Time.deltaTime * HeigthOffSetLaunchRecovery);
+
+        Camera.transform.position = GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraOffSet;
+        Camera.transform.LookAt(GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraHeigthOffSet);
+        SideCamera.transform.position = GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraOffSet;
+        SideCamera.transform.LookAt(GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraHeigthOffSet);
+
+        Camera.fieldOfView = FieldOfView;
+        SideCamera.fieldOfView = FieldOfView;
+    }
 
     public void Init()
     {
-        CameraOffSet = new Vector3(GameManager.Instance.CurrentPlayer.SelectedBall.transform.position.x + CameraOffSet.x,
+        this.CameraOffSet = new Vector3(GameManager.Instance.CurrentPlayer.SelectedBall.transform.position.x + CameraOffSet.x,
                                     CameraOffSet.y,
                                     GameManager.Instance.CurrentPlayer.SelectedBall.transform.position.z + CameraOffSet.z);
 
-        ofY = CameraOffSet.y;
-        ohfY = CameraHeigthOffSet.y;
+        this.ofY = CameraOffSet.y;
+        this.ohfY = CameraHeigthOffSet.y;
+        this.defaultFieldOfView = FieldOfView;
 
-        _westOffSet = CameraOffSet;
-        _northOffSet = Quaternion.AngleAxis(90, Vector3.up) * CameraOffSet;
-        _eastOffSet = Quaternion.AngleAxis(180, Vector3.up) * CameraOffSet;
-        _southOffSet = Quaternion.AngleAxis(270, Vector3.up) * CameraOffSet;
+        this._westOffSet = CameraOffSet;
+        this._northOffSet = Quaternion.AngleAxis(90, Vector3.up) * CameraOffSet;
+        this._eastOffSet = Quaternion.AngleAxis(180, Vector3.up) * CameraOffSet;
+        this._southOffSet = Quaternion.AngleAxis(270, Vector3.up) * CameraOffSet;
     }
-
     public void LookDirection(CameraDirection direction)
     {
         switch (direction)
@@ -64,23 +81,8 @@ public class CameraManager : Singleton<CameraManager>
                 break;
         }
     }
-
-    void LateUpdate()
+    public void LaunchEffect(float value)
     {
-        float velocity = GameManager.Instance.CurrentPlayer.SelectedBall.RigBody.velocity.magnitude;
-
-        Vector3 newOffSet = new Vector3(CameraOffSet.x, ofY + (velocity / OffSetLaunchRange), CameraOffSet.z);
-        Vector3 newCameraHeightOffSet = new Vector3(CameraHeigthOffSet.x, ohfY - (velocity / HeigthOffSetLaunchRange), CameraHeigthOffSet.z);
-
-
-        CameraHeigthOffSet = Vector3.Lerp(CameraHeigthOffSet, newCameraHeightOffSet, Time.deltaTime * OffSetLaunchRecovery);
-        CameraOffSet = Vector3.Lerp(CameraOffSet, newOffSet, Time.deltaTime * HeigthOffSetLaunchRecovery);
-
-
-        Camera.transform.position = GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraOffSet;
-        Camera.transform.LookAt(GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraHeigthOffSet);
-        SideCamera.transform.position = GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraOffSet;
-        SideCamera.transform.LookAt(GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraHeigthOffSet);
+        FieldOfView = Mathf.Lerp((value * 30) + defaultFieldOfView, defaultFieldOfView, 0.5f);
     }
-
 }

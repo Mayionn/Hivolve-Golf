@@ -21,9 +21,9 @@ namespace Assets.Managers
         public GameMode _GameMode;
 
         [HideInInspector] public GameObject States;
-
-        private State State_BallLaunch;
-        private State State_BallMoving;
+        public State CurrentState;
+        private State state_BallLaunch;
+        private State state_BallMoving;
 
         [HideInInspector] public Map CurrentMap;
         [HideInInspector] public Player CurrentPlayer;
@@ -33,7 +33,6 @@ namespace Assets.Managers
 
         public Canvas Canvas;
         public Action ActUpdate;
-        public State CurrentState;
 
         //Base Methods
         void Start()
@@ -95,8 +94,8 @@ namespace Assets.Managers
         public void ChoosePlayer(int index)
         {
             CurrentPlayer = Players[index];
-            State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
-            State_BallMoving.Ball = CurrentPlayer.SelectedBall;
+            state_BallLaunch.Ball = CurrentPlayer.SelectedBall;
+            state_BallMoving.Ball = CurrentPlayer.SelectedBall;
         }
         public void NextPlayer()
         {
@@ -114,8 +113,8 @@ namespace Assets.Managers
                 while (Players[currentIndex].EndedMap == true);
 
                 CurrentPlayer = Players[currentIndex];
-                State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
-                State_BallMoving.Ball = CurrentPlayer.SelectedBall;
+                state_BallLaunch.Ball = CurrentPlayer.SelectedBall;
+                state_BallMoving.Ball = CurrentPlayer.SelectedBall;
                 //UI
                 UiManager.Instance.UpdateCurrentPlayerName();
                 //Open Ready Check
@@ -165,8 +164,8 @@ namespace Assets.Managers
             {
                 if (player.PlayerNum == 0) CurrentPlayer = player;
             }
-            State_BallLaunch.Ball = CurrentPlayer.SelectedBall;
-            State_BallMoving.Ball = CurrentPlayer.SelectedBall;
+            state_BallLaunch.Ball = CurrentPlayer.SelectedBall;
+            state_BallMoving.Ball = CurrentPlayer.SelectedBall;
 
             PlayerBall_DestroyAllExtraBalls();
             RemoveAllPlayers();
@@ -211,11 +210,11 @@ namespace Assets.Managers
         //State Machine Methods
         private void Create_StateMachine()
         {
-            State_BallLaunch = States.GetComponent<State_BallLaunch>();
-            State_BallMoving = States.GetComponent<State_BallMoving>();
+            state_BallLaunch = States.GetComponent<State_BallLaunch>();
+            state_BallMoving = States.GetComponent<State_BallMoving>();
 
-            Setup_State(State_BallLaunch, State_BallMoving);
-            Setup_State(State_BallMoving, State_BallLaunch);
+            Setup_State(state_BallLaunch, state_BallMoving);
+            Setup_State(state_BallMoving, state_BallLaunch);
 
             CurrentState = States.GetComponent<State_BallMoving>();
             CurrentState.StartState();
