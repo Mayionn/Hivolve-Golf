@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Enums;
 
 //Begin - End
 //Start - Stop
@@ -16,8 +17,6 @@ namespace Assets.Managers
 {
     public class GameManager : Singleton<GameManager>
     {
-        public enum GameState { Resumed, Paused };
-        public enum GameMode { Menu, Singleplayer, Multiplayer, Localgame };
         public GameState _GameState;
         public GameMode _GameMode;
 

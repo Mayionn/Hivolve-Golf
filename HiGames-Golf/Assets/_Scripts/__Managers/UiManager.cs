@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Enums;
 
 public class UiManager : Singleton<UiManager>
 {
@@ -22,6 +23,8 @@ public class UiManager : Singleton<UiManager>
         public Sprite Gold;
         public Sprite Diamonds;
         public Sprite LockedSkin;
+        public Sprite StarIncomplete;
+        public Sprite StarComplete;
     }
     [Serializable] public struct UIBackgroundImages
     {
@@ -179,7 +182,7 @@ public class UiManager : Singleton<UiManager>
     }
     public void UpdateMapInfoCurrentStrikes()
     {
-        if(GameManager.Instance._GameMode != GameManager.GameMode.Menu)
+        if(GameManager.Instance._GameMode != GameMode.Menu)
         {
             UI_InGameHud.UI_InGame.CurrentStrikes.text = "Strikes: " + GameManager.Instance.CurrentPlayer.Strikes;
         }

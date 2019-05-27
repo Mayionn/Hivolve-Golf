@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Managers;
+using static Enums;
 
 public class State_BallLaunch : State
 {
@@ -69,7 +70,7 @@ public class State_BallLaunch : State
     //--- Methods
     private void CheckCameraMovement()
     {
-        if (!_striking && GameManager._GameState == GameManager.GameState.Resumed)
+        if (!_striking && GameManager._GameState == GameState.Resumed)
         {
             bool isTouch = false;
 
@@ -116,7 +117,7 @@ public class State_BallLaunch : State
     {
         bool canLaunch = false;
         //Prevent Launch on Menus
-        if (GameManager._GameState == GameManager.GameState.Resumed)
+        if (GameManager._GameState == GameState.Resumed)
         {
             //Get Finger Position
             foreach (Touch t in Input.touches)
@@ -191,7 +192,7 @@ public class State_BallLaunch : State
                 UiManager.Instance.UpdateMapInfoCurrentStrikes();
             }
             //COMPUTER
-            if (Input.GetKey(KeyCode.Space) && GameManager._GameState == GameManager.GameState.Resumed)
+            if (Input.GetKey(KeyCode.Space) && GameManager._GameState == GameState.Resumed)
             {
                 if (Ball.RigBody.isKinematic)
                 {

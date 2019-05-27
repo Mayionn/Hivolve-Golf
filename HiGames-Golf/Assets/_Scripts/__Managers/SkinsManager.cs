@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Enums;
 
 //----- SKIN
 [Serializable] public abstract class Skin
@@ -102,12 +103,6 @@ public class SkinsManager : Singleton<SkinsManager>
 
     public void Init()
     {
-        InitSkinIndexes();
-    }
-
-    //TODO: REWRITE THIS
-    public void InitSkinIndexes()
-    {
         for (int i = 0; i < List_Skins_Balls.Count; i++)
         {
             List_Skins_Balls[i].Index = i;
@@ -121,17 +116,18 @@ public class SkinsManager : Singleton<SkinsManager>
             List_Skins_Arrows[i].Index = i;
         }
     }
-    public void SetSkybox(Map.SkyboxType s)
+
+    public void SetSkybox(SkyboxType s)
     {
         switch (s)
         {
-            case Map.SkyboxType.Garage:
+            case SkyboxType.Garage:
                 RenderSettings.skybox = List_SkyBoxes[0];
                 break;
-            case Map.SkyboxType.LivingRoom:
+            case SkyboxType.LivingRoom:
                 RenderSettings.skybox = List_SkyBoxes[1];
                 break;
-            case Map.SkyboxType.Outdoor:
+            case SkyboxType.Outdoor:
                 RenderSettings.skybox = List_SkyBoxes[2];
                 break;
             default:

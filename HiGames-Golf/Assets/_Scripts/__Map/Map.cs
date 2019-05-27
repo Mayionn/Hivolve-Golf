@@ -3,18 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Managers;
+using static Struct;
+using static Enums;
 
 [Serializable]
 public class Map : MonoBehaviour
 {
-    public enum GameType { Menu, OneShot, Waypoint, FreeForm};
-    public enum SkyboxType { Garage, LivingRoom, Outdoor};
-    public struct PersonalBest
-    {
-        public int Strikes;
-        public float Time;
-    }
-
     public string Name;
     public string Author;
     public int Chapter;
