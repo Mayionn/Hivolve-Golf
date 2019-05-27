@@ -9,6 +9,7 @@ public class CameraManager : Singleton<CameraManager>
 {
     public enum CameraDirection { West,East,South,North}
     public GameObject Camera;
+    public GameObject SideCamera;
     public Vector3 CameraOffSet;
     public Vector3 CameraHeigthOffSet;
 
@@ -75,6 +76,8 @@ public class CameraManager : Singleton<CameraManager>
 
         Camera.transform.position = GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraOffSet;
         Camera.transform.LookAt(GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraHeigthOffSet);
+        SideCamera.transform.position = GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraOffSet;
+        SideCamera.transform.LookAt(GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraHeigthOffSet);
     }
 
 }

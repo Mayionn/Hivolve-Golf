@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569b082dce905fa41af5d26bede523a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 1 - 1
+  Name: 2 - 1
   Author: Lucas
   Chapter: 0
   MedalGold: 4
@@ -349,7 +349,7 @@ MonoBehaviour:
   MedalBronze: 8
   _GameType: 2
   Skybox: 0
-  IsLocked: 1
+  CameraDirection: 0
   Prefab: {fileID: 6897589549046516116}
   SpawnedPrefab: {fileID: 0}
   StartingPosition: {fileID: 3780208784181558198}
@@ -949,11 +949,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5702737437397679873}
     m_Modifications:
-    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
-        type: 3}
-      propertyPath: m_Name
-      value: FinalHole
-      objectReference: {fileID: 0}
     - target: {fileID: 470962584330555895, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1009,6 +1004,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
+        type: 3}
+      propertyPath: m_Name
+      value: FinalHole
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee44f248f0f5a8f48a04017116891dac, type: 3}
 --- !u!4 &4272241616411101661 stripped
@@ -1024,11 +1024,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2139160505380969758}
     m_Modifications:
-    - target: {fileID: 4803788404421944456, guid: 1a0596cba3ffc27459e1b9e937cb1266,
-        type: 3}
-      propertyPath: m_Name
-      value: Out-of-Bounds
-      objectReference: {fileID: 0}
     - target: {fileID: 2223354185201303736, guid: 1a0596cba3ffc27459e1b9e937cb1266,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1083,6 +1078,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803788404421944456, guid: 1a0596cba3ffc27459e1b9e937cb1266,
+        type: 3}
+      propertyPath: m_Name
+      value: Out-of-Bounds
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a0596cba3ffc27459e1b9e937cb1266, type: 3}

@@ -9,7 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: FratCup
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Party Cup
+    second: {fileID: 2100000, guid: 505eb745234d2264aa2522802dd38ae4, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
