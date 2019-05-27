@@ -39,4 +39,6 @@ public static class Enums
         Acessories
     }; //Skin Menu Tabs
 
+    public enum CameraDirection { West, East, South, North }
+
 }

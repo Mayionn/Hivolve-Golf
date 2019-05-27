@@ -4,10 +4,10 @@ using UnityEngine;
 using Assets.Managers;
 using Assets.Generics;
 using System;
+using static Enums;
 
 public class CameraManager : Singleton<CameraManager>
 {
-    public enum CameraDirection { West,East,South,North}
 
     public Camera Camera;
     public Camera SideCamera;

@@ -5,6 +5,30 @@ using UnityEngine;
 using Assets.Managers;
 using static Struct;
 using static Enums;
+using UnityEditor;
+
+//[CustomEditor(typeof(Map))]
+//public class MyScriptEditor : Editor
+//{
+//    override public void OnInspectorGUI()
+//    {
+//        var myScript = target as Map;
+
+
+//        if (myScript._GameType == GameType.Waypoint)
+//        {
+//            EditorGUI.indentLevel++;
+//            EditorGUILayout.PrefixLabel("Gold Medal");
+//            myScript.MedalGold = EditorGUILayout.IntField(myScript.MedalGold);
+//            EditorGUILayout.PrefixLabel("Silver Medal");
+//            myScript.MedalSilver = EditorGUILayout.IntField(myScript.MedalSilver);
+//            EditorGUILayout.PrefixLabel("Number");
+//            myScript.MedalBronze = EditorGUILayout.IntField(myScript.MedalBronze);
+//            EditorGUI.indentLevel--;
+//        }
+//    }
+//}
+
 
 [Serializable]
 public class Map : MonoBehaviour
@@ -15,19 +39,18 @@ public class Map : MonoBehaviour
     public int MedalGold;
     public int MedalSilver;
     public int MedalBronze;
+    public int GoldForCompletion;
     public GameType _GameType;
     public SkyboxType Skybox;
+    public CameraDirection CameraDirection;
     public PersonalBest PB;
-    [HideInInspector] public Display Display;
-
-    public CameraManager.CameraDirection CameraDirection;
-
-    public GameObject Prefab;
-    [HideInInspector] public GameObject SpawnedPrefab;
-
-    public GameObject StartingPosition;
     public Transform[] WaypointsPosition;
+    public GameObject Prefab;
+    public GameObject StartingPosition;
+    [HideInInspector] public Display Display;
+    [HideInInspector] public GameObject SpawnedPrefab;
     [HideInInspector] public GameObject[] Waypoints;
+
 
 
     public void StartMap()
