@@ -4,33 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Enums;
+using static Struct;
 
 public class UI_InGameHud : MonoBehaviour
 {
-    public GameObject UI;
-
-    [Serializable] public struct InfoInGame
-    {
-        public Text MedalGold;
-        public Text MedalSilver;
-        public Text MedalBronze;
-        public Image ImgMedalGold;
-        public Image ImgMedalSilver;
-        public Image ImgMedalBronze;
-        public Text CurrentTime;
-        public Text CurrentStrikes;
-        public Image ImgCurrentStrikes;
-        public Text Waypoint;
-        public Image ImgWaypoint;
-        public Text BestTime;
-        public Text BestStrikes;
-        public Button ResetGame;
-        public Text MapInfo;
-        public Text CurrentPlayerInfo;
-        public Button SkinMenu;
-        public Button MapSelector;
-    }
     public InfoInGame UI_InGame;
+    public GameObject UI;
 
     private Map m;
     private Player p;
@@ -40,7 +20,7 @@ public class UI_InGameHud : MonoBehaviour
         m = GameManager.Instance.CurrentMap;
         switch (GameManager.Instance._GameMode)
         {
-            case GameManager.GameMode.Menu:
+            case GameMode.Menu:
                 UI.SetActive(true);
                 Setup_MenuInfo();
                 HideButtonRestart();
@@ -52,26 +32,26 @@ public class UI_InGameHud : MonoBehaviour
                 HideTimer();
                 HideButtonReturnMapSelector();
                 break;
-            case GameManager.GameMode.Singleplayer:
+            case GameMode.Singleplayer:
                 UI.SetActive(true);
                 Unset_MenuInfo();
                 TimerStart();
-                SetCurrentPlayerInfo();
-                SetMapInfo();
+                HideMapInfo_Player();
+                HideMapInfo();
                 SetMapInfo_Medals();
                 SetMapInfo_Waypoints();
                 SetMapInfo_CurrentStrikes();
                 SetButtonRestart();
                 ShowButtonReturnMapSelector();
                 break;
-            case GameManager.GameMode.Multiplayer:
+            case GameMode.Multiplayer:
                 break;
-            case GameManager.GameMode.Localgame:
+            case GameMode.Localgame:
                 UI.SetActive(true);
                 Unset_MenuInfo();
                 TimerStart();
                 SetCurrentPlayerInfo();
-                SetMapInfo();
+                HideMapInfo();
                 SetMapInfo_Waypoints();
                 SetMapInfo_CurrentStrikes();
                 HideMapInfo_Medals();
@@ -86,6 +66,11 @@ public class UI_InGameHud : MonoBehaviour
         UI_InGame.ImgMedalSilver.sprite = UiManager.Instance.UI_Images.SilverMedal;
         UI_InGame.ImgMedalBronze.sprite = UiManager.Instance.UI_Images.BronzeMedal;
     }
+    public void Terminate()
+    {
+        UI.SetActive(false);
+        TimerStop();
+    }
 
     private void HideButtonReturnMapSelector()
     {
@@ -96,12 +81,6 @@ public class UI_InGameHud : MonoBehaviour
         UI_InGame.MapSelector.gameObject.SetActive(true);
     }
 
-    public void Terminate()
-    {
-        UI.SetActive(false);
-        TimerStop();
-    }
-
     //IGH --- In Game Hud
     public void SetCurrentPlayerInfo()
     {
@@ -109,6 +88,7 @@ public class UI_InGameHud : MonoBehaviour
         UI_InGame.CurrentPlayerInfo.text = "Current Player: " + p.Name
                                                 + "\nPlayer Number: " + p.PlayerNum;
     }
+
     private void SetMapInfo()
     {
         UI_InGame.MapInfo.text = m.gameObject.name + "\n" + m.Author;

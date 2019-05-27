@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Managers;
+using static Struct;
+using static Enums;
 
 public class State_BallMoving : State
 {
@@ -15,16 +17,16 @@ public class State_BallMoving : State
         {
             switch (GameManager.Instance.CurrentMap._GameType)
             {
-                case Map.GameType.Menu:
+                case GameType.Menu:
                     Ball.GoStartingPosition(true);
                     break;
-                case Map.GameType.OneShot:
+                case GameType.OneShot:
                     Ball.GoStartingPosition(true);
                     break;
-                case Map.GameType.Waypoint:
+                case GameType.Waypoint:
                     Ball.GoLastPosition(true);
                     break;
-                case Map.GameType.FreeForm:
+                case GameType.FreeForm:
                     Ball.SaveLastPosition();
                     break;
                 default:
@@ -36,7 +38,7 @@ public class State_BallMoving : State
 
     public override void LeaveState(State state)
     {
-        if(GameManager.Instance._GameMode == GameManager.GameMode.Localgame)
+        if(GameManager.Instance._GameMode == GameMode.Localgame)
         {
             GameManager.Instance.NextPlayer();
         }

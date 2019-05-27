@@ -7,9 +7,9 @@ using UnityEngine.UI;
 
 public class UI_MapSelector : MonoBehaviour
 {
-    //---Variable
     public GameObject UI;
     public GameObject DisplayPrefab;
+    public GameObject Display_OneShot;
 
     public Canvas canvas;
     private float TOP_POSITION;
@@ -123,15 +123,27 @@ public class UI_MapSelector : MonoBehaviour
             for (int i = 0; i < c.Displays.Length; i++)
             {
                 int level = i + 1;
-                Display d = c.Displays[i];
-                d.GO_Copy = DisplayPrefab;
-                d.POS = c.DisplayInfos[i].pos;
-                d.GO = Instantiate(d.GO_Copy, d.POS.anchoredPosition + posVec, Quaternion.identity);
-                d.GO.transform.name = "Level: " + level;
-                d.GO.transform.SetParent(UI.transform.Find("Displays"), false);
-                d.GO.SetActive(true);
+                c.Maps[i].Name = c.Number + " - " + i;
+                switch (c.Maps[i]._GameType)
+                {
+                    case Enums.GameType.OneShot:
+                        c.Displays[i].GO_Copy = Display_OneShot;
+                        break;
+                    case Enums.GameType.Waypoint:
+                        c.Displays[i].GO_Copy = DisplayPrefab;
+                        break;
+                    case Enums.GameType.FreeForm:
+                        break;
+                    default:
+                        break;
+                }
+                c.Displays[i].POS = c.DisplayInfos[i].pos;
+                c.Displays[i].GO = Instantiate(c.Displays[i].GO_Copy, c.Displays[i].POS.anchoredPosition + posVec, Quaternion.identity);
+                c.Displays[i].GO.transform.name = "Level: " + level;
+                c.Displays[i].GO.transform.SetParent(UI.transform.Find("Displays"), false);
+                c.Displays[i].GO.SetActive(true);
+                c.Displays[i].Init(c, c.Maps[i], level, c.DisplayInfos[i]);
             }
-            c.SetDisplays(c.DisplayInfos);
         }
         else Debug.Log("Chapter number not available!");
 

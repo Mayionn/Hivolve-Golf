@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Managers;
+using static Enums;
 
 public class Ball : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class Ball : MonoBehaviour
         {
             switch (GameManager.Instance._GameMode)
             {
-                case GameManager.GameMode.Menu:
+                case GameMode.Menu:
                     switch (other.name)
                     {
                         case "Hole-Singleplayer":
@@ -58,16 +59,16 @@ public class Ball : MonoBehaviour
                             break;
                     }
                     break;
-                case GameManager.GameMode.Singleplayer:
+                case GameMode.Singleplayer:
                     {
                         //TODO: Test remove truancteTimer();
                         Player.TruncateTimer();
                         UiManager.Instance.OpenInterface_CompletedMap();
                     }
                     break;
-                case GameManager.GameMode.Multiplayer:
+                case GameMode.Multiplayer:
                     break;
-                case GameManager.GameMode.Localgame:
+                case GameMode.Localgame:
                     {
                         if (!Player.EndedMap) //Prevent double in hole
                         {
@@ -89,7 +90,7 @@ public class Ball : MonoBehaviour
     {
         if(other.tag == "OOB")
         {
-            if(GameManager.Instance._GameMode == GameManager.GameMode.Singleplayer)
+            if(GameManager.Instance._GameMode == GameMode.Singleplayer)
             {
                 GoStartingPosition(true);
             }

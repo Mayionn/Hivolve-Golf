@@ -8,14 +8,18 @@ using System;
 public class CameraManager : Singleton<CameraManager>
 {
     public enum CameraDirection { West,East,South,North}
+
     public GameObject Camera;
+
     public Vector3 CameraOffSet;
     public Vector3 CameraHeigthOffSet;
 
+    public float FielOfView = 70f;
     public float OffSetLaunchRange;
     public float OffSetLaunchRecovery;
     public float HeigthOffSetLaunchRange;
     public float HeigthOffSetLaunchRecovery;
+
 
     private Vector3 _westOffSet; //Default
     private Vector3 _eastOffSet;
