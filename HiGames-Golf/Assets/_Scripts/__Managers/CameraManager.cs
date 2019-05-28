@@ -14,6 +14,7 @@ public class CameraManager : Singleton<CameraManager>
     public Vector3 CameraOffSet;
     public Vector3 CameraHeigthOffSet;
     public float FieldOfView = 70f;
+    public float LaunchEffectMultiplier = 30;
     public float OffSetLaunchRange;
     public float OffSetLaunchRecovery;
     public float HeigthOffSetLaunchRange;
@@ -83,6 +84,6 @@ public class CameraManager : Singleton<CameraManager>
     }
     public void LaunchEffect(float value)
     {
-        FieldOfView = Mathf.Lerp((value * 30) + defaultFieldOfView, defaultFieldOfView, 0.5f);
+        FieldOfView = Mathf.Lerp((value * LaunchEffectMultiplier) + defaultFieldOfView, defaultFieldOfView, 0.5f);
     }
 }

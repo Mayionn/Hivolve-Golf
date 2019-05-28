@@ -347,15 +347,16 @@ MonoBehaviour:
   MedalGold: 4
   MedalSilver: 6
   MedalBronze: 8
+  GoldForCompletion: 0
   _GameType: 2
   Skybox: 0
   CameraDirection: 0
-  Prefab: {fileID: 6897589549046516116}
-  SpawnedPrefab: {fileID: 0}
-  StartingPosition: {fileID: 3780208784181558198}
   WaypointsPosition:
   - {fileID: 2567190439254583314}
   - {fileID: 5455658602145936633}
+  Prefab: {fileID: 6897589549046516116}
+  StartingPosition: {fileID: 3780208784181558198}
+  SpawnedPrefab: {fileID: 0}
   Waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -788,11 +789,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: __StartingPosition
       objectReference: {fileID: 0}
-    - target: {fileID: 4423665143725024256, guid: 8a150fa4760f0bd46bc93683ccfc5e5f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4423665143725024257, guid: 8a150fa4760f0bd46bc93683ccfc5e5f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -846,6 +842,11 @@ PrefabInstance:
     - target: {fileID: 4423665143725024257, guid: 8a150fa4760f0bd46bc93683ccfc5e5f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423665143725024256, guid: 8a150fa4760f0bd46bc93683ccfc5e5f,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423665143289607106, guid: 8a150fa4760f0bd46bc93683ccfc5e5f,
@@ -949,6 +950,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5702737437397679873}
     m_Modifications:
+    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
+        type: 3}
+      propertyPath: m_Name
+      value: FinalHole
+      objectReference: {fileID: 0}
     - target: {fileID: 470962584330555895, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1004,11 +1010,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
-        type: 3}
-      propertyPath: m_Name
-      value: FinalHole
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee44f248f0f5a8f48a04017116891dac, type: 3}
 --- !u!4 &4272241616411101661 stripped
@@ -1024,6 +1025,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2139160505380969758}
     m_Modifications:
+    - target: {fileID: 4803788404421944456, guid: 1a0596cba3ffc27459e1b9e937cb1266,
+        type: 3}
+      propertyPath: m_Name
+      value: Out-of-Bounds
+      objectReference: {fileID: 0}
     - target: {fileID: 2223354185201303736, guid: 1a0596cba3ffc27459e1b9e937cb1266,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1078,11 +1084,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4803788404421944456, guid: 1a0596cba3ffc27459e1b9e937cb1266,
-        type: 3}
-      propertyPath: m_Name
-      value: Out-of-Bounds
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a0596cba3ffc27459e1b9e937cb1266, type: 3}

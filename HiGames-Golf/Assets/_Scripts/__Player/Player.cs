@@ -19,10 +19,13 @@ public class Player
     public GameObject Hat_Prefab;
     public GameObject Arrow;
     public GameObject Arrow_Prefab;
+    public GameObject ForceBar;
+    public GameObject ForceBar_Prefab;
     //Skins
     public Skin_Hat Skin_Hat;
     public Skin_Ball Skin_Ball;
     public Skin_Arrow Skin_Arrow;
+    public Skin_ForceBar Skin_ForceBar;
 
     public Player()
     {
@@ -54,7 +57,9 @@ public class Player
         Skin_Ball = SkinsManager.Instance.List_Skins_Balls[0]; //default
         Skin_Hat = SkinsManager.Instance.List_Skins_Hats[0];   //default
         Skin_Arrow = SkinsManager.Instance.List_Skins_Arrows[0];
+
         Arrow_Prefab = SkinsManager.Instance.ArrowPrefab;
+        ForceBar_Prefab = SkinsManager.Instance.ForceBar_Prefab;
     }
     public void Setup_HatSkin()
     {

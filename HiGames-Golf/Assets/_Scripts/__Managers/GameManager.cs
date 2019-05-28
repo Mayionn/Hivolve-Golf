@@ -20,6 +20,8 @@ namespace Assets.Managers
         public GameState _GameState;
         public GameMode _GameMode;
 
+        public LayerMask PlayerLayer;
+
         [HideInInspector] public GameObject States;
         public State CurrentState;
         private State state_BallLaunch;
@@ -58,9 +60,11 @@ namespace Assets.Managers
             SaveManager.Instance.LoadUnlockedSkins_Balls();
             SaveManager.Instance.LoadUnlockedSkins_Hats();
             SaveManager.Instance.LoadUnlockedSkins_Arrows();
+            SaveManager.Instance.LoadUnlockedSkins_ForceBars();
             SaveManager.Instance.LoadCurrentSkin_Ball();
             SaveManager.Instance.LoadCurrentSkin_Hat();
             SaveManager.Instance.LoadCurrentSkin_Arrow();
+            SaveManager.Instance.LoadCurrentSkin_ForceBar();
             SaveManager.Instance.LoadCurrency();
 
             CameraManager.Instance.Init();
@@ -301,18 +305,40 @@ namespace Assets.Managers
                 p.Hat.GetComponent<KeepHatInPlace>().Player = p;
                 p.Hat.transform.localScale *= 0.75f;
                 p.Hat.transform.name = "Hat";
+                p.Hat.layer = 9; //Player Layer
             }
         }
         public void Player_Arrow_Instantiate(Player p)
         {
-            if (p.Arrow != null) Destroy(p.Arrow);
-            if (p.Arrow_Prefab != null)
+            if (p.Arrow != null)
             {
-                p.Arrow = Instantiate(p.Arrow_Prefab, Vector3.zero, Quaternion.identity);
-                p.Arrow.transform.name = "Direction Arrow";
-                p.Arrow.GetComponent<MeshRenderer>().enabled = false;
+                Destroy(p.Arrow);
             }
+            if (p.Arrow_Prefab == null)
+            {
+                p.Arrow_Prefab = SkinsManager.Instance.ArrowPrefab;
+            }
+            p.Arrow = Instantiate(p.Arrow_Prefab, Vector3.zero, Quaternion.identity);
+            p.Arrow.transform.name = "Direction Arrow";
+            p.Arrow.GetComponent<MeshRenderer>().enabled = false;
         }
+        public void Player_ForceBar_Instantiate(Player p)
+        {
+            if (p.ForceBar != null)
+            {
+                Destroy(p.ForceBar);
+            }
+            if (p.ForceBar_Prefab == null)
+            {
+                 p.ForceBar_Prefab = SkinsManager.Instance.ForceBar_Prefab;
+            }
+            p.ForceBar = Instantiate(p.ForceBar_Prefab, Vector3.zero, Quaternion.identity);
+            p.ForceBar.transform.name = "Force Bar";
+            p.ForceBar.GetComponent<MeshRenderer>().enabled = false;
+            p.ForceBar.transform.localScale = new Vector3(0.2f, 1, 0.1f);
+            p.ForceBar.layer = 9; //Player Layer
+        }
+
         public void PlayerBall_Destroy(Player player)
         {
             if (player.SelectedBall != null)

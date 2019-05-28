@@ -52,6 +52,17 @@ namespace Assets.SaveData
             formatter.Serialize(stream, SaveManager.Instance.Data);
             stream.Close();
         }
+        public static void SaveCurrentSkin_ForceBar(int index)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            string path = Application.persistentDataPath + "/SaveData.sd";
+            FileStream stream = new FileStream(path, FileMode.Create);
+
+            SaveManager.Instance.Data.SetupCurrentSkin_ForceBar(index);
+
+            formatter.Serialize(stream, SaveManager.Instance.Data);
+            stream.Close();
+        }
         public static void SaveSkins_Ball(int count, int[] indexes)
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -81,6 +92,17 @@ namespace Assets.SaveData
             FileStream stream = new FileStream(path, FileMode.Create);
 
             SaveManager.Instance.Data.SetupSkins_Arrows(count, indexes);
+
+            formatter.Serialize(stream, SaveManager.Instance.Data);
+            stream.Close();
+        }
+        public static void SaveSkins_ForceBars(int count, int[] indexes)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            string path = Application.persistentDataPath + "/SaveData.sd";
+            FileStream stream = new FileStream(path, FileMode.Create);
+
+            SaveManager.Instance.Data.SetupSkins_ForceBars(count, indexes);
 
             formatter.Serialize(stream, SaveManager.Instance.Data);
             stream.Close();

@@ -849,13 +849,14 @@ MonoBehaviour:
   MedalGold: 1
   MedalSilver: 2
   MedalBronze: 3
+  GoldForCompletion: 0
   _GameType: 1
   Skybox: 0
   CameraDirection: 3
-  Prefab: {fileID: 2273427634779243787}
-  SpawnedPrefab: {fileID: 0}
-  StartingPosition: {fileID: 2515491707544920631}
   WaypointsPosition: []
+  Prefab: {fileID: 2273427634779243787}
+  StartingPosition: {fileID: 2515491707544920631}
+  SpawnedPrefab: {fileID: 0}
   Waypoints: []
 --- !u!1 &2273427636466916936
 GameObject:
@@ -1921,6 +1922,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2273427635623388220}
     m_Modifications:
+    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
+        type: 3}
+      propertyPath: m_Name
+      value: FinalHole
+      objectReference: {fileID: 0}
     - target: {fileID: 470962584330555895, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1985,11 +1991,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
-        type: 3}
-      propertyPath: m_Name
-      value: FinalHole
       objectReference: {fileID: 0}
     - target: {fileID: 295808559598166227, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
@@ -2096,6 +2097,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2273427636391796231}
     m_Modifications:
+    - target: {fileID: 1655655837075534957, guid: b5d4816a5c6d4914a8753452bd032610,
+        type: 3}
+      propertyPath: m_Name
+      value: Crowd01
+      objectReference: {fileID: 0}
     - target: {fileID: 5036624901812618744, guid: b5d4816a5c6d4914a8753452bd032610,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2160,11 +2166,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655655837075534957, guid: b5d4816a5c6d4914a8753452bd032610,
-        type: 3}
-      propertyPath: m_Name
-      value: Crowd01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5d4816a5c6d4914a8753452bd032610, type: 3}
@@ -2428,6 +2429,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2273427636391796231}
     m_Modifications:
+    - target: {fileID: 100004, guid: c803b5c4c35e18843acdef5afa97664c, type: 3}
+      propertyPath: m_Name
+      value: Triangle + Ball
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: c803b5c4c35e18843acdef5afa97664c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.699997
@@ -2483,10 +2488,6 @@ PrefabInstance:
     - target: {fileID: 400004, guid: c803b5c4c35e18843acdef5afa97664c, type: 3}
       propertyPath: m_LocalScale.z
       value: 7.0569
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: c803b5c4c35e18843acdef5afa97664c, type: 3}
-      propertyPath: m_Name
-      value: Triangle + Ball
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c803b5c4c35e18843acdef5afa97664c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2732,6 +2733,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2273427636391796231}
     m_Modifications:
+    - target: {fileID: 100000, guid: 21d3a33ab6eefe242ae3c941f00a7f54, type: 3}
+      propertyPath: m_Name
+      value: Bloco de Notas
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 21d3a33ab6eefe242ae3c941f00a7f54, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.199997
@@ -2787,10 +2792,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 21d3a33ab6eefe242ae3c941f00a7f54, type: 3}
       propertyPath: m_LocalScale.z
       value: 3.2015877
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 21d3a33ab6eefe242ae3c941f00a7f54, type: 3}
-      propertyPath: m_Name
-      value: Bloco de Notas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21d3a33ab6eefe242ae3c941f00a7f54, type: 3}
@@ -2882,6 +2883,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2273427634908547918}
     m_Modifications:
+    - target: {fileID: 100000, guid: 7652310042c7fb74fbad34582a87f049, type: 3}
+      propertyPath: m_Name
+      value: Paddles
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7652310042c7fb74fbad34582a87f049, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.704698
@@ -2937,10 +2942,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 7652310042c7fb74fbad34582a87f049, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.8016448
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 7652310042c7fb74fbad34582a87f049, type: 3}
-      propertyPath: m_Name
-      value: Paddles
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7652310042c7fb74fbad34582a87f049, type: 3}
       propertyPath: m_LocalRotation.x

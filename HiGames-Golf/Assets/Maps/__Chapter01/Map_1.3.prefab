@@ -291,13 +291,14 @@ MonoBehaviour:
   MedalGold: 2
   MedalSilver: 4
   MedalBronze: 6
+  GoldForCompletion: 0
   _GameType: 2
   Skybox: 2
   CameraDirection: 3
-  Prefab: {fileID: 515}
-  SpawnedPrefab: {fileID: 0}
-  StartingPosition: {fileID: 3780208784181558198}
   WaypointsPosition: []
+  Prefab: {fileID: 515}
+  StartingPosition: {fileID: 3780208784181558198}
+  SpawnedPrefab: {fileID: 0}
   Waypoints: []
 --- !u!1 &524
 GameObject:

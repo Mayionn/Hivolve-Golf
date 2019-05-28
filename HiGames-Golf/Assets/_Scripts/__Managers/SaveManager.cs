@@ -129,6 +129,18 @@ public class SaveManager : Singleton<SaveManager>
         GameManager.Instance.CurrentPlayer.Skin_Arrow = SkinsManager.Instance.List_Skins_Arrows[data.CurrentSkin_Arrow_Index];
         GameManager.Instance.CurrentPlayer.Skin_Arrow.Load_Skin(GameManager.Instance.CurrentPlayer);
     }
+    //Current Skin ---- FORCEBAR
+    public void SaveCurrentSkin_ForceBar(int index)
+    {
+        SaveSystem.SaveCurrentSkin_ForceBar(index);
+    }
+    public void LoadCurrentSkin_ForceBar()
+    {
+        SaveData data = SaveSystem.LoadData();
+        GameManager.Instance.CurrentPlayer.Skin_ForceBar = SkinsManager.Instance.List_Skins_ForceBars[data.CurrentSkin_ForceBar_Index];
+        GameManager.Instance.CurrentPlayer.Skin_ForceBar.Load_Skin(GameManager.Instance.CurrentPlayer);
+    }
+
     //Unlocked Skins ---- BALLS
     public void SaveUnlockedSkins_Balls()
     {
@@ -231,6 +243,41 @@ public class SaveManager : Singleton<SaveManager>
             for (int i = 0; i < data.UnlockedSkins_Arrows.Length; i++)
             {
                 SkinsManager.Instance.List_Skins_Arrows[data.UnlockedSkins_Arrows[i]].IsUnlocked = true;
+            }
+        }
+    }
+    //Unlocked Skins ---- FORCEBAR
+    public void SaveUnlockedSkins_ForceBar()
+    {
+        int count = 0;
+        List<int> indexesList = new List<int>();
+        //GetIndexes of Unlocked Ball Skins
+        for (int i = 0; i < SkinsManager.Instance.List_Skins_ForceBars.Count; i++)
+        {
+            if (SkinsManager.Instance.List_Skins_ForceBars[i].IsUnlocked)
+            {
+                count++;
+                indexesList.Add(i);
+            }
+        }
+        //transform list to array
+        int[] indexes = new int[count];
+        for (int i = 0; i < count; i++)
+        {
+            indexes[i] = indexesList[i];
+        }
+        //Send array to SaveSystem to save
+        SaveSystem.SaveSkins_ForceBars(count, indexes);
+    }
+    public void LoadUnlockedSkins_ForceBars()
+    {
+        SaveData data = SaveSystem.LoadData();
+
+        if (data.UnlockedSkins_ForceBars != null)
+        {
+            for (int i = 0; i < data.UnlockedSkins_ForceBars.Length; i++)
+            {
+                SkinsManager.Instance.List_Skins_ForceBars[data.UnlockedSkins_ForceBars[i]].IsUnlocked = true;
             }
         }
     }

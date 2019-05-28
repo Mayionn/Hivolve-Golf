@@ -16,9 +16,11 @@ namespace Assets.SaveData
         public int CurrentSkin_Hat_Index;
         public int CurrentSkin_Ball_Index;
         public int CurrentSkin_Arrow_Index;
+        public int CurrentSkin_ForceBar_Index;
         public int[] UnlockedSkins_Hats;
         public int[] UnlockedSkins_Balls;
         public int[] UnlockedSkins_Arrows;
+        public int[] UnlockedSkins_ForceBars;
 
         //Map Progress
         public float[,] Chapter01_Score_Strikes;
@@ -57,6 +59,10 @@ namespace Assets.SaveData
         {
             CurrentSkin_Arrow_Index = index;
         }
+        public void SetupCurrentSkin_ForceBar(int index)
+        {
+            CurrentSkin_ForceBar_Index = index;
+        }
         public void SetupSkins_Balls(int count, int[] indexes)
         {
             UnlockedSkins_Balls = new int[count];
@@ -79,6 +85,14 @@ namespace Assets.SaveData
             for (int i = 0; i < count; i++)
             {
                 UnlockedSkins_Arrows[i] = indexes[i];
+            }
+        }
+        public void SetupSkins_ForceBars(int count, int[] indexes)
+        {
+            UnlockedSkins_ForceBars = new int[count];
+            for (int i = 0; i < count; i++)
+            {
+                UnlockedSkins_ForceBars[i] = indexes[i];
             }
         }
         #endregion

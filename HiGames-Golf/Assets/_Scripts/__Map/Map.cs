@@ -51,8 +51,6 @@ public class Map : MonoBehaviour
     [HideInInspector] public GameObject SpawnedPrefab;
     [HideInInspector] public GameObject[] Waypoints;
 
-
-
     public void StartMap()
     {
         //Instantiate Map

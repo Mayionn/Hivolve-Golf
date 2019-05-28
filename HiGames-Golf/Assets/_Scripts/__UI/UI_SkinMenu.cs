@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using static Enums;
 using static Struct;
 
+//TODO: CHANGE TO STRUCT NO REASON TO BE A CLASS
 [Serializable] public class Skin_Display
 {
     public Text Cost_Coins;
