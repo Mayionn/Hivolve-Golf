@@ -61,14 +61,12 @@ MonoBehaviour:
     Reset: {fileID: 21300000, guid: eb50b0a10576ce84b9e4359efc5a3d02, type: 3}
     Gold: {fileID: 21300000, guid: 258448d67566781459826d59907f9be2, type: 3}
     Diamonds: {fileID: 21300000, guid: 9c3e70f9e10f1214f85018601d1a16f5, type: 3}
+    LockedSkin: {fileID: 21300000, guid: d733004696562834aba2229d7467c6ec, type: 3}
+    StarIncomplete: {fileID: 21300000, guid: 11933cf5eee5ed64caefbaba54472c05, type: 3}
+    StarComplete: {fileID: 21300000, guid: 5e1f190cbb794914bb3b826ae90cd151, type: 3}
   UI_BackgroundImages:
     DefaultBackground: {fileID: 21300000, guid: 43832e73e1465da43a1b83601aa86e58,
       type: 3}
-  UI_SkinMenuImages:
-    Sprite_Icon_Coin: {fileID: 21300000, guid: 6951d71a1a18e504cbb4c0ae1e0c962c, type: 3}
-    Sprite_Icon_Diamond: {fileID: 21300000, guid: c252f47bad42b8b499219c30f94cd546,
-      type: 3}
-    LockedSkin: {fileID: 21300000, guid: 455f637f7d401004981713b05c4a8bb8, type: 3}
 --- !u!114 &911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +122,7 @@ MonoBehaviour:
   UI: {fileID: 0}
   DisplayPrefab: {fileID: 2628743406792792322, guid: 21d97cf802f34e044a99311691d79fd3,
     type: 3}
+  Display_OneShot: {fileID: 0}
   canvas: {fileID: 0}
 --- !u!114 &899
 MonoBehaviour:
@@ -137,7 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6240daeb432e0419be03450462ed13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UI: {fileID: 0}
   UI_InGame:
     MedalGold: {fileID: 0}
     MedalSilver: {fileID: 0}
@@ -150,12 +148,12 @@ MonoBehaviour:
     ImgCurrentStrikes: {fileID: 0}
     Waypoint: {fileID: 0}
     ImgWaypoint: {fileID: 0}
-    BestTime: {fileID: 0}
-    BestStrikes: {fileID: 0}
     ResetGame: {fileID: 0}
     MapInfo: {fileID: 0}
     CurrentPlayerInfo: {fileID: 0}
     SkinMenu: {fileID: 0}
+    MapSelector: {fileID: 0}
+  UI: {fileID: 0}
 --- !u!114 &910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,16 +250,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 0}
-  UI_CompletedMapInfo:
-    Txt_Medal01: {fileID: 0}
-    Txt_Medal02: {fileID: 0}
-    Txt_Medal03: {fileID: 0}
+  Info:
+    Image_MapGoldMedal: {fileID: 0}
+    Image_MapSilverMedal: {fileID: 0}
+    Image_MapBronzeMedal: {fileID: 0}
+    Txt_GoldMedal: {fileID: 0}
+    Txt_SilverMedal: {fileID: 0}
+    Txt_BronzeMedal: {fileID: 0}
+    Img_PBStrikes: {fileID: 0}
+    Image_PBTimer: {fileID: 0}
     Txt_PBStrikes: {fileID: 0}
     Txt_PBTimer: {fileID: 0}
+    Img_CurrStrikes: {fileID: 0}
+    Image_CurrentTimer: {fileID: 0}
     Txt_CurrStrikes: {fileID: 0}
     Txt_CurrTimer: {fileID: 0}
-    Img_PBStrikes: {fileID: 0}
-    Img_CurrStrikes: {fileID: 0}
 --- !u!114 &893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,14 +277,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8fb290f86c45cf4a9fe4322864d1b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrencyGold: {fileID: 0}
-  CurrencyDiamonds: {fileID: 0}
-  ImageGold: {fileID: 0}
-  ImageDiamonds: {fileID: 0}
-  GO: {fileID: 0}
-  BUTTON_Next: {fileID: 0}
-  BUTTON_Prev: {fileID: 0}
   CurrentTab: 0
+  Menu:
+    Title: {fileID: 0}
+    Img_Coin: {fileID: 0}
+    Img_Diamond: {fileID: 0}
+    Text_Coin: {fileID: 0}
+    Text_Diamond: {fileID: 0}
+    Button_Back: {fileID: 0}
   Displays:
   - Cost_Coins: {fileID: 0}
     Cost_Diamonds: {fileID: 0}
@@ -319,3 +322,6 @@ MonoBehaviour:
     Image_Icon_Diamond: {fileID: 0}
     Image_Display: {fileID: 0}
     Image_Locked: {fileID: 0}
+  GO: {fileID: 0}
+  BUTTON_Next: {fileID: 0}
+  BUTTON_Prev: {fileID: 0}

@@ -3,7 +3,6 @@
 	Properties
 	{
 		_Color("Color", Color) = (0.5, 0.65, 1, 1)
-		[HDR]
 		_AmbientColor("Ambient Color", Color) = (0.4,0.4,0.4,1)
 		_SpecularColor("Specular Color", Color) = (0.9, 0.9, 0.9, 1)
 		_Glossiness("Glossiness", Float) = 32
@@ -25,6 +24,7 @@
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
+			#pragma geometry geo
 
 			#include "UnityCG.cginc"
 			#include "Lighting.cginc"
@@ -36,6 +36,14 @@
 				float3 normal : NORMAL;
 			};
 
+			struct geo_in
+			{
+				float4 pos : POSITION;
+				float3 normal : NORMAL;
+				float2 uv : TEXCOORD0;
+				float3 viewDir: TEXCOORD1;
+			};
+			
 			struct v2f
 			{
 				float4 pos : SV_POSITION;
@@ -47,24 +55,51 @@
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
 
-			v2f vert(appdata v)
+			geo_in vert(appdata i)
 			{
-				v2f o;
-				o.pos = UnityObjectToClipPos(v.vertex);
-				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-				o.worldNormal = UnityObjectToWorldNormal(v.normal);
-				o.viewDir = WorldSpaceViewDir(v.vertex);
+				geo_in o = (geo_in)0;
+				o.pos = i.vertex;
+				o.normal = i.normal;
+				o.uv = i.uv;
+				o.viewDir = WorldSpaceViewDir(i.vertex);
+
 				return o;
 			}
 
+			[maxvertexcount(6)]
+			void geo(triangle geo_in i[3], inout TriangleStream<v2f> triStream)
+			{
+				for (float o = 0; o < 3; o++)
+				{
+					v2f f;
+					f.pos = i[o].pos;
+					f.worldNormal = i[o].normal;
+					f.viewDir = i[o].viewDir;
+					triStream.Append(f);
+				}
+
+				triStream.RestartStrip();
+
+				for (float t = 2; t >= 0; t++)
+				{
+					v2f f;
+					f.pos = f.pos + i[t].normal;
+					f.normal = -i[t].normal;
+					f.viewDir = i[t].viewDir;
+					triStream.Append(f);
+				}
+
+				triStream.RestartStrip();
+			}
+
+			float _Glossiness;
+			float _RimAmount;
 			float4 _Color;
 			float4 _AmbientColor;
-			float _Glossiness;
 			float4 _SpecularColor;
 			float4 _RimColor;
-			float _RimAmount;
 
-			float4 frag(v2f i) : SV_Target
+			float4 frag(geo_in i) : SV_Target
 			{
 				float3 normal = normalize(i.worldNormal);
 				float NdotL = dot(_WorldSpaceLightPos0, normal);
@@ -72,22 +107,18 @@
 				float4 light = lightIntensity * _LightColor0;
 
 				float3 viewDir = normalize(i.viewDir);
-				float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
-				float NdotH = dot(normal, halfVector);
-				float specularIntensity = pow(NdotH * lightIntensity, _Glossiness * _Glossiness);
+				//float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
+				//float NdotH = dot(normal, halfVector);
+				//float specularIntensity = pow(NdotH * lightIntensity, _Glossiness * _Glossiness);
 
-				//Harden Specular lines
-				float specularIntensitySmooth = smoothstep(0.005, 0.01, specularIntensity);
-				float4 specular = specularIntensitySmooth * _SpecularColor;
+				////Harden Specular lines
+				//float specularIntensitySmooth = smoothstep(0.005, 0.01, specularIntensity);
+				//float4 specular = specularIntensitySmooth * _SpecularColor;
 
-				//Rim lighting
-				float4 rimDot = 1 - dot(viewDir, normal);
-				float rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimDot);
-				float4 rim = rimIntensity * _RimColor;
 				
 				float4 sample = tex2D(_MainTex, i.uv);
-
-				return _Color * sample * (_AmbientColor + light + specular + rim);
+			
+				return _Color * sample * (_AmbientLight * light);
 			}
 			ENDCG
 		}
