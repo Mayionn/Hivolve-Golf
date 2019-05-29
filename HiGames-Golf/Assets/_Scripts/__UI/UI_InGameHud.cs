@@ -38,11 +38,20 @@ public class UI_InGameHud : MonoBehaviour
                 TimerStart();
                 HideMapInfo_Player();
                 HideMapInfo();
-                SetMapInfo_Medals();
                 SetMapInfo_Waypoints();
                 SetMapInfo_CurrentStrikes();
                 SetButtonRestart();
                 ShowButtonReturnMapSelector();
+                if (m._GameType == GameType.OneShot)
+                {
+                    HideMapInfo_Medals();
+                    HideMapInfo_CurrentStrikes();
+                }
+                else
+                {
+                    SetMapInfo_Medals();
+                    SetMapInfo_CurrentStrikes();
+                }
                 break;
             case GameMode.Multiplayer:
                 break;

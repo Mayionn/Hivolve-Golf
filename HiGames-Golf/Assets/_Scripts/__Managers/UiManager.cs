@@ -161,30 +161,40 @@ public class UiManager : Singleton<UiManager>
     {
         Player p = GameManager.Instance.CurrentPlayer;
         Map m = GameManager.Instance.CurrentMap;
-        p.WaypointCounter = 0;
-        //Percorrer Waypoints!
-        for (int i = 0; i < m.Waypoints.Length; i++)
+        if (m._GameType == GameType.Waypoint)
         {
-            List<int> rp = m.Waypoints[i].GetComponent<Waypoint>().ReachedPlayers;
-            //Percorrer ReachedPlayers em cada Waypoint!
-            for (int o = 0; o < rp.Count; o++)
+            p.WaypointCounter = 0;
+            //Percorrer Waypoints!
+            for (int i = 0; i < m.Waypoints.Length; i++)
             {
-                //Se o Player num estiver na lista,
-                //é porque o player já chegou ao determinado waypoint
-                if (rp[o] == p.PlayerNum)
+                List<int> rp = m.Waypoints[i].GetComponent<Waypoint>().ReachedPlayers;
+                //Percorrer ReachedPlayers em cada Waypoint!
+                for (int o = 0; o < rp.Count; o++)
                 {
-                    //Incrementar o contador de strikes, no jogado atual
-                    p.WaypointCounter++;
+                    //Se o Player num estiver na lista,
+                    //é porque o player já chegou ao determinado waypoint
+                    if (rp[o] == p.PlayerNum)
+                    {
+                        //Incrementar o contador de strikes, no jogado atual
+                        p.WaypointCounter++;
+                    }
                 }
             }
+            UI_InGameHud.UI_InGame.Waypoint.text = m.Waypoints.Length + " \\ " + p.WaypointCounter;
         }
-        UI_InGameHud.UI_InGame.Waypoint.text = m.Waypoints.Length + " \\ " + p.WaypointCounter;
+        else
+        {
+            UI_InGameHud.UI_InGame.Waypoint.text = " ";
+        }
     }
     public void UpdateMapInfoCurrentStrikes()
     {
         if(GameManager.Instance._GameMode != GameMode.Menu)
         {
-            UI_InGameHud.UI_InGame.CurrentStrikes.text = "Strikes: " + GameManager.Instance.CurrentPlayer.Strikes;
+            if(GameManager.Instance.CurrentMap._GameType != GameType.OneShot)
+            {
+                UI_InGameHud.UI_InGame.CurrentStrikes.text = "Strikes: " + GameManager.Instance.CurrentPlayer.Strikes;
+            }
         }
     }
 }

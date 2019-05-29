@@ -66,31 +66,34 @@
 				return o;
 			}
 
-			[maxvertexcount(6)]
+			/*[maxvertexcount(6)]
 			void geo(triangle geo_in i[3], inout TriangleStream<v2f> triStream)
 			{
-				for (float o = 0; o < 3; o++)
+				for (int o = 0; o < 3; o++)
 				{
 					v2f f;
 					f.pos = i[o].pos;
 					f.worldNormal = i[o].normal;
 					f.viewDir = i[o].viewDir;
+					f.uv = i[o].uv;
 					triStream.Append(f);
 				}
 
 				triStream.RestartStrip();
 
-				for (float t = 2; t >= 0; t++)
+				for (int t = 2; t >= 0; t--)
 				{
 					v2f f;
-					f.pos = f.pos + i[t].normal;
-					f.normal = -i[t].normal;
+					f.pos = i[t].pos;
+					f.pos += float4(i[t].normal, 0.0);
+					f.worldNormal = -i[t].normal;
 					f.viewDir = i[t].viewDir;
+					f.uv = i[t].uv;
 					triStream.Append(f);
 				}
 
 				triStream.RestartStrip();
-			}
+			}*/
 
 			float _Glossiness;
 			float _RimAmount;
@@ -101,12 +104,12 @@
 
 			float4 frag(geo_in i) : SV_Target
 			{
-				float3 normal = normalize(i.worldNormal);
-				float NdotL = dot(_WorldSpaceLightPos0, normal);
-				float lightIntensity = smoothstep(0, 0.01, NdotL);
-				float4 light = lightIntensity * _LightColor0;
+				//float3 normal = normalize(i.normal);
+				//float NdotL = dot(_WorldSpaceLightPos0, normal);
+				//float lightIntensity = smoothstep(0, 0.01, NdotL);
+				//float4 light = lightIntensity * _LightColor0;
 
-				float3 viewDir = normalize(i.viewDir);
+				//float3 viewDir = normalize(i.viewDir);
 				//float3 halfVector = normalize(_WorldSpaceLightPos0 + viewDir);
 				//float NdotH = dot(normal, halfVector);
 				//float specularIntensity = pow(NdotH * lightIntensity, _Glossiness * _Glossiness);
@@ -118,7 +121,7 @@
 				
 				float4 sample = tex2D(_MainTex, i.uv);
 			
-				return _Color * sample * (_AmbientLight * light);
+				return _Color;// *sample* (_AmbientColor* light);
 			}
 			ENDCG
 		}
