@@ -51,6 +51,7 @@ public class Ball : MonoBehaviour
                             {
                                 //Open LocalMultiplayer Interface
                                 Player.EndedMap = false;
+                                UiManager.Instance.CloseInterface_InGameHud();
                                 UiManager.Instance.OpenInterface_LocalMultiplayer();
                             }
                             break;

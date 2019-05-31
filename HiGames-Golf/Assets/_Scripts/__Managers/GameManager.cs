@@ -84,15 +84,6 @@ namespace Assets.Managers
         }
 
         //Player Methods
-        private void Create_FirstPlayer()
-        {
-            //Create FirstPlayer
-            Players = new List<Player>();
-            CreatePlayer();
-            CurrentPlayer = Players[0];
-            //INSTANTIATE BALL
-            PlayerBall_Instantiate(Players[0]);
-        }
         public void CreatePlayer() => Players.Add(new Player());
         public void RemovePlayer() => Players.RemoveAt(Players.Count - 1);
         public void ChoosePlayer(int index)
@@ -140,6 +131,15 @@ namespace Assets.Managers
                 }
             }
             return null;
+        }
+        private void Create_FirstPlayer()
+        {
+            //Create FirstPlayer
+            Players = new List<Player>();
+            CreatePlayer();
+            CurrentPlayer = Players[0];
+            //INSTANTIATE BALL
+            Player_Ball_Instantiate(Players[0]);
         }
         private void RemoveAllPlayers()
         {
@@ -286,28 +286,6 @@ namespace Assets.Managers
         }
         
         //Player Ball Methods
-        public void PlayerBall_Instantiate(Player p) 
-        {
-            p.SelectedBall = Instantiate(p.Example);
-            p.Skin_Ball.Load_Skin(p);
-
-            p.SelectedBall.transform.name = "Player: " + (p.PlayerNum + 1);
-            p.SelectedBall.Init();
-            p.SelectedBall.Player = p;
-        }
-        public void Player_Hat_Instantiate(Player p)
-        {
-            if(p.Hat != null) Destroy(p.Hat);
-            if(p.Hat_Prefab != null)
-            {
-                p.Hat = Instantiate(p.Hat_Prefab, p.SelectedBall.transform.position + (Vector3.up * p.SelectedBall.SphereCollider.radius), Quaternion.Euler(-90, 0, 0));
-                p.Hat.AddComponent<KeepHatInPlace>();
-                p.Hat.GetComponent<KeepHatInPlace>().Player = p;
-                p.Hat.transform.localScale *= 0.75f;
-                p.Hat.transform.name = "Hat";
-                p.Hat.layer = 9; //Player Layer
-            }
-        }
         public void Player_Arrow_Instantiate(Player p)
         {
             if (p.Arrow != null)
@@ -321,6 +299,18 @@ namespace Assets.Managers
             p.Arrow = Instantiate(p.Arrow_Prefab, Vector3.zero, Quaternion.identity);
             p.Arrow.transform.name = "Direction Arrow";
             p.Arrow.GetComponent<MeshRenderer>().enabled = false;
+        }
+        public void Player_Ball_Instantiate(Player p) 
+        {
+            if (p.SelectedBall != null) Destroy(p.SelectedBall.gameObject);
+            if(p.Example != null)
+            {
+                p.SelectedBall = Instantiate(p.Example);
+                p.Skin_Ball.Load_Skin(p);
+                p.SelectedBall.Init();
+                p.SelectedBall.transform.name = "Player: " + (p.PlayerNum + 1);
+                p.SelectedBall.Player = p;
+            }
         }
         public void Player_ForceBar_Instantiate(Player p)
         {
@@ -338,7 +328,19 @@ namespace Assets.Managers
             p.ForceBar.transform.localScale = new Vector3(0.2f, 1, 0.1f);
             p.ForceBar.layer = 9; //Player Layer
         }
-
+        public void Player_Hat_Instantiate(Player p)
+        {
+            if(p.Hat != null) Destroy(p.Hat);
+            if(p.Hat_Prefab != null)
+            {
+                p.Hat = Instantiate(p.Hat_Prefab, p.SelectedBall.transform.position + (Vector3.up * p.SelectedBall.SphereCollider.radius), Quaternion.Euler(-90, 0, 0));
+                p.Hat.AddComponent<KeepHatInPlace>();
+                p.Hat.GetComponent<KeepHatInPlace>().Player = p;
+                p.Hat.transform.localScale *= 0.75f;
+                p.Hat.transform.name = "Hat";
+                p.Hat.layer = 9; //Player Layer
+            }
+        }
         public void PlayerBall_Destroy(Player player)
         {
             if (player.SelectedBall != null)

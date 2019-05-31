@@ -92,10 +92,12 @@ public class Map : MonoBehaviour
         foreach (Player p in GameManager.Instance.Players)
         {
             //TODO: PROBABLY REVIEW THIS
-            GameManager.Instance.PlayerBall_Destroy(p);
-            GameManager.Instance.PlayerBall_Instantiate(p);
+            GameManager.Instance.Player_Ball_Instantiate(p);
+            GameManager.Instance.Player_Arrow_Instantiate(p);
+            GameManager.Instance.Player_ForceBar_Instantiate(p);
+            GameManager.Instance.Player_Hat_Instantiate(p);
+            //TODO: ISNTANTIATE ARROW AND FORCE BAR
             p.EndedMap = false;
-            p.SelectedBall.Player = p;
             p.SelectedBall.StopAtPosition(true, StartingPosition.transform.position);
             p.SelectedBall.StartingPosition = StartingPosition.transform.position;
             p.SelectedBall.LastPosition = StartingPosition.transform.position;
@@ -170,4 +172,5 @@ public class Map : MonoBehaviour
             p.ResetScore();
         }
     }
+   
 }

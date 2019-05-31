@@ -57,6 +57,7 @@ namespace Assets.UI
         public void ButtonBack()
         {
             UiManager.Instance.CloseInterface_LocalMultiplayer();
+            UiManager.Instance.OpenInterface_InGameHud();
             RemovePlayersAll();
             GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition(true); //Necessary cuz the map doesnt change
         }

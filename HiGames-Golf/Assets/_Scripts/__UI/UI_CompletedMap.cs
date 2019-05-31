@@ -14,11 +14,53 @@ public class UI_CompletedMap : MonoBehaviour
         Map m = GameManager.Instance.CurrentMap;
         Player p = GameManager.Instance.CurrentPlayer;
 
-        m.CheckPersonalBest();
-        if (m.PB.Strikes < m.MedalBronze)
+        #region GiveRewards
+
+        float totalEarned = 0;
+
+        if (m._GameType == Enums.GameType.OneShot)
         {
-            UiManager.Instance.Update_MapSelector_UnlockNextLevel(m.Display.levelNumber);
+            if(m.PB.Strikes == 0)
+            {
+                totalEarned = m.GoldForCompletion;
+            }
+            else
+            {
+                totalEarned = m.GoldForCompletion * 0.1f;
+            }
         }
+        else
+        {
+            if(p.Strikes <= m.MedalGold)
+            {
+                if (m.PB.Strikes != 0 && m.PB.Strikes <= m.MedalGold)
+                {
+                    totalEarned = m.GoldForCompletion * 0.1f;
+                }
+                else totalEarned = m.GoldForCompletion;
+            }
+            else if (p.Strikes <= m.MedalSilver)
+            {
+                if (m.PB.Strikes != 0 && m.PB.Strikes <= m.MedalSilver)
+                {
+                    totalEarned = (m.GoldForCompletion * 0.5f) * 0.1f;
+                }
+                else totalEarned = (m.GoldForCompletion * 0.5f);
+            }
+            else if (p.Strikes <= m.MedalBronze)
+            {
+                if (m.PB.Strikes != 0 && m.PB.Strikes <= m.MedalBronze)
+                {
+                    totalEarned = (m.GoldForCompletion * 0.2f) * 0.1f;
+                }
+                else totalEarned = (m.GoldForCompletion * 0.2f);
+            }
+        }
+        ProfileManager.Instance.Add_Currency((int)totalEarned, 0);
+        #endregion
+
+        m.CheckPersonalBest();
+        UiManager.Instance.Update_MapSelector_UnlockNextLevel(m.Display.levelNumber);
         //UPDATE TEXT
         //Map Medals
         Info.Txt_GoldMedal.text = m.MedalGold.ToString();
@@ -40,7 +82,6 @@ public class UI_CompletedMap : MonoBehaviour
 
         SaveManager.Instance.SaveMapProgress();
     }
-
     public void Terminate()
     {
         UI.SetActive(false);
