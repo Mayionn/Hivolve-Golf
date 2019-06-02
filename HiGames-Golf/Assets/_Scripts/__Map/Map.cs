@@ -72,7 +72,6 @@ public class Map : MonoBehaviour
         //Prepare UI
         UiManager.Instance.OpenInterface_InGameHud();
     }
-
     //-----
     private void HideStartingPosition()
     {
