@@ -1059,18 +1059,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: ee1665caf9449954d86983d4987edab2, type: 3}
-      propertyPath: m_Name
-      value: Cup_MultiPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: ee1665caf9449954d86983d4987edab2, type: 3}
-      propertyPath: m_Name
-      value: Cup_LocalMultiPlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: ee1665caf9449954d86983d4987edab2, type: 3}
-      propertyPath: m_Name
-      value: Cup_SinglePlayer
-      objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: ee1665caf9449954d86983d4987edab2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.03
@@ -1150,14 +1138,6 @@ PrefabInstance:
     - target: {fileID: 400004, guid: ee1665caf9449954d86983d4987edab2, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.0340394
-      objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: ee1665caf9449954d86983d4987edab2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: ee1665caf9449954d86983d4987edab2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.149
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ee1665caf9449954d86983d4987edab2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1258,6 +1238,26 @@ PrefabInstance:
     - target: {fileID: 400002, guid: ee1665caf9449954d86983d4987edab2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -9.749001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ee1665caf9449954d86983d4987edab2, type: 3}
+      propertyPath: m_Name
+      value: Cup_MultiPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ee1665caf9449954d86983d4987edab2, type: 3}
+      propertyPath: m_Name
+      value: Cup_LocalMultiPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: ee1665caf9449954d86983d4987edab2, type: 3}
+      propertyPath: m_Name
+      value: Cup_SinglePlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: ee1665caf9449954d86983d4987edab2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: ee1665caf9449954d86983d4987edab2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.149
       objectReference: {fileID: 0}
     - target: {fileID: 2300004, guid: ee1665caf9449954d86983d4987edab2, type: 3}
       propertyPath: m_Materials.Array.data[0]
