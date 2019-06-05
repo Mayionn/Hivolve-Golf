@@ -11,14 +11,25 @@ public abstract class Skin
     public Sprite Sprite_Display;
     [HideInInspector] public int Index;
 
-    public void Buy_Skin()
+    public bool Buy_Skin_Gold()
     {
-        if (ProfileManager.Instance.Gold > Cost_Coins)
+        if (ProfileManager.Instance.Gold >= Cost_Coins)
         {
             IsUnlocked = true;
             ProfileManager.Instance.Remove_Currency(Cost_Coins, 0);
+            return true;
         }
-        else Debug.Log("not enough money");
+        else return false;
+    }
+    public bool Buy_Skin_Diamonds()
+    {
+        if (ProfileManager.Instance.Diamonds >= Cost_Diamonds)
+        {
+            IsUnlocked = true;
+            ProfileManager.Instance.Remove_Currency(0, Cost_Diamonds);
+            return true;
+        }
+        else return false;
     }
     public abstract void Load_Skin(Player p);
     public abstract void SaveCurrent_Skin();

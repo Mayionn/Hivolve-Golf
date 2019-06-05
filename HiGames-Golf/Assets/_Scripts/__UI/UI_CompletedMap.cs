@@ -70,6 +70,7 @@ public class UI_CompletedMap : MonoBehaviour
         Info.Txt_BronzeMedal.text = m.MedalBronze.ToString();
         Info.Image_MapBronzeMedal.sprite = UiManager.Instance.UI_Images.BronzeMedal;
         //PB
+        p.TruncateTimer();
         Info.Image_PBTimer.sprite = UiManager.Instance.UI_Images.StopWatch;
         Info.Txt_PBStrikes.text = m.PB.Strikes.ToString();
         Info.Txt_PBTimer.text = m.PB.Time.ToString();

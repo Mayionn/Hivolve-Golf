@@ -48,7 +48,6 @@ public static class Struct
         public Text Text_Diamond;
         public Button Button_Back;
     }
-   
     [Serializable]
     public struct InfoCompletedMap
     {
@@ -107,4 +106,5 @@ public static class Struct
         public Text Text_CurrentPlayer;
     } //UI_Ready Check
 
+    
 }

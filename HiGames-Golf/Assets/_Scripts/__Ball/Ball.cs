@@ -62,7 +62,6 @@ public class Ball : MonoBehaviour
                     break;
                 case GameMode.Singleplayer:
                     {
-                        //TODO: Test remove truancteTimer();
                         Player.TruncateTimer();
                         UiManager.Instance.OpenInterface_CompletedMap();
                     }
@@ -74,7 +73,6 @@ public class Ball : MonoBehaviour
                         if (!Player.EndedMap) //Prevent double in hole
                         {
                             Player.EndedMap = true;
-                            //this.gameObject.GetComponent<MeshRenderer>().enabled = false;
                             UiManager.Instance.Update_ScoreBoard_SaveScore(Player);
                             GameManager.Instance.NextPlayer();
                         }

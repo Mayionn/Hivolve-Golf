@@ -22,7 +22,7 @@ public class State_BallLaunch : State
     private readonly int FORCEBARSIZE = 5;
     private readonly float MAXROTSPEED = 4f;
     private readonly float INCROTSPEED = 0.2f;
-    private readonly float MAXTHROWFORCE = 20f;
+    private readonly float MAXTHROWFORCE = 15f;
     private bool _launched;
     private bool _striking;
     private bool _canLaunch = false;
@@ -77,13 +77,13 @@ public class State_BallLaunch : State
 
             foreach (Touch touch in Input.touches)
             {
-                if (IsLeftSide(touch) && !IsBottomSide(touch))
+                if (IsLeftSide(touch))
                 {
                     CameraManager.Instance.CameraOffSet
                         = Quaternion.AngleAxis(-rotSpeed, Vector3.up) * CameraManager.Instance.CameraOffSet;
                     isTouch = true;
                 }
-                else if (IsRightSide(touch) && !IsBottomSide(touch))
+                else if (IsRightSide(touch))
                 {
                     CameraManager.Instance.CameraOffSet
                         = Quaternion.AngleAxis(+rotSpeed, Vector3.up) * CameraManager.Instance.CameraOffSet;
@@ -152,7 +152,7 @@ public class State_BallLaunch : State
                             PlaceArrowAndBar();
                         }
                         //If in the middle of the aim, the finger leaves the zone
-                        if (!IsBottomSide(t) || IsRightSide(t) || IsLeftSide(t))
+                        if (!IsBottomSide(t))
                         {
                             _striking = false;
                             Setup_LaunchEffect(0);
@@ -164,7 +164,7 @@ public class State_BallLaunch : State
                     {
                         if (t.position.y < touchPos1.y)
                         {
-                            if (IsBottomSide(t) && !IsLeftSide(t) && !IsRightSide(t))
+                            if (IsBottomSide(t))
                             {
                                 _canLaunch = true;
                             }
@@ -179,7 +179,7 @@ public class State_BallLaunch : State
             if (_canLaunch)
             {
                 //make strike force, depending on distance between fingers;
-                float throwForce = GetTouchForce(touchPos1.x - touchPos2.y) * MAXTHROWFORCE; //The max it returns is 1
+                float throwForce = GetTouchForce(touchPos1.y - touchPos2.y) * MAXTHROWFORCE; //The max it returns is 1
 
                 if (Ball.RigBody.isKinematic)
                 {

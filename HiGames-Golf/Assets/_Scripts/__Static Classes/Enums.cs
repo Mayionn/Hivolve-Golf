@@ -41,4 +41,6 @@ public static class Enums
 
     public enum CameraDirection { West, East, South, North }
 
+    public enum MapColor { Default }
+
 }

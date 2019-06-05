@@ -10,8 +10,6 @@ public class ProfileManager : Singleton<ProfileManager>
 
     public void Init()
     {
-        //TODO: REMOVE ADD CURRENCY
-        Add_Currency(1000, 1000);
     }
 
     public void Add_Currency(int gold, int diamonds)

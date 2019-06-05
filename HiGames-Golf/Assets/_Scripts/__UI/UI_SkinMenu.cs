@@ -25,10 +25,12 @@ public class UI_SkinMenu : MonoBehaviour
     public Info_SkinMenu Menu;
     public Skin_Display[] Displays = new Skin_Display[6];
     public GameObject GO;
+    public GameObject GO_BuyOption;
     public GameObject BUTTON_Next;
     public GameObject BUTTON_Prev;
 
     private int currentPage;
+    private int currentDisplay;
 
 
     public void Init()
@@ -65,22 +67,7 @@ public class UI_SkinMenu : MonoBehaviour
         }
     }
 
-    public void BUTTON_InteractSkin(int displayIndex)
-    {
-        if (Displays[displayIndex].Skin.IsUnlocked)
-        {
-            //Load skin for main player
-            Displays[displayIndex].Skin.Load_Skin(GameManager.Instance.Get_MainPlayer());
-            Displays[displayIndex].Skin.SaveCurrent_Skin();
-        }
-        else
-        {
-            Displays[displayIndex].Skin.Buy_Skin();
-            Displays[displayIndex].Skin.Save_Skin();
-            SetupDisplay_Unlocked(displayIndex, Displays[displayIndex].Skin);
-            Setup_Currency();
-        }
-    }
+
     public void BUTTON_NextPage()
     {
         switch (CurrentTab)
@@ -120,6 +107,50 @@ public class UI_SkinMenu : MonoBehaviour
             default:
                 break;
         }
+    }
+    public void BUTTON_InteractSkin(int displayIndex)
+    {
+        if (Displays[displayIndex].Skin.IsUnlocked)
+        {
+            //Load skin for main player
+            Displays[displayIndex].Skin.Load_Skin(GameManager.Instance.Get_MainPlayer());
+            Displays[displayIndex].Skin.SaveCurrent_Skin();
+        }
+        else
+        {
+            OpenBuyingOptions(displayIndex);
+        }
+    }
+    public void BUTTON_Buy_Gold()
+    {
+        if(Displays[currentDisplay].Skin.Buy_Skin_Gold())
+        {
+            Buy();
+        }
+    }
+    public void BUTTON_Buy_Diamonds()
+    {
+        if (Displays[currentDisplay].Skin.Buy_Skin_Diamonds())
+        {
+            Buy();
+        }
+    }
+    public void BUTTON_CloseBuyingOptions()
+    {
+        GO_BuyOption.SetActive(false);
+    }
+
+    private void Buy()
+    {
+        Displays[currentDisplay].Skin.Save_Skin();
+        SetupDisplay_Unlocked(currentDisplay, Displays[currentDisplay].Skin);
+        Setup_Currency();
+        BUTTON_CloseBuyingOptions();
+    }
+    private void OpenBuyingOptions(int displayIndex)
+    {
+        GO_BuyOption.SetActive(true);
+        currentDisplay = displayIndex;
     }
 
     private void Setup_Currency()

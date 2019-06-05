@@ -43,6 +43,7 @@ public class Map : MonoBehaviour
     public GameType _GameType;
     public SkyboxType Skybox;
     public CameraDirection CameraDirection;
+    public MapColor MapColors;
     public PersonalBest PB;
     public Transform[] WaypointsPosition;
     public GameObject Prefab;
@@ -71,6 +72,8 @@ public class Map : MonoBehaviour
         SkinsManager.Instance.SetSkybox(Skybox);
         //Prepare UI
         UiManager.Instance.OpenInterface_InGameHud();
+        //Set Map colors
+        SetMapColors();
     }
     //-----
     private void HideStartingPosition()
@@ -90,12 +93,10 @@ public class Map : MonoBehaviour
     {
         foreach (Player p in GameManager.Instance.Players)
         {
-            //TODO: PROBABLY REVIEW THIS
             GameManager.Instance.Player_Ball_Instantiate(p);
             GameManager.Instance.Player_Arrow_Instantiate(p);
             GameManager.Instance.Player_ForceBar_Instantiate(p);
             GameManager.Instance.Player_Hat_Instantiate(p);
-            //TODO: ISNTANTIATE ARROW AND FORCE BAR
             p.EndedMap = false;
             p.SelectedBall.StopAtPosition(true, StartingPosition.transform.position);
             p.SelectedBall.StartingPosition = StartingPosition.transform.position;
@@ -103,6 +104,23 @@ public class Map : MonoBehaviour
         }
     }
     //---
+    public void WaypointsReset()
+    {
+        if (WaypointsPosition.Length != 0)
+        {
+            for (int i = 0; i < WaypointsPosition.Length; i++)
+            {
+                Waypoints[i].GetComponent<Waypoint>().ReachedPlayers.Clear();
+            }
+        }
+    }
+    public void WaypointsDestroy()
+    {
+        foreach (GameObject g in Waypoints)
+        {
+            Destroy(g);
+        }
+    }
     private void SetupWaypoints()
     {
         Waypoints = new GameObject[WaypointsPosition.Length];
@@ -122,23 +140,6 @@ public class Map : MonoBehaviour
                 Waypoints[i].transform.position = Waypoints[i].GetComponent<Waypoint>().Position;
                 Waypoints[i].transform.localScale = Waypoints[i].GetComponent<Waypoint>().Scale;
             }
-        }
-    }
-    public void WaypointsReset()
-    {
-        if (WaypointsPosition.Length != 0)
-        {
-            for (int i = 0; i < WaypointsPosition.Length; i++)
-            {
-                Waypoints[i].GetComponent<Waypoint>().ReachedPlayers.Clear();
-            }
-        }
-    }
-    public void WaypointsDestroy()
-    {
-        foreach (GameObject g in Waypoints)
-        {
-            Destroy(g);
         }
     }
     //--
@@ -172,4 +173,11 @@ public class Map : MonoBehaviour
         }
     }
    
+    private void SetMapColors()
+    {
+        if(GameManager.Instance._GameMode != GameMode.Menu)
+        {
+            ColorPaletteManager.Instance.SetColors(SpawnedPrefab, (int)MapColors);
+        }
+    }
 }
