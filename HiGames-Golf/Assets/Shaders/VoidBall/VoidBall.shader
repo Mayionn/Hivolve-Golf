@@ -1,4 +1,4 @@
-﻿Shader "Golf_Objects/VoidBall"
+﻿Shader "Golf/VoidBall"
 {
 	Properties
 	{

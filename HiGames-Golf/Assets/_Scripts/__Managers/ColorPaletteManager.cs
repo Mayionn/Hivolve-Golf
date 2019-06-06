@@ -13,14 +13,17 @@ public class ColorPaletteManager : Singleton<ColorPaletteManager>
     {
         ColorPalette cp = ColorPalettes[colorPalette];
 
-        MeshRenderer Hole = map.transform.Find("Hole").GetComponent<MeshRenderer>();
+        MeshRenderer[] Holes = map.transform.Find("Holes").GetComponentsInChildren<MeshRenderer>();
         MeshRenderer[] Floors = map.transform.Find("Floors").GetComponentsInChildren<MeshRenderer>();
         MeshRenderer[] MapObjects = map.transform.Find("MapObjects").GetComponentsInChildren<MeshRenderer>();
         MeshRenderer[] BackgroundObjects = map.transform.Find("BackgroundObjects").GetComponentsInChildren<MeshRenderer>();
         SpriteRenderer[] Background = map.transform.Find("Background").GetComponentsInChildren<SpriteRenderer>();
 
         //Hole
-        Hole.material.SetColor("_Color", cp.GetHex(cp.Hole));
+        foreach (MeshRenderer mesh in Holes)
+        {
+            mesh.material.SetColor("_Color", cp.GetHex(cp.Hole));
+        }
         //Floors
         foreach (MeshRenderer mesh in Floors)
         {
