@@ -79,7 +79,6 @@ public class Map : MonoBehaviour
     private void HideStartingPosition()
     {
         StartingPosition.GetComponent<MeshRenderer>().enabled = false;
-        StartingPosition.transform.Find("Direction").GetComponent<MeshRenderer>().enabled = false;
     }
     private void HideWaypointPositions()
     {
@@ -175,9 +174,6 @@ public class Map : MonoBehaviour
    
     private void SetMapColors()
     {
-        if(GameManager.Instance._GameMode != GameMode.Menu)
-        {
-            ColorPaletteManager.Instance.SetColors(SpawnedPrefab, (int)MapColors);
-        }
+        ColorPaletteManager.Instance.SetColors(SpawnedPrefab, (int)MapColors);
     }
 }
