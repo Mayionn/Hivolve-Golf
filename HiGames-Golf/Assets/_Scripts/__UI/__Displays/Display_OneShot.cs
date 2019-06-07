@@ -40,12 +40,17 @@ public class DisplayOneShot : Display
         //Set Image Sprites
         img_Level.sprite = SpriteLevel;
         img_Time.sprite = UiManager.Instance.UI_Images.StopWatch;
+        //SetColor
         if (map.PB.Strikes == 1)
         {
             img_Star.sprite = UiManager.Instance.UI_Images.StarComplete;
+            image.color = ColorPaletteManager.Instance.GetColor(ColorPaletteManager.Instance.UIColors.OneShotComplete);
         }
-        else img_Star.sprite = UiManager.Instance.UI_Images.StarIncomplete;
-
+        else
+        {
+            img_Star.sprite = UiManager.Instance.UI_Images.StarIncomplete;
+            image.color = ColorPaletteManager.Instance.GetColor(ColorPaletteManager.Instance.UIColors.OneShotIncomplete);
+        }
         //Set Images
         if (Locked) SetLocked();
         else SetUnlocked();

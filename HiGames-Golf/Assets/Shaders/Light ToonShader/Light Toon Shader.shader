@@ -63,14 +63,14 @@
 
 				//Shadow Related
 				float shadow = LIGHT_ATTENUATION(i);
-				float lightIntensity = smoothstep(0, 0.01, NdotL);
+				float lightIntensity = smoothstep(0, 0.01, NdotL * shadow);
 				float4 light = lightIntensity * _LightColor0;
 
 				return tex2D(_MainTex, i.uv) * _Color * (_AmbientColor + light) ;
 			}
 			ENDCG
 		}
-		//UsePass "Legacy Shaders/VertexLit/SHADOWCASTER"
+		UsePass "Legacy Shaders/VertexLit/SHADOWCASTER"
 	}
 	Fallback "VertexLit"
 }

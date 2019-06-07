@@ -24,8 +24,8 @@ public class State_BallLaunch : State
     private readonly float INCROTSPEED = 0.2f;
     private readonly float MAXTHROWFORCE = 15f;
     private bool _launched;
-    private bool _striking;
-    private bool _canLaunch = false;
+    private bool _isAiming;
+    private bool _canLaunch;
 
     //Father class Methods
     public override void CheckState()
@@ -53,7 +53,8 @@ public class State_BallLaunch : State
     public override void StartState()
     {
         _launched = false;
-        _striking = false;
+        _isAiming = false;
+        _canLaunch = false;
 
         WIDTH = GameManager.Canvas.pixelRect.width;
         HEIGHT = GameManager.Canvas.pixelRect.height;
@@ -71,7 +72,7 @@ public class State_BallLaunch : State
     //--- Methods
     private void CheckCameraMovement()
     {
-        if (!_striking && GameManager._GameState == GameState.Resumed)
+        if (GameManager._GameState == GameState.Resumed)
         {
             bool isTouch = false;
 
@@ -108,24 +109,17 @@ public class State_BallLaunch : State
             {
                 if (rotSpeed < MAXROTSPEED)
                 {
-                    rotSpeed += INCROTSPEED;
+                    if(_isAiming)
+                    {
+                        rotSpeed += INCROTSPEED / 6;
+                    }
+                    else rotSpeed += INCROTSPEED;
                 }
             }
             else rotSpeed = 0;
 
             PlaceArrowAndBar();
         }
-    }
-    private void PlaceArrowAndBar()
-    {
-        Ball.Player.Arrow.transform.position = Ball.transform.position + (GetThrowDirection() * Ball.Player.Arrow.transform.localScale.z * ARROWSIZE);
-        Ball.Player.Arrow.transform.forward = -GetThrowDirection();
-
-        Vector3 forceBarPos = GetThrowDirection() * (Ball.Player.ForceBar.transform.localScale.z * FORCEBARSIZE);
-
-        Ball.Player.ForceBar.transform.position = Ball.transform.position -  forceBarPos;
-        Ball.Player.ForceBar.transform.forward = GetThrowDirection();
-
     }
     private void CheckBallStrike()
     {
@@ -139,10 +133,10 @@ public class State_BallLaunch : State
                     if (IsBottomSide(t) && !IsRightSide(t) && !IsLeftSide(t))
                     {
                         touchPos1 = t.position;
-                        _striking = true;
+                        _isAiming = true;
                         Ball.Player.ForceBar.GetComponent<MeshRenderer>().enabled = true;
                     }
-                if (_striking)
+                if (_isAiming)
                 {
                     if (t.phase == TouchPhase.Moved)
                     {
@@ -154,7 +148,7 @@ public class State_BallLaunch : State
                         //If in the middle of the aim, the finger leaves the zone
                         if (!IsBottomSide(t))
                         {
-                            _striking = false;
+                            _isAiming = false;
                             Setup_LaunchEffect(0);
                             Ball.Player.ForceBar.GetComponent<MeshRenderer>().enabled = false;
                             break;
@@ -169,7 +163,7 @@ public class State_BallLaunch : State
                                 _canLaunch = true;
                             }
                             touchPos2 = t.position;
-                            _striking = false;
+                            _isAiming = false;
                             Ball.Player.ForceBar.GetComponent<MeshRenderer>().enabled = false;
                             Setup_LaunchEffect(0);
                         }
@@ -182,9 +176,7 @@ public class State_BallLaunch : State
                 float throwForce = GetTouchForce(touchPos1.y - touchPos2.y) * MAXTHROWFORCE; //The max it returns is 1
 
                 if (Ball.RigBody.isKinematic)
-                {
                     Ball.RigBody.isKinematic = false;
-                }
 
                 Ball.GetComponent<Rigidbody>().AddForce(GetThrowDirection() * throwForce, ForceMode.Impulse);
 
@@ -216,6 +208,17 @@ public class State_BallLaunch : State
             }
             #endregion
         }
+    }
+    private void PlaceArrowAndBar()
+    {
+        Ball.Player.Arrow.transform.position = Ball.transform.position + (GetThrowDirection() * Ball.Player.Arrow.transform.localScale.z * ARROWSIZE);
+        Ball.Player.Arrow.transform.forward = -GetThrowDirection();
+
+        Vector3 forceBarPos = GetThrowDirection() * (Ball.Player.ForceBar.transform.localScale.z * FORCEBARSIZE);
+
+        Ball.Player.ForceBar.transform.position = Ball.transform.position -  forceBarPos;
+        Ball.Player.ForceBar.transform.forward = GetThrowDirection();
+
     }
     private void Setup_LaunchEffect(float value)
     {

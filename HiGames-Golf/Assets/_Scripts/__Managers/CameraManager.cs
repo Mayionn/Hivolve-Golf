@@ -10,7 +10,6 @@ public class CameraManager : Singleton<CameraManager>
 {
 
     public Camera Camera;
-    public Camera SideCamera;
     public Vector3 CameraOffSet;
     public Vector3 CameraHeigthOffSet;
     public float FieldOfView = 70f;
@@ -40,11 +39,8 @@ public class CameraManager : Singleton<CameraManager>
 
         Camera.transform.position = GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraOffSet;
         Camera.transform.LookAt(GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraHeigthOffSet);
-        SideCamera.transform.position = GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraOffSet;
-        SideCamera.transform.LookAt(GameManager.Instance.CurrentPlayer.SelectedBall.transform.position + CameraHeigthOffSet);
 
         Camera.fieldOfView = FieldOfView;
-        SideCamera.fieldOfView = FieldOfView;
     }
 
     public void Init()

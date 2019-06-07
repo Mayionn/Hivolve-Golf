@@ -43,7 +43,7 @@ public class Map : MonoBehaviour
     public GameType _GameType;
     public SkyboxType Skybox;
     public CameraDirection CameraDirection;
-    public MapColor MapColors;
+    public ColorPalette MapColors;
     public PersonalBest PB;
     public Transform[] WaypointsPosition;
     public GameObject Prefab;
@@ -174,6 +174,6 @@ public class Map : MonoBehaviour
    
     private void SetMapColors()
     {
-        ColorPaletteManager.Instance.SetColors(SpawnedPrefab, (int)MapColors);
+        ColorPaletteManager.Instance.SetMapColors(SpawnedPrefab, (int)MapColors);
     }
 }

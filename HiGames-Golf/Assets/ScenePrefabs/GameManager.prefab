@@ -279,13 +279,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55795f7245b57d498a3dbf916d4bc16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorPalettes:
+  MapColors:
   - name: Default
-    Hole: 
-    Floor: 
-    MapObjects: 
-    Background: '#813b45'
-    BackgroundObjects: 
+    Hole: '#000000'
+    Floor: '#0eba64'
+    MapObjects: '#b3435c'
+    BackgroundObjects: '#813b45'
+    Background: '#fa7d4f'
+  UIColors:
+    OneShotComplete: '#FFEEAA'
+    OneShotIncomplete: '#FFFFFF'
 --- !u!1 &7162761522405673098
 GameObject:
   m_ObjectHideFlags: 0

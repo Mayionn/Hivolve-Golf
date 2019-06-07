@@ -4,12 +4,18 @@ using UnityEngine.UI;
 
 public static class Struct
 {
+    //|--------------------------------------------------------------------------
+    // PLAYER'S BEST SCORE
+    //|--------------------------------------------------------------------------
     public struct PersonalBest
     {
         public int Strikes;
         public float Time;
     } //Player best Score
 
+    //|--------------------------------------------------------------------------
+    // DISPLAY'S INFO
+    //|--------------------------------------------------------------------------
     [Serializable]
     public struct DisplayInfo
     {
@@ -18,6 +24,10 @@ public static class Struct
         public Sprite SpriteLocked;
         public Sprite SpriteUnlocked;
     }
+
+    //|--------------------------------------------------------------------------
+    // UI INFO
+    //|--------------------------------------------------------------------------
     [Serializable]
     public struct InfoInGame
     {
@@ -106,5 +116,24 @@ public static class Struct
         public Text Text_CurrentPlayer;
     } //UI_Ready Check
 
-    
+    //|--------------------------------------------------------------------------
+    // COLORS
+    //|--------------------------------------------------------------------------
+    [Serializable]
+    public struct UIColors
+    {
+        public string OneShotComplete;
+        public string OneShotIncomplete;
+    }
+    [Serializable]
+    public struct MapColor
+    {
+        [SerializeField] private string name;
+        public string Hole;
+        public string Floor;
+        public string MapObjects;
+        public string BackgroundObjects;
+        public string Background;
+        public string Skybox;
+    }
 }
