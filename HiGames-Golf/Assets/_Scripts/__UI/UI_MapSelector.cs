@@ -97,6 +97,11 @@ public class UI_MapSelector : MonoBehaviour
             GameManager.Instance.Setup_Singleplayer();
         }
     }
+    public void BUTTON_Menu()
+    {
+        UiManager.Instance.CloseInterface_MapSelector();
+        GameManager.Instance.Setup_MenuMap();
+    }
 
     private void Chapter_Display(int num, float pos)
     {

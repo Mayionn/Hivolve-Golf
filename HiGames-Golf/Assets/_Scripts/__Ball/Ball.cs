@@ -39,6 +39,7 @@ public class Ball : MonoBehaviour
                     {
                         case "Hole-Singleplayer":
                             {
+                                UiManager.Instance.CloseInterface_InGameHud();
                                 UiManager.Instance.OpenInterface_MapSelector();
                             }
                             break;
@@ -76,7 +77,6 @@ public class Ball : MonoBehaviour
                             UiManager.Instance.Update_ScoreBoard_SaveScore(Player);
                             GameManager.Instance.NextPlayer();
                         }
-
                     }
                     break;
                 default:
@@ -84,7 +84,6 @@ public class Ball : MonoBehaviour
             }
         }
     }
-
     void OnTriggerExit(Collider other)
     {
         if(other.tag == "OOB")

@@ -11,6 +11,7 @@ public class UI_InGameHud : MonoBehaviour
 {
     public InfoInGame UI_InGame;
     public GameObject UI;
+    public GameObject UI_Menu;
 
     private Map m;
     private Player p;
@@ -21,19 +22,21 @@ public class UI_InGameHud : MonoBehaviour
         switch (GameManager.Instance._GameMode)
         {
             case GameMode.Menu:
-                UI.SetActive(true);
+                UI.SetActive(false);
+                UI_Menu.SetActive(true);
                 Setup_MenuInfo();
-                HideButtonRestart();
-                HideMapInfo();
-                HideMapInfo_Player();
-                HideMapInfo_Waypoints();
-                HideMapInfo_CurrentStrikes();
-                HideMapInfo_Medals();
-                HideTimer();
-                HideButtonReturnMapSelector();
+                //HideButtonRestart();
+                //HideMapInfo();
+                //HideMapInfo_Player();
+                //HideMapInfo_Waypoints();
+                //HideMapInfo_CurrentStrikes();
+                //HideMapInfo_Medals();
+                //HideTimer();
+                //HideButtonReturnMapSelector();
                 break;
             case GameMode.Singleplayer:
                 UI.SetActive(true);
+                UI_Menu.SetActive(false);
                 Unset_MenuInfo();
                 TimerStart();
                 HideMapInfo_Player();
@@ -57,6 +60,7 @@ public class UI_InGameHud : MonoBehaviour
                 break;
             case GameMode.Localgame:
                 UI.SetActive(true);
+                UI_Menu.SetActive(false);
                 Unset_MenuInfo();
                 TimerStart();
                 SetCurrentPlayerInfo();
@@ -78,6 +82,7 @@ public class UI_InGameHud : MonoBehaviour
     public void Terminate()
     {
         UI.SetActive(false);
+        UI_Menu.SetActive(false);
         TimerStop();
     }
 
