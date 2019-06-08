@@ -1457,6 +1457,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2952245829692601560}
     m_Modifications:
+    - target: {fileID: 6355464826853537033, guid: af4d4c4c21984d74e95d2bfab7c502f1,
+        type: 3}
+      propertyPath: m_Name
+      value: People 2 (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 6355464826853536042, guid: af4d4c4c21984d74e95d2bfab7c502f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1511,11 +1516,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6355464826853537033, guid: af4d4c4c21984d74e95d2bfab7c502f1,
-        type: 3}
-      propertyPath: m_Name
-      value: People 2 (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4d4c4c21984d74e95d2bfab7c502f1, type: 3}
@@ -2253,6 +2253,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2952245829692601560}
     m_Modifications:
+    - target: {fileID: 6355464826853537033, guid: af4d4c4c21984d74e95d2bfab7c502f1,
+        type: 3}
+      propertyPath: m_Name
+      value: People 2 (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 6355464826853536042, guid: af4d4c4c21984d74e95d2bfab7c502f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2308,11 +2313,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6355464826853537033, guid: af4d4c4c21984d74e95d2bfab7c502f1,
-        type: 3}
-      propertyPath: m_Name
-      value: People 2 (2)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4d4c4c21984d74e95d2bfab7c502f1, type: 3}
 --- !u!4 &6057816291440811899 stripped
@@ -2328,6 +2328,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2952245829692601560}
     m_Modifications:
+    - target: {fileID: 3227736981396012176, guid: eaa319863958c3549935d2218c42725c,
+        type: 3}
+      propertyPath: m_Name
+      value: People 1 (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 3227736981396011171, guid: eaa319863958c3549935d2218c42725c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2382,11 +2387,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3227736981396012176, guid: eaa319863958c3549935d2218c42725c,
-        type: 3}
-      propertyPath: m_Name
-      value: People 1 (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaa319863958c3549935d2218c42725c, type: 3}
@@ -2583,6 +2583,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2952245829692601560}
     m_Modifications:
+    - target: {fileID: 6355464826853537033, guid: af4d4c4c21984d74e95d2bfab7c502f1,
+        type: 3}
+      propertyPath: m_Name
+      value: People 2 (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 6355464826853536042, guid: af4d4c4c21984d74e95d2bfab7c502f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2637,11 +2642,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6355464826853537033, guid: af4d4c4c21984d74e95d2bfab7c502f1,
-        type: 3}
-      propertyPath: m_Name
-      value: People 2 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4d4c4c21984d74e95d2bfab7c502f1, type: 3}
@@ -3108,6 +3108,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1049206599978065989}
     m_Modifications:
+    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Bottle (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 4665390839811820363, guid: 6a6874f90c68bc5468bb27232b3ee231,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3178,11 +3183,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Bottle (3)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6874f90c68bc5468bb27232b3ee231, type: 3}
 --- !u!4 &7145958290210172061 stripped
@@ -3198,6 +3198,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2952245829692601560}
     m_Modifications:
+    - target: {fileID: 3227736981396012176, guid: eaa319863958c3549935d2218c42725c,
+        type: 3}
+      propertyPath: m_Name
+      value: People 1 (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 3227736981396011171, guid: eaa319863958c3549935d2218c42725c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3252,11 +3257,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3227736981396012176, guid: eaa319863958c3549935d2218c42725c,
-        type: 3}
-      propertyPath: m_Name
-      value: People 1 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaa319863958c3549935d2218c42725c, type: 3}
@@ -3553,6 +3553,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2952245829692601560}
     m_Modifications:
+    - target: {fileID: 3227736981396012176, guid: eaa319863958c3549935d2218c42725c,
+        type: 3}
+      propertyPath: m_Name
+      value: People 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3227736981396011171, guid: eaa319863958c3549935d2218c42725c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3608,11 +3613,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3227736981396012176, guid: eaa319863958c3549935d2218c42725c,
-        type: 3}
-      propertyPath: m_Name
-      value: People 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaa319863958c3549935d2218c42725c, type: 3}
 --- !u!4 &1551 stripped
@@ -3628,6 +3628,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1049206599978065989}
     m_Modifications:
+    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Bottle
+      objectReference: {fileID: 0}
     - target: {fileID: 4665390839811820363, guid: 6a6874f90c68bc5468bb27232b3ee231,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3697,11 +3702,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Bottle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6874f90c68bc5468bb27232b3ee231, type: 3}
@@ -3988,6 +3988,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2952245829692601560}
     m_Modifications:
+    - target: {fileID: 6355464826853537033, guid: af4d4c4c21984d74e95d2bfab7c502f1,
+        type: 3}
+      propertyPath: m_Name
+      value: People 2 (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 6355464826853536042, guid: af4d4c4c21984d74e95d2bfab7c502f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4042,11 +4047,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6355464826853537033, guid: af4d4c4c21984d74e95d2bfab7c502f1,
-        type: 3}
-      propertyPath: m_Name
-      value: People 2 (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4d4c4c21984d74e95d2bfab7c502f1, type: 3}
@@ -4243,6 +4243,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4683535641592612620}
     m_Modifications:
+    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
+        type: 3}
+      propertyPath: m_Name
+      value: Hole
+      objectReference: {fileID: 0}
     - target: {fileID: 470962584330555895, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4298,15 +4303,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
-        type: 3}
-      propertyPath: m_Name
-      value: Hole
-      objectReference: {fileID: 0}
     - target: {fileID: 295808559598166227, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_Height
-      value: 2.81
+      value: 4.7324624
+      objectReference: {fileID: 0}
+    - target: {fileID: 295808559598166227, guid: ee44f248f0f5a8f48a04017116891dac,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.000000047683717
+      objectReference: {fileID: 0}
+    - target: {fileID: 295808559598166227, guid: ee44f248f0f5a8f48a04017116891dac,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.96123123
+      objectReference: {fileID: 0}
+    - target: {fileID: 295808559598166227, guid: ee44f248f0f5a8f48a04017116891dac,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.00000009536743
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee44f248f0f5a8f48a04017116891dac, type: 3}
@@ -4593,6 +4608,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5184174865482070570}
     m_Modifications:
+    - target: {fileID: 1655655837075534957, guid: b5d4816a5c6d4914a8753452bd032610,
+        type: 3}
+      propertyPath: m_Name
+      value: Crowd01
+      objectReference: {fileID: 0}
     - target: {fileID: 5036624901812618744, guid: b5d4816a5c6d4914a8753452bd032610,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4657,11 +4677,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1655655837075534957, guid: b5d4816a5c6d4914a8753452bd032610,
-        type: 3}
-      propertyPath: m_Name
-      value: Crowd01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5d4816a5c6d4914a8753452bd032610, type: 3}
@@ -5032,6 +5047,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1548}
     m_Modifications:
+    - target: {fileID: 2933275488114787849, guid: 611597909a27bda42a1cb28f8cfd622d,
+        type: 3}
+      propertyPath: m_Name
+      value: Laptop
+      objectReference: {fileID: 0}
     - target: {fileID: 8429841156756763185, guid: 611597909a27bda42a1cb28f8cfd622d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5101,11 +5121,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2933275488114787849, guid: 611597909a27bda42a1cb28f8cfd622d,
-        type: 3}
-      propertyPath: m_Name
-      value: Laptop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 611597909a27bda42a1cb28f8cfd622d, type: 3}
@@ -5572,6 +5587,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1049206599978065989}
     m_Modifications:
+    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Bottle (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 4665390839811820363, guid: 6a6874f90c68bc5468bb27232b3ee231,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5642,11 +5662,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Bottle (4)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6874f90c68bc5468bb27232b3ee231, type: 3}
 --- !u!4 &1605249900584598682 stripped
@@ -5662,6 +5677,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2952245829692601560}
     m_Modifications:
+    - target: {fileID: 6355464826853537033, guid: af4d4c4c21984d74e95d2bfab7c502f1,
+        type: 3}
+      propertyPath: m_Name
+      value: People 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6355464826853536042, guid: af4d4c4c21984d74e95d2bfab7c502f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5716,11 +5736,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6355464826853537033, guid: af4d4c4c21984d74e95d2bfab7c502f1,
-        type: 3}
-      propertyPath: m_Name
-      value: People 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4d4c4c21984d74e95d2bfab7c502f1, type: 3}
@@ -5917,6 +5932,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1049206599978065989}
     m_Modifications:
+    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Bottle (5)
+      objectReference: {fileID: 0}
     - target: {fileID: 4665390839811820363, guid: 6a6874f90c68bc5468bb27232b3ee231,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5986,11 +6006,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Bottle (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6874f90c68bc5468bb27232b3ee231, type: 3}
@@ -6797,6 +6812,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3595805638561193318, guid: 1b20b5eebf60065498651a753600f08d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b20b5eebf60065498651a753600f08d, type: 3}
 --- !u!4 &4713076999442169070 stripped
@@ -6902,6 +6922,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1049206599978065989}
     m_Modifications:
+    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Bottle (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 4665390839811820363, guid: 6a6874f90c68bc5468bb27232b3ee231,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6971,11 +6996,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Bottle (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6874f90c68bc5468bb27232b3ee231, type: 3}
@@ -7172,6 +7192,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1548}
     m_Modifications:
+    - target: {fileID: 5640063083567719234, guid: 34561107e9fe7264d96cfdac6a50876f,
+        type: 3}
+      propertyPath: m_Name
+      value: DJTable
+      objectReference: {fileID: 0}
     - target: {fileID: 5877771214319345045, guid: 34561107e9fe7264d96cfdac6a50876f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7236,11 +7261,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5640063083567719234, guid: 34561107e9fe7264d96cfdac6a50876f,
-        type: 3}
-      propertyPath: m_Name
-      value: DJTable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34561107e9fe7264d96cfdac6a50876f, type: 3}
@@ -7437,6 +7457,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1049206599978065989}
     m_Modifications:
+    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Bottle (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 4665390839811820363, guid: 6a6874f90c68bc5468bb27232b3ee231,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7506,11 +7531,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Bottle (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6874f90c68bc5468bb27232b3ee231, type: 3}

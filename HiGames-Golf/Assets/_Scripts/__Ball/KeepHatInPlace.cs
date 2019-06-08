@@ -9,6 +9,6 @@ public class KeepHatInPlace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position = Player.SelectedBall.transform.position + (Vector3.up * Player.SelectedBall.SphereCollider.radius);
+        this.transform.position = Player.SelectedBall.transform.position + ((Vector3.up * Player.SelectedBall.SphereCollider.radius) * Player.SelectedBall.transform.localScale.y);
     }
 }

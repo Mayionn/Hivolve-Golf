@@ -1493,6 +1493,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1745}
     m_Modifications:
+    - target: {fileID: 6355464826853537033, guid: af4d4c4c21984d74e95d2bfab7c502f1,
+        type: 3}
+      propertyPath: m_Name
+      value: People 2 (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 6355464826853536042, guid: af4d4c4c21984d74e95d2bfab7c502f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1552,11 +1557,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6355464826853537033, guid: af4d4c4c21984d74e95d2bfab7c502f1,
-        type: 3}
-      propertyPath: m_Name
-      value: People 2 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4d4c4c21984d74e95d2bfab7c502f1, type: 3}
@@ -1663,6 +1663,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1745}
     m_Modifications:
+    - target: {fileID: 3227736981396012176, guid: eaa319863958c3549935d2218c42725c,
+        type: 3}
+      propertyPath: m_Name
+      value: People 1 (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 3227736981396011171, guid: eaa319863958c3549935d2218c42725c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1723,11 +1728,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3227736981396012176, guid: eaa319863958c3549935d2218c42725c,
-        type: 3}
-      propertyPath: m_Name
-      value: People 1 (1)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaa319863958c3549935d2218c42725c, type: 3}
 --- !u!4 &660149765568486184 stripped
@@ -1743,6 +1743,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1906}
     m_Modifications:
+    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
+        type: 3}
+      propertyPath: m_Name
+      value: Hole-Singleplayer
+      objectReference: {fileID: 0}
     - target: {fileID: 470962584330555895, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1813,11 +1818,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
-        type: 3}
-      propertyPath: m_Name
-      value: Hole-Singleplayer
-      objectReference: {fileID: 0}
     - target: {fileID: 4457914213626336638, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_Enabled
@@ -1858,6 +1858,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1745}
     m_Modifications:
+    - target: {fileID: 3227736981396012176, guid: eaa319863958c3549935d2218c42725c,
+        type: 3}
+      propertyPath: m_Name
+      value: People 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3227736981396011171, guid: eaa319863958c3549935d2218c42725c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1917,11 +1922,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3227736981396012176, guid: eaa319863958c3549935d2218c42725c,
-        type: 3}
-      propertyPath: m_Name
-      value: People 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eaa319863958c3549935d2218c42725c, type: 3}
@@ -2028,6 +2028,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1906}
     m_Modifications:
+    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
+        type: 3}
+      propertyPath: m_Name
+      value: Hole-LocalGame
+      objectReference: {fileID: 0}
     - target: {fileID: 470962584330555895, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2097,11 +2102,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
-        type: 3}
-      propertyPath: m_Name
-      value: Hole-LocalGame
       objectReference: {fileID: 0}
     - target: {fileID: 4457914213626336638, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
@@ -2694,6 +2694,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1548}
     m_Modifications:
+    - target: {fileID: 5055674370527680679, guid: 42d8b98b08fce14459bb8fc6be792943,
+        type: 3}
+      propertyPath: m_Name
+      value: Headset
+      objectReference: {fileID: 0}
     - target: {fileID: 454971056955819334, guid: 42d8b98b08fce14459bb8fc6be792943,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2764,11 +2769,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 5055674370527680679, guid: 42d8b98b08fce14459bb8fc6be792943,
-        type: 3}
-      propertyPath: m_Name
-      value: Headset
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42d8b98b08fce14459bb8fc6be792943, type: 3}
 --- !u!4 &5968350671894973522 stripped
@@ -2784,6 +2784,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1745}
     m_Modifications:
+    - target: {fileID: 6355464826853537033, guid: af4d4c4c21984d74e95d2bfab7c502f1,
+        type: 3}
+      propertyPath: m_Name
+      value: People 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6355464826853536042, guid: af4d4c4c21984d74e95d2bfab7c502f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2848,11 +2853,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6355464826853537033, guid: af4d4c4c21984d74e95d2bfab7c502f1,
-        type: 3}
-      propertyPath: m_Name
-      value: People 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4d4c4c21984d74e95d2bfab7c502f1, type: 3}
@@ -3229,6 +3229,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1548}
     m_Modifications:
+    - target: {fileID: 2933275488114787849, guid: 611597909a27bda42a1cb28f8cfd622d,
+        type: 3}
+      propertyPath: m_Name
+      value: Laptop
+      objectReference: {fileID: 0}
     - target: {fileID: 8429841156756763185, guid: 611597909a27bda42a1cb28f8cfd622d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3299,11 +3304,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.4999999
       objectReference: {fileID: 0}
-    - target: {fileID: 2933275488114787849, guid: 611597909a27bda42a1cb28f8cfd622d,
-        type: 3}
-      propertyPath: m_Name
-      value: Laptop
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 611597909a27bda42a1cb28f8cfd622d, type: 3}
 --- !u!4 &474570168707213430 stripped
@@ -3319,6 +3319,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1548}
     m_Modifications:
+    - target: {fileID: 5640063083567719234, guid: 34561107e9fe7264d96cfdac6a50876f,
+        type: 3}
+      propertyPath: m_Name
+      value: DJTable
+      objectReference: {fileID: 0}
     - target: {fileID: 5877771214319345045, guid: 34561107e9fe7264d96cfdac6a50876f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3388,11 +3393,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5640063083567719234, guid: 34561107e9fe7264d96cfdac6a50876f,
-        type: 3}
-      propertyPath: m_Name
-      value: DJTable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34561107e9fe7264d96cfdac6a50876f, type: 3}
