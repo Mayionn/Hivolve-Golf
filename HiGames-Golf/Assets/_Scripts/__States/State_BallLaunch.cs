@@ -224,6 +224,7 @@ public class State_BallLaunch : State
     {
         Ball.Player.Arrow.transform.localScale = new Vector3(0.1f, 1, 0.4f + value);
         Ball.Player.ForceBar.transform.localScale = new Vector3(0.2f, 1, value);
+        Ball.Player.ForceBar.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(1, 1 - value,0));
         CameraManager.Instance.LaunchEffect(value);
     }
     private bool IsLeftSide(Touch t)

@@ -67,7 +67,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _PulsatingRange: 1.94
+    - _PulsatingRange: 2.12
     - _PulsatingSpeed: 12.94
     - _Scale: 1.2
     - _ShadowIntensity: 0.016
