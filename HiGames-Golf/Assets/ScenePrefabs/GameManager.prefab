@@ -120,15 +120,160 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a38a4156b47051445b49f2810803379a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  List_Skins_Balls: []
-  List_Skins_Hats: []
-  List_Skins_Arrows: []
-  List_Skins_ForceBars: []
-  List_SkyBoxes: []
+  List_Skins_Balls:
+  - Name: DefaultSkin_White
+    Cost_Coins: 0
+    Cost_Diamonds: 0
+    IsUnlocked: 1
+    Sprite_Display: {fileID: 21300000, guid: 41b16cd6895c07e418431c6b24eab34e, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: dc5f308b73c104b428b8174b58184462, type: 2}
+  - Name: DefaultSkin_Red
+    Cost_Coins: 100
+    Cost_Diamonds: 10
+    IsUnlocked: 1
+    Sprite_Display: {fileID: 21300000, guid: 2515d6b8b67a70a469c017749c2520cc, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: d7508f9a6c1d63e48a6c616ea293e8b7, type: 2}
+  - Name: DefaultSkin_Blue
+    Cost_Coins: 100
+    Cost_Diamonds: 10
+    IsUnlocked: 1
+    Sprite_Display: {fileID: 21300000, guid: cef47d79e5ca72747b59d5e3933593e5, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: 24a2d0cf73b33dd4791212a71a96cf69, type: 2}
+  - Name: DefaultSkin_Yellow
+    Cost_Coins: 100
+    Cost_Diamonds: 10
+    IsUnlocked: 1
+    Sprite_Display: {fileID: 21300000, guid: 76ba10f0ed261ea459eb6f2728ba3f4e, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: 5f666e98f07723a4694f7eee58c09640, type: 2}
+  - Name: DefaultSkin_Orange
+    Cost_Coins: 100
+    Cost_Diamonds: 10
+    IsUnlocked: 1
+    Sprite_Display: {fileID: 21300000, guid: eef194fe85aec17459f9dcd8d33236c5, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: febc536da6fd04e4ca4cab954d754f53, type: 2}
+  - Name: Void Ball
+    Cost_Coins: 100
+    Cost_Diamonds: 10
+    IsUnlocked: 0
+    Sprite_Display: {fileID: 21300000, guid: 33b878b471551e34ca1bbff7de0cd6c0, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: 6c641ccaaa76873449413c3eca144533, type: 2}
+  - Name: Donut Blue
+    Cost_Coins: 100
+    Cost_Diamonds: 10
+    IsUnlocked: 0
+    Sprite_Display: {fileID: 21300000, guid: ef321e001773fad448bf8c4e6ec46aaf, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: 81fb2011b867d5248b8f45c2da4cdfcc, type: 2}
+  - Name: Donut Orange
+    Cost_Coins: 100
+    Cost_Diamonds: 10
+    IsUnlocked: 0
+    Sprite_Display: {fileID: 21300000, guid: c5744d0a932ea044a9f2c4ec3c1fd1be, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: 11b3b8e6e93f23f4ca9cae839324bef2, type: 2}
+  - Name: Donut Red
+    Cost_Coins: 100
+    Cost_Diamonds: 10
+    IsUnlocked: 0
+    Sprite_Display: {fileID: 21300000, guid: 55e998aa4c8995b489b2e3211d283a37, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: b1ff32e9bc9a93446a887a272fab8449, type: 2}
+  - Name: Donut White
+    Cost_Coins: 100
+    Cost_Diamonds: 10
+    IsUnlocked: 0
+    Sprite_Display: {fileID: 21300000, guid: 90fc62d1592f88645a63e07344107809, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: 309dd01ded3834d488c5b2fad5bcfa64, type: 2}
+  - Name: Donut Yellow
+    Cost_Coins: 100
+    Cost_Diamonds: 10
+    IsUnlocked: 0
+    Sprite_Display: {fileID: 21300000, guid: bcb2bb8b904b0564eaa88302a8ee0f54, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: 6b7f78b3a54654f4b912e3667c71c23d, type: 2}
+  - Name: Crack Blue
+    Cost_Coins: 100
+    Cost_Diamonds: 10
+    IsUnlocked: 0
+    Sprite_Display: {fileID: 21300000, guid: eb26b5bbd2ceb7d42a2ded04d2698e8c, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: d9276b85274fa5546be57e37f7743629, type: 2}
+  - Name: Crack Orange
+    Cost_Coins: 100
+    Cost_Diamonds: 10
+    IsUnlocked: 0
+    Sprite_Display: {fileID: 21300000, guid: 62e601415e6b7054a9b39ec97087547f, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: e8b13b02590bdec4eb50c1c1d2b04cbb, type: 2}
+  - Name: Crack Red
+    Cost_Coins: 100
+    Cost_Diamonds: 10
+    IsUnlocked: 0
+    Sprite_Display: {fileID: 21300000, guid: 2a56871dc95aed84ba9cc3330bcaee1f, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: 80d9039a0927d704bbf867f35b1427fd, type: 2}
+  - Name: Crack White
+    Cost_Coins: 100
+    Cost_Diamonds: 10
+    IsUnlocked: 0
+    Sprite_Display: {fileID: 21300000, guid: 2368e2560d37c7947b42a384cba0be3e, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: 7eb2eb9085909dd4c98ede0522be84bc, type: 2}
+  - Name: Crack Yellow
+    Cost_Coins: 100
+    Cost_Diamonds: 10
+    IsUnlocked: 0
+    Sprite_Display: {fileID: 21300000, guid: 057306277a2903d4ea2b9bb6ee110757, type: 3}
+    Index: 0
+    Material: {fileID: 2100000, guid: 469d839244120c545a0ddde5a7cf22c4, type: 2}
+  List_Skins_Hats:
+  - Name: 
+    Cost_Coins: 0
+    Cost_Diamonds: 0
+    IsUnlocked: 1
+    Sprite_Display: {fileID: 21300000, guid: 3a1b051b192d37a48b3bd36f1a1ef6ab, type: 3}
+    Index: 0
+    Hat: {fileID: 9166307513352332973, guid: 3408d2e4601538848813199b54f56440, type: 3}
+  - Name: 
+    Cost_Coins: 10
+    Cost_Diamonds: 10
+    IsUnlocked: 1
+    Sprite_Display: {fileID: 21300000, guid: e58e6c5d3bd34b945847d7d7d24fa8af, type: 3}
+    Index: 0
+    Hat: {fileID: 100000, guid: 25fbb39d7bda88c408f55cd62f77d5ed, type: 3}
+  List_Skins_Arrows:
+  - Name: Default Arrow
+    Cost_Coins: 0
+    Cost_Diamonds: 0
+    IsUnlocked: 1
+    Sprite_Display: {fileID: 21300000, guid: 92a32796c18f7a24cab9451409dcc795, type: 3}
+    Index: 0
+    Arrow: {fileID: 2100000, guid: 0ce3f22d6a961134aba5dca98975fb5c, type: 2}
+  List_Skins_ForceBars:
+  - Name: Default Force Bar
+    Cost_Coins: 0
+    Cost_Diamonds: 0
+    IsUnlocked: 1
+    Sprite_Display: {fileID: 21300000, guid: fcd1eefee18994b4b9d993f9e43e76a8, type: 3}
+    Index: 0
+    ForceBar: {fileID: 2100000, guid: 3c035c590494a55459262fe44924f118, type: 2}
+  List_SkyBoxes:
+  - {fileID: 2100000, guid: 4c685611d5ae62441a5c3bc2a10319bd, type: 2}
+  - {fileID: 2100000, guid: ffec3f7201686914fbd8cee81f0f268a, type: 2}
+  - {fileID: 2100000, guid: 3d3b7fca38c309a4d8a2fd3a227edeb4, type: 2}
   DefaultBall: {fileID: 1268160296630645033, guid: 404ea2391144cd442b2e061e00701ef6,
     type: 3}
-  ArrowPrefab: {fileID: 0}
-  ForceBar_Prefab: {fileID: 0}
+  ArrowPrefab: {fileID: 2874018684511680979, guid: 71ada1d25ecab9749a10e8f999f35919,
+    type: 3}
+  ForceBar_Prefab: {fileID: 2649011252021400223, guid: 65f1852cc1f98ba4487cbaff3d070352,
+    type: 3}
 --- !u!1 &1042123730385134811
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +318,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 0}
-  SideCamera: {fileID: 0}
   CameraOffSet: {x: 0, y: 15, z: -30}
   CameraHeigthOffSet: {x: 0, y: 0, z: 0}
   FieldOfView: 70
@@ -286,9 +430,11 @@ MonoBehaviour:
     MapObjects: '#b3435c'
     BackgroundObjects: '#813b45'
     Background: '#fa7d4f'
+    Skybox: '#ffb17a'
   UIColors:
     OneShotComplete: '#FFEEAA'
     OneShotIncomplete: '#FFFFFF'
+  UI_Blue: '#477FBE'
 --- !u!1 &7162761522405673098
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +607,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 897, guid: a5f13c6fc04dedf46bbcbff8364c37aa, type: 3}
+      propertyPath: UI_Images.Gold
+      value: 
+      objectReference: {fileID: 21300000, guid: 0f7494bd22b093544a1e56edef1865ec,
+        type: 3}
     - target: {fileID: 2825989124144119792, guid: a5f13c6fc04dedf46bbcbff8364c37aa,
         type: 3}
       propertyPath: m_Name

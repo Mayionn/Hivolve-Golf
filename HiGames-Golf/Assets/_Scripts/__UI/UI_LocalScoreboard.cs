@@ -59,29 +59,12 @@ public class UI_LocalScoreboard : MonoBehaviour
     public void Setup_Score(Player p)
     {
         InfoScoreboard i = UI_Scoreboard[p.PlayerNum];
-        i.PlayerName.text = p.Name;
-        i.PlayerNumber.text = "Player: " + p.PlayerNum.ToString();
+        i.PlayerNumber.text = "Player: " + (p.PlayerNum + 1);
         i.PlayerIndexNumber.text = p.PlayerNum.ToString();
         i.PlayerStrikes.text = p.Strikes.ToString();
         p.TruncateTimer();
         i.PlayerTimer.text = p.Timer.ToString();
         i.TotalPoints.text = p.LocalgamePoints.ToString();
-    }
-    private void Setup_NextMapButton()
-    {
-        if(GameManager.Instance.MapIndex 
-            == GameManager.Instance.LocalMultiplayerMaps.Count)
-        {
-            Text_Button.text = "Show Results";
-        }
-        else
-        {
-            Text_Button.text = "Next Map";
-        }
-    }
-    private void Setup_MapCounter()
-    {
-        MapCounter.text = "Map Progress: " + (GameManager.Instance.MapIndex+1) + " / " + GameManager.Instance.LocalMultiplayerMaps.Count;
     }
     private void LGS_SetImages()
     {
@@ -102,12 +85,13 @@ public class UI_LocalScoreboard : MonoBehaviour
     }
     private void LGS_ChangeImages(InfoScoreboard i)
     {
+        i.Image_Background.color = ColorPaletteManager.Instance.GetColor(ColorPaletteManager.Instance.UI_Blue);
         i.ImgTimer.sprite = UiManager.Instance.UI_Images.StopWatch;
         i.ImgStrikes.sprite = UiManager.Instance.UI_Images.Strikes;
     }
     private void LGS_Hide(InfoScoreboard i)
     {
-        i.PlayerName.text = "";
+        i.Image_Background.color = Color.clear;
         i.PlayerNumber.text = "";
         i.PlayerTimer.text = "";
         i.ImgTimer.sprite = UiManager.Instance.UI_Images.Hidden;
@@ -115,6 +99,22 @@ public class UI_LocalScoreboard : MonoBehaviour
         i.ImgStrikes.sprite = UiManager.Instance.UI_Images.Hidden;
         i.TotalPoints.text = "";
         i.Medal.sprite = UiManager.Instance.UI_Images.Hidden;
+    }
+    private void Setup_NextMapButton()
+    {
+        if(GameManager.Instance.MapIndex 
+            == GameManager.Instance.LocalMultiplayerMaps.Count-1)
+        {
+            Text_Button.text = "Show Results";
+        }
+        else
+        {
+            Text_Button.text = "Next Map";
+        }
+    }
+    private void Setup_MapCounter()
+    {
+        MapCounter.text = "Map Progress: " + (GameManager.Instance.MapIndex+1) + " / " + GameManager.Instance.LocalMultiplayerMaps.Count;
     }
     private void Check_BestPlayerOnMap()
     {
@@ -147,8 +147,9 @@ public class UI_LocalScoreboard : MonoBehaviour
         int count = GameManager.Instance.Players.Count;
         for (int i = 0; i < count; i++)
         {
-            UI_ScoreResults[i].Text_PlayerName.text = p[i].Name;
+            UI_ScoreResults[i].Text_PlayerNumber.text = "Player: " + (p[i].PlayerNum + 1);
             UI_ScoreResults[i].Text_PlayerScore.text = p[i].LocalgamePoints.ToString();
+            UI_ScoreResults[i].Image_Background.color = ColorPaletteManager.Instance.GetColor(ColorPaletteManager.Instance.UI_Blue);
             UI_ScoreResults[i].Image_Medal.color = Color.white;
             switch (i)
             {
@@ -169,7 +170,8 @@ public class UI_LocalScoreboard : MonoBehaviour
 
         for (int i = count; i < 4; i++)
         {
-            UI_ScoreResults[i].Text_PlayerName.text = "";
+            UI_ScoreResults[i].Image_Background.color = Color.clear;
+            UI_ScoreResults[i].Text_PlayerNumber.text = "";
             UI_ScoreResults[i].Text_PlayerScore.text = "";
             UI_ScoreResults[i].Image_Medal.color = Color.clear;
         }
@@ -209,8 +211,8 @@ public class UI_LocalScoreboard : MonoBehaviour
     private void Setup_Score(InfoScoreboard i, Sprite s, int p)
     {
         Player lp = GameManager.Instance.Players[int.Parse(i.PlayerIndexNumber.text)];
-        i.TotalPoints.text = lp.LocalgamePoints.ToString() + " + " + p;
         lp.LocalgamePoints += p;
+        i.TotalPoints.text = lp.LocalgamePoints.ToString() + " (+" + p + ")";
         i.Medal.sprite = s;
     }
 }

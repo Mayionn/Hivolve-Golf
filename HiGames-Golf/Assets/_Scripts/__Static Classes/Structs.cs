@@ -77,21 +77,28 @@ public static class Struct
         public Image Image_CurrentTimer;
         public Text Txt_CurrStrikes;
         public Text Txt_CurrTimer;
-    } //UI_CompletedMap
+    } //UI_CompletedMap1
+    [Serializable]
+    public struct InfoOneShotMap
+    {
+        public Image Image_CurrentTimer;
+        public Text Txt_CurrTimer;
+        public Image Image_MoneyIcon;
+        public Text Txt_MoneyEarned;
+    }
     [Serializable]
     public struct InfoLocalGrid
     {
         public int PlayerNum;
-        public string PlayerName;
         public Image Image;
-        public Ball SelectedBall;
+        public Image ImageBall;
         public Text Txt_PlayerNum;
-        public Text Txt_PlayerName;
+        [HideInInspector] public Ball SelectedBall;
     } //UI_Local Mutliplayer
     [Serializable]
     public struct InfoScoreboard
     {
-        public Text PlayerName;
+        public Image Image_Background;
         public Text PlayerNumber;
         public Text PlayerIndexNumber;
         public Text PlayerTimer;
@@ -104,8 +111,9 @@ public static class Struct
     [Serializable]
     public struct InfoResults
     {
-        public Text Text_PlayerName;
+        public Text Text_PlayerNumber;
         public Text Text_PlayerScore;
+        public Image Image_Background;
         public Image Image_Medal;
     } //UI_LocalScoreBoard
     [Serializable]

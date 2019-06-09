@@ -25,6 +25,8 @@ public class UI_InGameHud : MonoBehaviour
                 UI.SetActive(false);
                 UI_Menu.SetActive(true);
                 Setup_MenuInfo();
+                UI_Menu.transform.Find("TopBar").transform.Find("Image").GetComponent<Image>().sprite = UiManager.Instance.UI_Images.Gold;
+                UI_Menu.transform.Find("TopBar").transform.Find("Text").GetComponent<Text>().text = ProfileManager.Instance.Gold.ToString();
                 //HideButtonRestart();
                 //HideMapInfo();
                 //HideMapInfo_Player();

@@ -10,7 +10,7 @@ public class UI_ReadyCheck : MonoBehaviour
     public void Init()
     {
         UI.SetActive(true);
-        ReadyCheckInfo.Text_CurrentPlayer.text = "Player " + GameManager.Instance.CurrentPlayer.Name + " playing";
+        ReadyCheckInfo.Text_CurrentPlayer.text = "Player " + (GameManager.Instance.CurrentPlayer.PlayerNum + 1);
     }
     public void Terminate()
     {

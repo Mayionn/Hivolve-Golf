@@ -6,6 +6,7 @@ public class UI_CompletedMap : MonoBehaviour
 {
     public GameObject UI;
     public InfoCompletedMap Info;
+    public InfoOneShotMap InfoOneShot;
 
     public void Init()
     {
@@ -61,25 +62,31 @@ public class UI_CompletedMap : MonoBehaviour
 
         m.CheckPersonalBest();
         UiManager.Instance.Update_MapSelector_UnlockNextLevel(m.Display.levelNumber);
-        //UPDATE TEXT
-        //Map Medals
-        Info.Txt_GoldMedal.text = m.MedalGold.ToString();
-        Info.Image_MapGoldMedal.sprite = UiManager.Instance.UI_Images.GoldMedal;
-        Info.Txt_SilverMedal.text = m.MedalSilver.ToString();
-        Info.Image_MapSilverMedal.sprite = UiManager.Instance.UI_Images.SilverMedal;
-        Info.Txt_BronzeMedal.text = m.MedalBronze.ToString();
-        Info.Image_MapBronzeMedal.sprite = UiManager.Instance.UI_Images.BronzeMedal;
-        //PB
-        p.TruncateTimer();
-        Info.Image_PBTimer.sprite = UiManager.Instance.UI_Images.StopWatch;
-        Info.Txt_PBStrikes.text = m.PB.Strikes.ToString();
-        Info.Txt_PBTimer.text = m.PB.Time.ToString();
-        //Current Score
-        Info.Image_CurrentTimer.sprite = UiManager.Instance.UI_Images.StopWatch;
-        Info.Txt_CurrStrikes.text = p.Strikes.ToString();
-        Info.Txt_CurrTimer.text = p.Timer.ToString();
-        //UPDATE IMAGES
-        Setup_ScoreImages(m,p);
+
+        InfoOneShot.Image_CurrentTimer.sprite = UiManager.Instance.UI_Images.StopWatch;
+        InfoOneShot.Image_MoneyIcon.sprite = UiManager.Instance.UI_Images.Gold;
+        InfoOneShot.Txt_CurrTimer.text = p.Timer.ToString();
+        InfoOneShot.Txt_MoneyEarned.text = "+" + totalEarned.ToString();
+
+        ////UPDATE TEXT
+        ////Map Medals
+        //Info.Txt_GoldMedal.text = m.MedalGold.ToString();
+        //Info.Image_MapGoldMedal.sprite = UiManager.Instance.UI_Images.GoldMedal;
+        //Info.Txt_SilverMedal.text = m.MedalSilver.ToString();
+        //Info.Image_MapSilverMedal.sprite = UiManager.Instance.UI_Images.SilverMedal;
+        //Info.Txt_BronzeMedal.text = m.MedalBronze.ToString();
+        //Info.Image_MapBronzeMedal.sprite = UiManager.Instance.UI_Images.BronzeMedal;
+        ////PB
+        //p.TruncateTimer();
+        //Info.Image_PBTimer.sprite = UiManager.Instance.UI_Images.StopWatch;
+        //Info.Txt_PBStrikes.text = m.PB.Strikes.ToString();
+        //Info.Txt_PBTimer.text = m.PB.Time.ToString();
+        ////Current Score
+        //Info.Image_CurrentTimer.sprite = UiManager.Instance.UI_Images.StopWatch;
+        //Info.Txt_CurrStrikes.text = p.Strikes.ToString();
+        //Info.Txt_CurrTimer.text = p.Timer.ToString();
+        ////UPDATE IMAGES
+        //Setup_ScoreImages(m,p);
 
         SaveManager.Instance.SaveMapProgress();
     }

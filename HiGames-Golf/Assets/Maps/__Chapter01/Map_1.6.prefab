@@ -1090,6 +1090,7 @@ MonoBehaviour:
   _GameType: 1
   Skybox: 0
   CameraDirection: 3
+  MapColors: 0
   WaypointsPosition: []
   Prefab: {fileID: 635}
   StartingPosition: {fileID: 6968724077149851632}

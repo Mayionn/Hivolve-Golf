@@ -104,9 +104,14 @@ namespace Assets.UI
             for (int i = 0; i < currentNumber; i++)
             {
                 Player p = GameManager.Instance.Players[i];
-                GridInfos[i].PlayerName = p.Name;
+                if(i > 0)
+                {
+                    p.Skin_Ball = SkinsManager.Instance.List_Skins_Balls[i];
+                }
                 GridInfos[i].PlayerNum = p.PlayerNum;
-                GridInfos[i].Txt_PlayerName.text = "Name: " + GridInfos[i].PlayerName;
+                GridInfos[i].ImageBall.color = Color.white;
+                GridInfos[i].ImageBall.sprite = p.Skin_Ball.Sprite_Display;
+                GridInfos[i].Image.color = ColorPaletteManager.Instance.GetColor("#477FBE");
                 GridInfos[i].Txt_PlayerNum.text = "Player: " + (GridInfos[i].PlayerNum + 1).ToString();
             }
             //Turn not used players blank
@@ -117,8 +122,8 @@ namespace Assets.UI
         }
         private void SetInfoHidden(InfoLocalGrid g)
         {
-            g.PlayerName = "";
-            g.Txt_PlayerName.text = "";
+            g.Image.color = Color.clear;
+            g.ImageBall.color = Color.clear;
             g.Txt_PlayerNum.text = "";
         }
         private void UpdateCurrentNumberText()

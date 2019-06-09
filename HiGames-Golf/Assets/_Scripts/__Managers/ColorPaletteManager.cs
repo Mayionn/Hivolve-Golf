@@ -9,6 +9,7 @@ public class ColorPaletteManager : Singleton<ColorPaletteManager>
 {
     public List<MapColor> MapColors;
     public UIColors UIColors;
+    public string UI_Blue = "#477FBE";
 
     public void SetMapColors(GameObject map, int colorPalette)
     {
