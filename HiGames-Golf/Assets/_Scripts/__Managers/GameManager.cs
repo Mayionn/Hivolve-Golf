@@ -370,6 +370,7 @@ namespace Assets.Managers
             CurrentPlayer.ResetScore();
             CurrentMap.WaypointsReset();
             UiManager.Instance.UpdateMapInfoCurrentStrikes();
+            UiManager.Instance.CloseInterface_InGameReadyCheck();
             UiManager.Instance.UpdateMapInfoWaypoints();
             AudioManager.Instance.Play(Sounds.InteractSucess);
             AdsManager.Instance.ShowAd();

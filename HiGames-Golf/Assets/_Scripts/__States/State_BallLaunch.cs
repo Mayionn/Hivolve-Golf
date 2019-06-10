@@ -215,6 +215,7 @@ public class State_BallLaunch : State
     }
     private void PlaceArrowAndBar()
     {
+        if (Ball.Player.Arrow.GetComponent<MeshRenderer>().enabled == false) Ball.Player.Arrow.GetComponent<MeshRenderer>().enabled = true;
         Ball.Player.Arrow.transform.position = Ball.transform.position + (GetThrowDirection() * Ball.Player.Arrow.transform.localScale.z * ARROWSIZE);
         Ball.Player.Arrow.transform.forward = -GetThrowDirection();
 
