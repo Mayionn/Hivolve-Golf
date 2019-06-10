@@ -105,6 +105,7 @@ public class UI_CompletedMap : MonoBehaviour
     {
         UiManager.Instance.CloseInterface_CompletedMap();
         UiManager.Instance.OpenInterface_MapSelector();
+        AudioManager.Instance.Play(Sounds.InteractSucess);
     }
 
     public void Setup_ScoreImages(Map m, Player p)

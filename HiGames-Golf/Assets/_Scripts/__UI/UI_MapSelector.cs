@@ -95,12 +95,19 @@ public class UI_MapSelector : MonoBehaviour
             MapManager.Instance.SelectedMap = gm.map;
             UiManager.Instance.CloseInterface_MapSelector();
             GameManager.Instance.Setup_Singleplayer();
+            AudioManager.Instance.Play(Sounds.InteractSucess);
+        }
+        else
+        {
+            AudioManager.Instance.Play(Sounds.InteractFailed);
         }
     }
     public void BUTTON_Menu()
     {
         UiManager.Instance.CloseInterface_MapSelector();
         GameManager.Instance.Setup_MenuMap();
+        AudioManager.Instance.Play(Sounds.InteractSucess);
+
     }
 
     private void Chapter_Display(int num, float pos)

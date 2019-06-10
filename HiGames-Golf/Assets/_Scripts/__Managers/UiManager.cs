@@ -97,6 +97,7 @@ public class UiManager : Singleton<UiManager>
         GameManager.Instance.TimeScaleStop();
         CloseInterface_InGameHud();
         UI_SkinMenu.Init();
+        AudioManager.Instance.Play(Sounds.InteractSucess);
     }
 
     public void CloseInterface_InGameHud()
@@ -107,6 +108,7 @@ public class UiManager : Singleton<UiManager>
     {
         UI_ReadyCheck.Terminate();
         GameManager.Instance.TimeScaleResume();
+        AudioManager.Instance.Play(Sounds.InteractSucess);
     }
     public void CloseInterface_MapSelector()
     {
@@ -138,12 +140,17 @@ public class UiManager : Singleton<UiManager>
         GameManager.Instance.TimeScaleResume();
         OpenInterface_InGameHud();
         UI_SkinMenu.Terminate();
+        AudioManager.Instance.Play(Sounds.InteractSucess);
     }
 
     //Update Info Methods
     public void Update_ScoreBoard_Rows()
     {
         UI_LocalScoreboard.SetupRows();
+    }
+    public void Update_RemoveAllPlayers()
+    {
+        UI_LocalMultiplayer.RemovePlayersAll();
     }
     public void Update_ScoreBoard_SaveScore(Player player)
     {
@@ -187,14 +194,23 @@ public class UiManager : Singleton<UiManager>
             UI_InGameHud.UI_InGame.Waypoint.text = " ";
         }
     }
+    public void Update_Currency()
+    {
+        UI_InGameHud.UI_Menu.transform.Find("TopBar").transform.Find("Text").GetComponent<Text>().text = ProfileManager.Instance.Gold.ToString();
+    }
     public void UpdateMapInfoCurrentStrikes()
     {
         if(GameManager.Instance._GameMode != GameMode.Menu)
         {
-            if(GameManager.Instance.CurrentMap._GameType != GameType.OneShot)
-            {
-                UI_InGameHud.UI_InGame.CurrentStrikes.text = "Strikes: " + GameManager.Instance.CurrentPlayer.Strikes;
-            }
+            UI_InGameHud.UI_InGame.CurrentStrikes.text = "Strikes: " + GameManager.Instance.CurrentPlayer.Strikes;
+
+            //if (GameManager.Instance.CurrentMap._GameType != GameType.OneShot)
+            //{
+            //}
+            //else if(GameManager.Instance._GameMode != GameMode.Singleplayer)
+            //{
+            //    UI_InGameHud.UI_InGame.CurrentStrikes.text = "Strikes: " + GameManager.Instance.CurrentPlayer.Strikes;
+            //}
         }
     }
 }

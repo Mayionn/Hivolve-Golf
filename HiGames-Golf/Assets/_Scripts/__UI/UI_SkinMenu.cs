@@ -32,7 +32,6 @@ public class UI_SkinMenu : MonoBehaviour
     private int currentPage;
     private int currentDisplay;
 
-
     public void Init()
     {
         GO.SetActive(true);
@@ -65,6 +64,7 @@ public class UI_SkinMenu : MonoBehaviour
             default:
                 break;
         }
+        AudioManager.Instance.Play(Sounds.InteractSucess);
     }
 
     public void BUTTON_NextPage()
@@ -86,6 +86,7 @@ public class UI_SkinMenu : MonoBehaviour
             default:
                 break;
         }
+        AudioManager.Instance.Play(Sounds.InteractSucess);
     }
     public void BUTTON_PrevPage()
     {
@@ -106,6 +107,7 @@ public class UI_SkinMenu : MonoBehaviour
             default:
                 break;
         }
+        AudioManager.Instance.Play(Sounds.InteractSucess);
     }
     public void BUTTON_InteractSkin(int displayIndex)
     {
@@ -114,6 +116,7 @@ public class UI_SkinMenu : MonoBehaviour
             //Load skin for main player
             Displays[displayIndex].Skin.Load_Skin(GameManager.Instance.Get_MainPlayer());
             Displays[displayIndex].Skin.SaveCurrent_Skin();
+            AudioManager.Instance.Play(Sounds.InteractSucess);
         }
         else
         {
@@ -122,10 +125,11 @@ public class UI_SkinMenu : MonoBehaviour
                 Displays[displayIndex].Skin.Save_Skin();
                 SetupDisplay_Unlocked(displayIndex, Displays[displayIndex].Skin);
                 Setup_Currency();
+                AudioManager.Instance.Play(Sounds.InteractSucess);
             }
             else
             {
-                //SOUND
+                AudioManager.Instance.Play(Sounds.InteractFailed);
             }
         }
     }

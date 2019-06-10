@@ -47,6 +47,7 @@ public class UI_InGameHud : MonoBehaviour
                 SetMapInfo_CurrentStrikes();
                 SetButtonRestart();
                 ShowButtonReturnMapSelector();
+                UI_InGame.Paper.gameObject.SetActive(false);
                 if (m._GameType == GameType.OneShot)
                 {
                     HideMapInfo_Medals();
@@ -63,6 +64,7 @@ public class UI_InGameHud : MonoBehaviour
             case GameMode.Localgame:
                 UI.SetActive(true);
                 UI_Menu.SetActive(false);
+                UI_InGame.Paper.gameObject.SetActive(true);
                 Unset_MenuInfo();
                 TimerStart();
                 SetCurrentPlayerInfo();
@@ -101,8 +103,7 @@ public class UI_InGameHud : MonoBehaviour
     public void SetCurrentPlayerInfo()
     {
         p = GameManager.Instance.CurrentPlayer;
-        UI_InGame.CurrentPlayerInfo.text = "Current Player: " + p.Name
-                                                + "\nPlayer Number: " + p.PlayerNum;
+        UI_InGame.CurrentPlayerInfo.text = "Player: " + (p.PlayerNum + 1);
     }
     private void SetMapInfo()
     {
@@ -121,7 +122,7 @@ public class UI_InGameHud : MonoBehaviour
     {
         UI_InGame.CurrentStrikes.gameObject.SetActive(true);
         UI_InGame.CurrentStrikes.text = "Strikes: 0";
-        UI_InGame.ImgCurrentStrikes.color = Color.white;
+        UI_InGame.ImgCurrentStrikes.color = Color.black;
     }
     private void SetMapInfo_Waypoints()
     {

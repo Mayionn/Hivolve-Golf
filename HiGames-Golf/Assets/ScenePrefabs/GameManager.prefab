@@ -38,6 +38,7 @@ Transform:
   - {fileID: 7669580979869899792}
   - {fileID: 4219214246766536483}
   - {fileID: 4614553042102859533}
+  - {fileID: 6503363280202340385}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -435,6 +436,49 @@ MonoBehaviour:
     OneShotComplete: '#FFEEAA'
     OneShotIncomplete: '#FFFFFF'
   UI_Blue: '#477FBE'
+--- !u!1 &4136167092568535954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6503363280202340385}
+  - component: {fileID: 8961300114881702723}
+  m_Layer: 0
+  m_Name: _AdsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6503363280202340385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4136167092568535954}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1042123729047603291}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8961300114881702723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4136167092568535954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc56c3cdf3278b847b41f1960f511395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7162761522405673098
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,6 +488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4219214246766536483}
+  - component: {fileID: 7134412792668126843}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -465,6 +510,31 @@ Transform:
   m_Father: {fileID: 1042123729047603291}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7134412792668126843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7162761522405673098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb12f0d60bfac043a32b7d6e58379b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: BallIn
+    clip: {fileID: 8300000, guid: fb1a7431d0901564fa16b81fea2d6fdc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Strike
+    clip: {fileID: 8300000, guid: 05d44f6599f5e3a44a620494c36e0345, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &8610976309813654386
 GameObject:
   m_ObjectHideFlags: 0

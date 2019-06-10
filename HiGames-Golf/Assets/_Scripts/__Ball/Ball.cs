@@ -64,6 +64,8 @@ public class Ball : MonoBehaviour
                 case GameMode.Singleplayer:
                     {
                         Player.TruncateTimer();
+                        AudioManager.Instance.Play(Sounds.BallIn);
+                        AdsManager.Instance.ShowAd();
                         UiManager.Instance.OpenInterface_CompletedMap();
                     }
                     break;
@@ -74,6 +76,7 @@ public class Ball : MonoBehaviour
                         if (!Player.EndedMap) //Prevent double in hole
                         {
                             Player.EndedMap = true;
+                            AudioManager.Instance.Play(Sounds.BallIn);
                             UiManager.Instance.Update_ScoreBoard_SaveScore(Player);
                             GameManager.Instance.NextPlayer();
                         }
