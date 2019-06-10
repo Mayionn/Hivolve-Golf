@@ -43,12 +43,14 @@ public class UI_LocalScoreboard : MonoBehaviour
         UiManager.Instance.CloseInterface_LocalScoreboard();
         GameManager.Instance.Destroy_LocalGame_Players();
         GameManager.Instance.Setup_MenuMap();
+        AudioManager.Instance.Play(Sounds.InteractSucess);
     }
     public void BUTTON_Results_Menu()
     {
         UiManager.Instance.CloseInterface_LocalResults();
         GameManager.Instance.Destroy_LocalGame_Players();
         GameManager.Instance.Setup_MenuMap();
+        AudioManager.Instance.Play(Sounds.InteractSucess);
     }
 
     public void SetupRows()

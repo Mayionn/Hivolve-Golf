@@ -183,6 +183,8 @@ public class State_BallLaunch : State
                 _launched = true;
                 _canLaunch = false;
 
+                AudioManager.Instance.Play(Sounds.Strike);
+
                 //-Update Map and UI
                 if(GameManager.Instance._GameMode == GameMode.Singleplayer
                     && GameManager.Instance.CurrentMap._GameType == GameType.OneShot)
@@ -191,6 +193,7 @@ public class State_BallLaunch : State
                 }
                 else GameManager.Instance.CurrentPlayer.Strikes++;
                 UiManager.Instance.UpdateMapInfoCurrentStrikes();
+
             }
 
             #region Keyboard Launch
@@ -205,6 +208,7 @@ public class State_BallLaunch : State
                 //-Update Map and UI
                 GameManager.Instance.CurrentPlayer.Strikes++;
                 UiManager.Instance.UpdateMapInfoCurrentStrikes();
+                AudioManager.Instance.Play(Sounds.Strike);
             }
             #endregion
         }

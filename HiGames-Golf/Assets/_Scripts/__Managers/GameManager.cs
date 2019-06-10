@@ -46,12 +46,13 @@ namespace Assets.Managers
             LocalMultiplayerMaps = new List<Map>();
             GetStates();
 
-            SaveManager.Instance.ClearData();
+            //SaveManager.Instance.ClearData();
             SaveManager.Instance.Init();
             MapManager.Instance.Init();
             UiManager.Instance.Init();
             ProfileManager.Instance.Init();
             SkinsManager.Instance.Init();
+            AudioManager.Instance.Init();
 
             Create_FirstPlayer();
             Create_StateMachine();
@@ -112,6 +113,7 @@ namespace Assets.Managers
                 state_BallMoving.Ball = CurrentPlayer.SelectedBall;
                 //UI
                 UiManager.Instance.UpdateCurrentPlayerName();
+                UiManager.Instance.UpdateMapInfoCurrentStrikes();
                 //Open Ready Check
                 UiManager.Instance.OpenInterface_InGameReadyCheck();
             }
@@ -190,6 +192,7 @@ namespace Assets.Managers
             {
                 UiManager.Instance.OpenInterface_LocalResults();
             }
+            AudioManager.Instance.Play(Sounds.InteractSucess);
         }
         private void Setup_LocalGame_Maps(int mapCount)
         {
@@ -368,11 +371,15 @@ namespace Assets.Managers
             CurrentMap.WaypointsReset();
             UiManager.Instance.UpdateMapInfoCurrentStrikes();
             UiManager.Instance.UpdateMapInfoWaypoints();
+            AudioManager.Instance.Play(Sounds.InteractSucess);
+            AdsManager.Instance.ShowAd();
         }
         public void Button_BackToMapSelector()
         {
             UiManager.Instance.CloseInterface_InGameHud();
             UiManager.Instance.OpenInterface_MapSelector();
+            Destroy_LocalGame_Players();
+            AudioManager.Instance.Play(Sounds.InteractSucess);
         }
 
         //Timescale Methods

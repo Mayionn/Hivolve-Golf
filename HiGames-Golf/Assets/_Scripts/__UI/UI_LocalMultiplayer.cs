@@ -37,6 +37,13 @@ namespace Assets.UI
             {
                 currentMapNumber++;
                 CurrentMapNumberText.text = currentMapNumber.ToString();
+                AudioManager.Instance.Play(Sounds.InteractSucess);
+
+            }
+            else
+            {
+                AudioManager.Instance.Play(Sounds.InteractFailed);
+
             }
         }
         public void Button_RemoveMap()
@@ -45,6 +52,11 @@ namespace Assets.UI
             {
                 currentMapNumber--;
                 CurrentMapNumberText.text = currentMapNumber.ToString();
+                AudioManager.Instance.Play(Sounds.InteractSucess);
+            }
+            else
+            {
+                AudioManager.Instance.Play(Sounds.InteractFailed);
             }
         }
         public void ButtonStart()
@@ -53,6 +65,7 @@ namespace Assets.UI
             UiManager.Instance.OpenInterface_InGameHud();
             UiManager.Instance.Update_ScoreBoard_Rows();
             GameManager.Instance.Setup_LocalMultiplayer(currentMapNumber);
+            AudioManager.Instance.Play(Sounds.InteractSucess);
         }
         public void ButtonBack()
         {
@@ -60,6 +73,8 @@ namespace Assets.UI
             UiManager.Instance.OpenInterface_InGameHud();
             RemovePlayersAll();
             GameManager.Instance.CurrentPlayer.SelectedBall.GoStartingPosition(true); //Necessary cuz the map doesnt change
+            AudioManager.Instance.Play(Sounds.InteractSucess);
+
         }
 
         public void CreatePlayers(int num)
@@ -68,8 +83,13 @@ namespace Assets.UI
             {
                 currentNumber += 1;
                 UpdateCurrentNumberText();
+                AudioManager.Instance.Play(Sounds.InteractSucess);
             }
-            if(GameManager.Instance.Players.Count < currentNumber)
+            else
+            {
+                AudioManager.Instance.Play(Sounds.InteractFailed);
+            }
+            if (GameManager.Instance.Players.Count < currentNumber)
             {
                 GameManager.Instance.CreatePlayer();
                 UpdatePlayerInfo();
@@ -81,6 +101,11 @@ namespace Assets.UI
             {
                 currentNumber -= 1;
                 UpdateCurrentNumberText();
+                AudioManager.Instance.Play(Sounds.InteractSucess);
+            }
+            else
+            {
+                AudioManager.Instance.Play(Sounds.InteractFailed);
             }
             if (GameManager.Instance.Players.Count > minPlayers)
             {

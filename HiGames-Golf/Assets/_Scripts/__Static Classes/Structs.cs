@@ -47,6 +47,7 @@ public static class Struct
         public Text CurrentPlayerInfo;
         public Button SkinMenu;
         public Button MapSelector;
+        public Image Paper;
     }
     [Serializable]
     public struct Info_SkinMenu
