@@ -7,6 +7,7 @@ using UnityEngine.Advertisements;
 
 public class AdsManager : Singleton<AdsManager>
 {
+    public int RewardAmount = 50;
     public bool IsReady;
     public float TimeTillAdvertise;
     public string addVideo = "rewardedVideo";
@@ -25,10 +26,9 @@ public class AdsManager : Singleton<AdsManager>
         }
     }
 
-
     public void ShowAd()
     {
-        if(IsReady)
+        if(IsReady || GameManager.Instance._GameMode == Enums.GameMode.Menu)
         {
             if (Advertisement.IsReady(addVideo))
             {
@@ -40,7 +40,7 @@ public class AdsManager : Singleton<AdsManager>
     }
     public void ShowRewardedAd()
     {
-        if(IsReady)
+        if (IsReady || GameManager.Instance._GameMode == Enums.GameMode.Menu)
         {
             if (Advertisement.IsReady(addVideo))
             {
@@ -75,7 +75,7 @@ public class AdsManager : Singleton<AdsManager>
         {
             case ShowResult.Finished:
                 Debug.Log("The ad was successfully shown.");
-                ProfileManager.Instance.Add_Currency(100, 0);
+                ProfileManager.Instance.Add_Currency(RewardAmount, 0);
                 UiManager.Instance.Update_Currency();
                 //
                 // YOUR CODE TO REWARD THE GAMER
