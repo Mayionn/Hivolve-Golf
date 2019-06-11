@@ -52,6 +52,31 @@ public class State_BallLaunch : State
     }
     public override void StartState()
     {
+        if(GameManager.Instance._GameMode == GameMode.Localgame)
+        {
+            foreach (Player player in GameManager.Instance.Players)
+            {
+                if(player.PlayerNum != GameManager.Instance.CurrentPlayer.PlayerNum)
+                {
+                    Vector3 pos1 = player.SelectedBall.transform.position;
+                    Vector3 pos2 = player.SelectedBall.StartingPosition;
+                    pos1.y = 0;
+                    pos2.y = 0;
+
+                    if (Vector3.Distance(pos1, pos2) < 0.1f)
+                    {
+                        player.SelectedBall.GetComponent<MeshRenderer>().enabled = false;
+                    }
+                    else
+                    {
+                        player.SelectedBall.GetComponent<MeshRenderer>().enabled = true;
+                    }
+                }
+                else { player.SelectedBall.GetComponent<MeshRenderer>().enabled = true; }
+            }
+        }
+
+
         _launched = false;
         _isAiming = false;
         _canLaunch = false;

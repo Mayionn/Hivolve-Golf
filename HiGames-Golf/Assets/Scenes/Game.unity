@@ -6062,6 +6062,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
+      propertyPath: List_Skins_Hats.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
       propertyPath: List_Skins_Balls.Array.data[0].SkinName
       value: Default Skin
       objectReference: {fileID: 0}
@@ -6135,6 +6140,251 @@ PrefabInstance:
         type: 3}
       propertyPath: List_Skins_Balls.Array.data[11].SkinName
       value: Test Skin 07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[2].Cost_Coins
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[2].Cost_Diamonds
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[2].IsUnlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[2].Sprite_Display
+      value: 
+      objectReference: {fileID: 21300000, guid: 0eedfaf17c221a743b1157aebffbd0d1,
+        type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[2].Hat
+      value: 
+      objectReference: {fileID: 2167591171093854828, guid: 6d615c39693e60b4fb0a319794361d8f,
+        type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[3].Cost_Coins
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[3].Cost_Diamonds
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[3].IsUnlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[3].Sprite_Display
+      value: 
+      objectReference: {fileID: 21300000, guid: f5bd8a3e876c14847a2f117062d3c668,
+        type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[3].Hat
+      value: 
+      objectReference: {fileID: 2167591171093854828, guid: f25b6d6ae5a79984cac12733460f5d97,
+        type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[4].Cost_Coins
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[4].Cost_Diamonds
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[4].IsUnlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[4].Sprite_Display
+      value: 
+      objectReference: {fileID: 21300000, guid: 2eec75413700a8148afcf3dd95cbeee2,
+        type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[4].Hat
+      value: 
+      objectReference: {fileID: 2167591171093854828, guid: 11a36e00f6fee1141bf4959fbae3e36d,
+        type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[5].Cost_Coins
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[5].Cost_Diamonds
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[5].IsUnlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[5].Sprite_Display
+      value: 
+      objectReference: {fileID: 21300000, guid: f0066d141638e9040b96034f0f26de69,
+        type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[5].Hat
+      value: 
+      objectReference: {fileID: 2167591171093854828, guid: 1f4036df988978c438fd85754c784e41,
+        type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[6].Cost_Coins
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[6].Cost_Diamonds
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[6].IsUnlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[6].Sprite_Display
+      value: 
+      objectReference: {fileID: 21300000, guid: dba6567b3771050469dfc24377c297ac,
+        type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[6].Hat
+      value: 
+      objectReference: {fileID: 2167591171093854828, guid: 00f1bc4e8fed6a44dba6568791aac81e,
+        type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[7].Cost_Coins
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[7].Cost_Diamonds
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[7].IsUnlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[7].Sprite_Display
+      value: 
+      objectReference: {fileID: 21300000, guid: 802a6446760716f4798c6ce731486a9e,
+        type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[7].Hat
+      value: 
+      objectReference: {fileID: 2167591171093854828, guid: 138bf3d21ef2fd241b1dfab257291ad1,
+        type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[8].Cost_Coins
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[8].Cost_Diamonds
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[8].IsUnlocked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[8].Sprite_Display
+      value: 
+      objectReference: {fileID: 21300000, guid: e58e6c5d3bd34b945847d7d7d24fa8af,
+        type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[8].Hat
+      value: 
+      objectReference: {fileID: 100000, guid: 25fbb39d7bda88c408f55cd62f77d5ed, type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[1].Name
+      value: Hat1Black
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[1].Sprite_Display
+      value: 
+      objectReference: {fileID: 21300000, guid: adc02df967ef03a46b5b04173f3cbc67,
+        type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[1].Hat
+      value: 
+      objectReference: {fileID: 2167591171093854828, guid: 8b05eeeae4730da4d86eb54db1f1c92c,
+        type: 3}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[2].Name
+      value: Hat1Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[1].Cost_Coins
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[3].Name
+      value: Hat1Green
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[4].Name
+      value: Hat1Orange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[5].Name
+      value: Hat1Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[6].Name
+      value: Hat1White
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[7].Name
+      value: Hat1Yellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1042123730034235356, guid: ffdf22cdb64b7504bb1a8c8ded464039,
+        type: 3}
+      propertyPath: List_Skins_Hats.Array.data[1].IsUnlocked
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2972850881252672272, guid: ffdf22cdb64b7504bb1a8c8ded464039,
         type: 3}
@@ -8960,7 +9210,7 @@ PrefabInstance:
     - target: {fileID: 3492847156989102525, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 29.999954
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3492847156989102525, guid: 7b2b519b4f77fda47864ba3fb5c25d9c,
         type: 3}

@@ -46,7 +46,7 @@ namespace Assets.Managers
             LocalMultiplayerMaps = new List<Map>();
             GetStates();
 
-            SaveManager.Instance.ClearData();
+            //SaveManager.Instance.ClearData();
             SaveManager.Instance.Init();
             MapManager.Instance.Init();
             UiManager.Instance.Init();
