@@ -105,7 +105,7 @@ public class AdsManager : Singleton<AdsManager>
             case ShowResult.Finished:
                 Debug.Log("The ad was successfully shown.");
 
-                int totalEarned = (int)(UiManager.Instance.GetTotalEarned() * 1.5f);
+                int totalEarned = (int)(UiManager.Instance.GetTotalEarned() * 0.5f);
                 ProfileManager.Instance.Add_Currency(totalEarned, 0);
                 UiManager.Instance.Update_Currency();
               
