@@ -107,7 +107,6 @@ public class UI_MapSelector : MonoBehaviour
         UiManager.Instance.CloseInterface_MapSelector();
         GameManager.Instance.Setup_MenuMap();
         AudioManager.Instance.Play(Sounds.InteractSucess);
-
     }
 
     private void Chapter_Display(int num, float pos)

@@ -7,12 +7,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Struct;
 
-
-
 public class MapManager : Singleton<MapManager>
 {
     public List<MapChapter> ChapterMaps;
-    public DisplayInfo[] Chapter1Displays, Chapter2Displays, Chapter3Displays, Chapter4Displays;
+    public DisplayInfo[] Chapter1Displays, Chapter2Displays;
     public List<Chapter> Chapters;
 
     public Map Menu;
@@ -30,10 +28,6 @@ public class MapManager : Singleton<MapManager>
         Chapter c = new Chapter(ChapterMaps[0].Maps, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 1, Chapter1Displays); 
         Chapters.Add(c);
         c = new Chapter(ChapterMaps[1].Maps, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 2, Chapter2Displays);
-        Chapters.Add(c);
-        c = new Chapter(ChapterMaps[2].Maps, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 3, Chapter3Displays);
-        Chapters.Add(c);
-        c = new Chapter(ChapterMaps[3].Maps, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 4, Chapter4Displays);
         Chapters.Add(c);
     }
 
