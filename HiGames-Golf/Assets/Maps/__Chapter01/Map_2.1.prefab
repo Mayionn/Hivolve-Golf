@@ -936,8 +936,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.3170526, y: 1, z: 1}
+  m_Center: {x: 0.15852661, y: 0, z: 0}
 --- !u!65 &5907798155396955639
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1224,7 +1224,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6620347557770803432}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1454,11 +1454,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482289746341447082}
     m_Modifications:
-    - target: {fileID: 8231058332406373754, guid: ee41d2bd62a65d347a3c2734522ac8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: PingPongRacket01
-      objectReference: {fileID: 0}
     - target: {fileID: 8231058332406661466, guid: ee41d2bd62a65d347a3c2734522ac8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1528,6 +1523,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.6612046
+      objectReference: {fileID: 0}
+    - target: {fileID: 8231058332406373754, guid: ee41d2bd62a65d347a3c2734522ac8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: PingPongRacket01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee41d2bd62a65d347a3c2734522ac8f3, type: 3}
@@ -1716,11 +1716,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482289746341447082}
     m_Modifications:
-    - target: {fileID: 2848245544559315410, guid: b15d1542bf5a85b4b9580502a25f1aea,
-        type: 3}
-      propertyPath: m_Name
-      value: PingPongRacket02 (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 2848245544559285746, guid: b15d1542bf5a85b4b9580502a25f1aea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1790,6 +1785,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.6778004
+      objectReference: {fileID: 0}
+    - target: {fileID: 2848245544559315410, guid: b15d1542bf5a85b4b9580502a25f1aea,
+        type: 3}
+      propertyPath: m_Name
+      value: PingPongRacket02 (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b15d1542bf5a85b4b9580502a25f1aea, type: 3}
@@ -2473,11 +2473,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4683535641592612620}
     m_Modifications:
-    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
-        type: 3}
-      propertyPath: m_Name
-      value: Hole
-      objectReference: {fileID: 0}
     - target: {fileID: 470962584330555895, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2532,6 +2527,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
+        type: 3}
+      propertyPath: m_Name
+      value: Hole
       objectReference: {fileID: 0}
     - target: {fileID: 295808559598166227, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
@@ -2814,11 +2814,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482289746341447082}
     m_Modifications:
-    - target: {fileID: 2848245544559315410, guid: b15d1542bf5a85b4b9580502a25f1aea,
-        type: 3}
-      propertyPath: m_Name
-      value: PingPongRacket02
-      objectReference: {fileID: 0}
     - target: {fileID: 2848245544559285746, guid: b15d1542bf5a85b4b9580502a25f1aea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2888,6 +2883,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.6778004
+      objectReference: {fileID: 0}
+    - target: {fileID: 2848245544559315410, guid: b15d1542bf5a85b4b9580502a25f1aea,
+        type: 3}
+      propertyPath: m_Name
+      value: PingPongRacket02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b15d1542bf5a85b4b9580502a25f1aea, type: 3}
@@ -3006,11 +3006,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482289746341447082}
     m_Modifications:
-    - target: {fileID: 2848245544559315410, guid: b15d1542bf5a85b4b9580502a25f1aea,
-        type: 3}
-      propertyPath: m_Name
-      value: PingPongRacket02 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 2848245544559285746, guid: b15d1542bf5a85b4b9580502a25f1aea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3080,6 +3075,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.6778003
+      objectReference: {fileID: 0}
+    - target: {fileID: 2848245544559315410, guid: b15d1542bf5a85b4b9580502a25f1aea,
+        type: 3}
+      propertyPath: m_Name
+      value: PingPongRacket02 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b15d1542bf5a85b4b9580502a25f1aea, type: 3}
@@ -3198,11 +3198,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1010296679109911489}
     m_Modifications:
-    - target: {fileID: 1484429932439525593, guid: 8864df172e8a963478c73d52e2aa6ec8,
-        type: 3}
-      propertyPath: m_Name
-      value: TenisTable02
-      objectReference: {fileID: 0}
     - target: {fileID: 1484429932439553273, guid: 8864df172e8a963478c73d52e2aa6ec8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3273,6 +3268,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 39.5016
       objectReference: {fileID: 0}
+    - target: {fileID: 1484429932439525593, guid: 8864df172e8a963478c73d52e2aa6ec8,
+        type: 3}
+      propertyPath: m_Name
+      value: TenisTable02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8864df172e8a963478c73d52e2aa6ec8, type: 3}
 --- !u!4 &4891994128104604311 stripped
@@ -3288,11 +3288,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5184174865482070570}
     m_Modifications:
-    - target: {fileID: 5406443966375155517, guid: cee83b91cc2ab2a41ab689c06f6a24e3,
-        type: 3}
-      propertyPath: m_Name
-      value: Crowd03
-      objectReference: {fileID: 0}
     - target: {fileID: 8309086183027298216, guid: cee83b91cc2ab2a41ab689c06f6a24e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3357,6 +3352,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5406443966375155517, guid: cee83b91cc2ab2a41ab689c06f6a24e3,
+        type: 3}
+      propertyPath: m_Name
+      value: Crowd03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cee83b91cc2ab2a41ab689c06f6a24e3, type: 3}
@@ -3469,11 +3469,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482289746341447082}
     m_Modifications:
-    - target: {fileID: 5640063083567719234, guid: 34561107e9fe7264d96cfdac6a50876f,
-        type: 3}
-      propertyPath: m_Name
-      value: DJTable
-      objectReference: {fileID: 0}
     - target: {fileID: 5877771214319345045, guid: 34561107e9fe7264d96cfdac6a50876f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3544,6 +3539,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 17.784
       objectReference: {fileID: 0}
+    - target: {fileID: 5640063083567719234, guid: 34561107e9fe7264d96cfdac6a50876f,
+        type: 3}
+      propertyPath: m_Name
+      value: DJTable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34561107e9fe7264d96cfdac6a50876f, type: 3}
 --- !u!1 &2672393676801923481 stripped
@@ -3565,11 +3565,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482289746341447082}
     m_Modifications:
-    - target: {fileID: 6795497700511511068, guid: 8918cada9a7e48b46ac7cd708c28bf2f,
-        type: 3}
-      propertyPath: m_Name
-      value: Skateboard
-      objectReference: {fileID: 0}
     - target: {fileID: 4833298075252358895, guid: 8918cada9a7e48b46ac7cd708c28bf2f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3640,6 +3635,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 15.579647
       objectReference: {fileID: 0}
+    - target: {fileID: 6795497700511511068, guid: 8918cada9a7e48b46ac7cd708c28bf2f,
+        type: 3}
+      propertyPath: m_Name
+      value: Skateboard
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8918cada9a7e48b46ac7cd708c28bf2f, type: 3}
 --- !u!4 &3342590325946846696 stripped
@@ -3655,11 +3655,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482289746341447082}
     m_Modifications:
-    - target: {fileID: 8231058332406373754, guid: ee41d2bd62a65d347a3c2734522ac8f3,
-        type: 3}
-      propertyPath: m_Name
-      value: PingPongRacket01 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 8231058332406661466, guid: ee41d2bd62a65d347a3c2734522ac8f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3729,6 +3724,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.661202
+      objectReference: {fileID: 0}
+    - target: {fileID: 8231058332406373754, guid: ee41d2bd62a65d347a3c2734522ac8f3,
+        type: 3}
+      propertyPath: m_Name
+      value: PingPongRacket01 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee41d2bd62a65d347a3c2734522ac8f3, type: 3}
