@@ -358,6 +358,8 @@ namespace Assets.Managers
                 if (p.PlayerNum != 0)
                 {
                     PlayerBall_Destroy(p);
+                    Destroy(p.Arrow);
+                    Destroy(p.ForceBar);
                 }
             }
         }
@@ -379,6 +381,7 @@ namespace Assets.Managers
         {
             UiManager.Instance.CloseInterface_InGameHud();
             UiManager.Instance.OpenInterface_MapSelector();
+            UiManager.Instance.CloseInterface_InGameReadyCheck();
             Destroy_LocalGame_Players();
             AudioManager.Instance.Play(Sounds.InteractSucess);
         }

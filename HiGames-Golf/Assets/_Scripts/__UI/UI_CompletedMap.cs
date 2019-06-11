@@ -7,6 +7,7 @@ public class UI_CompletedMap : MonoBehaviour
     public GameObject UI;
     public InfoCompletedMap Info;
     public InfoOneShotMap InfoOneShot;
+    public float totalEarned;
 
     public void Init()
     {
@@ -17,7 +18,7 @@ public class UI_CompletedMap : MonoBehaviour
 
         #region GiveRewards
 
-        float totalEarned = 0;
+        totalEarned = 0;
 
         if (m._GameType == Enums.GameType.OneShot)
         {
@@ -108,6 +109,10 @@ public class UI_CompletedMap : MonoBehaviour
         AudioManager.Instance.Play(Sounds.InteractSucess);
     }
 
+    public int GetTotalEarned()
+    {
+        return (int)totalEarned;
+    }
     public void Setup_ScoreImages(Map m, Player p)
     {
         //UPDATE PERSONAL BEST - PB

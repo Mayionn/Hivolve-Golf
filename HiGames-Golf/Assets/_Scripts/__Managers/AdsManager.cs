@@ -11,7 +11,7 @@ public class AdsManager : Singleton<AdsManager>
     public bool IsReady;
     public float TimeTillAdvertise;
     public string addVideo = "rewardedVideo";
-    [SerializeField]private float timer;
+    [SerializeField] private float timer;
 
     public void Update()
     {
@@ -23,6 +23,15 @@ public class AdsManager : Singleton<AdsManager>
                 IsReady = true;
             }
             else IsReady = false;
+        }
+    }
+
+    public void ShowCompletedMapAd()
+    {
+        if (Advertisement.IsReady(addVideo))
+        {
+            var options = new ShowOptions { resultCallback = HandleShowResultCompletedMap };
+            Advertisement.Show(addVideo, options);
         }
     }
 
@@ -80,6 +89,26 @@ public class AdsManager : Singleton<AdsManager>
                 //
                 // YOUR CODE TO REWARD THE GAMER
                 // Give coins etc.
+                break;
+            case ShowResult.Skipped:
+                Debug.Log("The ad was skipped before reaching the end.");
+                break;
+            case ShowResult.Failed:
+                Debug.LogError("The ad failed to be shown.");
+                break;
+        }
+    }
+    private void HandleShowResultCompletedMap(ShowResult result)
+    {
+        switch (result)
+        {
+            case ShowResult.Finished:
+                Debug.Log("The ad was successfully shown.");
+
+                int totalEarned = (int)(UiManager.Instance.GetTotalEarned() * 1.5f);
+                ProfileManager.Instance.Add_Currency(totalEarned, 0);
+                UiManager.Instance.Update_Currency();
+              
                 break;
             case ShowResult.Skipped:
                 Debug.Log("The ad was skipped before reaching the end.");

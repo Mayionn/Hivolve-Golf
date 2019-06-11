@@ -144,6 +144,10 @@ public class UiManager : Singleton<UiManager>
     }
 
     //Update Info Methods
+    public int GetTotalEarned()
+    {
+        return UI_CompletedMap.GetTotalEarned();
+    }
     public void Update_ScoreBoard_Rows()
     {
         UI_LocalScoreboard.SetupRows();

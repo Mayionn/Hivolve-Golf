@@ -84,6 +84,14 @@ public class SaveManager : Singleton<SaveManager>
                             MapManager.Instance.ChapterMaps[i].Maps[o].PB.Time = data.Chapter01_Score_Timer[o, 0];
                         }
                         break;
+                    case 1:
+                        for (int o = 0; o < data.Chapter02_Score_Strikes.Length; o++)
+                        {
+                            MapManager.Instance.Chapters[i].Displays[o].Locked = false;
+                            MapManager.Instance.ChapterMaps[i].Maps[o].PB.Strikes = (int)data.Chapter02_Score_Strikes[o, 0];
+                            MapManager.Instance.ChapterMaps[i].Maps[o].PB.Time = data.Chapter02_Score_Timer[o, 0];
+                        }
+                        break;
                     default:
                         break;
                 }

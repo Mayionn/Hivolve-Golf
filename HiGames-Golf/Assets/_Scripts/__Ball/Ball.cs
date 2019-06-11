@@ -75,6 +75,7 @@ public class Ball : MonoBehaviour
                     {
                         if (!Player.EndedMap) //Prevent double in hole
                         {
+                            GetComponent<MeshRenderer>().enabled = false;
                             Player.EndedMap = true;
                             AudioManager.Instance.Play(Sounds.BallIn);
                             UiManager.Instance.Update_ScoreBoard_SaveScore(Player);

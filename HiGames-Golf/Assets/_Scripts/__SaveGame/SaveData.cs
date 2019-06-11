@@ -25,6 +25,8 @@ namespace Assets.SaveData
         //Map Progress
         public float[,] Chapter01_Score_Strikes;
         public float[,] Chapter01_Score_Timer;
+        public float[,] Chapter02_Score_Strikes;
+        public float[,] Chapter02_Score_Timer;
 
         public SaveData()
         {
@@ -105,6 +107,9 @@ namespace Assets.SaveData
                 case 0:
                     Chapter01_Score_Strikes = score;
                     break;
+                case 1:
+                    Chapter02_Score_Strikes = score;
+                    break;
                 default:
                     break;
             }
@@ -115,6 +120,9 @@ namespace Assets.SaveData
             {
                 case 0:
                     Chapter01_Score_Timer = score;
+                    break;
+                case 1:
+                    Chapter02_Score_Timer = score;
                     break;
                 default:
                     break;
