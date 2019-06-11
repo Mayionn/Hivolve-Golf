@@ -3587,6 +3587,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 482289746341447082}
     m_Modifications:
+    - target: {fileID: 6682108947136830559, guid: 5f648a195f5d1e04a9c8533d93d264b0,
+        type: 3}
+      propertyPath: m_Name
+      value: NotePad
+      objectReference: {fileID: 0}
     - target: {fileID: 3069284422743928971, guid: 5f648a195f5d1e04a9c8533d93d264b0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3656,11 +3661,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6682108947136830559, guid: 5f648a195f5d1e04a9c8533d93d264b0,
-        type: 3}
-      propertyPath: m_Name
-      value: NotePad
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f648a195f5d1e04a9c8533d93d264b0, type: 3}

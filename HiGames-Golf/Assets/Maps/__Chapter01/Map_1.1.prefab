@@ -226,7 +226,7 @@ MonoBehaviour:
   MedalGold: 1
   MedalSilver: 2
   MedalBronze: 3
-  GoldForCompletion: 100
+  GoldForCompletion: 10
   _GameType: 1
   Skybox: 0
   CameraDirection: 3
