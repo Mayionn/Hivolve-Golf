@@ -927,11 +927,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 952}
     m_Modifications:
-    - target: {fileID: 5515428928155419518, guid: 9563ef644381fc04181f36bd9a8b0d99,
-        type: 3}
-      propertyPath: m_Name
-      value: PartyCup (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 4113985869479899586, guid: 9563ef644381fc04181f36bd9a8b0d99,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1002,6 +997,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5515428928155419518, guid: 9563ef644381fc04181f36bd9a8b0d99,
+        type: 3}
+      propertyPath: m_Name
+      value: PartyCup (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9563ef644381fc04181f36bd9a8b0d99, type: 3}
 --- !u!4 &4150098712468510366 stripped
@@ -1017,11 +1017,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 943}
     m_Modifications:
-    - target: {fileID: 1810801258036034248, guid: 80a9bc724f43ea145a498c1b7f42ce21,
-        type: 3}
-      propertyPath: m_Name
-      value: Trophy
-      objectReference: {fileID: 0}
     - target: {fileID: 5414777417106523156, guid: 80a9bc724f43ea145a498c1b7f42ce21,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1092,6 +1087,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 1810801258036034248, guid: 80a9bc724f43ea145a498c1b7f42ce21,
+        type: 3}
+      propertyPath: m_Name
+      value: Trophy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80a9bc724f43ea145a498c1b7f42ce21, type: 3}
 --- !u!4 &5354015044992065087 stripped
@@ -1107,11 +1107,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 943}
     m_Modifications:
-    - target: {fileID: 8768192576704717967, guid: d8bee3d5349aafd4badac5cc3005be9f,
-        type: 3}
-      propertyPath: m_Name
-      value: WaterPistol
-      objectReference: {fileID: 0}
     - target: {fileID: 6095252437431308801, guid: d8bee3d5349aafd4badac5cc3005be9f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1181,6 +1176,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8768192576704717967, guid: d8bee3d5349aafd4badac5cc3005be9f,
+        type: 3}
+      propertyPath: m_Name
+      value: WaterPistol
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8bee3d5349aafd4badac5cc3005be9f, type: 3}
@@ -1653,11 +1653,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 952}
     m_Modifications:
-    - target: {fileID: 5515428928155419518, guid: 9563ef644381fc04181f36bd9a8b0d99,
-        type: 3}
-      propertyPath: m_Name
-      value: PartyCup (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 4113985869479899586, guid: 9563ef644381fc04181f36bd9a8b0d99,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1727,6 +1722,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515428928155419518, guid: 9563ef644381fc04181f36bd9a8b0d99,
+        type: 3}
+      propertyPath: m_Name
+      value: PartyCup (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9563ef644381fc04181f36bd9a8b0d99, type: 3}
@@ -1898,11 +1898,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hole-Singleplayer
       objectReference: {fileID: 0}
-    - target: {fileID: 4457914213626336638, guid: ee44f248f0f5a8f48a04017116891dac,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 295808559598166227, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_Height
@@ -1922,6 +1917,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.00000009536744
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457914213626336638, guid: ee44f248f0f5a8f48a04017116891dac,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee44f248f0f5a8f48a04017116891dac, type: 3}
@@ -2183,11 +2183,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hole-LocalGame
       objectReference: {fileID: 0}
-    - target: {fileID: 4457914213626336638, guid: ee44f248f0f5a8f48a04017116891dac,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 295808559598166227, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_Height
@@ -2207,6 +2202,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -0.00000009536744
+      objectReference: {fileID: 0}
+    - target: {fileID: 4457914213626336638, guid: ee44f248f0f5a8f48a04017116891dac,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5176531471142216000, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
@@ -2228,11 +2228,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 952}
     m_Modifications:
-    - target: {fileID: 5515428928155419518, guid: 9563ef644381fc04181f36bd9a8b0d99,
-        type: 3}
-      propertyPath: m_Name
-      value: PartyCup (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 4113985869479899586, guid: 9563ef644381fc04181f36bd9a8b0d99,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2302,6 +2297,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515428928155419518, guid: 9563ef644381fc04181f36bd9a8b0d99,
+        type: 3}
+      propertyPath: m_Name
+      value: PartyCup (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9563ef644381fc04181f36bd9a8b0d99, type: 3}
@@ -2594,11 +2594,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 943}
     m_Modifications:
-    - target: {fileID: 3914627159540752179, guid: 1b20b5eebf60065498651a753600f08d,
-        type: 3}
-      propertyPath: m_Name
-      value: Stereo
-      objectReference: {fileID: 0}
     - target: {fileID: 3595805638561193318, guid: 1b20b5eebf60065498651a753600f08d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2669,6 +2664,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3914627159540752179, guid: 1b20b5eebf60065498651a753600f08d,
+        type: 3}
+      propertyPath: m_Name
+      value: Stereo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b20b5eebf60065498651a753600f08d, type: 3}
 --- !u!4 &8654923449329244337 stripped
@@ -2684,11 +2684,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 952}
     m_Modifications:
-    - target: {fileID: 5515428928155419518, guid: 9563ef644381fc04181f36bd9a8b0d99,
-        type: 3}
-      propertyPath: m_Name
-      value: PartyCup (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 4113985869479899586, guid: 9563ef644381fc04181f36bd9a8b0d99,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2758,6 +2753,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515428928155419518, guid: 9563ef644381fc04181f36bd9a8b0d99,
+        type: 3}
+      propertyPath: m_Name
+      value: PartyCup (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9563ef644381fc04181f36bd9a8b0d99, type: 3}
@@ -2949,11 +2949,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 952}
     m_Modifications:
-    - target: {fileID: 5515428928155419518, guid: 9563ef644381fc04181f36bd9a8b0d99,
-        type: 3}
-      propertyPath: m_Name
-      value: PartyCup (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 4113985869479899586, guid: 9563ef644381fc04181f36bd9a8b0d99,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3024,6 +3019,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5515428928155419518, guid: 9563ef644381fc04181f36bd9a8b0d99,
+        type: 3}
+      propertyPath: m_Name
+      value: PartyCup (6)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9563ef644381fc04181f36bd9a8b0d99, type: 3}
 --- !u!4 &7390850052447505614 stripped
@@ -3039,11 +3039,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 952}
     m_Modifications:
-    - target: {fileID: 5515428928155419518, guid: 9563ef644381fc04181f36bd9a8b0d99,
-        type: 3}
-      propertyPath: m_Name
-      value: PartyCup (0)
-      objectReference: {fileID: 0}
     - target: {fileID: 4113985869479899586, guid: 9563ef644381fc04181f36bd9a8b0d99,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3113,6 +3108,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515428928155419518, guid: 9563ef644381fc04181f36bd9a8b0d99,
+        type: 3}
+      propertyPath: m_Name
+      value: PartyCup (0)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9563ef644381fc04181f36bd9a8b0d99, type: 3}
@@ -3219,11 +3219,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 952}
     m_Modifications:
-    - target: {fileID: 5515428928155419518, guid: 9563ef644381fc04181f36bd9a8b0d99,
-        type: 3}
-      propertyPath: m_Name
-      value: PartyCup (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 4113985869479899586, guid: 9563ef644381fc04181f36bd9a8b0d99,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3293,6 +3288,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515428928155419518, guid: 9563ef644381fc04181f36bd9a8b0d99,
+        type: 3}
+      propertyPath: m_Name
+      value: PartyCup (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9563ef644381fc04181f36bd9a8b0d99, type: 3}
