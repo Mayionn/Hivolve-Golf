@@ -2403,6 +2403,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1366}
     m_Modifications:
+    - target: {fileID: 8465959352889791868, guid: f9872bda89f2a8d41adef52215afd14f,
+        type: 3}
+      propertyPath: m_Name
+      value: Cup01 (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 8465959352889755996, guid: f9872bda89f2a8d41adef52215afd14f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2472,11 +2477,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8465959352889791868, guid: f9872bda89f2a8d41adef52215afd14f,
-        type: 3}
-      propertyPath: m_Name
-      value: Cup01 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9872bda89f2a8d41adef52215afd14f, type: 3}
@@ -2748,6 +2748,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018}
     m_Modifications:
+    - target: {fileID: 5855653257696696549, guid: 17ecb0c38d695aa47ac0a73a4aa8be89,
+        type: 3}
+      propertyPath: m_Name
+      value: Box01
+      objectReference: {fileID: 0}
     - target: {fileID: 3061471019392752717, guid: 17ecb0c38d695aa47ac0a73a4aa8be89,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2817,11 +2822,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5855653257696696549, guid: 17ecb0c38d695aa47ac0a73a4aa8be89,
-        type: 3}
-      propertyPath: m_Name
-      value: Box01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ecb0c38d695aa47ac0a73a4aa8be89, type: 3}
@@ -3018,6 +3018,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1366}
     m_Modifications:
+    - target: {fileID: 8465959352889791868, guid: f9872bda89f2a8d41adef52215afd14f,
+        type: 3}
+      propertyPath: m_Name
+      value: Cup01
+      objectReference: {fileID: 0}
     - target: {fileID: 8465959352889755996, guid: f9872bda89f2a8d41adef52215afd14f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3088,11 +3093,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 8465959352889791868, guid: f9872bda89f2a8d41adef52215afd14f,
-        type: 3}
-      propertyPath: m_Name
-      value: Cup01
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9872bda89f2a8d41adef52215afd14f, type: 3}
 --- !u!4 &6199512079247397088 stripped
@@ -3108,6 +3108,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1070}
     m_Modifications:
+    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Bottle (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 4665390839811820363, guid: 6a6874f90c68bc5468bb27232b3ee231,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3177,11 +3182,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Bottle (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6874f90c68bc5468bb27232b3ee231, type: 3}
@@ -3273,6 +3273,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991}
     m_Modifications:
+    - target: {fileID: 1369723760061264703, guid: 4e839db0e3151a8489ecec96e1f842ec,
+        type: 3}
+      propertyPath: m_Name
+      value: DeskLamp01
+      objectReference: {fileID: 0}
     - target: {fileID: 2593444317750049761, guid: 4e839db0e3151a8489ecec96e1f842ec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3342,11 +3347,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1369723760061264703, guid: 4e839db0e3151a8489ecec96e1f842ec,
-        type: 3}
-      propertyPath: m_Name
-      value: DeskLamp01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e839db0e3151a8489ecec96e1f842ec, type: 3}
@@ -3628,6 +3628,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1070}
     m_Modifications:
+    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Bottle
+      objectReference: {fileID: 0}
     - target: {fileID: 4665390839811820363, guid: 6a6874f90c68bc5468bb27232b3ee231,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3697,11 +3702,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Bottle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6874f90c68bc5468bb27232b3ee231, type: 3}
@@ -3898,6 +3898,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991}
     m_Modifications:
+    - target: {fileID: 1455858258934462607, guid: 772f537d083053942a5c15e8ded96e77,
+        type: 3}
+      propertyPath: m_Name
+      value: BrokenTV
+      objectReference: {fileID: 0}
     - target: {fileID: 1455858258934555823, guid: 772f537d083053942a5c15e8ded96e77,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3967,11 +3972,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1455858258934462607, guid: 772f537d083053942a5c15e8ded96e77,
-        type: 3}
-      propertyPath: m_Name
-      value: BrokenTV
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 772f537d083053942a5c15e8ded96e77, type: 3}
@@ -4063,6 +4063,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1366}
     m_Modifications:
+    - target: {fileID: 8465959352889791868, guid: f9872bda89f2a8d41adef52215afd14f,
+        type: 3}
+      propertyPath: m_Name
+      value: Cup01 (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 8465959352889755996, guid: f9872bda89f2a8d41adef52215afd14f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4132,11 +4137,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8465959352889791868, guid: f9872bda89f2a8d41adef52215afd14f,
-        type: 3}
-      propertyPath: m_Name
-      value: Cup01 (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9872bda89f2a8d41adef52215afd14f, type: 3}
@@ -4243,6 +4243,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1257}
     m_Modifications:
+    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
+        type: 3}
+      propertyPath: m_Name
+      value: Hole
+      objectReference: {fileID: 0}
     - target: {fileID: 470962584330555895, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4297,11 +4302,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
-        type: 3}
-      propertyPath: m_Name
-      value: Hole
       objectReference: {fileID: 0}
     - target: {fileID: 295808559598166227, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
@@ -4783,6 +4783,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1018}
     m_Modifications:
+    - target: {fileID: 5855653257696696549, guid: 17ecb0c38d695aa47ac0a73a4aa8be89,
+        type: 3}
+      propertyPath: m_Name
+      value: Box01 (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 3061471019392752717, guid: 17ecb0c38d695aa47ac0a73a4aa8be89,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4853,11 +4858,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 5855653257696696549, guid: 17ecb0c38d695aa47ac0a73a4aa8be89,
-        type: 3}
-      propertyPath: m_Name
-      value: Box01 (1)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ecb0c38d695aa47ac0a73a4aa8be89, type: 3}
 --- !u!4 &7083198483719090507 stripped
@@ -4873,6 +4873,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991}
     m_Modifications:
+    - target: {fileID: 2386648807643565732, guid: be36a6a0d9cf15d4e904acdd16adaa74,
+        type: 3}
+      propertyPath: m_Name
+      value: Fan
+      objectReference: {fileID: 0}
     - target: {fileID: 2386648807643533956, guid: be36a6a0d9cf15d4e904acdd16adaa74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4942,11 +4947,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.500001
-      objectReference: {fileID: 0}
-    - target: {fileID: 2386648807643565732, guid: be36a6a0d9cf15d4e904acdd16adaa74,
-        type: 3}
-      propertyPath: m_Name
-      value: Fan
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be36a6a0d9cf15d4e904acdd16adaa74, type: 3}
@@ -5047,6 +5047,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991}
     m_Modifications:
+    - target: {fileID: 2933275488114787849, guid: 611597909a27bda42a1cb28f8cfd622d,
+        type: 3}
+      propertyPath: m_Name
+      value: Laptop
+      objectReference: {fileID: 0}
     - target: {fileID: 8429841156756763185, guid: 611597909a27bda42a1cb28f8cfd622d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5116,11 +5121,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2933275488114787849, guid: 611597909a27bda42a1cb28f8cfd622d,
-        type: 3}
-      propertyPath: m_Name
-      value: Laptop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 611597909a27bda42a1cb28f8cfd622d, type: 3}
@@ -5587,6 +5587,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1070}
     m_Modifications:
+    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Bottle (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 4665390839811820363, guid: 6a6874f90c68bc5468bb27232b3ee231,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5656,11 +5661,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Bottle (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6874f90c68bc5468bb27232b3ee231, type: 3}
@@ -5932,6 +5932,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1070}
     m_Modifications:
+    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Bottle (5)
+      objectReference: {fileID: 0}
     - target: {fileID: 4665390839811820363, guid: 6a6874f90c68bc5468bb27232b3ee231,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6002,11 +6007,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Bottle (5)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6874f90c68bc5468bb27232b3ee231, type: 3}
 --- !u!4 &2063557411696217661 stripped
@@ -6022,6 +6022,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1411}
     m_Modifications:
+    - target: {fileID: 8948177055651095087, guid: bdeaabf3cbb20124f88cd190764c22b3,
+        type: 3}
+      propertyPath: m_Name
+      value: StickyNotes03
+      objectReference: {fileID: 0}
     - target: {fileID: 8948177055651331599, guid: bdeaabf3cbb20124f88cd190764c22b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6091,11 +6096,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8948177055651095087, guid: bdeaabf3cbb20124f88cd190764c22b3,
-        type: 3}
-      propertyPath: m_Name
-      value: StickyNotes03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdeaabf3cbb20124f88cd190764c22b3, type: 3}
@@ -6292,6 +6292,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1411}
     m_Modifications:
+    - target: {fileID: 7678516359997815225, guid: 93d712e710c1d4846bc332f38e8e3c98,
+        type: 3}
+      propertyPath: m_Name
+      value: StickyNotes02
+      objectReference: {fileID: 0}
     - target: {fileID: 7678516359998104985, guid: 93d712e710c1d4846bc332f38e8e3c98,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6361,11 +6366,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678516359997815225, guid: 93d712e710c1d4846bc332f38e8e3c98,
-        type: 3}
-      propertyPath: m_Name
-      value: StickyNotes02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93d712e710c1d4846bc332f38e8e3c98, type: 3}
@@ -6562,6 +6562,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991}
     m_Modifications:
+    - target: {fileID: 7815341444803882225, guid: 3335018376f44ad45a2e08480caf8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: Picture
+      objectReference: {fileID: 0}
     - target: {fileID: 7796790004943517774, guid: 3335018376f44ad45a2e08480caf8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6631,11 +6636,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7815341444803882225, guid: 3335018376f44ad45a2e08480caf8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: Picture
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3335018376f44ad45a2e08480caf8b75, type: 3}
@@ -6922,6 +6922,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1070}
     m_Modifications:
+    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Bottle (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 4665390839811820363, guid: 6a6874f90c68bc5468bb27232b3ee231,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6992,11 +6997,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Bottle (2)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6874f90c68bc5468bb27232b3ee231, type: 3}
 --- !u!4 &3675204720759159036 stripped
@@ -7012,6 +7012,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1366}
     m_Modifications:
+    - target: {fileID: 8465959352889791868, guid: f9872bda89f2a8d41adef52215afd14f,
+        type: 3}
+      propertyPath: m_Name
+      value: Cup01 (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 8465959352889755996, guid: f9872bda89f2a8d41adef52215afd14f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7081,11 +7086,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8465959352889791868, guid: f9872bda89f2a8d41adef52215afd14f,
-        type: 3}
-      propertyPath: m_Name
-      value: Cup01 (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9872bda89f2a8d41adef52215afd14f, type: 3}
@@ -7192,6 +7192,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 991}
     m_Modifications:
+    - target: {fileID: 5640063083567719234, guid: 34561107e9fe7264d96cfdac6a50876f,
+        type: 3}
+      propertyPath: m_Name
+      value: DJTable
+      objectReference: {fileID: 0}
     - target: {fileID: 5877771214319345045, guid: 34561107e9fe7264d96cfdac6a50876f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7256,11 +7261,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5640063083567719234, guid: 34561107e9fe7264d96cfdac6a50876f,
-        type: 3}
-      propertyPath: m_Name
-      value: DJTable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34561107e9fe7264d96cfdac6a50876f, type: 3}
@@ -7367,6 +7367,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1361}
     m_Modifications:
+    - target: {fileID: 1086375678742035528, guid: df3197ca62b430d4084ea72b50774e4a,
+        type: 3}
+      propertyPath: m_Name
+      value: Suitcase01
+      objectReference: {fileID: 0}
     - target: {fileID: 1086375678742192232, guid: df3197ca62b430d4084ea72b50774e4a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7437,11 +7442,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 1086375678742035528, guid: df3197ca62b430d4084ea72b50774e4a,
-        type: 3}
-      propertyPath: m_Name
-      value: Suitcase01
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df3197ca62b430d4084ea72b50774e4a, type: 3}
 --- !u!4 &8529738469069276990 stripped
@@ -7457,6 +7457,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1070}
     m_Modifications:
+    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
+        type: 3}
+      propertyPath: m_Name
+      value: Water Bottle (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 4665390839811820363, guid: 6a6874f90c68bc5468bb27232b3ee231,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7526,11 +7531,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7774006901454253795, guid: 6a6874f90c68bc5468bb27232b3ee231,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Bottle (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6874f90c68bc5468bb27232b3ee231, type: 3}

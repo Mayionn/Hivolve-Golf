@@ -14,11 +14,13 @@ public class SaveManager : Singleton<SaveManager>
         Data = SaveSystem.LoadData();
     }
 
+    //----- CLEAR DATA
     public void ClearData()
     {
         SaveSystem.ClearData();
     }
 
+    //----- CURRENCY 
     public void SaveCurrency(int gold, int diamonds)
     {
         SaveSystem.SaveCurrency(gold, diamonds);
@@ -29,83 +31,7 @@ public class SaveManager : Singleton<SaveManager>
         ProfileManager.Instance.Gold = data.Gold;
         ProfileManager.Instance.Diamonds = data.Diamonds;
     }
-
-    public void SaveMapProgress()
-    {
-        int unlockedChaptersCount = 0;
-        List<Chapter> chapters = MapManager.Instance.Chapters;
-       
-        for (int i = 0; i < chapters.Count; i++)
-        {
-            if (!chapters[i].Displays[0].Locked)
-            {
-                unlockedChaptersCount++;
-            }
-        }
-
-        int unlockedMapCount = 0;
-        for (int i = 0; i < unlockedChaptersCount; i++)
-        {
-            for (int o = 0; o < chapters[i].Displays.Length; o++)
-            {
-                if(!chapters[i].Displays[o].Locked)
-                {
-                    unlockedMapCount++;
-                }
-            }
-
-            float[,] scoreStrikes = new float[unlockedMapCount,1];
-            float[,] scoreTimer = new float[unlockedMapCount, 1];
-            for (int p = 0; p < unlockedMapCount; p++)
-            {
-                scoreStrikes[p, 0] = chapters[i].Maps[p].PB.Strikes;
-                scoreTimer[p, 0] = chapters[i].Maps[p].PB.Time;
-
-                SaveSystem.SaveMapProgressScore_Strikes(i, scoreStrikes);
-                SaveSystem.SaveMapProgressScore_Timer(i, scoreTimer);
-            }
-            unlockedMapCount = 0;
-        }
-    }
-    public void LoadMapProgress()
-    {
-        SaveData data = SaveSystem.LoadData();
-        if(data.Chapter01_Score_Strikes != null)
-        {
-            for (int i = 0; i < MapManager.Instance.ChapterMaps.Count; i++)
-            {
-                switch (i)
-                {
-                    case 0:
-                        for (int o = 0; o < data.Chapter01_Score_Strikes.Length; o++)
-                        {
-                            MapManager.Instance.Chapters[i].Displays[o].Locked = false;
-                            MapManager.Instance.ChapterMaps[i].Maps[o].PB.Strikes = (int)data.Chapter01_Score_Strikes[o,0];
-                            MapManager.Instance.ChapterMaps[i].Maps[o].PB.Time = data.Chapter01_Score_Timer[o, 0];
-                        }
-                        break;
-                    case 1:
-                        if(data.Chapter02_Score_Strikes != null)
-                        {
-                            for (int o = 0; o < data.Chapter02_Score_Strikes.Length; o++)
-                            {
-                                MapManager.Instance.Chapters[i].Displays[o].Locked = false;
-                                MapManager.Instance.ChapterMaps[i].Maps[o].PB.Strikes = (int)data.Chapter02_Score_Strikes[o, 0];
-                                MapManager.Instance.ChapterMaps[i].Maps[o].PB.Time = data.Chapter02_Score_Timer[o, 0];
-                            }
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-        else
-        {
-            Debug.LogWarning("No Score Saved");
-        }
-    }
-
+  
     //Current Skin ---- BALL
     public void SaveCurrentSkin_Ball(int index)
     {
@@ -292,4 +218,70 @@ public class SaveManager : Singleton<SaveManager>
             }
         }
     }
+
+    //----- MAP PROGRESS
+    public void SaveMapProgress()
+    {
+        int unlockedChaptersCount = 0;
+        List<Chapter> chapters = MapManager.Instance.Chapters;
+
+        for (int i = 0; i < chapters.Count; i++)
+        {
+            if (!chapters[i].Displays[0].Locked)
+            {
+                unlockedChaptersCount++;
+            }
+        }
+        //Create Jagged Array to send to SaveSystem
+        float[][] chapterScoreStrikes = new float[unlockedChaptersCount][];
+        float[][] chapterScoreTime = new float[unlockedChaptersCount][];
+
+        int unlockedMapCount = 0;
+        for (int i = 0; i < unlockedChaptersCount; i++)
+        {
+            for (int o = 0; o < chapters[i].Displays.Length; o++)
+            {
+                if (!chapters[i].Displays[o].Locked)
+                {
+                    unlockedMapCount++;
+                }
+            }
+
+            float[] scoreStrikes = new float[unlockedMapCount];
+            float[] scoreTimer = new float[unlockedMapCount];
+            for (int p = 0; p < unlockedMapCount; p++)
+            {
+                scoreStrikes[p] = chapters[i].Maps[p].PB.Strikes;
+                scoreTimer[p] = chapters[i].Maps[p].PB.Time;
+            }
+
+            chapterScoreStrikes[i] = scoreStrikes;
+            chapterScoreTime[i] = scoreTimer;
+
+            unlockedMapCount = 0;
+        }
+
+        SaveSystem.SaveMapProgressScore(chapterScoreStrikes, chapterScoreTime);
+    }
+    public void LoadMapProgress()
+    {
+        SaveData data = SaveSystem.LoadData();
+        if (data.Chapter_Strikes != null)
+        {
+            for (int i = 0; i < data.Chapter_Strikes.Length; i++)
+            {
+                for (int o = 0; o < data.Chapter_Strikes[i].Length; o++)
+                {
+                    MapManager.Instance.Chapters[i].Displays[o].Locked = false;
+                    MapManager.Instance.ChapterMaps[i].Maps[o].PB.Strikes = (int)data.Chapter_Strikes[i][o];
+                    MapManager.Instance.ChapterMaps[i].Maps[o].PB.Time = data.Chapter_Timer[i][o];
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No SaveData to Load");
+        }
+    }
+
 }

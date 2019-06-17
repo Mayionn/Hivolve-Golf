@@ -7,12 +7,11 @@ namespace Assets.SaveData
     [System.Serializable]
     public class SaveData
     {
-        //-Currency
+        //----- CURRENCY
         public int Gold;
-        public int Diamonds;
+        public int Diamonds; // NOT BEING USED ATM
 
-        //--Skins
-        //TODO: ADD MORE SKIN TYPES
+        //----- SKINS
         public int CurrentSkin_Hat_Index;
         public int CurrentSkin_Ball_Index;
         public int CurrentSkin_Arrow_Index;
@@ -22,11 +21,9 @@ namespace Assets.SaveData
         public int[] UnlockedSkins_Arrows;
         public int[] UnlockedSkins_ForceBars;
 
-        //Map Progress
-        public float[,] Chapter01_Score_Strikes;
-        public float[,] Chapter01_Score_Timer;
-        public float[,] Chapter02_Score_Strikes;
-        public float[,] Chapter02_Score_Timer;
+        //----- MAP PROGRESS
+        public float[][] Chapter_Strikes;
+        public float[][] Chapter_Timer;
 
         public SaveData()
         {
@@ -100,34 +97,41 @@ namespace Assets.SaveData
         #endregion
 
         #region ---Map Progress
-        public void SetupMapProgressScore_Strikes(int chapter, float[,] score)
+        public void SetupMapProgressScore(float[][] scoreStrikes, float[][] scoreTimer)
         {
-            switch (chapter)
-            {
-                case 0:
-                    Chapter01_Score_Strikes = score;
-                    break;
-                case 1:
-                    Chapter02_Score_Strikes = score;
-                    break;
-                default:
-                    break;
-            }
+            Chapter_Strikes = scoreStrikes;
+            Chapter_Timer = scoreTimer;
         }
-        public void SetupMapProgressScore_Timer(int chapter, float[,] score)
-        {
-            switch (chapter)
-            {
-                case 0:
-                    Chapter01_Score_Timer = score;
-                    break;
-                case 1:
-                    Chapter02_Score_Timer = score;
-                    break;
-                default:
-                    break;
-            }
-        }
+        //public void SetupMapProgressScore_Strikes(float[][] score)
+        //{
+        //    Chapter_Strikes = score;
+        //    //switch (chapter)
+        //    //{
+        //    //    case 0:
+        //    //        Score_Strikes = score;
+        //    //        break;
+        //    //    case 1:
+        //    //        Chapter02_Score_Strikes = score;
+        //    //        break;
+        //    //    default:
+        //    //        break;
+        //    //}
+        //}
+        //public void SetupMapProgressScore_Timer(float[,] score)
+        //{
+        //    Score_Timer = score;
+        //    //switch (chapter)
+        //    //{
+        //    //    case 0:
+        //    //        Chapter01_Score_Timer = score;
+        //    //        break;
+        //    //    case 1:
+        //    //        Chapter02_Score_Timer = score;
+        //    //        break;
+        //    //    default:
+        //    //        break;
+        //    //}
+        //}
         #endregion
     }
 }

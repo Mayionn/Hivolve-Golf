@@ -145,4 +145,14 @@ public static class Struct
         public string Background;
         public string Skybox;
     }
+
+
+    [Serializable]
+    public struct ChapterInfo
+    {
+        public string Name;
+        public Sprite BackgroundSprite;
+        public Map[] Maps;
+        public DisplayInfo[] DisplayInfos;
+    }
 }
