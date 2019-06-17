@@ -4,29 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Struct;
 
-[Serializable]
-public class MapChapter
-{
-    public string Name;
-    public Map[] Maps;
-}
-
 public class Chapter
 {
     public int Number;
     public GameObject BackGround;
-    public Sprite Sprite;
+    public Sprite BackgroundSprite;
     public Map[] Maps;
     public Display[] Displays;
     public DisplayInfo[] DisplayInfos;
 
-    public Chapter(Map[] mArray, Sprite bg, int n, DisplayInfo[] di)
+    public Chapter(ChapterInfo Info, int Number)
     {
-        this.Number = n;
+        this.Number = Number;
         //Set BackGround
-        this.Sprite = bg;
-        this.Maps = mArray;
-        this.DisplayInfos = di;
+        this.BackgroundSprite = Info.BackgroundSprite;
+        this.Maps = Info.Maps;
+        this.DisplayInfos = Info.DisplayInfos;
 
         Displays = new Display[Maps.Length];
         for (int i = 0; i < Displays.Length; i++)
@@ -37,6 +30,7 @@ public class Chapter
                     Displays[i] = new DisplayOneShot();
                     break;
                 case Enums.GameType.Waypoint:
+                    //WORKING BUT NEEDS DESIGN REWORK
                     Displays[i] = new DisplayWaypoint();
                     break;
                 case Enums.GameType.FreeForm:

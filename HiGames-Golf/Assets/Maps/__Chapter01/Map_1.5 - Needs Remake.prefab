@@ -1923,6 +1923,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1858}
     m_Modifications:
+    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
+        type: 3}
+      propertyPath: m_Name
+      value: FinalHole
+      objectReference: {fileID: 0}
     - target: {fileID: 470962584330555895, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1987,11 +1992,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4806203543706018887, guid: ee44f248f0f5a8f48a04017116891dac,
-        type: 3}
-      propertyPath: m_Name
-      value: FinalHole
       objectReference: {fileID: 0}
     - target: {fileID: 295808559598166227, guid: ee44f248f0f5a8f48a04017116891dac,
         type: 3}
@@ -2434,10 +2434,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Triangle + Ball
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: c803b5c4c35e18843acdef5afa97664c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.19
-      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: c803b5c4c35e18843acdef5afa97664c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 32.699997
@@ -2493,6 +2489,10 @@ PrefabInstance:
     - target: {fileID: 400004, guid: c803b5c4c35e18843acdef5afa97664c, type: 3}
       propertyPath: m_LocalScale.z
       value: 7.0569
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: c803b5c4c35e18843acdef5afa97664c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.19
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c803b5c4c35e18843acdef5afa97664c, type: 3}

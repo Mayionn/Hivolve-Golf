@@ -7,6 +7,7 @@ namespace Assets.SaveData
 {
     public static class SaveSystem
     {
+        //----- CURRENCY
         public static void SaveCurrency(int gold, int diamonds)
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -19,6 +20,7 @@ namespace Assets.SaveData
             stream.Close();
         }
 
+        //----- SKINS
         public static void SaveCurrentSkin_Ball(int index)
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -108,28 +110,19 @@ namespace Assets.SaveData
             stream.Close();
         }
 
-        public static void SaveMapProgressScore_Strikes(int chapter, float[,] score) {
+        //----- MAP PROGRESS
+        public static void SaveMapProgressScore(float[][] scoreStrikes, float[][] scoreTimer) {
             BinaryFormatter formatter = new BinaryFormatter();
             string path = Application.persistentDataPath + "/SaveData.sd";
             FileStream stream = new FileStream(path, FileMode.Create);
 
-            SaveManager.Instance.Data.SetupMapProgressScore_Strikes(chapter, score);
-
-            formatter.Serialize(stream, SaveManager.Instance.Data);
-            stream.Close();
-        }
-        public static void SaveMapProgressScore_Timer(int chapter, float[,] score)
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            string path = Application.persistentDataPath + "/SaveData.sd";
-            FileStream stream = new FileStream(path, FileMode.Create);
-
-            SaveManager.Instance.Data.SetupMapProgressScore_Timer(chapter, score);
+            SaveManager.Instance.Data.SetupMapProgressScore(scoreStrikes, scoreTimer);
 
             formatter.Serialize(stream, SaveManager.Instance.Data);
             stream.Close();
         }
 
+        //----- LOAD DATA
         public static SaveData LoadData()
         {
             string path = Application.persistentDataPath + "/SaveData.sd";
@@ -157,6 +150,7 @@ namespace Assets.SaveData
             }
         }
 
+        //----- CLEAR DATA
         public static void ClearData()
         {
             BinaryFormatter formatter = new BinaryFormatter();

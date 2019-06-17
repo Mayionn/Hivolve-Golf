@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 968}
   - component: {fileID: 2460}
   m_Layer: 0
-  m_Name: Map_1.8
+  m_Name: Map_1.8.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

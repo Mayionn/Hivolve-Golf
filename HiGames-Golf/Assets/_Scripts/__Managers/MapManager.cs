@@ -9,26 +9,26 @@ using static Struct;
 
 public class MapManager : Singleton<MapManager>
 {
-    public List<MapChapter> ChapterMaps;
-    public DisplayInfo[] Chapter1Displays, Chapter2Displays;
+    public List<ChapterInfo> ChapterMaps;
     public List<Chapter> Chapters;
 
     public Map Menu;
     [HideInInspector] public int CurrentChapterNumber;
     [HideInInspector] public Map SelectedMap;
-
+    
     //TriggerObjects
     [HideInInspector] public GameObject Waypoint;
 
     public void Init()
     {
-
         CurrentChapterNumber = 1;
         Chapters = new List<Chapter>();
-        Chapter c = new Chapter(ChapterMaps[0].Maps, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 1, Chapter1Displays); 
-        Chapters.Add(c);
-        c = new Chapter(ChapterMaps[1].Maps, UiManager.Instance.UI_BackgroundImages.DefaultBackground, 2, Chapter2Displays);
-        Chapters.Add(c);
+
+        for (int i = 0; i < ChapterMaps.Count; i++)
+        {
+            Chapter c = new Chapter(Info: ChapterMaps[i], Number: i+1);
+            Chapters.Add(c);
+        }
     }
 
     /// <summary>

@@ -119,7 +119,7 @@ public class UI_MapSelector : MonoBehaviour
             //Instantiate Background
             c.BackGround = new GameObject("Chapter" + num + "BackGround", typeof(RectTransform));
             c.BackGround.AddComponent<Image>();
-            c.BackGround.GetComponent<Image>().sprite = c.Sprite;
+            c.BackGround.GetComponent<Image>().sprite = c.BackgroundSprite;
             c.BackGround.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
             c.BackGround.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
             c.BackGround.GetComponent<RectTransform>().offsetMax = Vector2.zero;
