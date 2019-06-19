@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 1 - 2
-  Author: Example
+  Author: "D\xE9bora"
   Chapter: 0
   MedalGold: 0
   MedalSilver: 0

@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 968}
   - component: {fileID: 2460}
   m_Layer: 0
-  m_Name: Map_1.6
+  m_Name: Map_1.6.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569b082dce905fa41af5d26bede523a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 1 - 0
+  Name: 1 - 5
   Author: "D\xE9bora"
   Chapter: 0
   MedalGold: 1
@@ -2981,16 +2981,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6088778364419769309, guid: 2c5343f919ba6a84490b817ca156c3ed,
-        type: 3}
-      propertyPath: MovingPiece
-      value: 
-      objectReference: {fileID: 8726130296033802522}
-    - target: {fileID: 6088778364419769309, guid: 2c5343f919ba6a84490b817ca156c3ed,
-        type: 3}
-      propertyPath: Speed
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 2433506453691174736, guid: 2c5343f919ba6a84490b817ca156c3ed,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -3010,6 +3000,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088778364419769309, guid: 2c5343f919ba6a84490b817ca156c3ed,
+        type: 3}
+      propertyPath: MovingPiece
+      value: 
+      objectReference: {fileID: 8726130296033802522}
+    - target: {fileID: 6088778364419769309, guid: 2c5343f919ba6a84490b817ca156c3ed,
+        type: 3}
+      propertyPath: Speed
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7249637321231190637, guid: 2c5343f919ba6a84490b817ca156c3ed,
         type: 3}
@@ -3616,16 +3616,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6088778364419769309, guid: 2c5343f919ba6a84490b817ca156c3ed,
-        type: 3}
-      propertyPath: MovingPiece
-      value: 
-      objectReference: {fileID: 6189927845429851966}
-    - target: {fileID: 6088778364419769309, guid: 2c5343f919ba6a84490b817ca156c3ed,
-        type: 3}
-      propertyPath: Speed
-      value: 40
-      objectReference: {fileID: 0}
     - target: {fileID: 2433506453691174736, guid: 2c5343f919ba6a84490b817ca156c3ed,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -3645,6 +3635,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088778364419769309, guid: 2c5343f919ba6a84490b817ca156c3ed,
+        type: 3}
+      propertyPath: MovingPiece
+      value: 
+      objectReference: {fileID: 6189927845429851966}
+    - target: {fileID: 6088778364419769309, guid: 2c5343f919ba6a84490b817ca156c3ed,
+        type: 3}
+      propertyPath: Speed
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7249637321231190637, guid: 2c5343f919ba6a84490b817ca156c3ed,
         type: 3}
@@ -4351,16 +4351,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6088778364419769309, guid: 2c5343f919ba6a84490b817ca156c3ed,
-        type: 3}
-      propertyPath: MovingPiece
-      value: 
-      objectReference: {fileID: 244089670816299750}
-    - target: {fileID: 6088778364419769309, guid: 2c5343f919ba6a84490b817ca156c3ed,
-        type: 3}
-      propertyPath: Speed
-      value: 75
-      objectReference: {fileID: 0}
     - target: {fileID: 2433506453691174736, guid: 2c5343f919ba6a84490b817ca156c3ed,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -4380,6 +4370,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6088778364419769309, guid: 2c5343f919ba6a84490b817ca156c3ed,
+        type: 3}
+      propertyPath: MovingPiece
+      value: 
+      objectReference: {fileID: 244089670816299750}
+    - target: {fileID: 6088778364419769309, guid: 2c5343f919ba6a84490b817ca156c3ed,
+        type: 3}
+      propertyPath: Speed
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 7249637321231190637, guid: 2c5343f919ba6a84490b817ca156c3ed,
         type: 3}
