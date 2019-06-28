@@ -31,6 +31,11 @@ public class UI_MapSelector : MonoBehaviour
         DOWN_POSITION = -height;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S)) MoveDown();
+    }
+
     //MS --- Map Selector
     public void Init()
     {

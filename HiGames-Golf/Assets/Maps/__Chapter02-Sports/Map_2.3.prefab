@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 970}
   - component: {fileID: 2462}
   m_Layer: 0
-  m_Name: Map_2.5
+  m_Name: Map_2.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569b082dce905fa41af5d26bede523a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 2 - 4
+  Name: 2 - 2
   Author: Mariana
   Chapter: 0
   MedalGold: 0

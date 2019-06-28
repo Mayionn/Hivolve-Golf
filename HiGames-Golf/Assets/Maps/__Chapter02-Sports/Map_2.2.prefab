@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 1543}
   - component: {fileID: 4181}
   m_Layer: 0
-  m_Name: Map_2.4
+  m_Name: Map_2.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 569b082dce905fa41af5d26bede523a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 2 - 3
+  Name: 2 - 1
   Author: Mariana
   Chapter: 0
   MedalGold: 0
@@ -1491,7 +1491,7 @@ PrefabInstance:
     - target: {fileID: 4423665143725024256, guid: 8a150fa4760f0bd46bc93683ccfc5e5f,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423665143725024257, guid: 8a150fa4760f0bd46bc93683ccfc5e5f,
         type: 3}

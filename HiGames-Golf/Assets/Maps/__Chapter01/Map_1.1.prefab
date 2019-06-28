@@ -230,7 +230,7 @@ MonoBehaviour:
   _GameType: 1
   Skybox: 0
   CameraDirection: 3
-  MapColors: 0
+  MapColors: 1
   WaypointsPosition: []
   Prefab: {fileID: 408}
   StartingPosition: {fileID: 3780208784181558198}
