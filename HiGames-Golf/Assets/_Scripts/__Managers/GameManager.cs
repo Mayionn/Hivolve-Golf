@@ -48,6 +48,7 @@ namespace Assets.Managers
 
             //SaveManager.Instance.ClearData();
             SaveManager.Instance.Init();
+            AdsManager.Instance.Init();
             MapManager.Instance.Init();
             UiManager.Instance.Init();
             ProfileManager.Instance.Init();

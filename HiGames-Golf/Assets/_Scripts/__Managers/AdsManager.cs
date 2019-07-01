@@ -1,9 +1,12 @@
 ﻿using Assets.Generics;
 using Assets.Managers;
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
+using GoogleMobileAds;
+using GoogleMobileAds.Api;
 
 public class AdsManager : Singleton<AdsManager>
 {
@@ -12,6 +15,85 @@ public class AdsManager : Singleton<AdsManager>
     public float TimeTillAdvertise;
     public string addVideo = "rewardedVideo";
     [SerializeField] private float timer;
+
+    private RewardBasedVideoAd rewardBasedVideoAd;
+
+    public void Init()
+    {
+        rewardBasedVideoAd = RewardBasedVideoAd.Instance;
+
+        rewardBasedVideoAd.OnAdClosed += HandleOnAdClosed;
+        rewardBasedVideoAd.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+        rewardBasedVideoAd.OnAdLeavingApplication += HandleOnAdLeavingApplication;
+        rewardBasedVideoAd.OnAdLoaded += HandleOnAdLoaded;
+        rewardBasedVideoAd.OnAdOpening += HandleOnAdOpening;
+        rewardBasedVideoAd.OnAdRewarded += HandleOnAdRewarded;
+        rewardBasedVideoAd.OnAdStarted += HandleOnAdStarted;
+        rewardBasedVideoAd.OnAdCompleted += HandleOnAdCompleted;
+    }
+
+    private void ShowRewardBasedAd()
+    {
+        if(rewardBasedVideoAd.IsLoaded())
+        {
+            rewardBasedVideoAd.Show();
+        }
+        else
+        {
+            MonoBehaviour.print("Ad's not loaded"); 
+        }
+    }
+    private void LoadRewardBaseAd()
+    {
+        #if UNITY_EDITOR
+        string adUnitId = "unused";
+        #elif UNITY_ANDROID
+        string adUnitId = "ca-app-pub-3940256099942544/7325402514";
+        #elif UNITY_IPHONE
+        string adUnitId = "ca-app-pub-3940256099942544/6386090517";
+        #else
+        string adUnitId = "unexpected_platform";
+        #endif
+
+        rewardBasedVideoAd.LoadAd(new AdRequest.Builder().Build(), adUnitId);
+    }
+
+    public void HandleOnAdLoaded(object sender, EventArgs args)
+    {
+
+    }
+    public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+    {
+        //Try a reload
+    }
+    public void HandleOnAdOpening(object sender, EventArgs args)
+    {
+        //Pause the action
+    }
+    public void HandleOnAdStarted(object sender, EventArgs args)
+    {
+        //Mute audio?
+    }
+    public void HandleOnAdClosed(object sender, EventArgs args)
+    {
+        //GameStart again
+    }
+    public void HandleOnAdRewarded(object sender, EventArgs args)
+    {
+        //Reward the user
+        Debug.Log("rewarded");
+    }
+    public void HandleOnAdLeavingApplication(object sender, EventArgs args)
+    {
+
+    }
+    public void HandleOnAdCompleted(object sender, EventArgs args)
+    {
+
+    }
+
+
+
 
     public void Update()
     {
