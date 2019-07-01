@@ -16,85 +16,124 @@ public class AdsManager : Singleton<AdsManager>
     public string addVideo = "rewardedVideo";
     [SerializeField] private float timer;
 
+
+    private readonly string appId = "ca-app-pub-1249591444731632~2490946798";
+    private readonly string IdBannerAd = "ca-app-pub-3940256099942544/6300978111";
+    //private readonly string IdInterstitialAd = "ca-app-pub-3940256099942544/1033173712";
+    private readonly string IdRewardAd = "ca-app-pub-3940256099942544/5224354917";
+    //private readonly string IdNativeAdvancedAd = "ca-app-pub-3940256099942544/2247696110";
+
+    private BannerView bannerAd;
     private RewardBasedVideoAd rewardBasedVideoAd;
 
     public void Init()
     {
-        rewardBasedVideoAd = RewardBasedVideoAd.Instance;
+#if UNITY_EDITOR
+        string adUnitId = appId;
+#elif UNITY_ANDROID
+        string adUnitId = appId;
+#elif UNITY_IPHONE
+        string adUnitId = appId;
+#else
+        string adUnitId = "unexpected_platform";
+#endif
+        MobileAds.Initialize(adUnitId);
+        Debug.Log(adUnitId);
+        //rewardBasedVideoAd.OnAdClosed += HandleOnAdClosed;
+        //rewardBasedVideoAd.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+        //rewardBasedVideoAd.OnAdLeavingApplication += HandleOnAdLeavingApplication;
+        //rewardBasedVideoAd.OnAdLoaded += HandleOnAdLoaded;
+        //rewardBasedVideoAd.OnAdOpening += HandleOnAdOpening;
+        //rewardBasedVideoAd.OnAdStarted += HandleOnAdStarted;
+        //rewardBasedVideoAd.OnAdCompleted += HandleOnAdCompleted;
 
-        rewardBasedVideoAd.OnAdClosed += HandleOnAdClosed;
-        rewardBasedVideoAd.OnAdFailedToLoad += HandleOnAdFailedToLoad;
-        rewardBasedVideoAd.OnAdLeavingApplication += HandleOnAdLeavingApplication;
-        rewardBasedVideoAd.OnAdLoaded += HandleOnAdLoaded;
-        rewardBasedVideoAd.OnAdOpening += HandleOnAdOpening;
-        rewardBasedVideoAd.OnAdRewarded += HandleOnAdRewarded;
-        rewardBasedVideoAd.OnAdStarted += HandleOnAdStarted;
-        rewardBasedVideoAd.OnAdCompleted += HandleOnAdCompleted;
+        RequestBannerAd();
+        RequestRewardAd();
+
+        //OnClickShowBanner();
     }
 
-    private void ShowRewardBasedAd()
+    //----- Buttons
+    public void OnClickShowBanner()
     {
-        if(rewardBasedVideoAd.IsLoaded())
+        ShowBannerAd();
+    }
+    public void OnClickShowRewardVideo()
+    {
+        ShowRewardAd();
+    }
+
+    //----- Requests and shows
+    private void RequestBannerAd()
+    {
+        bannerAd = new BannerView(IdBannerAd, AdSize.Banner, AdPosition.Center);
+
+        bannerAd.LoadAd( new AdRequest.Builder()
+            .AddTestDevice(AdRequest.TestDeviceSimulator)
+            .AddTestDevice(SystemInfo.deviceUniqueIdentifier)
+            .Build());
+
+        bannerAd.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+        bannerAd.OnAdLoaded += HandleOnAdLoaded;
+    }
+    private void RequestRewardAd()
+    {
+        rewardBasedVideoAd = RewardBasedVideoAd.Instance;
+
+        rewardBasedVideoAd.OnAdRewarded += HandleOnAdRewarded;
+
+        rewardBasedVideoAd.LoadAd(new AdRequest.Builder()
+            .AddTestDevice(AdRequest.TestDeviceSimulator)
+            .AddTestDevice(SystemInfo.deviceUniqueIdentifier)
+            .Build()
+            ,IdRewardAd);
+    }
+    private void ShowBannerAd()
+    {
+        if (bannerAd != null)
+        {
+            bannerAd.Show();
+        }
+        else Debug.Log("Banner is null");
+    }
+    private void ShowRewardAd()
+    {
+        if (rewardBasedVideoAd.IsLoaded())
         {
             rewardBasedVideoAd.Show();
         }
         else
         {
-            MonoBehaviour.print("Ad's not loaded"); 
+            MonoBehaviour.print("Ad's not loaded");
         }
     }
-    private void LoadRewardBaseAd()
+
+    //----- Handles
+    public void HandleOnAdRewarded(object sender, Reward args)
     {
-        #if UNITY_EDITOR
-        string adUnitId = "unused";
-        #elif UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/7325402514";
-        #elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/6386090517";
-        #else
-        string adUnitId = "unexpected_platform";
-        #endif
+        //Reward the user
+        Debug.Log("Rewarded");
 
-        rewardBasedVideoAd.LoadAd(new AdRequest.Builder().Build(), adUnitId);
+        ProfileManager.Instance.Add_Currency(RewardAmount, 0);
+        UiManager.Instance.Update_Currency();
+        timer = 0;
+
+        //----- Request next ad for the next time showing
+        RequestRewardAd();
     }
-
     public void HandleOnAdLoaded(object sender, EventArgs args)
     {
-
+        print("HandleAdLoaded event received.");
+        ShowBannerAd();
     }
     public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
-        //Try a reload
-    }
-    public void HandleOnAdOpening(object sender, EventArgs args)
-    {
-        //Pause the action
-    }
-    public void HandleOnAdStarted(object sender, EventArgs args)
-    {
-        //Mute audio?
-    }
-    public void HandleOnAdClosed(object sender, EventArgs args)
-    {
-        //GameStart again
-    }
-    public void HandleOnAdRewarded(object sender, EventArgs args)
-    {
-        //Reward the user
-        Debug.Log("rewarded");
-    }
-    public void HandleOnAdLeavingApplication(object sender, EventArgs args)
-    {
-
-    }
-    public void HandleOnAdCompleted(object sender, EventArgs args)
-    {
-
+        MonoBehaviour.print("HandleFailedToReceiveAd event received with message: "
+                            + args.Message);
+        RequestBannerAd();
     }
 
-
-
-
+    //----- Update
     public void Update()
     {
         if(GameManager.Instance._GameMode == Enums.GameMode.Singleplayer)
@@ -108,6 +147,8 @@ public class AdsManager : Singleton<AdsManager>
         }
     }
 
+
+    //---------- Old Code ----------//
     public void ShowCompletedMapAd()
     {
         if (Advertisement.IsReady(addVideo))
